@@ -23,6 +23,7 @@ namespace FoodOrdersApi
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IOrgService, OrgService>();
 
             var app = builder.Build();
 
