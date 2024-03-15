@@ -9,6 +9,7 @@ namespace FoodOrdersApi.Entities
 
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
+
         public string? Note { get; set; }
     }
 }
