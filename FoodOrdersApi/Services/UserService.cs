@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities;
+using FoodOrdersApi.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Services
 {
@@ -12,6 +14,16 @@ namespace FoodOrdersApi.Services
         {
             _context = context;
             _mapper = mapper;
+        }
+
+
+        public int Create(CreateUserDto dto)
+        {
+            var user = _mapper.Map<User>(dto);
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            return user.Id;
         }
     }
 }
