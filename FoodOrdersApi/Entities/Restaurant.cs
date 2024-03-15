@@ -17,5 +17,6 @@ namespace FoodOrdersApi.Entities
 
 
         public virtual Address Address { get; set; }
+        public virtual ICollection<Meal> Meals { get; set; }
     }
 }
