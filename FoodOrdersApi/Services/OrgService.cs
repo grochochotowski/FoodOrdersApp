@@ -23,7 +23,7 @@ namespace FoodOrdersApi.Services
 
         public int Create(CreateOrgDto dto)
         {
-            var org = _mapper.Map<User>(dto);
+            var org = _mapper.Map<Organization>(dto);
             _context.Organizations.Add(org);
             _context.SaveChanges();
 
