@@ -1,3 +1,6 @@
+using FoodOrdersApi.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace FoodOrdersApi
 {
@@ -6,11 +9,12 @@ namespace FoodOrdersApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
             // Add services to the container.
 
+            builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(configuration.GetConnectionString("DataBaseConnection")));
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
