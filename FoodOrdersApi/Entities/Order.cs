@@ -13,10 +13,13 @@ namespace FoodOrdersApi.Entities
         [Required(ErrorMessage = "User is required")]
         public int UserId { get; set; }
 
+        [Required(ErrorMessage = "Total price is required")]
+        public int TotalPrice { get; set; }
+
         public string? Notes { get; set; }
 
 
-        public virtual Cart Order { get; set; }
+        public virtual Cart Cart { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<Meal>? Meals { get; set; }
     }
