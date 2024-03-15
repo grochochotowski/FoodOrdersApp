@@ -26,5 +26,9 @@ namespace FoodOrdersApi.Entities
         public string BankAccountNumber { get; set; }
 
         public string? Note { get; set; }
+
+
+        public virtual Restaurant Restaurant { get; set; }
+        public virtual ICollection<IndividualOrder>? IndividualOrders { get;}
     }
 }
