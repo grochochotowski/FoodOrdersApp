@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "FoodOrdersApi.Controllers.OrgController",
+    "Method": "Create",
+    "RelativePath": "api/org/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FoodOrdersApi.Models.CreateOrgDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FoodOrdersApi.Controllers.UserController",
+    "Method": "Create",
+    "RelativePath": "api/user/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FoodOrdersApi.Models.CreateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
