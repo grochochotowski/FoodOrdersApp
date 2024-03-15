@@ -1,6 +1,8 @@
 using FoodOrdersApi.Entities;
+using FoodOrdersApi.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
 
 namespace FoodOrdersApi
 {
@@ -14,9 +16,13 @@ namespace FoodOrdersApi
             // Add services to the container.
 
             builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(configuration.GetConnectionString("DataBaseConnection")));
+
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
 
