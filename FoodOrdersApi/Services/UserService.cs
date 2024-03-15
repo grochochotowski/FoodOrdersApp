@@ -5,7 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Services
 {
-    public class UserService
+    public interface IUserService
+    {
+        int Create(CreateUserDto dto);
+    }
+
+    public class UserService : IUserService
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
