@@ -10,6 +10,12 @@ namespace FoodOrdersApi.Entities
         [Required(ErrorMessage = "Name of the restaurant is required")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Address is rquired")]
+        public int AddressId { get; set; }
+
         public string? Description { get; set; }
+
+
+        public virtual Address Address { get; set; }
     }
 }
