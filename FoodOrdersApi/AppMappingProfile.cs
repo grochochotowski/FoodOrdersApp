@@ -10,6 +10,9 @@ namespace FoodOrdersApi
         {
             CreateMap<User, UserDto>();
             CreateMap<CreateUserDto, User>();
+
+            //CreateMap<Organization, OrganizationDto>();
+            CreateMap<CreateOrganizationDto, Organization>();
         }
     }
 }
