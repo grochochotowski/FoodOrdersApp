@@ -74,5 +74,26 @@ namespace FoodOrdersApi.Services
 
             return 0;
         }
+
+
+
+        // Update organization with id
+        public void Delete(int id)
+        {
+            var org = _context.Organizations
+                .FirstOrDefault(o => o.Id == id);
+
+            if (org != null)
+            {
+                _context.Remove(org);
+            }
+            else
+            {
+                throw new Exception("Organization not found");
+            }
+
+            
+        }
+
     }
 }
