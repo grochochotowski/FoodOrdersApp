@@ -46,13 +46,23 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Get all organizations
+        // Get organization by ID
         public OrgDto GetByID(int id)
         {
             var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
             var orgDto = _mapper.Map<OrgDto>(org);
 
             return orgDto;
+        }
+
+
+        // Update organization with id
+        public OrgDto Update(int id, CreateOrgDto dto)
+        {
+            var org =
+            
+
+            return org.Id;
         }
     }
 }
