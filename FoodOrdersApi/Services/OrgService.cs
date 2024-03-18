@@ -69,9 +69,10 @@ namespace FoodOrdersApi.Services
                 org.Note = dto.Note;
 
                 _context.SaveChanges();
+                return org.Id;
             }
 
-            return org.Id;
+            return 0;
         }
     }
 }
