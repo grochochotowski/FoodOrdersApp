@@ -28,10 +28,10 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/org/all
         [HttpGet("all")]
-        public IEnumerable<string> GetAll()
+        public ActionResult<IEnumerable<OrgDto>> GetAll()
         {
             var orgDtos = _orgService.GetAll();
-            return orgDtos;
+            return Ok(orgDtos);
         }
 
         // GET api/org/get/5
