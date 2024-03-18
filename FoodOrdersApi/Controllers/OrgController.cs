@@ -39,6 +39,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult GetByID(int id)
         {
             var orgDto = _orgService.GetByID(id);
+            if (orgDto == null) return NotFound();
             return Ok(orgDto);
         }
 
@@ -47,6 +48,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult Update(int id, [FromBody] CreateOrgDto dto)
         {
             var orgId = _orgService.Update(id, dto);
+            if (orgId == 0) return NotFound();
             return Ok($"api/org/get/{orgId}");
         }
 
@@ -54,7 +56,9 @@ namespace FoodOrdersApi.Controllers
         [HttpDelete("delete/{id}")]
         public ActionResult Delete(int id)
         {
-            _orgService.Delete(id);
+            var code = _orgService.Delete(id);
+
+            if (code == 0) return NotFound();
             return NoContent();
         }
     }
