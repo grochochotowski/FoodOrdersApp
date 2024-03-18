@@ -71,11 +71,11 @@ namespace FoodOrdersApi.Services
 
             if (address == null) return 0;
 
-            address.Country = address.Country;
-            address.City = address.City;
-            address.Street = address.Street;
-            address.Building = address.Building;
-            address.Premises = address.Premises;
+            address.Country = dto.Country;
+            address.City = dto.City;
+            address.Street = dto.Street;
+            address.Building = dto.Building;
+            address.Premises = dto.Premises;
 
             _context.SaveChanges();
             return address.Id;
