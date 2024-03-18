@@ -17,6 +17,15 @@ namespace FoodOrdersApi.Controllers
 
 
 
+
+        // POST api/org/create
+        [HttpPost("create")]
+        public ActionResult Create([FromBody] CreateOrgDto dto)
+        {
+            var orgId = _orgService.Create(dto);
+            return Created($"api/org/get/{orgId}", null);
+        }
+
         // GET: api/org/all
         [HttpGet("all")]
         public IEnumerable<string> GetAll()
@@ -30,14 +39,6 @@ namespace FoodOrdersApi.Controllers
         public string Get(int id)
         {
             return "value";
-        }
-
-        // POST api/org/create
-        [HttpPost("create")]
-        public ActionResult Create([FromBody] CreateOrgDto dto)
-        {
-            var orgId = _orgService.Create(dto);
-            return Created($"api/org/get/{orgId}", null);
         }
 
         // PUT api/org/update/5
