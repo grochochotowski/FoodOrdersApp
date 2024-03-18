@@ -1,6 +1,6 @@
 ﻿namespace FoodOrdersApi.Models.Address
 {
-    public class CreateAddresDto
+    public class CreateAddressDto
     {
         public string Country { get; set; }
         public string City { get; set; }
