@@ -3,16 +3,92 @@
   "WorkspaceRootPath": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\controllers\\orgcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:controllers\\orgcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Migrations\\20240318224521_addAddressToCart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240318224521_addAddressToCart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\controllers\\mealcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:controllers\\mealcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\services\\orgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:services\\orgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\createorgdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\createorgdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\controllers\\orgcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:controllers\\orgcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\entities\\objects\\restaurant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:entities\\objects\\restaurant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\entities\\objects\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:entities\\objects\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\entities\\objects\\meal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:entities\\objects\\meal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\entities\\objects\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:entities\\objects\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\entities\\objects\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:entities\\objects\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\order\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\order\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\order\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\order\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\user\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\user\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\user\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\user\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\org\\createorgdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\org\\createorgdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\meal\\mealdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\meal\\mealdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\meal\\createmealdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\meal\\createmealdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\restaurant\\restaurantdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\restaurant\\restaurantdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\restaurant\\createrestaurantdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\restaurant\\createrestaurantdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\cart\\createcartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\cart\\createcartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\cart\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\cart\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\address\\createaddresdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\address\\createaddresdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\models\\address\\addressdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:models\\address\\addressdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\appmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,11 +114,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 229,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 23,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -51,12 +127,11 @@
               "ViewState": "AQIAAAQAAAAAAAAAAAAAABkAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T12:24:54.109Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 24,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Entities\\AppDbContext.cs",
@@ -65,12 +140,11 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T12:33:02.032Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 25,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -83,7 +157,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 22,
               "Title": "AppMappingProfile.cs",
               "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\AppMappingProfile.cs",
               "RelativeDocumentMoniker": "AppMappingProfile.cs",
@@ -97,41 +171,288 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CreateOrgDto.cs",
-              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\CreateOrgDto.cs",
-              "RelativeDocumentMoniker": "Models\\CreateOrgDto.cs",
-              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\CreateOrgDto.cs",
-              "RelativeToolTip": "Models\\CreateOrgDto.cs",
+              "DocumentIndex": 0,
+              "Title": "20240318224521_addAddressToCart.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Migrations\\20240318224521_addAddressToCart.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240318224521_addAddressToCart.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Migrations\\20240318224521_addAddressToCart.cs",
+              "RelativeToolTip": "Migrations\\20240318224521_addAddressToCart.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T18:21:44.557Z",
+              "WhenOpened": "2024-03-18T22:45:21.824Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\Objects\\Order.cs",
+              "RelativeDocumentMoniker": "Entities\\Objects\\Order.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\Objects\\Order.cs",
+              "RelativeToolTip": "Entities\\Objects\\Order.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAcwA8AAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:42:27.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Meal.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\Objects\\Meal.cs",
+              "RelativeDocumentMoniker": "Entities\\Objects\\Meal.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\Objects\\Meal.cs",
+              "RelativeToolTip": "Entities\\Objects\\Meal.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:42:22.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Address.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\Objects\\Address.cs",
+              "RelativeDocumentMoniker": "Entities\\Objects\\Address.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\Objects\\Address.cs",
+              "RelativeToolTip": "Entities\\Objects\\Address.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:41:47.266Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "OrderDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Order\\OrderDto.cs",
+              "RelativeDocumentMoniker": "Models\\Order\\OrderDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Order\\OrderDto.cs",
+              "RelativeToolTip": "Models\\Order\\OrderDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:38:08.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Restaurant.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\Objects\\Restaurant.cs",
+              "RelativeDocumentMoniker": "Entities\\Objects\\Restaurant.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\Objects\\Restaurant.cs",
+              "RelativeToolTip": "Entities\\Objects\\Restaurant.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:35:44.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrgService.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Services\\OrgService.cs",
+              "RelativeDocumentMoniker": "Services\\OrgService.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Services\\OrgService.cs",
+              "RelativeToolTip": "Services\\OrgService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAIwGAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T17:51:37.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MealController.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Controllers\\MealController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MealController.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Controllers\\MealController.cs",
+              "RelativeToolTip": "Controllers\\MealController.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAxwCsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:17:58.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "OrgController.cs",
               "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Controllers\\OrgController.cs",
               "RelativeDocumentMoniker": "Controllers\\OrgController.cs",
               "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Controllers\\OrgController.cs",
               "RelativeToolTip": "Controllers\\OrgController.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAgwDcAAAAjAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAAAwwC8AAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-18T17:47:16.313Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OrgService.cs",
-              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Services\\OrgService.cs",
-              "RelativeDocumentMoniker": "Services\\OrgService.cs",
-              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Services\\OrgService.cs",
-              "RelativeToolTip": "Services\\OrgService.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAIwC8AAAAbAAAA",
+              "DocumentIndex": 10,
+              "Title": "CreateOrderDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Order\\CreateOrderDto.cs",
+              "RelativeDocumentMoniker": "Models\\Order\\CreateOrderDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Order\\CreateOrderDto.cs",
+              "RelativeToolTip": "Models\\Order\\CreateOrderDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T17:51:37.001Z",
+              "WhenOpened": "2024-03-18T22:38:14.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CreateUserDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\User\\CreateUserDto.cs",
+              "RelativeDocumentMoniker": "Models\\User\\CreateUserDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\User\\CreateUserDto.cs",
+              "RelativeToolTip": "Models\\User\\CreateUserDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:22:05.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CreateOrgDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Org\\CreateOrgDto.cs",
+              "RelativeDocumentMoniker": "Models\\Org\\CreateOrgDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Org\\CreateOrgDto.cs",
+              "RelativeToolTip": "Models\\Org\\CreateOrgDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T18:21:44.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MealDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Meal\\MealDto.cs",
+              "RelativeDocumentMoniker": "Models\\Meal\\MealDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Meal\\MealDto.cs",
+              "RelativeToolTip": "Models\\Meal\\MealDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:23:19.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\User\\UserDto.cs",
+              "RelativeDocumentMoniker": "Models\\User\\UserDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\User\\UserDto.cs",
+              "RelativeToolTip": "Models\\User\\UserDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:22:11.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Cart.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\Objects\\Cart.cs",
+              "RelativeDocumentMoniker": "Entities\\Objects\\Cart.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Entities\\Objects\\Cart.cs",
+              "RelativeToolTip": "Entities\\Objects\\Cart.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAADwvxgAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:29:58.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CreateMealDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Meal\\CreateMealDto.cs",
+              "RelativeDocumentMoniker": "Models\\Meal\\CreateMealDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Meal\\CreateMealDto.cs",
+              "RelativeToolTip": "Models\\Meal\\CreateMealDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:23:30.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RestaurantDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Restaurant\\RestaurantDto.cs",
+              "RelativeDocumentMoniker": "Models\\Restaurant\\RestaurantDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Restaurant\\RestaurantDto.cs",
+              "RelativeToolTip": "Models\\Restaurant\\RestaurantDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:24:43.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CreateRestaurantDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Restaurant\\CreateRestaurantDto.cs",
+              "RelativeDocumentMoniker": "Models\\Restaurant\\CreateRestaurantDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Restaurant\\CreateRestaurantDto.cs",
+              "RelativeToolTip": "Models\\Restaurant\\CreateRestaurantDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:28:16.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CreateCartDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Cart\\CreateCartDto.cs",
+              "RelativeDocumentMoniker": "Models\\Cart\\CreateCartDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Cart\\CreateCartDto.cs",
+              "RelativeToolTip": "Models\\Cart\\CreateCartDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:32:20.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CartDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Cart\\CartDto.cs",
+              "RelativeDocumentMoniker": "Models\\Cart\\CartDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Cart\\CartDto.cs",
+              "RelativeToolTip": "Models\\Cart\\CartDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:32:14.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CreateAddresDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Address\\CreateAddresDto.cs",
+              "RelativeDocumentMoniker": "Models\\Address\\CreateAddresDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Address\\CreateAddresDto.cs",
+              "RelativeToolTip": "Models\\Address\\CreateAddresDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:28:31.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AddressDto.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Address\\AddressDto.cs",
+              "RelativeDocumentMoniker": "Models\\Address\\AddressDto.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Models\\Address\\AddressDto.cs",
+              "RelativeToolTip": "Models\\Address\\AddressDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T22:25:36.577Z",
               "EditorCaption": ""
             }
           ]
