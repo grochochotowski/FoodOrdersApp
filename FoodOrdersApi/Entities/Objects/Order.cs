@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FoodOrdersApi.Entities
+namespace FoodOrdersApi.Entities.Objects
 {
     public class Order
     {
@@ -9,7 +9,7 @@ namespace FoodOrdersApi.Entities
 
         [Required(ErrorMessage = "Individual order has to be connected in bigger order")]
         public int OrderId { get; set; }
-        
+
         [Required(ErrorMessage = "User is required")]
         public int UserId { get; set; }
 

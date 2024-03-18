@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FoodOrdersApi.Entities
+namespace FoodOrdersApi.Entities.Objects
 {
     public class Cart
     {
@@ -29,6 +29,6 @@ namespace FoodOrdersApi.Entities
 
 
         public virtual Restaurant Restaurant { get; set; }
-        public virtual ICollection<Order>? IndividualOrders { get;}
+        public virtual ICollection<Order>? IndividualOrders { get; }
     }
 }

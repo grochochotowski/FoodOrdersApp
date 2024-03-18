@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FoodOrdersApi.Entities.Objects;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrdersApi.Entities
 {

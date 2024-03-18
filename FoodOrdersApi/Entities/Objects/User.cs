@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FoodOrdersApi.Entities
+namespace FoodOrdersApi.Entities.Objects
 {
     public class User
     {
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="First name is requierd")]
+        [Required(ErrorMessage = "First name is requierd")]
         public string FirstName { get; set; }
 
         public string? SecondName { get; set; }
