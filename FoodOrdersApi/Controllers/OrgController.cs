@@ -26,7 +26,7 @@ namespace FoodOrdersApi.Controllers
             return Created($"api/org/get/{orgId}", null);
         }
 
-        // GET: api/org/all
+        // GET api/org/all
         [HttpGet("all")]
         public IEnumerable<string> GetAll()
         {
