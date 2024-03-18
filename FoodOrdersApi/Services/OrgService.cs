@@ -9,6 +9,7 @@ namespace FoodOrdersApi.Services
     {
         int Create(CreateOrgDto dto);
         IEnumerable<Org> GetAll();
+        OrgDto GetByID(int id);
     }
 
     public class OrgService : IOrgService
@@ -42,6 +43,16 @@ namespace FoodOrdersApi.Services
             var orgDtos = _mapper.Map<List<OrgDto>>(orgs);
 
             return orgDtos;
+        }
+
+
+        // Get all organizations
+        public OrgDto GetByID(int id)
+        {
+            var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
+            var orgDto = _mapper.Map<OrgDto>(org);
+
+            return orgDto;
         }
     }
 }
