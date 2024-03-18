@@ -2,6 +2,7 @@
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrdersApi.Services
 {
@@ -52,7 +53,10 @@ namespace FoodOrdersApi.Services
         public OrgDto GetByID(int id)
         {
             var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
+            if (org == null) throw new Exception("Organization not found");
+
             var orgDto = _mapper.Map<OrgDto>(org);
+
 
             return orgDto;
         }
@@ -63,17 +67,17 @@ namespace FoodOrdersApi.Services
         {
             var org = _context.Organizations
                 .FirstOrDefault(o => o.Id == id);
-            
-            if (org != null)
-            {
-                org.Name = dto.Name;
-                org.Note = dto.Note;
 
-                _context.SaveChanges();
-                return org.Id;
+            if (org == null)
+            {
+                throw new Exception("Organization not found");
             }
 
-            return 0;
+            org.Name = dto.Name;
+            org.Note = dto.Note;
+
+            _context.SaveChanges();
+            return org.Id;
         }
 
 
@@ -84,16 +88,13 @@ namespace FoodOrdersApi.Services
             var org = _context.Organizations
                 .FirstOrDefault(o => o.Id == id);
 
-            if (org != null)
-            {
-                _context.Remove(org);
-            }
-            else
+            if (org == null)
             {
                 throw new Exception("Organization not found");
             }
 
-            
+            _context.Organizations.Remove(org);
+            _context.SaveChanges();
         }
 
     }
