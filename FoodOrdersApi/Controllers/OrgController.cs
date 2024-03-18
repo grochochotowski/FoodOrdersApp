@@ -36,7 +36,7 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/org/get/5
         [HttpGet("getById/{id}")]
-        public string GetByID(int id)
+        public ActionResult GetByID(int id)
         {
             var orgDto = _orgService.GetByID(id);
             return Ok(orgDto);
@@ -44,14 +44,16 @@ namespace FoodOrdersApi.Controllers
 
         // PUT api/org/update/5
         [HttpPut("update/{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Update(int id, [FromBody] string value)
         {
+            return Ok();
         }
 
         // DELETE api/org/delete/5
         [HttpDelete("delete/{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            return Ok();
         }
     }
 }
