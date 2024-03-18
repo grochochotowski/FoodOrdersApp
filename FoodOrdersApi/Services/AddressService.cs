@@ -2,24 +2,26 @@
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Models.Org;
+using FoodOrdersApi.Models.Address;
+using System.Net;
 
 namespace FoodOrdersApi.Services
 {
-    public interface IOrgService
+    public interface IAddressService
     {
-        int Create(CreateOrgDto dto);
-        IEnumerable<OrgDto> GetAll();
-        OrgDto GetByID(int id);
-        int Update(int id, CreateOrgDto dto);
+        int Create(CreateAddressDto dto);
+        IEnumerable<AddressDto> GetAll();
+        AddressDto GetByID(int id);
+        int Update(int id, CreateAddressDto dto);
         int Delete(int id);
     }
 
-    public class OrgService : IOrgService
+    public class AddressService : IAddressService
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
 
-        public OrgService(AppDbContext context, IMapper mapper)
+        public AddressService(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -27,66 +29,68 @@ namespace FoodOrdersApi.Services
 
 
 
-        // Create new organization
-        public int Create(CreateOrgDto dto)
+        // Create new address
+        public int Create(CreateAddressDto dto)
         {
-            var org = _mapper.Map<Org>(dto);
-            _context.Organizations.Add(org);
+            var address = _mapper.Map<Address>(dto);
+            _context.Addresses.Add(address);
             _context.SaveChanges();
 
-            return org.Id;
+            return address.Id;
         }
 
 
-        // Get all organizations
-        public IEnumerable<OrgDto> GetAll()
+        // Get all address
+        public IEnumerable<AddressDto> GetAll()
         {
-            var orgs = _context.Organizations.ToList();
-            var orgDtos = _mapper.Map<List<OrgDto>>(orgs);
+            var addresses = _context.Addresses.ToList();
+            var addressDtos = _mapper.Map<List<AddressDto>>(addresses);
 
-            return orgDtos;
+            return addressDtos;
         }
 
 
-        // Get organization by ID
-        public OrgDto GetByID(int id)
+        // Get address by ID
+        public AddressDto GetByID(int id)
         {
-            var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
-            if (org == null) return null;
+            var address = _context.Addresses.FirstOrDefault(o => o.Id == id);
+            if (address == null) return null;
 
-            var orgDto = _mapper.Map<OrgDto>(org);
+            var addressDto = _mapper.Map<AddressDto>(address);
 
 
-            return orgDto;
+            return addressDto;
         }
 
 
-        // Update organization with id
-        public int Update(int id, CreateOrgDto dto)
+        // Update address with id
+        public int Update(int id, CreateAddressDto dto)
         {
-            var org = _context.Organizations
+            var address = _context.Addresses
                 .FirstOrDefault(o => o.Id == id);
 
-            if (org == null) return 0;
+            if (address == null) return 0;
 
-            org.Name = dto.Name;
-            org.Note = dto.Note;
+            address.Country = address.Country;
+            address.City = address.City;
+            address.Street = address.Street;
+            address.Building = address.Building;
+            address.Premises = address.Premises;
 
             _context.SaveChanges();
-            return org.Id;
+            return address.Id;
         }
 
 
-
-        // Update organization with id
+        // Update address with id
         public int Delete(int id)
         {
-            var org = _context.Organizations
+            var address = _context.Addresses
                 .FirstOrDefault(o => o.Id == id);
 
-            if (org == null) return 0;
+            if (address == null) return 0;
 
-            _context.Organizations.Remove(org);
+            _context.Addresses.Remove(address);
             _context.SaveChanges();
             return 1;
         }
