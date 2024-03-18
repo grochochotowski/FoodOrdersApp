@@ -19,10 +19,10 @@ namespace FoodOrdersApi.Controllers
 
         // GET: api/org/all
         [HttpGet("all")]
-        public IEnumerable<string> Get()
+        public IEnumerable<string> GetAll()
         {
-
-            return new string[] { "value1", "value2" };
+            var orgDtos = _orgService.GetAll();
+            return orgDtos;
         }
 
         // GET api/org/get/5
