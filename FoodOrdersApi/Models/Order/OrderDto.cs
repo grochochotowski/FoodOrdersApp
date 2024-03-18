@@ -1,4 +1,5 @@
 ﻿using FoodOrdersApi.Entities.Objects;
+using FoodOrdersApi.Models.User;
 using System.ComponentModel.DataAnnotations;
 
 namespace FoodOrdersApi.Models.Order
