@@ -11,6 +11,7 @@ namespace FoodOrdersApi.Services
         IEnumerable<OrgDto> GetAll();
         OrgDto GetByID(int id);
         int Update(int id, CreateOrgDto dto);
+        void Delete(int id);
     }
 
     public class OrgService : IOrgService
