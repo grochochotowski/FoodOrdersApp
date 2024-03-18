@@ -12,6 +12,5 @@ namespace FoodOrdersApi.Models.Org
 
 
         public int RestaurantId { get; set; }
-        public virtual RestaurantDto Restaurant { get; set; }
     }
 }
