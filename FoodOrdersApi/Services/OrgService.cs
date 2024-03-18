@@ -8,7 +8,7 @@ namespace FoodOrdersApi.Services
     public interface IOrgService
     {
         int Create(CreateOrgDto dto);
-        IEnumerable<Organization> GetAll();
+        IEnumerable<Org> GetAll();
     }
 
     public class OrgService : IOrgService
@@ -27,7 +27,7 @@ namespace FoodOrdersApi.Services
         // Create new organization
         public int Create(CreateOrgDto dto)
         {
-            var org = _mapper.Map<Organization>(dto);
+            var org = _mapper.Map<Org>(dto);
             _context.Organizations.Add(org);
             _context.SaveChanges();
 

@@ -2,7 +2,7 @@
 
 namespace FoodOrdersApi.Entities.Objects
 {
-    public class Organization
+    public class Org
     {
         [Key]
         public int Id { get; set; }

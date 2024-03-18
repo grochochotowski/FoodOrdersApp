@@ -12,7 +12,7 @@ namespace FoodOrdersApi.Entities
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Organization> Organizations { get; set; }
+        public DbSet<Org> Organizations { get; set; }
         public DbSet<Address> Addresses { get; set; }
 
 
