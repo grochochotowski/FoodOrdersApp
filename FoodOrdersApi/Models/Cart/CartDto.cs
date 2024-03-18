@@ -12,8 +12,12 @@ namespace FoodOrdersApi.Models.Cart
         public string PhoneNumber { get; set; }
         public string BankAccountNumber { get; set; }
         public string? Note { get; set; }
+
+
         public int RestaurantId { get; set; }
         public RestaurantDto Restaurant { get; set; }
+
+
         public int AddressId { get; set; }
         public AddressDto Address { get; set; }
     }
