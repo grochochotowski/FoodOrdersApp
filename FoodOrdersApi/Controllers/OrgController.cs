@@ -1,41 +1,39 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace FoodOrdersApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/org")]
     [ApiController]
     public class OrgController : ControllerBase
     {
-        // GET: api/<OrgController>
-        [HttpGet]
+        // GET: api/org/all
+        [HttpGet("all")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<OrgController>/5
-        [HttpGet("{id}")]
+        // GET api/org/get/5
+        [HttpGet("get/{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<OrgController>
-        [HttpPost]
+        // POST api/org/create
+        [HttpPost("create")]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<OrgController>/5
-        [HttpPut("{id}")]
+        // PUT api/org/update/5
+        [HttpPut("update/{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<OrgController>/5
-        [HttpDelete("{id}")]
+        // DELETE api/org/delete/5
+        [HttpDelete("delete/{id}")]
         public void Delete(int id)
         {
         }
