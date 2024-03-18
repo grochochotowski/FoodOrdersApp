@@ -21,6 +21,7 @@ namespace FoodOrdersApi.Controllers
         [HttpGet("all")]
         public IEnumerable<string> Get()
         {
+
             return new string[] { "value1", "value2" };
         }
 
