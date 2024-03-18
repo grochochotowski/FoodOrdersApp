@@ -13,12 +13,6 @@ namespace FoodOrdersApi.Entities.Objects
 
 
 
-        [Required(ErrorMessage = "Address is rquired")]
-        public int AddressId { get; set; }
-        public virtual Address Address { get; set; }
-
-
-
         public virtual ICollection<Meal> Meals { get; set; }
     }
 }

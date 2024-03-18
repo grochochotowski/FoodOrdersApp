@@ -13,11 +13,6 @@ namespace FoodOrdersApi.Models.Restaurant
 
 
 
-        public int AddressId { get; set; }
-        public AddressDto Address { get; set; }
-
-
-
         public ICollection<MealDto> Meals { get; set; }
     }
 }
