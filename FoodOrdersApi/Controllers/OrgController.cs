@@ -44,9 +44,10 @@ namespace FoodOrdersApi.Controllers
 
         // PUT api/org/update/5
         [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] string value)
+        public ActionResult Update(int id, [FromBody] CreateOrgDto dto)
         {
-            return Ok();
+            var orgId = _orgService.Update(id, dto);
+            return Ok($"api/org/get/{orgId}");
         }
 
         // DELETE api/org/delete/5
