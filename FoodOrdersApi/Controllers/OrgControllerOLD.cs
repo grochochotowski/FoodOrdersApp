@@ -6,11 +6,11 @@ namespace FoodOrdersApi.Controllers
 {
     [Route("api/org")]
     [ApiController]
-    public class OrgController : ControllerBase
+    public class OrgControllerOLD : ControllerBase
     {
         private readonly IOrgService _orgService;
 
-        public OrgController(IOrgService orgService)
+        public OrgControllerOLD(IOrgService orgService)
         {
             _orgService = orgService;
         }

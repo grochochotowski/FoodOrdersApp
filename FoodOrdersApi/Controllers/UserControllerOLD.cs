@@ -6,11 +6,11 @@ namespace FoodOrdersApi.Controllers
 {
     [Route("api/user")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserControllerOLD : ControllerBase
     {
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService)
+        public UserControllerOLD(IUserService userService)
         {
             _userService = userService;
         }
