@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
@@ -6,6 +7,15 @@ namespace FoodOrdersApi.Controllers
     [ApiController]
     public class OrgController : ControllerBase
     {
+        private readonly IOrgService _orgService;
+
+        public OrgController(IOrgService orgService)
+        {
+            _orgService = orgService;
+        }
+
+
+
         // GET: api/org/all
         [HttpGet("all")]
         public IEnumerable<string> Get()

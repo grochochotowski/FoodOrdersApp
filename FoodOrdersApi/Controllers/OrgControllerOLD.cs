@@ -8,12 +8,7 @@ namespace FoodOrdersApi.Controllers
     [ApiController]
     public class OrgControllerOLD : ControllerBase
     {
-        private readonly IOrgService _orgService;
-
-        public OrgControllerOLD(IOrgService orgService)
-        {
-            _orgService = orgService;
-        }
+        
 
 
         [HttpPost("create")]
