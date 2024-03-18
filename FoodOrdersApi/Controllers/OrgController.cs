@@ -54,7 +54,8 @@ namespace FoodOrdersApi.Controllers
         [HttpDelete("delete/{id}")]
         public ActionResult Delete(int id)
         {
-            return Ok();
+            _orgService.Delete(id);
+            return NoContent();
         }
     }
 }
