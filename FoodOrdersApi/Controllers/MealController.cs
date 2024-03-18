@@ -4,59 +4,59 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
-    [Route("api/org")]
+    [Route("api/meal")]
     [ApiController]
-    public class OrgController : ControllerBase
+    public class MealController : ControllerBase
     {
-        private readonly IOrgService _orgService;
+        private readonly IMealService _mealService;
 
-        public OrgController(IOrgService orgService)
+        public MealController(IMealService mealService)
         {
-            _orgService = orgService;
+            _mealService = mealService;
         }
 
 
 
 
-        // POST api/org/create
+        // POST api/meal/create
         [HttpPost("create")]
-        public ActionResult Create([FromBody] CreateOrgDto dto)
+        public ActionResult Create([FromBody] CreateMealDto dto)
         {
-            var orgId = _orgService.Create(dto);
-            return Created($"api/org/get/{orgId}", null);
+            var mealId = _mealService.Create(dto);
+            return Created($"api/meal/get/{mealId}", null);
         }
 
-        // GET api/org/all
+        // GET api/meal/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<OrgDto>> GetAll()
+        public ActionResult<IEnumerable<MealDto>> GetAll()
         {
-            var orgDtos = _orgService.GetAll();
-            return Ok(orgDtos);
+            var mealDtos = _mealService.GetAll();
+            return Ok(mealDtos);
         }
 
-        // GET api/org/get/5
+        // GET api/meal/get/5
         [HttpGet("getById/{id}")]
         public ActionResult GetByID(int id)
         {
-            var orgDto = _orgService.GetByID(id);
-            if (orgDto == null) return NotFound();
-            return Ok(orgDto);
+            var mealDto = _mealService.GetByID(id);
+            if (mealDto == null) return NotFound();
+            return Ok(mealDto);
         }
 
-        // PUT api/org/update/5
+        // PUT api/meal/update/5
         [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] CreateOrgDto dto)
+        public ActionResult Update(int id, [FromBody] CreateMealDto dto)
         {
-            var orgId = _orgService.Update(id, dto);
-            if (orgId == 0) return NotFound();
-            return Ok($"api/org/get/{orgId}");
+            var mealId = _mealService.Update(id, dto);
+            if (mealId == 0) return NotFound();
+            return Ok($"api/meal/get/{mealId}");
         }
 
-        // DELETE api/org/delete/5
+        // DELETE api/meal/delete/5
         [HttpDelete("delete/{id}")]
         public ActionResult Delete(int id)
         {
-            var code = _orgService.Delete(id);
+            var code = _mealService.Delete(id);
 
             if (code == 0) return NotFound();
             return NoContent();
