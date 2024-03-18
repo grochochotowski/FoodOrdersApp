@@ -27,6 +27,12 @@ namespace FoodOrdersApi.Entities.Objects
 
 
 
+        [Required(ErrorMessage = "Address ID is required")]
+        public int AddressId { get; set; }
+        public virtual Address Address { get; set; }
+
+
+
         public virtual ICollection<Order>? IndividualOrders { get; }
     }
 }
