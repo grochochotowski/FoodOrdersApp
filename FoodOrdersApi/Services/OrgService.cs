@@ -8,8 +8,9 @@ namespace FoodOrdersApi.Services
     public interface IOrgService
     {
         int Create(CreateOrgDto dto);
-        IEnumerable<Org> GetAll();
+        IEnumerable<OrgDto> GetAll();
         OrgDto GetByID(int id);
+        int Update(int id, CreateOrgDto dto);
     }
 
     public class OrgService : IOrgService
@@ -57,10 +58,18 @@ namespace FoodOrdersApi.Services
 
 
         // Update organization with id
-        public OrgDto Update(int id, CreateOrgDto dto)
+        public int Update(int id, CreateOrgDto dto)
         {
-            var org =
+            var org = _context.Organizations
+                .FirstOrDefault(o => o.Id == id);
             
+            if (org != null)
+            {
+                org.Name = dto.Name;
+                org.Note = dto.Note;
+
+                _context.SaveChanges();
+            }
 
             return org.Id;
         }
