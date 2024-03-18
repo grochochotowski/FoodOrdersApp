@@ -36,7 +36,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult Create([FromBody] CreateOrgDto dto)
         {
             var orgId = _orgService.Create(dto);
-            return Created($"{orgId}", null);
+            return Created($"api/org/get/{orgId}", null);
         }
 
         // PUT api/org/update/5
