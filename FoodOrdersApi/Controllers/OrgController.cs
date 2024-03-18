@@ -1,4 +1,5 @@
-﻿using FoodOrdersApi.Services;
+﻿using FoodOrdersApi.Models;
+using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
@@ -32,8 +33,10 @@ namespace FoodOrdersApi.Controllers
 
         // POST api/org/create
         [HttpPost("create")]
-        public void Post([FromBody] string value)
+        public ActionResult Create([FromBody] CreateOrgDto dto)
         {
+            var orgId = _orgService.Create(dto);
+            return Created($"{orgId}", null);
         }
 
         // PUT api/org/update/5
