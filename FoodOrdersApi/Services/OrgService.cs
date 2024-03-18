@@ -12,7 +12,7 @@ namespace FoodOrdersApi.Services
         IEnumerable<OrgDto> GetAll();
         OrgDto GetByID(int id);
         int Update(int id, CreateOrgDto dto);
-        void Delete(int id);
+        int Delete(int id);
     }
 
     public class OrgService : IOrgService
@@ -53,7 +53,7 @@ namespace FoodOrdersApi.Services
         public OrgDto GetByID(int id)
         {
             var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
-            if (org == null) throw new Exception("Organization not found");
+            if (org == null) return null;
 
             var orgDto = _mapper.Map<OrgDto>(org);
 
@@ -68,10 +68,7 @@ namespace FoodOrdersApi.Services
             var org = _context.Organizations
                 .FirstOrDefault(o => o.Id == id);
 
-            if (org == null)
-            {
-                throw new Exception("Organization not found");
-            }
+            if (org == null) return 0;
 
             org.Name = dto.Name;
             org.Note = dto.Note;
@@ -83,18 +80,16 @@ namespace FoodOrdersApi.Services
 
 
         // Update organization with id
-        public void Delete(int id)
+        public int Delete(int id)
         {
             var org = _context.Organizations
                 .FirstOrDefault(o => o.Id == id);
 
-            if (org == null)
-            {
-                throw new Exception("Organization not found");
-            }
+            if (org == null) return 0;
 
             _context.Organizations.Remove(org);
             _context.SaveChanges();
+            return 1;
         }
 
     }
