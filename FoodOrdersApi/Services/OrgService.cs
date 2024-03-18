@@ -36,7 +36,7 @@ namespace FoodOrdersApi.Services
 
 
         // Get all organizations
-        public IEnumerable<Organization> GetAll()
+        public IEnumerable<OrgDto> GetAll()
         {
             var orgs = _context.Organizations.ToList();
             var orgDtos = _mapper.Map<List<OrgDto>>(orgs);
