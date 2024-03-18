@@ -1,43 +1,65 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using FoodOrdersApi.Models;
+using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
-    [Route("api/cart")]
+    [Route("api/org")]
     [ApiController]
-    public class MealController : ControllerBase
+    public class OrgController : ControllerBase
     {
-        // GET: api/<MealController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IOrgService _orgService;
+
+        public OrgController(IOrgService orgService)
         {
-            return new string[] { "value1", "value2" };
+            _orgService = orgService;
         }
 
-        // GET api/<MealController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+
+
+
+        // POST api/org/create
+        [HttpPost("create")]
+        public ActionResult Create([FromBody] CreateOrgDto dto)
         {
-            return "value";
+            var orgId = _orgService.Create(dto);
+            return Created($"api/org/get/{orgId}", null);
         }
 
-        // POST api/<MealController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // GET api/org/all
+        [HttpGet("all")]
+        public ActionResult<IEnumerable<OrgDto>> GetAll()
         {
+            var orgDtos = _orgService.GetAll();
+            return Ok(orgDtos);
         }
 
-        // PUT api/<MealController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // GET api/org/get/5
+        [HttpGet("getById/{id}")]
+        public ActionResult GetByID(int id)
         {
+            var orgDto = _orgService.GetByID(id);
+            if (orgDto == null) return NotFound();
+            return Ok(orgDto);
         }
 
-        // DELETE api/<MealController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // PUT api/org/update/5
+        [HttpPut("update/{id}")]
+        public ActionResult Update(int id, [FromBody] CreateOrgDto dto)
         {
+            var orgId = _orgService.Update(id, dto);
+            if (orgId == 0) return NotFound();
+            return Ok($"api/org/get/{orgId}");
+        }
+
+        // DELETE api/org/delete/5
+        [HttpDelete("delete/{id}")]
+        public ActionResult Delete(int id)
+        {
+            var code = _orgService.Delete(id);
+
+            if (code == 0) return NotFound();
+            return NoContent();
         }
     }
 }
