@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities.Objects;
-using FoodOrdersApi.Models;
+using FoodOrdersApi.Models.Org;
+using FoodOrdersApi.Models.User;
 
 namespace FoodOrdersApi
 {

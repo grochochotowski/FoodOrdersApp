@@ -1,4 +1,4 @@
-﻿using FoodOrdersApi.Models;
+﻿using FoodOrdersApi.Models.User;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 

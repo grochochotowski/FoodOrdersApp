@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FoodOrdersApi.Models
+namespace FoodOrdersApi.Models.Org
 {
     public class OrgDto
     {

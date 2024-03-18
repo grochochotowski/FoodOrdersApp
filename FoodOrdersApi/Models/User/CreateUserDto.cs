@@ -1,4 +1,4 @@
-﻿namespace FoodOrdersApi.Models
+﻿namespace FoodOrdersApi.Models.User
 {
     public class CreateUserDto
     {

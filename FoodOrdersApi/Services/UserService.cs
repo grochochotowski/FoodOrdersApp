@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Entities.Objects;
-using FoodOrdersApi.Models;
+using FoodOrdersApi.Models.User;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Services
