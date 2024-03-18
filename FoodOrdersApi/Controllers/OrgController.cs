@@ -35,10 +35,11 @@ namespace FoodOrdersApi.Controllers
         }
 
         // GET api/org/get/5
-        [HttpGet("get/{id}")]
-        public string Get(int id)
+        [HttpGet("getById/{id}")]
+        public string GetByID(int id)
         {
-            return "value";
+            var orgDto = _orgService.GetByID(id);
+            return Ok(orgDto);
         }
 
         // PUT api/org/update/5
