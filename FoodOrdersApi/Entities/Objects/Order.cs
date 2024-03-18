@@ -13,8 +13,8 @@ namespace FoodOrdersApi.Entities.Objects
 
 
 
-        [Required(ErrorMessage = "Individual order has to be connected in bigger order")]
-        public int OrderId { get; set; }
+        [Required(ErrorMessage = "Individual order has to be connected to cart")]
+        public int CartId { get; set; }
         public virtual Cart Cart { get; set; }
 
 

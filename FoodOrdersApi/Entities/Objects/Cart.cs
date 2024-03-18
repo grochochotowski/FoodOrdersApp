@@ -21,13 +21,13 @@ namespace FoodOrdersApi.Entities.Objects
 
 
 
-        [Required(ErrorMessage = "Restaurant ID is required")]
+        [Required(ErrorMessage = "Restaurant is required")]
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
 
 
 
-        [Required(ErrorMessage = "Address ID is required")]
+        [Required(ErrorMessage = "Address is required")]
         public int AddressId { get; set; }
         public virtual Address Address { get; set; }
 
