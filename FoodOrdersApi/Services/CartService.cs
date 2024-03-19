@@ -1,25 +1,28 @@
 ﻿using AutoMapper;
+using FoodCartsApi.Entities.Objects;
+using FoodCartsApi.Entities;
+using FoodCartsApi.Models.Cart;
+using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
-using FoodOrdersApi.Models.Order;
 
-namespace FoodOrdersApi.Services
+namespace FoodCartsApi.Services
 {
-    public interface IOrderService
+    public interface ICartService
     {
-        int Create(CreateOrderDto dto);
-        IEnumerable<OrderDto> GetAll();
-        OrderDto GetByID(int id);
-        int Update(int id, UpdateOrderDto dto);
+        int Create(CreateCartDto dto);
+        IEnumerable<CartDto> GetAll();
+        CartDto GetByID(int id);
+        int Update(int id, UpdateCartDto dto);
         int Delete(int id);
     }
 
-    public class OrderService : IOrderService
+    public class CartService : ICartService
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
 
-        public OrderService(AppDbContext context, IMapper mapper)
+        public CartService(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -27,10 +30,10 @@ namespace FoodOrdersApi.Services
 
 
 
-        // Create new order
-        public int Create(CreateOrderDto dto)
+        // Create new cart
+        public int Create(CreateCartDto dto)
         {
-            var order = _mapper.Map<Order>(dto);
+            var cart = _mapper.Map<Cart>(dto);
 
             var isUser = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
             if (isUser == null) return -2;
@@ -38,39 +41,39 @@ namespace FoodOrdersApi.Services
             var isCart = _context.Carts.FirstOrDefault(u => u.Id == dto.CartId);
             if (isCart == null) return -3;
 
-            _context.Orders.Add(order);
+            _context.Carts.Add(cart);
             _context.SaveChanges();
-            return order.Id;
+            return cart.Id;
         }
 
 
-        // Get all orders
-        public IEnumerable<OrderDto> GetAll()
+        // Get all carts
+        public IEnumerable<CartDto> GetAll()
         {
-            var orders = _context.Orders.ToList();
-            var orderDtos = _mapper.Map<List<OrderDto>>(orders);
+            var carts = _context.Carts.ToList();
+            var cartDtos = _mapper.Map<List<CartDto>>(carts);
 
-            return orderDtos;
+            return cartDtos;
         }
 
 
-        // Get order by ID
-        public OrderDto GetByID(int id)
+        // Get cart by ID
+        public CartDto GetByID(int id)
         {
-            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
-            if (order == null) return null;
+            var cart = _context.Carts.FirstOrDefault(o => o.Id == id);
+            if (cart == null) return null;
 
-            var orderDto = _mapper.Map<OrderDto>(order);
+            var cartDto = _mapper.Map<CartDto>(cart);
 
-            return orderDto;
+            return cartDto;
         }
 
 
-        // Update order with id
-        public int Update(int id, UpdateOrderDto dto)
+        // Update cart with id
+        public int Update(int id, UpdateCartDto dto)
         {
-            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
-            if (order == null) return -1;
+            var cart = _context.Carts.FirstOrDefault(o => o.Id == id);
+            if (cart == null) return -1;
 
             if (dto.UserId != null)
             {
@@ -84,22 +87,22 @@ namespace FoodOrdersApi.Services
             }
 
 
-            order.Notes = dto.Notes ?? order.Notes;
-            order.CartId = dto.CartId ?? order.CartId;
-            order.UserId = dto.UserId ?? order.UserId;
+            cart.Notes = dto.Notes ?? cart.Notes;
+            cart.CartId = dto.CartId ?? cart.CartId;
+            cart.UserId = dto.UserId ?? cart.UserId;
 
             _context.SaveChanges();
-            return order.Id;
+            return cart.Id;
         }
 
 
-        // Update order with id
+        // Update cart with id
         public int Delete(int id)
         {
-            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
-            if (order == null) return -1;
+            var cart = _context.Carts.FirstOrDefault(o => o.Id == id);
+            if (cart == null) return -1;
 
-            _context.Orders.Remove(order);
+            _context.Carts.Remove(cart);
             _context.SaveChanges();
             return 1;
         }
