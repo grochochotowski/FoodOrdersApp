@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
-using FoodOrdersApi.Models.Order;
+using FoodOrdersApi.Models.Restaurant;
 
 namespace FoodOrdersApi.Services
 {
     public interface IRestaurantService
     {
-        int Create(CreateOrderDto dto);
-        IEnumerable<OrderDto> GetAll();
-        OrderDto GetByID(int id);
-        int Update(int id, UpdateOrderDto dto);
+        int Create(CreateRestaurantDto dto);
+        IEnumerable<RestaurantDto> GetAll();
+        RestaurantDto GetByID(int id);
+        int Update(int id, UpdateRestaurantDto dto);
         int Delete(int id);
     }
 
@@ -28,16 +28,9 @@ namespace FoodOrdersApi.Services
 
 
         // Create new order
-        public int Create(CreateOrderDto dto)
+        public int Create(CreateRestaurantDto dto)
         {
             var order = _mapper.Map<Order>(dto);
-            if (order == null) return -1;
-
-            var isUser = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
-            if (isUser == null) return -2;
-
-            var isCart = _context.Carts.FirstOrDefault(u => u.Id == dto.CartId);
-            if (isCart == null) return -3;
 
             _context.Orders.Add(order);
             _context.SaveChanges();
@@ -46,61 +39,48 @@ namespace FoodOrdersApi.Services
 
 
         // Get all orders
-        public IEnumerable<OrderDto> GetAll()
+        public IEnumerable<RestaurantDto> GetAll()
         {
-            var orders = _context.Orders.ToList();
-            var orderDtos = _mapper.Map<List<OrderDto>>(orders);
+            var restaurants = _context.Restaurants.ToList();
+            var restaurantDtos = _mapper.Map<List<RestaurantDto>>(restaurants);
 
-            return orderDtos;
+            return restaurantDtos;
         }
 
 
         // Get order by ID
-        public OrderDto GetByID(int id)
+        public RestaurantDto GetByID(int id)
         {
-            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
-            if (order == null) return null;
+            var restaurant = _context.Orders.FirstOrDefault(o => o.Id == id);
+            if (restaurant == null) return null;
 
-            var orderDto = _mapper.Map<OrderDto>(order);
+            var restaurantDto = _mapper.Map<RestaurantDto>(restaurant);
 
-            return orderDto;
+            return restaurantDto;
         }
 
 
         // Update order with id
-        public int Update(int id, UpdateOrderDto dto)
+        public int Update(int id, UpdateRestaurantDto dto)
         {
-            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
-            if (order == null) return -1;
+            var restaurant = _context.Restaurants.FirstOrDefault(o => o.Id == id);
+            if (restaurant == null) return -1;
 
-            if (dto.UserId != null)
-            {
-                var isUser = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
-                if (isUser == null) return -2;
-            }
-            if (dto.CartId != null)
-            {
-                var isCart = _context.Carts.FirstOrDefault(u => u.Id == dto.CartId);
-                if (isCart == null) return -3;
-            }
-
-
-            order.Notes = dto.Notes ?? order.Notes;
-            order.CartId = dto.CartId ?? order.CartId;
-            order.UserId = dto.UserId ?? order.UserId;
+            restaurant.Name = dto.Name ?? restaurant.Name;
+            restaurant.Description = dto.Description ?? restaurant.Description;
 
             _context.SaveChanges();
-            return order.Id;
+            return restaurant.Id;
         }
 
 
         // Update order with id
         public int Delete(int id)
         {
-            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
-            if (order == null) return -1;
+            var restaurant = _context.Restaurants.FirstOrDefault(o => o.Id == id);
+            if (restaurant == null) return -1;
 
-            _context.Orders.Remove(order);
+            _context.Restaurants.Remove(restaurant);
             _context.SaveChanges();
             return 1;
         }
