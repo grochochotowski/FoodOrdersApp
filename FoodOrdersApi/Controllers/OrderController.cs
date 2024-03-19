@@ -1,64 +1,64 @@
-﻿using FoodOrdersApi.Models.Address;
+﻿using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
-    [Route("api/address")]
+    [Route("api/order")]
     [ApiController]
-    public class AddressController : ControllerBase
+    public class OrderController : ControllerBase
     {
-        private readonly IAddressService _addressService;
+        private readonly IAddressService _orderService;
 
-        public AddressController(IAddressService addressService)
+        public OrderController(IAddressService orderService)
         {
-            _addressService = addressService;
+            _orderService = orderService;
         }
 
 
 
 
-        // POST api/address/create
-        [HttpPost("create")]
-        public ActionResult Create([FromBody] CreateAddressDto dto)
+        // POST api/order/create
+        [HttpPost("order")]
+        public ActionResult Create([FromBody] CreateOrderDto dto)
         {
-            var addressId = _addressService.Create(dto);
-            return Created($"api/address/get/{addressId}", null);
+            var orderId = _orderService.Create(dto);
+            return Created($"api/order/get/{orderId}", null);
         }
 
-        // GET api/address/all
+        // GET api/order/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<AddressDto>> GetAll()
+        public ActionResult<IEnumerable<OrderDto>> GetAll()
         {
-            var addressDtos = _addressService.GetAll();
-            return Ok(addressDtos);
+            var orderDtos = _orderService.GetAll();
+            return Ok(orderDtos);
         }
 
-        // GET api/address/get/5
+        // GET api/order/get/5
         [HttpGet("getById/{id}")]
         public ActionResult GetByID(int id)
         {
-            var addressDto = _addressService.GetByID(id);
-            if (addressDto == null) return NotFound($"Address with id {id} does not exist");
-            return Ok(addressDto);
+            var orderDto = _orderService.GetByID(id);
+            if (orderDto == null) return NotFound($"Order with id {id} does not exist");
+            return Ok(orderDto);
         }
 
-        // PUT api/address/update/5
+        // PUT api/order/update/5
         [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] CreateAddressDto dto)
+        public ActionResult Update(int id, [FromBody] UpdateOrderDto dto)
         {
-            var addressId = _addressService.Update(id, dto);
-            if (addressId == -1) return NotFound($"Address with id {id} does not exist");
-            return Ok($"api/address/get/{addressId}");
+            var orderId = _orderService.Update(id, dto);
+            if (orderId == -1) return NotFound($"Order with id {id} does not exist");
+            return Ok($"api/order/get/{orderId}");
         }
 
-        // DELETE api/address/delete/5
+        // DELETE api/order/delete/5
         [HttpDelete("delete/{id}")]
         public ActionResult Delete(int id)
         {
-            var code = _addressService.Delete(id);
+            var code = _orderService.Delete(id);
 
-            if (code == -1) return NotFound($"Address with id {id} does not exist");
+            if (code == -1) return NotFound($"Order with id {id} does not exist");
             return NoContent();
         }
     }
