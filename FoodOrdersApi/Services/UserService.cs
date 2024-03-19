@@ -72,11 +72,12 @@ namespace FoodOrdersApi.Services
 
             if (user == null) return 0;
 
-            address.Country = dto.Country;
-            address.City = dto.City;
-            address.Street = dto.Street;
-            address.Building = dto.Building;
-            address.Premises = dto.Premises;
+            user.OrganizationId = dto.OrganizationId;
+            user.SecondName = dto.SecondName;
+            user.LastName = dto.LastName;
+            user.Email = dto.Email;
+            user.Note = dto.Note;
+            user.OrganizationId = dto.OrganizationId;
 
             _context.SaveChanges();
             return user.Id;
