@@ -92,7 +92,7 @@ namespace FoodOrdersApi.Services
             var user = _context.Users
                 .FirstOrDefault(o => o.Id == id);
 
-            if (user == null) return 0;
+            if (user == null) return -1;
 
             _context.Users.Remove(user);
             _context.SaveChanges();

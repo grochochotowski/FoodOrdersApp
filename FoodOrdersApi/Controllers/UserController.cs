@@ -60,7 +60,7 @@ namespace FoodOrdersApi.Controllers
         {
             var code = _userService.Delete(id);
 
-            if (code == 0) return NotFound($"User with id {id} does not exist");
+            if (code == -1) return NotFound($"User with id {id} does not exist");
             return NoContent();
         }
     }
