@@ -20,13 +20,19 @@ namespace FoodOrdersApi.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Order>()
-                .HasMany(o => o.Meals)
-                .WithMany(m => m.Orders)
-                .UsingEntity(om => om.ToTable("MealOrder"));
-
-
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Meal>()
+                .HasOne(m => m.Restaurant)
+                .WithMany()
+                .HasForeignKey(m => m.RestaurantId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Cart>()
+                .HasOne(c => c.Restaurant)
+                .WithMany()
+                .HasForeignKey(c => c.RestaurantId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
