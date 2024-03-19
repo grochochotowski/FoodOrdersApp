@@ -27,7 +27,7 @@ namespace FoodOrdersApi.Services
 
 
 
-        // Create new address
+        // Create new user
         public int Create(CreateUserDto dto)
         {
             var user = _mapper.Map<User>(dto);
@@ -38,7 +38,7 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Get all address
+        // Get all user
         public IEnumerable<UserDto> GetAll()
         {
             var users = _context.Users.ToList();
@@ -48,7 +48,7 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Get address by ID
+        // Get user by ID
         public UserDto GetByID(int id)
         {
             var user = _context.Users.FirstOrDefault(o => o.Id == id);
@@ -61,7 +61,7 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Update address with id
+        // Update user with id
         public int Update(int id, CreateUserDto dto)
         {
             var user = _context.Users
@@ -81,7 +81,7 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Update address with id
+        // Update user with id
         public int Delete(int id)
         {
             var user = _context.Users
