@@ -24,6 +24,7 @@ namespace FoodOrdersApi
 
             builder.Services.AddScoped<IAddressService, AddressService>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrgService, OrgService>();
 
             var app = builder.Build();

@@ -62,16 +62,16 @@ namespace FoodOrdersApi.Services
 
 
         // Update order with id
-        public int Update(int id, CreateOrderDto dto)
+        public int Update(int id, UpdateOrderDto dto)
         {
             var order = _context.Orders
                 .FirstOrDefault(o => o.Id == id);
 
             if (order == null) return -1;
 
-            order.Notes = dto.Notes;
-            order.CartId = dto.CartId;
-            order.UserId = dto.UserId;
+            order.Notes = dto.Notes ?? order.Notes;
+            order.CartId = dto.CartId ?? order.CartId;
+            order.UserId = dto.UserId ?? order.UserId;
 
             _context.SaveChanges();
             return order.Id;
