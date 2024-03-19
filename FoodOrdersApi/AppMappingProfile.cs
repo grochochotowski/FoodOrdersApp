@@ -33,6 +33,7 @@ namespace FoodOrdersApi
 
             CreateMap<User, UserDto>();
             CreateMap<CreateUserDto, User>();
+            CreateMap<UpdateUserDto, User>();
         }
     }
 }
