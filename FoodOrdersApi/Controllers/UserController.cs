@@ -1,4 +1,6 @@
-﻿using FoodOrdersApi.Models.Address;
+﻿using FoodOrdersApi.Entities.Objects;
+using FoodOrdersApi.Models.Address;
+using FoodOrdersApi.Models.User;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,59 +8,59 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IAddressService _addressService;
+        private readonly IUserService _userService;
 
-        public AddressController(IAddressService addressService)
+        public UserController(IUserService userService)
         {
-            _addressService = addressService;
+            _userService = userService;
         }
 
 
 
 
-        // POST api/address/create
+        // POST api/user/create
         [HttpPost("create")]
-        public ActionResult Create([FromBody] CreateAddressDto dto)
+        public ActionResult Create([FromBody] CreateUserDto dto)
         {
-            var addressId = _addressService.Create(dto);
-            return Created($"api/address/get/{addressId}", null);
+            var userId = _userService.Create(dto);
+            return Created($"api/address/get/{userId}", null);
         }
 
-        // GET api/address/all
+        // GET api/user/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<AddressDto>> GetAll()
+        public ActionResult<IEnumerable<UserDto>> GetAll()
         {
-            var addressDtos = _addressService.GetAll();
-            return Ok(addressDtos);
+            var userDtos = _userService.GetAll();
+            return Ok(userDtos);
         }
 
-        // GET api/address/get/5
+        // GET api/user/get/5
         [HttpGet("getById/{id}")]
         public ActionResult GetByID(int id)
         {
-            var addressDto = _addressService.GetByID(id);
-            if (addressDto == null) return NotFound();
-            return Ok(addressDto);
+            var userDto = _userService.GetByID(id);
+            if (userDto == null) return NotFound();
+            return Ok(userDto);
         }
 
-        // PUT api/address/update/5
+        // PUT api/user/update/5
         [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] CreateAddressDto dto)
+        public ActionResult Update(int id, [FromBody] CreateUserDto dto)
         {
-            var addressId = _addressService.Update(id, dto);
-            if (addressId == 0) return NotFound();
-            return Ok($"api/address/get/{addressId}");
+            var userId = _userService.Update(id, dto);
+            if (userId == 0) return NotFound();
+            return Ok($"api/user/get/{userId}");
         }
 
-        // DELETE api/address/delete/5
+        // DELETE api/user/delete/5
         [HttpDelete("delete/{id}")]
         public ActionResult Delete(int id)
         {
-            var code = _addressService.Delete(id);
+            var code = _userService.Delete(id);
 
             if (code == 0) return NotFound();
             return NoContent();
