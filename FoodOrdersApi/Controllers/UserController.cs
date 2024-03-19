@@ -27,7 +27,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult Create([FromBody] CreateUserDto dto)
         {
             var userId = _userService.Create(dto);
-            return Created($"api/address/get/{userId}", null);
+            return Created($"api/user/get/{userId}", null);
         }
 
         // GET api/user/all
