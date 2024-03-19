@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\services\\restaurantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:services\\restaurantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|c:\\nonsystem\\it\\code\\foodordersapi\\foodordersapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{13A98C1C-FAED-4529-9E65-078E318C4C9A}|FoodOrdersApi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,17 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 229,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAAABgAAAAhAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAABoAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T12:24:54.109Z",
               "IsPinned": true,
@@ -36,16 +40,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AppMappingProfile.cs",
               "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\AppMappingProfile.cs",
               "RelativeDocumentMoniker": "AppMappingProfile.cs",
               "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\AppMappingProfile.cs",
               "RelativeToolTip": "AppMappingProfile.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABwAAAAlAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAA0wBIAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-19T08:18:20.258Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RestaurantService.cs",
+              "DocumentMoniker": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Services\\RestaurantService.cs",
+              "RelativeDocumentMoniker": "Services\\RestaurantService.cs",
+              "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Services\\RestaurantService.cs",
+              "RelativeToolTip": "Services\\RestaurantService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-19T10:29:37.775Z",
               "EditorCaption": ""
             }
           ]

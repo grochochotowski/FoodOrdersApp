@@ -1,5 +1,6 @@
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
@@ -23,9 +24,12 @@ namespace FoodOrdersApi
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             builder.Services.AddScoped<IAddressService, AddressService>();
-            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ICartService, CartService>();
+            builder.Services.AddScoped<IMealService, MealService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrgService, OrgService>();
+            builder.Services.AddScoped<IRestaurantService, RestaurantService>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
 

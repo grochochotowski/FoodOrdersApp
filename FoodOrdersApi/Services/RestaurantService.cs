@@ -27,18 +27,18 @@ namespace FoodOrdersApi.Services
 
 
 
-        // Create new order
+        // Create new restaurant
         public int Create(CreateRestaurantDto dto)
         {
-            var order = _mapper.Map<Order>(dto);
+            var restaurant = _mapper.Map<Restaurant>(dto);
 
-            _context.Orders.Add(order);
+            _context.Restaurants.Add(restaurant);
             _context.SaveChanges();
-            return order.Id;
+            return restaurant.Id;
         }
 
 
-        // Get all orders
+        // Get all restaurants
         public IEnumerable<RestaurantDto> GetAll()
         {
             var restaurants = _context.Restaurants.ToList();
@@ -48,10 +48,10 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Get order by ID
+        // Get restaurant by ID
         public RestaurantDto GetByID(int id)
         {
-            var restaurant = _context.Orders.FirstOrDefault(o => o.Id == id);
+            var restaurant = _context.Restaurants.FirstOrDefault(o => o.Id == id);
             if (restaurant == null) return null;
 
             var restaurantDto = _mapper.Map<RestaurantDto>(restaurant);
@@ -60,7 +60,7 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Update order with id
+        // Update restaurant with id
         public int Update(int id, UpdateRestaurantDto dto)
         {
             var restaurant = _context.Restaurants.FirstOrDefault(o => o.Id == id);
@@ -74,7 +74,7 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Update order with id
+        // Update restaurant with id
         public int Delete(int id)
         {
             var restaurant = _context.Restaurants.FirstOrDefault(o => o.Id == id);
