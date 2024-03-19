@@ -10,7 +10,7 @@ namespace FoodOrdersApi.Services
         int Create(CreateOrderDto dto);
         IEnumerable<OrderDto> GetAll();
         OrderDto GetByID(int id);
-        int Update(int id, CreateOrderDto dto);
+        int Update(int id, UpdateOrderDto dto);
         int Delete(int id);
     }
 

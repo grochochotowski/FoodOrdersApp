@@ -2,6 +2,7 @@
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Models.Address;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FoodOrdersApi.Services
 {
@@ -67,13 +68,13 @@ namespace FoodOrdersApi.Services
             var address = _context.Addresses
                 .FirstOrDefault(o => o.Id == id);
 
-            if (address == null) return 0;
+            if (address == null) return -1;
 
-            address.Country = dto.Country;
-            address.City = dto.City;
-            address.Street = dto.Street;
-            address.Building = dto.Building;
-            address.Premises = dto.Premises;
+            address.Country = dto.Country ?? address.Country;
+            address.City = dto.City ?? address.City;
+            address.Street = dto.Street ?? address.Street;
+            address.Building = dto.Building ?? address.Building;
+            address.Premises = dto.Premises ?? address.Premises;
 
             _context.SaveChanges();
             return address.Id;
@@ -86,7 +87,7 @@ namespace FoodOrdersApi.Services
             var address = _context.Addresses
                 .FirstOrDefault(o => o.Id == id);
 
-            if (address == null) return 0;
+            if (address == null) return -1;
 
             _context.Addresses.Remove(address);
             _context.SaveChanges();
