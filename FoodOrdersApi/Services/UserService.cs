@@ -33,14 +33,15 @@ namespace FoodOrdersApi.Services
             var user = _mapper.Map<User>(dto);
 
             var isOrg = _context.Organizations.FirstOrDefault(o => o.Id == user.OrganizationId);
-            if (isOrg != null)
+            if (isOrg == null)
             {
-                _context.Users.Add(user);
-                _context.SaveChanges();
-
-                return user.Id;
+                return 0;
             }
-            return 0;
+
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            return user.Id;
         }
 
 
