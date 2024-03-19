@@ -24,7 +24,7 @@ namespace FoodOrdersApi.Entities
 
             modelBuilder.Entity<Meal>()
                 .HasOne(m => m.Restaurant)
-                .WithMany()
+                .WithMany(r => r.Meals)
                 .HasForeignKey(m => m.RestaurantId)
                 .OnDelete(DeleteBehavior.Restrict);
 
