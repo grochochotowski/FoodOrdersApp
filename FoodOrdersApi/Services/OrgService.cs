@@ -11,7 +11,7 @@ namespace FoodOrdersApi.Services
         int Create(CreateOrgDto dto);
         IEnumerable<OrgDto> GetAll();
         OrgDto GetByID(int id);
-        int Update(int id, CreateOrgDto dto);
+        int Update(int id, UpdateOrgDto dto);
         int Delete(int id);
     }
 
@@ -63,12 +63,12 @@ namespace FoodOrdersApi.Services
 
 
         // Update organization with id
-        public int Update(int id, CreateOrgDto dto)
+        public int Update(int id, UpdateOrgDto dto)
         {
             var org = _context.Organizations
                 .FirstOrDefault(o => o.Id == id);
 
-            if (org == null) return 0;
+            if (org == null) return -1;
 
             org.Name = dto.Name;
             org.Note = dto.Note;
@@ -85,7 +85,7 @@ namespace FoodOrdersApi.Services
             var org = _context.Organizations
                 .FirstOrDefault(o => o.Id == id);
 
-            if (org == null) return 0;
+            if (org == null) return -1;
 
             _context.Organizations.Remove(org);
             _context.SaveChanges();

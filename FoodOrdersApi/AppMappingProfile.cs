@@ -27,6 +27,7 @@ namespace FoodOrdersApi
 
             CreateMap<Org, OrgDto>();
             CreateMap<CreateOrgDto, Org>();
+            CreateMap<UpdateOrgDto, Org>();
 
             CreateMap<Restaurant, RestaurantDto>();
             CreateMap<CreateRestaurantDto, Restaurant>();

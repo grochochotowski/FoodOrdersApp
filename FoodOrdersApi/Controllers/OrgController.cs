@@ -39,16 +39,16 @@ namespace FoodOrdersApi.Controllers
         public ActionResult GetByID(int id)
         {
             var orgDto = _orgService.GetByID(id);
-            if (orgDto == null) return NotFound();
+            if (orgDto == null) return NotFound($"Organization with id {id} does not exist");
             return Ok(orgDto);
         }
 
         // PUT api/org/update/5
         [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] CreateOrgDto dto)
+        public ActionResult Update(int id, [FromBody] UpdateOrgDto dto)
         {
             var orgId = _orgService.Update(id, dto);
-            if (orgId == 0) return NotFound();
+            if (orgId == -1) return NotFound($"Organization with id {id} does not exist");
             return Ok($"api/org/get/{orgId}");
         }
 
@@ -58,7 +58,7 @@ namespace FoodOrdersApi.Controllers
         {
             var code = _orgService.Delete(id);
 
-            if (code == 0) return NotFound();
+            if (code == -1) return NotFound($"Organization with id {id} does not exist");
             return NoContent();
         }
     }
