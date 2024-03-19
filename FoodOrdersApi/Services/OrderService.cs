@@ -31,7 +31,6 @@ namespace FoodOrdersApi.Services
         public int Create(CreateOrderDto dto)
         {
             var order = _mapper.Map<Order>(dto);
-            if (order == null) return -1;
 
             var isUser = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
             if (isUser == null) return -2;
