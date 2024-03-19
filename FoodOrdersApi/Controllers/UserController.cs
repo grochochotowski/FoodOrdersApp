@@ -49,7 +49,7 @@ namespace FoodOrdersApi.Controllers
 
         // PUT api/user/update/5
         [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] CreateUserDto dto)
+        public ActionResult Update(int id, [FromBody] UpdateUserDto dto)
         {
             var userId = _userService.Update(id, dto);
             if (userId == 0) return NotFound();

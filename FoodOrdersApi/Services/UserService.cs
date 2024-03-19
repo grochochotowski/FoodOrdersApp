@@ -10,7 +10,7 @@ namespace FoodOrdersApi.Services
         int Create(CreateUserDto dto);
         IEnumerable<UserDto> GetAll();
         UserDto GetByID(int id);
-        int Update(int id, CreateUserDto dto);
+        int Update(int id, UpdateUserDto dto);
         int Delete(int id);
     }
 
@@ -68,7 +68,7 @@ namespace FoodOrdersApi.Services
 
 
         // Update user with id
-        public int Update(int id, CreateUserDto dto)
+        public int Update(int id, UpdateUserDto dto)
         {
             var user = _context.Users
                 .FirstOrDefault(o => o.Id == id);
@@ -77,12 +77,12 @@ namespace FoodOrdersApi.Services
             var org = _context.Organizations.FirstOrDefault(o => o.Id == user.OrganizationId);
             if (org == null) return -2;
 
-            user.OrganizationId = dto.OrganizationId;
-            user.SecondName = dto.SecondName;
-            user.LastName = dto.LastName;
-            user.Email = dto.Email;
-            user.Note = dto.Note;
-            user.OrganizationId = dto.OrganizationId;
+            user.FirstName = dto.FirstName ?? user.FirstName;
+            user.SecondName = dto.SecondName ?? user.SecondName;
+            user.LastName = dto.LastName ?? user.LastName;
+            user.Email = dto.Email ?? user.Email;
+            user.Note = dto.Note ?? user.Note;
+            user.OrganizationId = dto.OrganizationId ?? user.OrganizationId;
 
             _context.SaveChanges();
             return user.Id;
