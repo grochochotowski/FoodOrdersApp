@@ -1,26 +1,28 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Entities.Objects;
+using FoodOrdersApi.Models.Address;
 using FoodOrdersApi.Models.User;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace FoodOrdersApi.Services
 {
-    public interface IAddressService
+    public interface IUserService
     {
-        int Create(CreateAddressDto dto);
-        IEnumerable<AddressDto> GetAll();
-        AddressDto GetByID(int id);
-        int Update(int id, CreateAddressDto dto);
+        int Create(CreateUserDto dto);
+        IEnumerable<UserDto> GetAll();
+        UserDto GetByID(int id);
+        int Update(int id, CreateUserDto dto);
         int Delete(int id);
     }
 
-    public class AddressService : IAddressService
+    public class UserService : IUserService
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
 
-        public AddressService(AppDbContext context, IMapper mapper)
+        public UserService(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -29,46 +31,46 @@ namespace FoodOrdersApi.Services
 
 
         // Create new address
-        public int Create(CreateAddressDto dto)
+        public int Create(CreateUserDto dto)
         {
-            var address = _mapper.Map<Address>(dto);
-            _context.Addresses.Add(address);
+            var user = _mapper.Map<User>(dto);
+            _context.Users.Add(user);
             _context.SaveChanges();
 
-            return address.Id;
+            return user.Id;
         }
 
 
         // Get all address
-        public IEnumerable<AddressDto> GetAll()
+        public IEnumerable<UserDto> GetAll()
         {
-            var addresses = _context.Addresses.ToList();
-            var addressDtos = _mapper.Map<List<AddressDto>>(addresses);
+            var users = _context.Users.ToList();
+            var userDtos = _mapper.Map<List<UserDto>>(users);
 
-            return addressDtos;
+            return userDtos;
         }
 
 
         // Get address by ID
-        public AddressDto GetByID(int id)
+        public UserDto GetByID(int id)
         {
-            var address = _context.Addresses.FirstOrDefault(o => o.Id == id);
-            if (address == null) return null;
+            var user = _context.Users.FirstOrDefault(o => o.Id == id);
+            if (user == null) return null;
 
-            var addressDto = _mapper.Map<AddressDto>(address);
+            var userDto = _mapper.Map<UserDto>(user);
 
 
-            return addressDto;
+            return userDto;
         }
 
 
         // Update address with id
-        public int Update(int id, CreateAddressDto dto)
+        public int Update(int id, CreateUserDto dto)
         {
-            var address = _context.Addresses
+            var user = _context.Users
                 .FirstOrDefault(o => o.Id == id);
 
-            if (address == null) return 0;
+            if (user == null) return 0;
 
             address.Country = dto.Country;
             address.City = dto.City;
@@ -77,19 +79,19 @@ namespace FoodOrdersApi.Services
             address.Premises = dto.Premises;
 
             _context.SaveChanges();
-            return address.Id;
+            return user.Id;
         }
 
 
         // Update address with id
         public int Delete(int id)
         {
-            var address = _context.Addresses
+            var user = _context.Users
                 .FirstOrDefault(o => o.Id == id);
 
-            if (address == null) return 0;
+            if (user == null) return 0;
 
-            _context.Addresses.Remove(address);
+            _context.Users.Remove(user);
             _context.SaveChanges();
             return 1;
         }
