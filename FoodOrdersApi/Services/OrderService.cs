@@ -67,13 +67,11 @@ namespace FoodOrdersApi.Services
             var order = _context.Orders
                 .FirstOrDefault(o => o.Id == id);
 
-            if (order == null) return 0;
+            if (order == null) return -1;
 
-            order.Country = dto.Country;
-            order.City = dto.City;
-            order.Street = dto.Street;
-            order.Building = dto.Building;
-            order.Premises = dto.Premises;
+            order.Notes = dto.Notes;
+            order.CartId = dto.CartId;
+            order.UserId = dto.UserId;
 
             _context.SaveChanges();
             return order.Id;
@@ -86,7 +84,7 @@ namespace FoodOrdersApi.Services
             var order = _context.Orders
                 .FirstOrDefault(o => o.Id == id);
 
-            if (order == null) return 0;
+            if (order == null) return -1;
 
             _context.Orders.Remove(order);
             _context.SaveChanges();
