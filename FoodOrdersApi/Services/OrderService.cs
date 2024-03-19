@@ -1,25 +1,25 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
-using FoodOrdersApi.Models.Address;
+using FoodOrdersApi.Models.Order;
 
 namespace FoodOrdersApi.Services
 {
-    public interface IAddressService
+    public interface IOrderService
     {
-        int Create(CreateAddressDto dto);
-        IEnumerable<AddressDto> GetAll();
-        AddressDto GetByID(int id);
-        int Update(int id, CreateAddressDto dto);
+        int Create(CreateOrderDto dto);
+        IEnumerable<OrderDto> GetAll();
+        OrderDto GetByID(int id);
+        int Update(int id, CreateOrderDto dto);
         int Delete(int id);
     }
 
-    public class AddressService : IAddressService
+    public class OrderService : IOrderService
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
 
-        public AddressService(AppDbContext context, IMapper mapper)
+        public OrderService(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -27,68 +27,68 @@ namespace FoodOrdersApi.Services
 
 
 
-        // Create new address
-        public int Create(CreateAddressDto dto)
+        // Create new order
+        public int Create(CreateOrderDto dto)
         {
-            var address = _mapper.Map<Address>(dto);
-            _context.Addresses.Add(address);
+            var order = _mapper.Map<Order>(dto);
+            _context.Orders.Add(order);
             _context.SaveChanges();
 
-            return address.Id;
+            return order.Id;
         }
 
 
-        // Get all address
-        public IEnumerable<AddressDto> GetAll()
+        // Get all orders
+        public IEnumerable<OrderDto> GetAll()
         {
-            var addresses = _context.Addresses.ToList();
-            var addressDtos = _mapper.Map<List<AddressDto>>(addresses);
+            var orders = _context.Orders.ToList();
+            var orderDtos = _mapper.Map<List<OrderDto>>(orders);
 
-            return addressDtos;
+            return orderDtos;
         }
 
 
-        // Get address by ID
-        public AddressDto GetByID(int id)
+        // Get order by ID
+        public OrderDto GetByID(int id)
         {
-            var address = _context.Addresses.FirstOrDefault(o => o.Id == id);
-            if (address == null) return null;
+            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
+            if (order == null) return null;
 
-            var addressDto = _mapper.Map<AddressDto>(address);
+            var orderDto = _mapper.Map<OrderDto>(order);
 
 
-            return addressDto;
+            return orderDto;
         }
 
 
-        // Update address with id
-        public int Update(int id, CreateAddressDto dto)
+        // Update order with id
+        public int Update(int id, CreateOrderDto dto)
         {
-            var address = _context.Addresses
+            var order = _context.Orders
                 .FirstOrDefault(o => o.Id == id);
 
-            if (address == null) return 0;
+            if (order == null) return 0;
 
-            address.Country = dto.Country;
-            address.City = dto.City;
-            address.Street = dto.Street;
-            address.Building = dto.Building;
-            address.Premises = dto.Premises;
+            order.Country = dto.Country;
+            order.City = dto.City;
+            order.Street = dto.Street;
+            order.Building = dto.Building;
+            order.Premises = dto.Premises;
 
             _context.SaveChanges();
-            return address.Id;
+            return order.Id;
         }
 
 
-        // Update address with id
+        // Update order with id
         public int Delete(int id)
         {
-            var address = _context.Addresses
+            var order = _context.Orders
                 .FirstOrDefault(o => o.Id == id);
 
-            if (address == null) return 0;
+            if (order == null) return 0;
 
-            _context.Addresses.Remove(address);
+            _context.Orders.Remove(order);
             _context.SaveChanges();
             return 1;
         }
