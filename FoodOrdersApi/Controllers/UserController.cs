@@ -25,7 +25,7 @@ namespace FoodOrdersApi.Controllers
             var userId = _userService.Create(dto);
             if (userId == 0)
             {
-                return NotFound();
+                return NotFound($"Organization with id {dto.OrganizationId} does not exist");
             }
             return Created($"api/user/get/{userId}", null);
         }
