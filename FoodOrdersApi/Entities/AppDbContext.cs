@@ -16,8 +16,16 @@ namespace FoodOrdersApi.Entities
         public DbSet<Address> Addresses { get; set; }
 
 
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.Meals)
+                .WithMany(m => m.Orders)
+                .UsingEntity(om => om.ToTable("MealOrder"));
+
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -53,7 +53,6 @@ namespace FoodOrdersApi.Controllers
             var mealId = _mealService.Update(id, dto);
 
             if (mealId == -1) return NotFound($"Meal with id {id} does not exist");
-            if (mealId == -2) return NotFound($"Restaurant with id {dto.RestaurantId} does not exist");
             return Ok($"api/meal/get/{mealId}");
         }
 

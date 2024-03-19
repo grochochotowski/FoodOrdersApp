@@ -16,5 +16,9 @@ namespace FoodOrdersApi.Entities.Objects
         [Required(ErrorMessage = "Meal has to be connected to a restaurant")]
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
+
+
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

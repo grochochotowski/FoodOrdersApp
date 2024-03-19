@@ -1,4 +1,5 @@
-﻿using FoodOrdersApi.Models.User;
+﻿using FoodOrdersApi.Models.Meal;
+using FoodOrdersApi.Models.User;
 
 namespace FoodOrdersApi.Models.Order
 {
@@ -13,9 +14,9 @@ namespace FoodOrdersApi.Models.Order
 
 
         public int UserId { get; set; }
-        public virtual UserDto User { get; set; }
+        public UserDto User { get; set; }
 
 
-        public virtual ICollection<Meal>? Meals { get; set; }
+        public ICollection<MealDto>? Meals { get; set; }
     }
 }
