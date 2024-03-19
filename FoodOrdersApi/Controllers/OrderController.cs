@@ -8,9 +8,9 @@ namespace FoodOrdersApi.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly IAddressService _orderService;
+        private readonly IOrderService _orderService;
 
-        public OrderController(IAddressService orderService)
+        public OrderController(IOrderService orderService)
         {
             _orderService = orderService;
         }
@@ -23,6 +23,9 @@ namespace FoodOrdersApi.Controllers
         public ActionResult Create([FromBody] CreateOrderDto dto)
         {
             var orderId = _orderService.Create(dto);
+
+            if (orderId == -2) return NotFound($"User with id {dto.UserId} does not exist");
+            if (orderId == -3) return NotFound($"Cart with id {dto.CartId} does not exist");
             return Created($"api/order/get/{orderId}", null);
         }
 
@@ -39,6 +42,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult GetByID(int id)
         {
             var orderDto = _orderService.GetByID(id);
+
             if (orderDto == null) return NotFound($"Order with id {id} does not exist");
             return Ok(orderDto);
         }
@@ -48,7 +52,10 @@ namespace FoodOrdersApi.Controllers
         public ActionResult Update(int id, [FromBody] UpdateOrderDto dto)
         {
             var orderId = _orderService.Update(id, dto);
+
             if (orderId == -1) return NotFound($"Order with id {id} does not exist");
+            if (orderId == -2) return NotFound($"User with id {dto.UserId} does not exist");
+            if (orderId == -3) return NotFound($"Cart with id {dto.CartId} does not exist");
             return Ok($"api/order/get/{orderId}");
         }
 

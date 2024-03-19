@@ -31,9 +31,16 @@ namespace FoodOrdersApi.Services
         public int Create(CreateOrderDto dto)
         {
             var order = _mapper.Map<Order>(dto);
+            if (order == null) return -1;
+
+            var isUser = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
+            if (isUser == null) return -2;
+
+            var isCart = _context.Carts.FirstOrDefault(u => u.Id == dto.CartId);
+            if (isCart == null) return -3;
+
             _context.Orders.Add(order);
             _context.SaveChanges();
-
             return order.Id;
         }
 
@@ -56,7 +63,6 @@ namespace FoodOrdersApi.Services
 
             var orderDto = _mapper.Map<OrderDto>(order);
 
-
             return orderDto;
         }
 
@@ -64,10 +70,20 @@ namespace FoodOrdersApi.Services
         // Update order with id
         public int Update(int id, UpdateOrderDto dto)
         {
-            var order = _context.Orders
-                .FirstOrDefault(o => o.Id == id);
-
+            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
             if (order == null) return -1;
+            
+            if (dto.UserId != null)
+            {
+                var isUser = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
+                if (isUser == null) return -2;
+            }
+            if (dto.CartId != null)
+            {
+                var isCart = _context.Carts.FirstOrDefault(u => u.Id == dto.CartId);
+                if (isCart == null) return -3;
+            }
+            
 
             order.Notes = dto.Notes ?? order.Notes;
             order.CartId = dto.CartId ?? order.CartId;
