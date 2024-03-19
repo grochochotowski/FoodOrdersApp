@@ -1,8 +1,7 @@
+using FoodCartsApi.Services;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Services;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
 namespace FoodOrdersApi
