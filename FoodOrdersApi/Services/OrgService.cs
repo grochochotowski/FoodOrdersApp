@@ -78,7 +78,7 @@ namespace FoodOrdersApi.Services
         // Update organization with id
         public int Delete(int id)
         {
-            var org = _context.Organizations\.FirstOrDefault(o => o.Id == id);
+            var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
             if (org == null) return -1;
 
             _context.Organizations.Remove(org);

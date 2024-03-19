@@ -1,43 +1,72 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using FoodOrdersApi.Models.Order;
+using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/order")]
     [ApiController]
     public class RestaurantController : ControllerBase
     {
-        // GET: api/<RestaurantController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IRestaurantService _restaurantService;
+
+        public RestaurantController(IRestaurantService restaurantService)
         {
-            return new string[] { "value1", "value2" };
+            _restaurantService = restaurantService;
         }
 
-        // GET api/<RestaurantController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+
+
+
+        // POST api/order/create
+        [HttpPost("order")]
+        public ActionResult Create([FromBody] CreateOrderDto dto)
         {
-            return "value";
+            var orderId = _orderService.Create(dto);
+
+            if (orderId == -2) return NotFound($"User with id {dto.UserId} does not exist");
+            if (orderId == -3) return NotFound($"Cart with id {dto.CartId} does not exist");
+            return Created($"api/order/get/{orderId}", null);
         }
 
-        // POST api/<RestaurantController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // GET api/order/all
+        [HttpGet("all")]
+        public ActionResult<IEnumerable<OrderDto>> GetAll()
         {
+            var orderDtos = _orderService.GetAll();
+            return Ok(orderDtos);
         }
 
-        // PUT api/<RestaurantController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // GET api/order/get/5
+        [HttpGet("getById/{id}")]
+        public ActionResult GetByID(int id)
         {
+            var orderDto = _orderService.GetByID(id);
+
+            if (orderDto == null) return NotFound($"Order with id {id} does not exist");
+            return Ok(orderDto);
         }
 
-        // DELETE api/<RestaurantController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // PUT api/order/update/5
+        [HttpPut("update/{id}")]
+        public ActionResult Update(int id, [FromBody] UpdateOrderDto dto)
         {
+            var orderId = _orderService.Update(id, dto);
+
+            if (orderId == -1) return NotFound($"Order with id {id} does not exist");
+            if (orderId == -2) return NotFound($"User with id {dto.UserId} does not exist");
+            if (orderId == -3) return NotFound($"Cart with id {dto.CartId} does not exist");
+            return Ok($"api/order/get/{orderId}");
+        }
+
+        // DELETE api/order/delete/5
+        [HttpDelete("delete/{id}")]
+        public ActionResult Delete(int id)
+        {
+            var code = _orderService.Delete(id);
+
+            if (code == -1) return NotFound($"Order with id {id} does not exist");
+            return NoContent();
         }
     }
 }
