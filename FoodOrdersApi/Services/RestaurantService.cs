@@ -2,6 +2,7 @@
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Models.Restaurant;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrdersApi.Services
 {
@@ -41,7 +42,9 @@ namespace FoodOrdersApi.Services
         // Get all restaurants
         public IEnumerable<RestaurantDto> GetAll()
         {
-            var restaurants = _context.Restaurants.ToList();
+            var restaurants = _context.Restaurants
+                .Include(r => r.Meals)
+                .ToList();
             var restaurantDtos = _mapper.Map<List<RestaurantDto>>(restaurants);
 
             return restaurantDtos;
@@ -51,7 +54,9 @@ namespace FoodOrdersApi.Services
         // Get restaurant by ID
         public RestaurantDto GetByID(int id)
         {
-            var restaurant = _context.Restaurants.FirstOrDefault(o => o.Id == id);
+            var restaurant = _context.Restaurants
+                .Include(r => r.Meals)
+                .FirstOrDefault(o => o.Id == id);
             if (restaurant == null) return null;
 
             var restaurantDto = _mapper.Map<RestaurantDto>(restaurant);
