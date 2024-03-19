@@ -1,7 +1,4 @@
 ﻿using AutoMapper;
-using FoodCartsApi.Entities.Objects;
-using FoodCartsApi.Entities;
-using FoodCartsApi.Models.Cart;
 using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
@@ -35,11 +32,11 @@ namespace FoodCartsApi.Services
         {
             var cart = _mapper.Map<Cart>(dto);
 
-            var isUser = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
-            if (isUser == null) return -2;
+            var isRestaurant = _context.Users.FirstOrDefault(u => u.Id == dto.RestaurantId);
+            if (isRestaurant == null) return -2;
 
-            var isCart = _context.Carts.FirstOrDefault(u => u.Id == dto.CartId);
-            if (isCart == null) return -3;
+            var isAddress = _context.Carts.FirstOrDefault(u => u.Id == dto.AddressId);
+            if (isAddress == null) return -3;
 
             _context.Carts.Add(cart);
             _context.SaveChanges();
@@ -75,21 +72,20 @@ namespace FoodCartsApi.Services
             var cart = _context.Carts.FirstOrDefault(o => o.Id == id);
             if (cart == null) return -1;
 
-            if (dto.UserId != null)
+            if (dto.AddressId != null)
             {
-                var isUser = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
-                if (isUser == null) return -2;
-            }
-            if (dto.CartId != null)
-            {
-                var isCart = _context.Carts.FirstOrDefault(u => u.Id == dto.CartId);
-                if (isCart == null) return -3;
+                var isAddress = _context.Carts.FirstOrDefault(u => u.Id == dto.AddressId);
+                if (isAddress == null) return -3;
             }
 
 
-            cart.Notes = dto.Notes ?? cart.Notes;
-            cart.CartId = dto.CartId ?? cart.CartId;
-            cart.UserId = dto.UserId ?? cart.UserId;
+            cart.MinPrice = dto.MinPrice ?? cart.MinPrice;
+            cart.DeliveryPrice = dto.DeliveryPrice ?? cart.DeliveryPrice;
+            cart.FreeDeliveryMinPrice = dto.FreeDeliveryMinPrice ?? cart.FreeDeliveryMinPrice;
+            cart.PhoneNumber = dto.PhoneNumber ?? cart.PhoneNumber;
+            cart.BankAccountNumber = dto.BankAccountNumber ?? cart.BankAccountNumber;
+            cart.Note = dto.Note ?? cart.Note;
+            cart.AddressId = dto.AddressId ?? cart.AddressId;
 
             _context.SaveChanges();
             return cart.Id;
