@@ -33,10 +33,7 @@ namespace FoodOrdersApi.Services
             var user = _mapper.Map<User>(dto);
 
             var isOrg = _context.Organizations.FirstOrDefault(o => o.Id == user.OrganizationId);
-            if (isOrg == null)
-            {
-                return -1;
-            }
+            if (isOrg == null) return -1;
 
             _context.Users.Add(user);
             _context.SaveChanges();
@@ -74,8 +71,8 @@ namespace FoodOrdersApi.Services
                 .FirstOrDefault(o => o.Id == id);
             if (user == null) return -1;
 
-            var org = _context.Organizations.FirstOrDefault(o => o.Id == user.OrganizationId);
-            if (org == null) return -2;
+            var isOrg = _context.Organizations.FirstOrDefault(o => o.Id == dto.OrganizationId);
+            if (isOrg == null) return -2;
 
             user.FirstName = dto.FirstName ?? user.FirstName;
             user.SecondName = dto.SecondName ?? user.SecondName;
