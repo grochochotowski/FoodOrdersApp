@@ -39,6 +39,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult GetByID(int id)
         {
             var addressDto = _addressService.GetByID(id);
+
             if (addressDto == null) return NotFound($"Address with id {id} does not exist");
             return Ok(addressDto);
         }
@@ -48,6 +49,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult Update(int id, [FromBody] CreateAddressDto dto)
         {
             var addressId = _addressService.Update(id, dto);
+
             if (addressId == -1) return NotFound($"Address with id {id} does not exist");
             return Ok($"api/address/get/{addressId}");
         }

@@ -37,7 +37,6 @@ namespace FoodOrdersApi.Services
 
             _context.Users.Add(user);
             _context.SaveChanges();
-
             return user.Id;
         }
 
@@ -67,8 +66,7 @@ namespace FoodOrdersApi.Services
         // Update user with id
         public int Update(int id, UpdateUserDto dto)
         {
-            var user = _context.Users
-                .FirstOrDefault(o => o.Id == id);
+            var user = _context.Users.FirstOrDefault(o => o.Id == id);
             if (user == null) return -1;
 
             var isOrg = _context.Organizations.FirstOrDefault(o => o.Id == dto.OrganizationId);
@@ -89,9 +87,7 @@ namespace FoodOrdersApi.Services
         // Update user with id
         public int Delete(int id)
         {
-            var user = _context.Users
-                .FirstOrDefault(o => o.Id == id);
-
+            var user = _context.Users.FirstOrDefault(o => o.Id == id);
             if (user == null) return -1;
 
             _context.Users.Remove(user);

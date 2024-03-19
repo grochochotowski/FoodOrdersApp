@@ -23,6 +23,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult Create([FromBody] CreateUserDto dto)
         {
             var userId = _userService.Create(dto);
+
             if (userId == -1) return NotFound($"Organization with id {dto.OrganizationId} does not exist");
             return Created($"api/user/get/{userId}", null);
         }
@@ -40,6 +41,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult GetByID(int id)
         {
             var userDto = _userService.GetByID(id);
+
             if (userDto == null) return NotFound($"User with id {id} does not exist");
             return Ok(userDto);
         }
@@ -49,6 +51,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult Update(int id, [FromBody] UpdateUserDto dto)
         {
             var userId = _userService.Update(id, dto);
+
             if (userId == -1) return NotFound($"User with id {id} does not exist");
             if (userId == -2) return NotFound($"Organization with id {dto.OrganizationId} does not exist");
             return Ok($"api/user/get/{userId}");

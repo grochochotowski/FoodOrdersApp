@@ -97,9 +97,7 @@ namespace FoodOrdersApi.Services
         // Update order with id
         public int Delete(int id)
         {
-            var order = _context.Orders
-                .FirstOrDefault(o => o.Id == id);
-
+            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
             if (order == null) return -1;
 
             _context.Orders.Remove(order);

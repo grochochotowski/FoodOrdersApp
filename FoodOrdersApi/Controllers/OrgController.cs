@@ -23,6 +23,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult Create([FromBody] CreateOrgDto dto)
         {
             var orgId = _orgService.Create(dto);
+
             return Created($"api/org/get/{orgId}", null);
         }
 
@@ -39,6 +40,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult GetByID(int id)
         {
             var orgDto = _orgService.GetByID(id);
+
             if (orgDto == null) return NotFound($"Organization with id {id} does not exist");
             return Ok(orgDto);
         }
@@ -48,6 +50,7 @@ namespace FoodOrdersApi.Controllers
         public ActionResult Update(int id, [FromBody] UpdateOrgDto dto)
         {
             var orgId = _orgService.Update(id, dto);
+
             if (orgId == -1) return NotFound($"Organization with id {id} does not exist");
             return Ok($"api/org/get/{orgId}");
         }

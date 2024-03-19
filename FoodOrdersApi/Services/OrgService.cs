@@ -31,9 +31,9 @@ namespace FoodOrdersApi.Services
         public int Create(CreateOrgDto dto)
         {
             var org = _mapper.Map<Org>(dto);
+
             _context.Organizations.Add(org);
             _context.SaveChanges();
-
             return org.Id;
         }
 
@@ -56,7 +56,6 @@ namespace FoodOrdersApi.Services
 
             var orgDto = _mapper.Map<OrgDto>(org);
 
-
             return orgDto;
         }
 
@@ -64,13 +63,11 @@ namespace FoodOrdersApi.Services
         // Update organization with id
         public int Update(int id, UpdateOrgDto dto)
         {
-            var org = _context.Organizations
-                .FirstOrDefault(o => o.Id == id);
-
+            var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
             if (org == null) return -1;
 
-            org.Name = dto.Name;
-            org.Note = dto.Note;
+            org.Name = dto.Name ?? org.Name;
+            org.Note = dto.Note ?? org.Note;
 
             _context.SaveChanges();
             return org.Id;
@@ -81,9 +78,7 @@ namespace FoodOrdersApi.Services
         // Update organization with id
         public int Delete(int id)
         {
-            var org = _context.Organizations
-                .FirstOrDefault(o => o.Id == id);
-
+            var org = _context.Organizations\.FirstOrDefault(o => o.Id == id);
             if (org == null) return -1;
 
             _context.Organizations.Remove(org);

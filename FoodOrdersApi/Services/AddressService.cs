@@ -32,9 +32,9 @@ namespace FoodOrdersApi.Services
         public int Create(CreateAddressDto dto)
         {
             var address = _mapper.Map<Address>(dto);
+
             _context.Addresses.Add(address);
             _context.SaveChanges();
-
             return address.Id;
         }
 
@@ -57,7 +57,6 @@ namespace FoodOrdersApi.Services
 
             var addressDto = _mapper.Map<AddressDto>(address);
 
-
             return addressDto;
         }
 
@@ -65,9 +64,7 @@ namespace FoodOrdersApi.Services
         // Update address with id
         public int Update(int id, CreateAddressDto dto)
         {
-            var address = _context.Addresses
-                .FirstOrDefault(o => o.Id == id);
-
+            var address = _context.Addresses.FirstOrDefault(o => o.Id == id);
             if (address == null) return -1;
 
             address.Country = dto.Country ?? address.Country;
@@ -84,9 +81,7 @@ namespace FoodOrdersApi.Services
         // Update address with id
         public int Delete(int id)
         {
-            var address = _context.Addresses
-                .FirstOrDefault(o => o.Id == id);
-
+            var address = _context.Addresses.FirstOrDefault(o => o.Id == id);
             if (address == null) return -1;
 
             _context.Addresses.Remove(address);
