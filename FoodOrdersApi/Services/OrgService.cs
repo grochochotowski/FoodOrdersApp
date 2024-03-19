@@ -2,7 +2,6 @@
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Models.Org;
-using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrdersApi.Services
 {

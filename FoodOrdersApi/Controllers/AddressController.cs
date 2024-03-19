@@ -1,5 +1,4 @@
-﻿using FoodOrdersApi.Entities.Objects;
-using FoodOrdersApi.Models.Address;
+﻿using FoodOrdersApi.Models.Address;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
