@@ -2,6 +2,7 @@
 using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodCartsApi.Services
 {
@@ -32,10 +33,10 @@ namespace FoodCartsApi.Services
         {
             var cart = _mapper.Map<Cart>(dto);
 
-            var isRestaurant = _context.Users.FirstOrDefault(u => u.Id == dto.RestaurantId);
+            var isRestaurant = _context.Restaurants.FirstOrDefault(u => u.Id == dto.RestaurantId);
             if (isRestaurant == null) return -2;
 
-            var isAddress = _context.Carts.FirstOrDefault(u => u.Id == dto.AddressId);
+            var isAddress = _context.Addresses.FirstOrDefault(u => u.Id == dto.AddressId);
             if (isAddress == null) return -3;
 
             _context.Carts.Add(cart);
@@ -47,7 +48,10 @@ namespace FoodCartsApi.Services
         // Get all carts
         public IEnumerable<CartDto> GetAll()
         {
-            var carts = _context.Carts.ToList();
+            var carts = _context.Carts
+                .Include(c => c.Address)
+                .Include(c => c.Restaurant)
+                .ToList();
             var cartDtos = _mapper.Map<List<CartDto>>(carts);
 
             return cartDtos;
@@ -57,7 +61,10 @@ namespace FoodCartsApi.Services
         // Get cart by ID
         public CartDto GetByID(int id)
         {
-            var cart = _context.Carts.FirstOrDefault(o => o.Id == id);
+            var cart = _context.Carts
+                .Include(c => c.Address)
+                .Include(c => c.Restaurant)
+                .FirstOrDefault(o => o.Id == id);
             if (cart == null) return null;
 
             var cartDto = _mapper.Map<CartDto>(cart);
@@ -74,7 +81,7 @@ namespace FoodCartsApi.Services
 
             if (dto.AddressId != null)
             {
-                var isAddress = _context.Carts.FirstOrDefault(u => u.Id == dto.AddressId);
+                var isAddress = _context.Addresses.FirstOrDefault(u => u.Id == dto.AddressId);
                 if (isAddress == null) return -3;
             }
 
