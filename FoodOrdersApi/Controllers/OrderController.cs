@@ -19,7 +19,7 @@ namespace FoodOrdersApi.Controllers
 
 
         // POST api/order/create
-        [HttpPost("order")]
+        [HttpPost("create")]
         public ActionResult Create([FromBody] CreateOrderDto dto)
         {
             var orderId = _orderService.Create(dto);

@@ -1,10 +1,10 @@
-﻿using FoodOrdersApi.Models.Order;
+﻿using FoodOrdersApi.Models.Restaurant;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
-    [Route("api/order")]
+    [Route("api/restaurant")]
     [ApiController]
     public class RestaurantController : ControllerBase
     {
@@ -18,54 +18,49 @@ namespace FoodOrdersApi.Controllers
 
 
 
-        // POST api/order/create
-        [HttpPost("order")]
-        public ActionResult Create([FromBody] CreateOrderDto dto)
+        // POST api/restaurant/create
+        [HttpPost("create")]
+        public ActionResult Create([FromBody] CreateRestaurantDto dto)
         {
-            var orderId = _orderService.Create(dto);
-
-            if (orderId == -2) return NotFound($"User with id {dto.UserId} does not exist");
-            if (orderId == -3) return NotFound($"Cart with id {dto.CartId} does not exist");
-            return Created($"api/order/get/{orderId}", null);
+            var restaurantId = _restaurantService.Create(dto);
+            return Created($"api/restaurant/get/{restaurantId}", null);
         }
 
-        // GET api/order/all
+        // GET api/restaurant/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<OrderDto>> GetAll()
+        public ActionResult<IEnumerable<RestaurantDto>> GetAll()
         {
-            var orderDtos = _orderService.GetAll();
-            return Ok(orderDtos);
+            var restaurantDtos = _restaurantService.GetAll();
+            return Ok(restaurantDtos);
         }
 
-        // GET api/order/get/5
+        // GET api/restaurant/get/5
         [HttpGet("getById/{id}")]
         public ActionResult GetByID(int id)
         {
-            var orderDto = _orderService.GetByID(id);
+            var restaurantDto = _restaurantService.GetByID(id);
 
-            if (orderDto == null) return NotFound($"Order with id {id} does not exist");
-            return Ok(orderDto);
+            if (restaurantDto == null) return NotFound($"Retaurant with id {id} does not exist");
+            return Ok(restaurantDto);
         }
 
-        // PUT api/order/update/5
+        // PUT api/restaurant/update/5
         [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] UpdateOrderDto dto)
+        public ActionResult Update(int id, [FromBody] UpdateRestaurantDto dto)
         {
-            var orderId = _orderService.Update(id, dto);
+            var restaurantId = _restaurantService.Update(id, dto);
 
-            if (orderId == -1) return NotFound($"Order with id {id} does not exist");
-            if (orderId == -2) return NotFound($"User with id {dto.UserId} does not exist");
-            if (orderId == -3) return NotFound($"Cart with id {dto.CartId} does not exist");
-            return Ok($"api/order/get/{orderId}");
+            if (restaurantId == -1) return NotFound($"Retaurant with id {id} does not exist");
+            return Ok($"api/restaurant/get/{restaurantId}");
         }
 
-        // DELETE api/order/delete/5
+        // DELETE api/restaurant/delete/5
         [HttpDelete("delete/{id}")]
         public ActionResult Delete(int id)
         {
-            var code = _orderService.Delete(id);
+            var code = _restaurantService.Delete(id);
 
-            if (code == -1) return NotFound($"Order with id {id} does not exist");
+            if (code == -1) return NotFound($"Retaurant with id {id} does not exist");
             return NoContent();
         }
     }
