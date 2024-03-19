@@ -11,7 +11,7 @@ namespace FoodOrdersApi.Services
         int Create(CreateAddressDto dto);
         IEnumerable<AddressDto> GetAll();
         AddressDto GetByID(int id);
-        int Update(int id, CreateAddressDto dto);
+        int Update(int id, UpdateAddressDto dto);
         int Delete(int id);
     }
 
@@ -62,7 +62,7 @@ namespace FoodOrdersApi.Services
 
 
         // Update address with id
-        public int Update(int id, CreateAddressDto dto)
+        public int Update(int id, UpdateAddressDto dto)
         {
             var address = _context.Addresses.FirstOrDefault(o => o.Id == id);
             if (address == null) return -1;

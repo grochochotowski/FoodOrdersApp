@@ -46,7 +46,7 @@ namespace FoodOrdersApi.Controllers
 
         // PUT api/address/update/5
         [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] CreateAddressDto dto)
+        public ActionResult Update(int id, [FromBody] UpdateAddressDto dto)
         {
             var addressId = _addressService.Update(id, dto);
 
