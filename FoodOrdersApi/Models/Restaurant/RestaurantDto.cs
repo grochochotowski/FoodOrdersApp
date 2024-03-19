@@ -1,7 +1,4 @@
-﻿using FoodOrdersApi.Entities.Objects;
-using FoodOrdersApi.Models.Address;
-using FoodOrdersApi.Models.Org;
-using System.ComponentModel.DataAnnotations;
+﻿using FoodOrdersApi.Models.Meal;
 
 namespace FoodOrdersApi.Models.Restaurant
 {

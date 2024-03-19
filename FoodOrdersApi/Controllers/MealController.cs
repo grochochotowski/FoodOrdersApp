@@ -1,43 +1,70 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using FoodOrdersApi.Models.Meal;
+using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
-    [Route("api/cart")]
+    [Route("api/meal")]
     [ApiController]
     public class MealController : ControllerBase
     {
-        // GET: api/<MealController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IMealService _mealService;
+
+        public MealController(IMealService mealService)
         {
-            return new string[] { "value1", "value2" };
+            _mealService = mealService;
         }
 
-        // GET api/<MealController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+
+
+
+        // POST api/meal/create
+        [HttpPost("create")]
+        public ActionResult Create([FromBody] CreateMealDto dto)
         {
-            return "value";
+            var mealId = _mealService.Create(dto);
+
+            if (mealId == -1) return NotFound($"Restaurant with id {dto.RestaurantId} does not exist");
+            return Created($"api/meal/get/{mealId}", null);
         }
 
-        // POST api/<MealController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // GET api/meal/all
+        [HttpGet("all")]
+        public ActionResult<IEnumerable<MealDto>> GetAll()
         {
+            var mealDtos = _mealService.GetAll();
+            return Ok(mealDtos);
         }
 
-        // PUT api/<MealController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // GET api/meal/get/5
+        [HttpGet("getById/{id}")]
+        public ActionResult GetByID(int id)
         {
+            var mealDto = _mealService.GetByID(id);
+
+            if (mealDto == null) return NotFound($"Meal with id {id} does not exist");
+            return Ok(mealDto);
         }
 
-        // DELETE api/<MealController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // PUT api/meal/update/5
+        [HttpPut("update/{id}")]
+        public ActionResult Update(int id, [FromBody] UpdateMealDto dto)
         {
+            var mealId = _mealService.Update(id, dto);
+
+            if (mealId == -1) return NotFound($"Meal with id {id} does not exist");
+            if (mealId == -2) return NotFound($"Restaurant with id {dto.RestaurantId} does not exist");
+            return Ok($"api/meal/get/{mealId}");
+        }
+
+        // DELETE api/meal/delete/5
+        [HttpDelete("delete/{id}")]
+        public ActionResult Delete(int id)
+        {
+            var code = _mealService.Delete(id);
+
+            if (code == -1) return NotFound($"Meal with id {id} does not exist");
+            return NoContent();
         }
     }
 }

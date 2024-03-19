@@ -1,8 +1,4 @@
-﻿using FoodOrdersApi.Models.Address;
-using FoodOrdersApi.Models.Restaurant;
-using System.ComponentModel.DataAnnotations;
-
-namespace FoodOrdersApi.Models.Cart
+﻿namespace FoodOrdersApi.Models.Cart
 {
     public class CreateCartDto
     {

@@ -1,8 +1,4 @@
-﻿using FoodOrdersApi.Entities.Objects;
-using FoodOrdersApi.Models.Restaurant;
-using System.ComponentModel.DataAnnotations;
-
-namespace FoodOrdersApi.Models.Org
+﻿namespace FoodOrdersApi.Models.Meal
 {
     public class MealDto
     {

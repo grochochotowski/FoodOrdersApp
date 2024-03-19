@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace FoodOrdersApi.Models.Org
+﻿namespace FoodOrdersApi.Models.Meal
 {
     public class CreateMealDto
     {
