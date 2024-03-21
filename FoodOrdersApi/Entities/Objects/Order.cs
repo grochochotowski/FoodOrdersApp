@@ -7,7 +7,7 @@ namespace FoodOrdersApi.Entities.Objects
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Total price is required")]
-        public int TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
 
         public string? Notes { get; set; }
 

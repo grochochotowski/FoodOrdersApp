@@ -6,7 +6,7 @@ namespace FoodOrdersApi.Models.Order
     public class OrderDto
     {
         public int Id { get; set; }
-        public int TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
         public string? Notes { get; set; }
 
 
