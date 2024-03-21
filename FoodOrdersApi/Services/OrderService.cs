@@ -12,7 +12,7 @@ namespace FoodOrdersApi.Services
         OrderDto GetByID(int id);
         int Update(int id, UpdateOrderDto dto);
         int Delete(int id);
-        int AddMeal(int id, AddOrderMeal dto);
+        List<string> AddMeal(int id, AddOrderMeal dto);
     }
 
     public class OrderService : IOrderService
@@ -94,16 +94,23 @@ namespace FoodOrdersApi.Services
 
 
         // Add meals to order with id
-        public int AddMeal(int id, AddOrderMeal dto)
+        public List<string> AddMeal(int id, AddOrderMeal dto)
         {
-            var returnCode = 1;
+            var returns = new List<Tuple<string, int>>();
 
             var order = _context.Orders.FirstOrDefault(o => o.Id == id);
-            if (order == null) return - 1;
+            if (order == null) returns.Add("Order does not exist");
+
+            var Restaurant = _context.Restaurants.FirstOrDefault(r => r.Id == order.Cart.RestaurantId);
 
             foreach (var meal in dto.meal)
             {
                 var newMeal = _context.Meals.FirstOrDefault(m => m.Id == meal);
+                if (newMeal in Restaurant.Meals)
+                {
+                    returnCode = -3;
+                    continue;
+                }
                 if (newMeal == null)
                 {
                     returnCode = -2;
