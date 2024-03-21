@@ -103,6 +103,7 @@ namespace FoodOrdersApi.Services
                 .Include(o => o.Cart)
                     .ThenInclude(c => c.Restaurant)
                         .ThenInclude(r => r.Meals)
+                .Include(o => o.Meals)
                 .FirstOrDefault(o => o.Id == id);
             if (order == null) {
                 returns.Add($"Order with id {id} does not exist");
@@ -115,16 +116,14 @@ namespace FoodOrdersApi.Services
                 if (newMeal == null)
                 {
                     returns.Add($"Meal with id {mealId} does not exist");
-                    Console.WriteLine($"I am here in not existing {mealId}");
                     continue;
                 }
                 else if (!order.Cart.Restaurant.Meals.Contains(newMeal))
                 {
-                    returns.Add($"Meal with id {mealId} does not belong to restaurant {order.Cart.Restaurant.Name} with id {order.Cart.Restaurant.Id}");
-                    Console.WriteLine($"I am in wrong restaurant {mealId}");
+                    returns.Add($"Meal with id {mealId} does not belong to restaurant with id {order.Cart.Restaurant.Id}");
                     continue;
                 }
-                else order.Meals.Add(newMeal);
+                order.Meals.Add(newMeal);
             }
 
             _context.SaveChanges();
