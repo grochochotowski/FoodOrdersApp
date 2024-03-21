@@ -101,8 +101,8 @@ namespace FoodOrdersApi.Services
 
             var order = _context.Orders
                 .Include(o => o.Cart)
-                    .ThenInclude(cart => cart.Restaurant)
-                        .ThenInclude(restaurant => restaurant.Meals)
+                    .ThenInclude(c => c.Restaurant)
+                        .ThenInclude(r => r.Meals)
                 .FirstOrDefault(o => o.Id == id);
             if (order == null) {
                 returns.Add($"Order with id {id} does not exist");
