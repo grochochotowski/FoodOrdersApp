@@ -1,4 +1,5 @@
 ﻿using FoodOrdersApi.Models.Address;
+using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Models.Restaurant;
 
 namespace FoodOrdersApi.Models.Cart
@@ -18,6 +19,6 @@ namespace FoodOrdersApi.Models.Cart
 
 
         public virtual AddressDto Address { get; set; }
-        public virtual ICollection<Order>? IndividualOrders
+        public virtual ICollection<OrderDto>? IndividualOrders { get; set; }
     }
 }
