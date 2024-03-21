@@ -135,7 +135,8 @@ namespace FoodOrdersApi.Services
                     continue;
                 }
 
-                var mealOrder = _context.MealOrder.FirstOrDefault(mo => mo.OrderId == id && mo.MealId == mealId);
+                var mealOrder = _context.MealOrder.FirstOrDefault(mo => mo.OrderId == id && mo.MealId == mealId)
+                    ?? order.MealOrder.FirstOrDefault(mo => mo.OrderId == id && mo.MealId == mealId);
                 if (mealOrder != null)
                 {
                     mealOrder.Quantity++;
