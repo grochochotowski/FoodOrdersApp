@@ -34,11 +34,18 @@ namespace FoodOrdersApi.Services
         {
             var order = _mapper.Map<Order>(dto);
 
-            var isUser = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
-            if (isUser == null) return -2;
+            var user = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
+            if (user == null) return -2;
 
-            var isCart = _context.Carts.FirstOrDefault(u => u.Id == dto.CartId);
-            if (isCart == null) return -3;
+            var cart = _context.Carts
+                .Include(c => c.User)
+                .FirstOrDefault(u => u.Id == dto.CartId);
+            if (cart == null) return -3;
+
+            if (user.OrganizationId == cart.User.OrganizationId) // if organizationId of user creating an order is the same as organizationId of user that created a cart
+            {
+
+            }
 
             _context.Orders.Add(order);
             _context.SaveChanges();
