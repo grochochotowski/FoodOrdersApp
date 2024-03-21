@@ -66,5 +66,18 @@ namespace FoodOrdersApi.Controllers
             if (code == -1) return NotFound($"Order with id {id} does not exist");
             return NoContent();
         }
+
+
+
+        // PUT api/order/addMeal/5/5
+        [HttpPut("addMeal/{id}")]
+        public ActionResult addMeal(int id, [FromBody] AddOrderMeal dto)
+        {
+            var code = _orderService.addMeal(id, dto);
+
+            if (code == -1) return NotFound($"Order with id {id} does not exist");
+            if (code == -2) return NotFound($"One of meals does not exist - rest added");
+            return NoContent();
+        }
     }
 }
