@@ -72,21 +72,8 @@ namespace FoodOrdersApi.Services
             var order = _context.Orders.FirstOrDefault(o => o.Id == id);
             if (order == null) return -1;
             
-            if (dto.UserId != null)
-            {
-                var isUser = _context.Users.FirstOrDefault(u => u.Id == dto.UserId);
-                if (isUser == null) return -2;
-            }
-            if (dto.CartId != null)
-            {
-                var isCart = _context.Carts.FirstOrDefault(u => u.Id == dto.CartId);
-                if (isCart == null) return -3;
-            }
-            
 
             order.Notes = dto.Notes ?? order.Notes;
-            order.CartId = dto.CartId ?? order.CartId;
-            order.UserId = dto.UserId ?? order.UserId;
 
             _context.SaveChanges();
             return order.Id;

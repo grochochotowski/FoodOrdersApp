@@ -54,8 +54,6 @@ namespace FoodOrdersApi.Controllers
             var orderId = _orderService.Update(id, dto);
 
             if (orderId == -1) return NotFound($"Order with id {id} does not exist");
-            if (orderId == -2) return NotFound($"User with id {dto.UserId} does not exist");
-            if (orderId == -3) return NotFound($"Cart with id {dto.CartId} does not exist");
             return Ok($"api/order/get/{orderId}");
         }
 
