@@ -6,13 +6,13 @@ namespace FoodOrdersApi.Entities.Objects
 {
     public class MealOrder
     {
-        [Key, Column("MealId", Order = 0)]
+        [Key, Column(Order = 0)]
         public int MealId { get; set; }
         public Meal Meal { get; set; }
 
 
 
-        [Key, Column("OrderId", Order = 1)]
+        [Key, Column(Order = 1)]
         public int OrderId { get; set; }
         public Order Order { get; set; }
 
@@ -20,5 +20,14 @@ namespace FoodOrdersApi.Entities.Objects
 
         [Required]
         public int Quantity { get; set; }
+
+
+
+        public MealOrder(int mealId, int orderId)
+        {
+            MealId = mealId;
+            OrderId = orderId;
+            Quantity = 1;
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace FoodOrdersApi.Entities
 
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Meal> Meals { get; set; }
+        public DbSet<MealOrder> MealOrder { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
@@ -40,6 +41,10 @@ namespace FoodOrdersApi.Entities
                 .WithMany(u => u.Carts)
                 .HasForeignKey(c => c.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<MealOrder>()
+                .HasKey(mo => new { mo.MealId, mo.OrderId });
         }
     }
 }

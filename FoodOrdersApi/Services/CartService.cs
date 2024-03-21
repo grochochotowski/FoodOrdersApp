@@ -53,7 +53,7 @@ namespace FoodCartsApi.Services
                 .Include(c => c.Restaurant).ThenInclude(r => r.Meals)
                 .Include(c => c.Address)
                 .Include(c => c.User)
-                .Include(c => c.IndividualOrders!).ThenInclude(io => io.Meals)
+                .Include(c => c.IndividualOrders!).ThenInclude(io => io.MealOrder).ThenInclude(mo => mo.Meal)
                 .Include(c => c.IndividualOrders!).ThenInclude(io => io.User)
                 .ToList();
             var cartDtos = _mapper.Map<List<CartDto>>(carts);
@@ -69,7 +69,7 @@ namespace FoodCartsApi.Services
                  .Include(c => c.Restaurant).ThenInclude(r => r.Meals)
                  .Include(c => c.Address)
                  .Include(c => c.User)
-                 .Include(c => c.IndividualOrders!).ThenInclude(io => io.Meals)
+                 .Include(c => c.IndividualOrders!).ThenInclude(io => io.MealOrder)
                  .Include(c => c.IndividualOrders!).ThenInclude(io => io.User)
                  .FirstOrDefault(o => o.Id == id);
             if (cart == null) return null;
