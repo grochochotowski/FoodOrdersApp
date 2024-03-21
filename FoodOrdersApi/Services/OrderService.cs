@@ -109,17 +109,17 @@ namespace FoodOrdersApi.Services
                 return returns;
             }
 
-            foreach (var meal in dto.meal)
+            foreach (var mealId in dto.meal)
             {
-                var newMeal = _context.Meals.FirstOrDefault(m => m.Id == meal);
+                var newMeal = _context.Meals.FirstOrDefault(m => m.Id == mealId);
                 if (newMeal == null)
                 {
-                    returns.Add($"Meal with id {meal.Id} does not exist");
+                    returns.Add($"Meal with id {mealId} does not exist");
                     continue;
                 }
-                if (!Restaurant.Meals.Contains(newMeal))
+                if (!order.Cart.Restaurant.Meals.Contains(newMeal))
                 {
-                    returns.Add($"Meal with id {meal.Id} does not to restaurant {Restaurant.Name} with id {Restaurant.Id}");
+                    returns.Add($"Meal with id {mealId} does not belong to restaurant {order.Cart.Restaurant.Name} with id {order.Cart.Restaurant.Id}");
                     continue;
                 }
                 order.Meals.Add(newMeal);
