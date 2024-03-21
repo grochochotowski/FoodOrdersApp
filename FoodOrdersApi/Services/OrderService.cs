@@ -111,12 +111,12 @@ namespace FoodOrdersApi.Services
                 var newMeal = _context.Meals.FirstOrDefault(m => m.Id == meal);
                 if (newMeal in Restaurant.Meals)
                 {
-                    returnCode = -3;
+                    returns.Add($"Meal with id {newMeal.Id} does not to restaurant {Restaurant.Name} with id {Restaurant.Id}");
                     continue;
                 }
                 if (newMeal == null)
                 {
-                    returnCode = -2;
+                    returns.Add($"Meal with id {newMeal.Id} does not exist");
                     continue;
                 }
                 order.Meals.Add(newMeal);
