@@ -109,7 +109,7 @@ namespace FoodOrdersApi.Services
             foreach (var meal in dto.meal)
             {
                 var newMeal = _context.Meals.FirstOrDefault(m => m.Id == meal);
-                if (newMeal in Restaurant.Meals)
+                if (!Restaurant.Meals.Contains(newMeal))
                 {
                     returns.Add($"Meal with id {newMeal.Id} does not to restaurant {Restaurant.Name} with id {Restaurant.Id}");
                     continue;
