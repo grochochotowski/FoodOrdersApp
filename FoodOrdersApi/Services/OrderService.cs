@@ -49,7 +49,9 @@ namespace FoodOrdersApi.Services
         // Get all orders
         public IEnumerable<OrderDto> GetAll()
         {
-            var orders = _context.Orders.ToList();
+            var orders = _context.Orders
+                .Include(o => o.Meals)
+                .ToList();
             var orderDtos = _mapper.Map<List<OrderDto>>(orders);
 
             return orderDtos;
@@ -59,7 +61,9 @@ namespace FoodOrdersApi.Services
         // Get order by ID
         public OrderDto GetByID(int id)
         {
-            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
+            var order = _context.Orders
+                .Include(o => o.Meals)
+                .FirstOrDefault(o => o.Id == id);
             if (order == null) return null;
 
             var orderDto = _mapper.Map<OrderDto>(order);
