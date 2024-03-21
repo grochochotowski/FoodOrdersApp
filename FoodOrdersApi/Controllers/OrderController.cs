@@ -69,9 +69,9 @@ namespace FoodOrdersApi.Controllers
 
 
 
-        // PUT api/order/addMeal/5/5
+        // PUT api/order/addMeal/5
         [HttpPut("addMeal/{id}")]
-        public ActionResult addMeal(int id, [FromBody] AddOrderMeal dto)
+        public ActionResult AddMeal(int id, [FromBody] AddOrderMeal dto)
         {
             var code = _orderService.addMeal(id, dto);
 

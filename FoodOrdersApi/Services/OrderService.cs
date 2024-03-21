@@ -94,7 +94,7 @@ namespace FoodOrdersApi.Services
 
 
         // Add meals to order with id
-        public int AddMeal (int id, AddOrderMeal dto)
+        public int AddMeal(int id, AddOrderMeal dto)
         {
             var returnCode = 1;
 
