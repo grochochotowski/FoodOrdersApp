@@ -37,8 +37,8 @@ namespace FoodOrdersApi.Entities
 
             modelBuilder.Entity<Cart>()
                 .HasOne(c => c.User)
-                .WithMany()
-                .HasForeignKey(c => c.RestaurantId)
+                .WithMany(u => u.Carts)
+                .HasForeignKey(c => c.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
