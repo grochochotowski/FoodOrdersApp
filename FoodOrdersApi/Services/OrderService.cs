@@ -116,6 +116,8 @@ namespace FoodOrdersApi.Services
                 return returns;
             }
 
+            double newPrice = order.TotalPrice;
+
             foreach (var mealId in dto.meal)
             {
                 var newMeal = _context.Meals.FirstOrDefault(m => m.Id == mealId);
@@ -130,8 +132,10 @@ namespace FoodOrdersApi.Services
                     continue;
                 }
                 order.Meals.Add(newMeal);
+                newPrice += newMeal.Price;
             }
 
+            order.TotalPrice = newPrice;
             _context.SaveChanges();
             return returns;
         }
