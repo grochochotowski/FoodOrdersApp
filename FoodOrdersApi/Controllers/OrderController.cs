@@ -38,7 +38,7 @@ namespace FoodOrdersApi.Controllers
         }
 
         // GET api/order/get/5
-        [HttpGet("getById/{id}")]
+        [HttpGet("get/{id}")]
         public ActionResult GetByID(int id)
         {
             var orderDto = _orderService.GetByID(id);

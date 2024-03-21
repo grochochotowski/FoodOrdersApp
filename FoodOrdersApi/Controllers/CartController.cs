@@ -38,7 +38,7 @@ namespace FoodCartsApi.Controllers
         }
 
         // GET api/cart/get/5
-        [HttpGet("getById/{id}")]
+        [HttpGet("get/{id}")]
         public ActionResult GetByID(int id)
         {
             var cartDto = _cartService.GetByID(id);
