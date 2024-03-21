@@ -49,10 +49,11 @@ namespace FoodCartsApi.Services
         public IEnumerable<CartDto> GetAll()
         {
             var carts = _context.Carts
-                .Include(c => c.Address)
                 .Include(c => c.Restaurant).ThenInclude(r => r.Meals)
+                .Include(c => c.Address)
                 .Include(c => c.User)
-                .Include(c => c.IndividualOrders)
+                .Include(c => c.IndividualOrders!).ThenInclude(io => io.Meals)
+                .Include(c => c.IndividualOrders!).ThenInclude(io => io.User)
                 .ToList();
             var cartDtos = _mapper.Map<List<CartDto>>(carts);
 
