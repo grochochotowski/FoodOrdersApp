@@ -26,6 +26,7 @@ namespace FoodOrdersApi.Controllers
 
             if (orderId == -2) return NotFound($"User with id {dto.UserId} does not exist");
             if (orderId == -3) return NotFound($"Cart with id {dto.CartId} does not exist");
+            if (orderId == -4) return BadRequest($"Can't create an order in a cart of different organization");
             return Created($"api/order/get/{orderId}", null);
         }
 
