@@ -13,7 +13,6 @@ namespace FoodOrdersApi.Models.Order
         public int CartId { get; set; }
 
 
-        public int UserId { get; set; }
         public UserDto User { get; set; }
 
 

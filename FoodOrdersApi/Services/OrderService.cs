@@ -51,6 +51,7 @@ namespace FoodOrdersApi.Services
         {
             var orders = _context.Orders
                 .Include(o => o.Meals)
+                .Include(o => o.User)
                 .ToList();
             var orderDtos = _mapper.Map<List<OrderDto>>(orders);
 
@@ -63,6 +64,7 @@ namespace FoodOrdersApi.Services
         {
             var order = _context.Orders
                 .Include(o => o.Meals)
+                .Include(o => o.User)
                 .FirstOrDefault(o => o.Id == id);
             if (order == null) return null;
 
