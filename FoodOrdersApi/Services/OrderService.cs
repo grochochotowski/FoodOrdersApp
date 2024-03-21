@@ -55,7 +55,7 @@ namespace FoodOrdersApi.Services
         public IEnumerable<OrderDto> GetAll()
         {
             var orders = _context.Orders
-                .Include(o => o.MealOrder)
+                .Include(o => o.MealOrder).ThenInclude(mo => mo.Meal)
                 .Include(o => o.User)
                 .ToList();
             var orderDtos = _mapper.Map<List<OrderDto>>(orders);
@@ -68,7 +68,7 @@ namespace FoodOrdersApi.Services
         public OrderDto GetByID(int id)
         {
             var order = _context.Orders
-                .Include(o => o.MealOrder)
+                .Include(o => o.MealOrder).ThenInclude(mo => mo.Meal)
                 .Include(o => o.User)
                 .FirstOrDefault(o => o.Id == id);
             if (order == null) return null;
@@ -111,11 +111,8 @@ namespace FoodOrdersApi.Services
             var returns = new List<string>();
 
             var order = _context.Orders
-                .Include(o => o.Cart)
-                    .ThenInclude(c => c.Restaurant)
-                        .ThenInclude(r => r.Meals)
-                .Include(o => o.MealOrder)
-                    .ThenInclude(mo => mo.Meal)
+                .Include(o => o.Cart).ThenInclude(c => c.Restaurant).ThenInclude(r => r.Meals)
+                .Include(o => o.MealOrder).ThenInclude(mo => mo.Meal)
                 .FirstOrDefault(o => o.Id == id);
             if (order == null) {
                 returns.Add($"Order with id {id} does not exist");

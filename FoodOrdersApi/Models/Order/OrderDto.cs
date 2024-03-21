@@ -1,4 +1,5 @@
 ﻿using FoodOrdersApi.Models.Meal;
+using FoodOrdersApi.Models.MealOrder;
 using FoodOrdersApi.Models.User;
 
 namespace FoodOrdersApi.Models.Order
@@ -16,6 +17,6 @@ namespace FoodOrdersApi.Models.Order
         public UserDto User { get; set; }
 
 
-        public ICollection<MealDto>? Meals { get; set; }
+        public ICollection<MealOrderDto>? Meals { get; set; }
     }
 }

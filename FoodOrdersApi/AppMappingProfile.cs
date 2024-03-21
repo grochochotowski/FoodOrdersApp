@@ -3,6 +3,7 @@ using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Models.Address;
 using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Models.Meal;
+using FoodOrdersApi.Models.MealOrder;
 using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Models.Org;
 using FoodOrdersApi.Models.Restaurant;
@@ -25,6 +26,8 @@ namespace FoodOrdersApi
             CreateMap<Meal, MealDto>();
             CreateMap<CreateMealDto, Meal>();
             CreateMap<UpdateMealDto, Meal>();
+
+            CreateMap<MealOrderDto, MealOrder>();
 
             CreateMap<Order, OrderDto>();
             CreateMap<CreateOrderDto, Order>();
