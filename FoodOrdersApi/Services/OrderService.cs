@@ -117,15 +117,15 @@ namespace FoodOrdersApi.Services
                     returns.Add($"Meal with id {mealId} does not exist");
                     continue;
                 }
-                if (!order.Cart.Restaurant.Meals.Contains(newMeal))
+                else if (!order.Cart.Restaurant.Meals.Contains(newMeal))
                 {
                     returns.Add($"Meal with id {mealId} does not belong to restaurant {order.Cart.Restaurant.Name} with id {order.Cart.Restaurant.Id}");
                     continue;
                 }
-                order.Meals.Add(newMeal);
+                else order.Meals.Add(newMeal);
             }
 
-
+            _context.SaveChanges();
             return returns;
         }
 
