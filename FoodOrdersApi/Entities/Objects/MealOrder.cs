@@ -8,8 +8,16 @@ namespace FoodOrdersApi.Entities.Objects
     {
         [Key, Column("MealId", Order = 0)]
         public int MealId { get; set; }
+        public Meal Meal { get; set; }
+
+
+
         [Key, Column("OrderId", Order = 1)]
         public int OrderId { get; set; }
+        public Order Order { get; set; }
+
+
+
         [Required]
         public int Quantity { get; set; }
     }

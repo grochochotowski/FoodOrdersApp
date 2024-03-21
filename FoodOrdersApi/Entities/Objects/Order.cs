@@ -25,6 +25,6 @@ namespace FoodOrdersApi.Entities.Objects
 
 
 
-        public ICollection<Meal> Meals { get; set; }
+        public ICollection<MealOrder> MealOrder { get; set; }
     }
 }
