@@ -43,7 +43,7 @@ namespace FoodOrdersApi.Services
             if (cart == null) return -3;
 
             if (user.OrganizationId != cart.User.OrganizationId) return -4; 
-                        // if organizationId of user creating an order is the same as organizationId of user that created a cart
+                        // if organizationId of user creating an order is different than organizationId of user that created a cart return BadRequest
 
             _context.Orders.Add(order);
             _context.SaveChanges();
