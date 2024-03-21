@@ -21,6 +21,12 @@ namespace FoodOrdersApi.Entities.Objects
 
 
 
+        [Required(ErrorMessage = "User is required")]
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
+
+
+
         [Required(ErrorMessage = "Restaurant is required")]
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
