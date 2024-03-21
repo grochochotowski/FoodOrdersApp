@@ -39,6 +39,7 @@ namespace FoodCartsApi.Services
             var isAddress = _context.Addresses.FirstOrDefault(u => u.Id == dto.AddressId);
             if (isAddress == null) return -3;
 
+            cart.TotalCartPrice = 0;
             _context.Carts.Add(cart);
             _context.SaveChanges();
             return cart.Id;
