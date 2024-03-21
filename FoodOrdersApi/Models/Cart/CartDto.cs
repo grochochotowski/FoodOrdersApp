@@ -1,6 +1,7 @@
 ﻿using FoodOrdersApi.Models.Address;
 using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Models.Restaurant;
+using FoodOrdersApi.Models.User;
 
 namespace FoodOrdersApi.Models.Cart
 {
@@ -15,12 +16,8 @@ namespace FoodOrdersApi.Models.Cart
         public string? Note { get; set; }
 
 
-        public int UserOrgId { get; set; }
-
-
+        public virtual UserDto User { get; set; }
         public virtual RestaurantDto Restaurant { get; set; }
-
-
         public virtual AddressDto Address { get; set; }
         public virtual ICollection<OrderDto>? IndividualOrders { get; set; }
     }

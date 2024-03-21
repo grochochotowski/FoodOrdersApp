@@ -1,4 +1,6 @@
-﻿namespace FoodOrdersApi.Models.User
+﻿using FoodOrdersApi.Models.Cart;
+
+namespace FoodOrdersApi.Models.User
 {
     public class UserDto
     {
@@ -11,5 +13,6 @@
 
 
         public int OrganizationId { get; set; }
+        public virtual ICollection<CartDto> Carts { get; set; }
     }
 }
