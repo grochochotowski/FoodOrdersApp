@@ -12,7 +12,7 @@ namespace FoodOrdersApi.Services
         OrderDto GetByID(int id);
         int Update(int id, UpdateOrderDto dto);
         int Delete(int id);
-        int AddMeal(int id, AddOrderMeal dto)
+        int AddMeal(int id, AddOrderMeal dto);
     }
 
     public class OrderService : IOrderService

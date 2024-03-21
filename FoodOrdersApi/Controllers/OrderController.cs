@@ -73,7 +73,7 @@ namespace FoodOrdersApi.Controllers
         [HttpPut("addMeal/{id}")]
         public ActionResult AddMeal(int id, [FromBody] AddOrderMeal dto)
         {
-            var code = _orderService.addMeal(id, dto);
+            var code = _orderService.AddMeal(id, dto);
 
             if (code == -1) return NotFound($"Order with id {id} does not exist");
             if (code == -2) return NotFound($"One of meals does not exist - rest added");
