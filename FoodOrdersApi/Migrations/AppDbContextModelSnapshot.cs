@@ -50,7 +50,7 @@ namespace FoodOrdersApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("FoodOrdersApi.Entities.Objects.Cart", b =>
@@ -93,7 +93,7 @@ namespace FoodOrdersApi.Migrations
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("Carts");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("FoodOrdersApi.Entities.Objects.Meal", b =>
@@ -122,7 +122,7 @@ namespace FoodOrdersApi.Migrations
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("Meals");
+                    b.ToTable("Meals", (string)null);
                 });
 
             modelBuilder.Entity("FoodOrdersApi.Entities.Objects.Order", b =>
@@ -151,7 +151,7 @@ namespace FoodOrdersApi.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("FoodOrdersApi.Entities.Objects.Org", b =>
@@ -171,7 +171,7 @@ namespace FoodOrdersApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organizations");
+                    b.ToTable("Organizations", (string)null);
                 });
 
             modelBuilder.Entity("FoodOrdersApi.Entities.Objects.Restaurant", b =>
@@ -191,7 +191,7 @@ namespace FoodOrdersApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restaurants");
+                    b.ToTable("Restaurants", (string)null);
                 });
 
             modelBuilder.Entity("FoodOrdersApi.Entities.Objects.User", b =>
@@ -227,7 +227,7 @@ namespace FoodOrdersApi.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("MealOrder", b =>
@@ -242,7 +242,7 @@ namespace FoodOrdersApi.Migrations
 
                     b.HasIndex("OrdersId");
 
-                    b.ToTable("MealOrder");
+                    b.ToTable("MealOrder", (string)null);
                 });
 
             modelBuilder.Entity("FoodOrdersApi.Entities.Objects.Cart", b =>
