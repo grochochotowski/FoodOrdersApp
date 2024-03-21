@@ -8,6 +8,8 @@ namespace FoodOrdersApi.Entities.Objects
         public int Id { get; set; }
         [Required(ErrorMessage = "Mininimum order price is required")]
         public double MinPrice { get; set; }
+        [Required]
+        public double TotalCartPrice { get; set; }
         [Required(ErrorMessage = "Delivery price is required")]
         public double DeliveryPrice { get; set; }
         [Required(ErrorMessage = "Free delivery minimum price is required")]

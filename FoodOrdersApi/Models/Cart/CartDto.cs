@@ -9,6 +9,7 @@ namespace FoodOrdersApi.Models.Cart
     {
         public int Id { get; set; }
         public double MinPrice { get; set; }
+        public double TotalCartPrice { get; set; }
         public double DeliveryPrice { get; set; }
         public double FreeDeliveryMinPrice { get; set; }
         public string PhoneNumber { get; set; }
