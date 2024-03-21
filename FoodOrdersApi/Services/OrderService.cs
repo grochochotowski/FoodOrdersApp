@@ -12,6 +12,7 @@ namespace FoodOrdersApi.Services
         OrderDto GetByID(int id);
         int Update(int id, UpdateOrderDto dto);
         int Delete(int id);
+        int AddMeal(int id, AddOrderMeal dto)
     }
 
     public class OrderService : IOrderService
@@ -80,7 +81,7 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Update order with id
+        // Delete order with id
         public int Delete(int id)
         {
             var order = _context.Orders.FirstOrDefault(o => o.Id == id);
@@ -88,6 +89,14 @@ namespace FoodOrdersApi.Services
 
             _context.Orders.Remove(order);
             _context.SaveChanges();
+            return 1;
+        }
+
+
+        // Add meals to order with id
+        public int AddMeal (int id, AddOrderMeal dto)
+        {
+            
             return 1;
         }
 
