@@ -77,7 +77,7 @@ namespace FoodOrdersApi.Controllers
             var finalMessage = "";
             foreach (var result in results)
             {
-                finalMessage += result.Item1;
+                finalMessage += result + "\n";
             }
             if (results.Count > 0) return NotFound(finalMessage);
             return NoContent();

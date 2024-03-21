@@ -96,10 +96,13 @@ namespace FoodOrdersApi.Services
         // Add meals to order with id
         public List<string> AddMeal(int id, AddOrderMeal dto)
         {
-            var returns = new List<Tuple<string, int>>();
+            var returns = new List<string>();
 
             var order = _context.Orders.FirstOrDefault(o => o.Id == id);
-            if (order == null) returns.Add("Order does not exist");
+            if (order == null) {
+                returns.Add($"Order with id {id} does not exist");
+                return returns;
+            }
 
             var Restaurant = _context.Restaurants.FirstOrDefault(r => r.Id == order.Cart.RestaurantId);
 
@@ -120,7 +123,7 @@ namespace FoodOrdersApi.Services
             }
 
 
-            return returnCode;
+            return returns;
         }
 
     }
