@@ -96,8 +96,24 @@ namespace FoodOrdersApi.Services
         // Add meals to order with id
         public int AddMeal (int id, AddOrderMeal dto)
         {
-            
-            return 1;
+            var returnCode = 1;
+
+            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
+            if (order == null) return - 1;
+
+            foreach (var meal in dto.meal)
+            {
+                var newMeal = _context.Meals.FirstOrDefault(m => m.Id == meal);
+                if (newMeal == null)
+                {
+                    returnCode = -2;
+                    continue;
+                }
+                order.Meals.Add(newMeal);
+            }
+
+
+            return returnCode;
         }
 
     }

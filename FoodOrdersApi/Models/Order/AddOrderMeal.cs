@@ -4,6 +4,6 @@ namespace FoodOrdersApi.Models.Order
 {
     public class AddOrderMeal
     {
-        public List<int> meals { get; set; }
+        public List<int> meal { get; set; }
     }
 }
