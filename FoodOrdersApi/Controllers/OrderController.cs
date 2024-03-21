@@ -80,8 +80,8 @@ namespace FoodOrdersApi.Controllers
             {
                 finalMessage += result + "\n";
             }
-            if (results.Count > 0) return NotFound(finalMessage);
-            return NoContent();
+            if (results.Count > 0) return BadRequest(finalMessage);
+            return Ok();
         }
     }
 }
