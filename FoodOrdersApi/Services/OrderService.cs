@@ -2,6 +2,7 @@
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Models.Order;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrdersApi.Services
 {
@@ -98,25 +99,27 @@ namespace FoodOrdersApi.Services
         {
             var returns = new List<string>();
 
-            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
+            var order = _context.Orders
+                .Include(o => o.Cart)
+                    .ThenInclude(cart => cart.Restaurant)
+                        .ThenInclude(restaurant => restaurant.Meals)
+                .FirstOrDefault(o => o.Id == id);
             if (order == null) {
                 returns.Add($"Order with id {id} does not exist");
                 return returns;
             }
 
-            var Restaurant = _context.Restaurants.FirstOrDefault(r => r.Id == order.Cart.RestaurantId);
-
             foreach (var meal in dto.meal)
             {
                 var newMeal = _context.Meals.FirstOrDefault(m => m.Id == meal);
-                if (!Restaurant.Meals.Contains(newMeal))
-                {
-                    returns.Add($"Meal with id {newMeal.Id} does not to restaurant {Restaurant.Name} with id {Restaurant.Id}");
-                    continue;
-                }
                 if (newMeal == null)
                 {
-                    returns.Add($"Meal with id {newMeal.Id} does not exist");
+                    returns.Add($"Meal with id {meal.Id} does not exist");
+                    continue;
+                }
+                if (!Restaurant.Meals.Contains(newMeal))
+                {
+                    returns.Add($"Meal with id {meal.Id} does not to restaurant {Restaurant.Name} with id {Restaurant.Id}");
                     continue;
                 }
                 order.Meals.Add(newMeal);
