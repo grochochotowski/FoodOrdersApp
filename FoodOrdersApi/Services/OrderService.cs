@@ -115,11 +115,13 @@ namespace FoodOrdersApi.Services
                 if (newMeal == null)
                 {
                     returns.Add($"Meal with id {mealId} does not exist");
+                    Console.WriteLine($"I am here in not existing {mealId}");
                     continue;
                 }
                 else if (!order.Cart.Restaurant.Meals.Contains(newMeal))
                 {
                     returns.Add($"Meal with id {mealId} does not belong to restaurant {order.Cart.Restaurant.Name} with id {order.Cart.Restaurant.Id}");
+                    Console.WriteLine($"I am in wrong restaurant {mealId}");
                     continue;
                 }
                 else order.Meals.Add(newMeal);
