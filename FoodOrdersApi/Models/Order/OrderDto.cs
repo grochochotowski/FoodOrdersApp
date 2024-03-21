@@ -17,6 +17,6 @@ namespace FoodOrdersApi.Models.Order
         public UserDto User { get; set; }
 
 
-        public ICollection<MealOrderDto>? Meals { get; set; }
+        public ICollection<MealOrderDto>? MealOrder { get; set; }
     }
 }

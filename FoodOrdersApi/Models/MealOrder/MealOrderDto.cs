@@ -1,4 +1,5 @@
 ﻿using FoodOrdersApi.Models.Meal;
+using FoodOrdersApi.Models.Order;
 
 namespace FoodOrdersApi.Models.MealOrder
 {
