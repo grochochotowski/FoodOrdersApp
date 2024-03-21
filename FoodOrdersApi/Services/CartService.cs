@@ -65,11 +65,12 @@ namespace FoodCartsApi.Services
         public CartDto GetByID(int id)
         {
             var cart = _context.Carts
-                .Include(c => c.Address)
-                .Include(c => c.Restaurant).ThenInclude(r => r.Meals)
-                .Include(c => c.User)
-                .Include(c => c.IndividualOrders)
-                .FirstOrDefault(o => o.Id == id);
+                 .Include(c => c.Restaurant).ThenInclude(r => r.Meals)
+                 .Include(c => c.Address)
+                 .Include(c => c.User)
+                 .Include(c => c.IndividualOrders!).ThenInclude(io => io.Meals)
+                 .Include(c => c.IndividualOrders!).ThenInclude(io => io.User)
+                 .FirstOrDefault(o => o.Id == id);
             if (cart == null) return null;
 
             var cartDto = _mapper.Map<CartDto>(cart);
