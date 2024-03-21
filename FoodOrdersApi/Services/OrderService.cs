@@ -42,10 +42,8 @@ namespace FoodOrdersApi.Services
                 .FirstOrDefault(u => u.Id == dto.CartId);
             if (cart == null) return -3;
 
-            if (user.OrganizationId == cart.User.OrganizationId) // if organizationId of user creating an order is the same as organizationId of user that created a cart
-            {
-
-            }
+            if (user.OrganizationId != cart.User.OrganizationId) return -4; 
+                        // if organizationId of user creating an order is the same as organizationId of user that created a cart
 
             _context.Orders.Add(order);
             _context.SaveChanges();
