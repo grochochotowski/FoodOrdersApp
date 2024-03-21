@@ -10,6 +10,8 @@ namespace FoodOrdersApi.Entities.Objects
         public string Name { get; set; }
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
+        [Required(ErrorMessage = "Price is required")]
+        public double Price { get; set; }
 
 
 
