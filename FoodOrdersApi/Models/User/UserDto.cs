@@ -13,6 +13,5 @@ namespace FoodOrdersApi.Models.User
 
 
         public int OrganizationId { get; set; }
-        public virtual ICollection<CartDto> Carts { get; set; }
     }
 }
