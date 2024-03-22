@@ -1,7 +1,7 @@
 ﻿using FoodOrdersApi.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace shop_system
+namespace FoodOrdersApi
 {
     public class DBSeeder
     {
