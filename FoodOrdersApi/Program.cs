@@ -16,7 +16,6 @@ namespace FoodOrdersApi
             // Add services to the container.
 
             builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(configuration.GetConnectionString("DataBaseConnection")));
-            builder.Services.AddScoped<DBSeeder>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -32,8 +31,6 @@ namespace FoodOrdersApi
             builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
-            var scope = app.Services.CreateScope();
-            var seeder = scope.ServiceProvider.GetRequiredService<DBSeeder>();
 
             // Configure the HTTP request pipeline.
             //if (app.Environment.IsDevelopment())
