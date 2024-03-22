@@ -1,10 +1,9 @@
 {
   "dependencies": {
-    "apis1": {
-      "type": "apis"
-    },
     "mssql1": {
-      "type": "mssql",
+      "serviceConnectorResourceId": "",
+      "secretStore": "AzureAppSettings",
+      "type": "mssql.onprem",
       "connectionId": "DataBaseConnection",
       "dynamicId": null
     }

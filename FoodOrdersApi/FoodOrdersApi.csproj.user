@@ -2,6 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugProfile>https</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>C:\nonSystem\IT\Code\FoodOrdersApi\FoodOrdersApi\Properties\PublishProfiles\food-ordering-api - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\nonSystem\IT\Code\FoodOrdersApi\FoodOrdersApi\Properties\PublishProfiles\food-ordering-api - Web Deploy2.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
