@@ -8,7 +8,7 @@
     },
     "mssql1": {
       "type": "mssql",
-      "connectionId": "DataBaseConnection"
+      "connectionId": "ConnectionString:DataBaseConnection"
     }
   }
 }

@@ -10,7 +10,7 @@
       "secretStore": "AzureAppSettings",
       "resourceId": null,
       "type": "mssql.onprem",
-      "connectionId": "DataBaseConnection"
+      "connectionId": "ConnectionString:DataBaseConnection"
     }
   }
 }
