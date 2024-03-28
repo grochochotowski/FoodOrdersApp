@@ -1,8 +1,24 @@
 nav.container {
-    width: 30vw;
+    width: 20%;
     height: 100vh;
 
     box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.5);
 
     user-select: none;
+}
+
+nav .box {
+    height: 100%;
+    padding: 0 5%;
+    background-color: red;
+}
+
+nav .logo {
+    height: 20%;
+    background-color: blue;
+}
+
+nav .menu {
+    height: 80%;
+    background-color: green;
 }
