@@ -14,8 +14,13 @@ nav .box {
 }
 
 nav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     height: 20%;
-    background-color: blue;
+
+    text-align: center;
 }
 
 nav .menu {
