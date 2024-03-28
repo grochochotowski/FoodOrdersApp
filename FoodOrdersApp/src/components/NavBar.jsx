@@ -11,16 +11,24 @@ export default function NavBar() {
             <div className="menu">
                 <ul>
                     <li>
-                        <Link to="test">Home</Link>
+                        <Link to="test">
+                            <h3>Home</h3>
+                        </Link>
                     </li>
                     <li>
-                        <Link to="test">Carts</Link>
+                        <Link to="test">
+                            <h3>Carts</h3>
+                        </Link>
                     </li>
                     <li>
-                        <Link to="test">Manage</Link>
+                        <Link to="test">
+                            <h3>Manage</h3>
+                        </Link>
                     </li>
                     <li>
-                        <Link to="test">About</Link>
+                        <Link to="test">
+                            <h3>About</h3>
+                        </Link>
                     </li>
                 </ul>
             </div>
