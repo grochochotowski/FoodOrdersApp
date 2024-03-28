@@ -27,6 +27,8 @@ nav .logo {
 
 nav .menu {
     height: 80%;
+
+    margin-top: 5%;
 }
 nav .menu ul {
     height: 100%;
@@ -36,7 +38,7 @@ nav .menu ul {
     align-items: center;
 }
 nav .menu ul li {
-    height: 15%;
+    height: 14vh;
     width: 100%;
 
     display: flex;
