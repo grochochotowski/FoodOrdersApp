@@ -9,17 +9,20 @@ nav.container {
 
 nav .box {
     height: 100%;
-    padding: 0 5%;
 }
 
 nav .logo {
+    height: 20%;
+
+    margin: 0 5%;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
-    height: 20%;
-
     text-align: center;
+
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
 
 nav .menu {
@@ -27,8 +30,23 @@ nav .menu {
 }
 nav .menu ul {
     height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5vh;
+}
+nav .menu ul li {
+    height: 15%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    transition: 150ms ease-in-out;
+}
+nav .menu ul li:hover {
+    background-color: #202020;
 }
