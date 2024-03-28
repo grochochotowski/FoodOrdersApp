@@ -17,6 +17,7 @@ nav .logo {
     height: 20%;
 
     margin: 0 5%;
+    padding: 5% 0;
 
     display: flex;
     justify-content: center;
@@ -40,7 +41,7 @@ nav .menu ul {
     align-items: center;
 }
 nav .menu ul li {
-    height: 14vh;
+    height: 12vh;
     width: 100%;
 
     display: flex;
