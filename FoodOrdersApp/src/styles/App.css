@@ -61,7 +61,6 @@ section h1 {
 }
 .pagination ul {
     display: flex;
-    gap: 10px
 }
 .pagination li {
     height: 3rem;
