@@ -193,6 +193,18 @@ export default function Carts() {
                         </tr>
                     </tbody>
                 </table>
+                <div className="pagination">
+                    <i className="fa-solid fa-caret-left"></i>
+                    <ul>
+                        <li>1</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                    </ul>
+                    <i className="fa-solid fa-caret-right"></i>
+                </div>
             </div>
         </section>
     </div>
