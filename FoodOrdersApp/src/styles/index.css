@@ -154,7 +154,7 @@ tbody tr:nth-child(even) {
     background-color: var(--clr-dark-accent);
 }
 td {
-    padding: 0.25rem 0;
+    padding: 0.25rem 1rem;
 }
 td:last-child {
     font-size: 1.3rem;
