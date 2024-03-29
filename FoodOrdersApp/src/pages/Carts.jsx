@@ -116,6 +116,81 @@ export default function Carts() {
                                 </Link>
                             </td>
                         </tr>
+                        <tr>
+                            <td>61</td>
+                            <td>62</td>
+                            <td>63</td>
+                            <td>64</td>
+                            <td>65</td>
+                            <td>
+                                <Link to={`details/${6}`}>
+                                    <i className="fa-solid fa-info"></i>
+                                </Link>
+                                <Link to={`edit/${6}`}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                </Link>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>71</td>
+                            <td>72</td>
+                            <td>73</td>
+                            <td>74</td>
+                            <td>75</td>
+                            <td>
+                                <Link to={`details/${7}`}>
+                                    <i className="fa-solid fa-info"></i>
+                                </Link>
+                                <Link to={`edit/${7}`}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                </Link>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>81</td>
+                            <td>82</td>
+                            <td>83</td>
+                            <td>84</td>
+                            <td>85</td>
+                            <td>
+                                <Link to={`details/${8}`}>
+                                    <i className="fa-solid fa-info"></i>
+                                </Link>
+                                <Link to={`edit/${8}`}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                </Link>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>91</td>
+                            <td>92</td>
+                            <td>93</td>
+                            <td>94</td>
+                            <td>95</td>
+                            <td>
+                                <Link to={`details/${9}`}>
+                                    <i className="fa-solid fa-info"></i>
+                                </Link>
+                                <Link to={`edit/${9}`}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                </Link>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>101</td>
+                            <td>102</td>
+                            <td>103</td>
+                            <td>104</td>
+                            <td>105</td>
+                            <td>
+                                <Link to={`details/${10}`}>
+                                    <i className="fa-solid fa-info"></i>
+                                </Link>
+                                <Link to={`edit/${10}`}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                </Link>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
