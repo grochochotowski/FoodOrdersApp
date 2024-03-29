@@ -6,29 +6,29 @@ export default function NavBar() {
     <nav className='container'>
         <div className="box">
             <div className="logo">
-                <h2>FoodOrdersApp</h2>
+                <h3>FoodOrdersApp</h3>
             </div>
             <div className="menu">
                 <ul>
                     <li className="home">
                         <Link to="log-in">
-                            <h3>Home</h3>
+                            <h4>Home</h4>
                             <p>(Log out)</p>
                         </Link>
                     </li>
                     <li>
                         <Link to="carts">
-                            <h3>Carts</h3>
+                            <h4>Carts</h4>
                         </Link>
                     </li>
                     <li>
                         <Link to="test">
-                            <h3>Manage</h3>
+                            <h4>Manage</h4>
                         </Link>
                     </li>
                     <li>
                         <Link to="test">
-                            <h3>About</h3>
+                            <h4>About</h4>
                         </Link>
                     </li>
                 </ul>
