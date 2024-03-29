@@ -91,7 +91,6 @@ label {
     display: inline-block;
     user-select: none;
 }
-
 button{
     padding: 10px 60px; 
 
@@ -112,8 +111,36 @@ button:hover {
     background-color: #6269ed;
 }
 
+/* ========== TABLES ==========*/
+table {
+    width: 100%;
+    
+    line-height: 2.2rem;
 
+    border-collapse: collapse;
+}
+thead {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+}
+th {
+    background-color: #adb1ff;
+}
+th:last-child {
+    width: 10%;
+}
+tbody {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+}
+tr:nth-child(even) {
+    background-color: #d1dcea;
+}
+td:last-child {
+    font-size: 1.5rem;
 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
 
 
 @media (prefers-color-scheme: light) {
