@@ -13,10 +13,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
+    --clr-dark-600: #585fe9;
     --clr-dark-500: #363ec7;
     --clr-dark-200: #253543;
-    --clr-light-500: #adb1ff;
+
     --clr-light-800: #d1dcea;
+    --clr-light-500: #adb1ff;
+    --clr-light-400: #8b90dd;
 }
 html, body {
     padding: 0;
@@ -147,6 +150,13 @@ th {
 th:last-child {
     width: 7%;
 }
+th:not(:last-child) {
+    cursor: pointer;
+    user-select: none;
+}
+th:hover:not(:last-child) {
+    background-color: var(--clr-dark-600);
+}
 tbody {
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
@@ -191,6 +201,9 @@ td:last-child {
     }
     th {
         background-color: var(--clr-light-500);
+    }
+    th:hover:not(:last-child) {
+        background-color: var(--clr-light-400);
     }
     tbody tr:nth-child(even) {
         background-color: var(--clr-light-800);
