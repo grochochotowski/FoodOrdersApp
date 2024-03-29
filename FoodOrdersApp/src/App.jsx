@@ -19,7 +19,7 @@ export default function App() {
         <NavBar />
 
         <Routes>
-            <Route path="/login" element={
+            <Route path="/log-in" element={
                 <Suspense fallback={<Fallback />}>
                     <LogIn />
                 </Suspense>
