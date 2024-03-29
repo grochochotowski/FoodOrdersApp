@@ -79,7 +79,10 @@ a {
 
 /* ========== FORMS ==========*/
 input {
-    padding: 10px;
+    height: 2rem;
+    width: 15rem;
+
+    padding: 0.4rem;
 
     border-radius: 7px;
     outline: none;
@@ -87,6 +90,8 @@ input {
 
     background-color: #242424;
     border: 2px solid rgba(255, 255, 255, 0.87);
+    
+    font-size: 1rem;
 
     transition: 150ms ease-in-out;
 }
@@ -99,7 +104,12 @@ label {
 }
 button,
 .button{
-    padding: 10px 60px; 
+    height: 3rem;
+    width: 9rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     border-radius: 7px;
     outline: none;
