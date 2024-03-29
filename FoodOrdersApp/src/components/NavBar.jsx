@@ -10,7 +10,7 @@ export default function NavBar() {
             </div>
             <div className="menu">
                 <ul>
-                    <li>
+                    <li className="home">
                         <Link to="login">
                             <h3>Home</h3>
                             <p>(Log out)</p>
