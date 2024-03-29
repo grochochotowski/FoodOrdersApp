@@ -25,6 +25,7 @@ export default function LogIn() {
                     : <i className="fa-regular fa-eye-slash" onClick={() => changePasswordVisibility()}></i>
                     }
                 </div>
+                <button>Log In</button>
             </div>
         </main>
     )
