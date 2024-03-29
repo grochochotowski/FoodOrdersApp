@@ -19,6 +19,76 @@ export default function Carts() {
                 </div>
                 <button>Filter</button>
             </div>
+
+            <div className="list">
+                <table>
+                    <thead>
+                        <th>Col1</th>
+                        <th>Col2</th>
+                        <th>Col3</th>
+                        <th>Col4</th>
+                        <th>Col5</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>
+                                <i className="fa-solid fa-info"></i>
+                                <i className="fa-regular fa-pen-to-square"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td>22</td>
+                            <td>23</td>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>
+                                <i className="fa-solid fa-info"></i>
+                                <i className="fa-regular fa-pen-to-square"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>31</td>
+                            <td>32</td>
+                            <td>33</td>
+                            <td>34</td>
+                            <td>35</td>
+                            <td>
+                                <i className="fa-solid fa-info"></i>
+                                <i className="fa-regular fa-pen-to-square"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td>42</td>
+                            <td>43</td>
+                            <td>44</td>
+                            <td>45</td>
+                            <td>
+                                <i className="fa-solid fa-info"></i>
+                                <i className="fa-regular fa-pen-to-square"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>51</td>
+                            <td>52</td>
+                            <td>53</td>
+                            <td>54</td>
+                            <td>55</td>
+                            <td>
+                                <i className="fa-solid fa-info"></i>
+                                <i className="fa-regular fa-pen-to-square"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </div>
   )
