@@ -34,7 +34,11 @@ export default function Carts() {
                 <table>
                     <thead>
                         <tr>
-                            <th>Col1</th>
+                            <th>
+                                <i className="fa-solid fa-arrow-down-a-z"></i>
+                                &nbsp;
+                                Col1
+                            </th>
                             <th>Col2</th>
                             <th>Col3</th>
                             <th>Col4</th>
