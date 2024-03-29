@@ -96,7 +96,7 @@ section h1 {
     border-radius: 10px;
 }
 .pagination li.clickable:hover {
-    background-color: var(--clr-dark-hover);
+    background-color: var(--clr-dark-500);
     cursor: pointer;
 }
 .pagination i {
@@ -116,7 +116,7 @@ section h1 {
         border-bottom: 2px solid rgba(0, 0, 0, 0.5);
     }
     .pagination li.clickable:hover {
-        background-color: var(--clr-light-hover);
+        background-color: var(--clr-light-500);
     }
     .details:hover {
         background-color: rgb(66, 195, 66);

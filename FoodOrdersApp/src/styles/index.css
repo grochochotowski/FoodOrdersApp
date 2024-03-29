@@ -13,10 +13,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    --clr-dark-hover: #363ec7;
-    --clr-dark-accent: #253543;
-    --clr-light-hover: #adb1ff;
-    --clr-light-accent: #d1dcea;
+    --clr-dark-500: #363ec7;
+    --clr-dark-200: #253543;
+    --clr-light-500: #adb1ff;
+    --clr-light-800: #d1dcea;
 }
 html, body {
     padding: 0;
@@ -126,7 +126,7 @@ button,
 }
 button:hover,
 .button:hover {
-    background-color: var(--clr-dark-hover);
+    background-color: var(--clr-dark-500);
 }
 
 /* ========== TABLES ==========*/
@@ -142,7 +142,7 @@ thead {
 }
 th {
     padding: 0.5rem 0;
-    background-color: var(--clr-dark-hover);
+    background-color: var(--clr-dark-500);
 }
 th:last-child {
     width: 7%;
@@ -151,7 +151,7 @@ tbody {
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
 tbody tr:nth-child(even) {
-    background-color: var(--clr-dark-accent);
+    background-color: var(--clr-dark-200);
 }
 td {
     padding: 0.25rem 1rem;
@@ -168,7 +168,7 @@ td:last-child {
 @media (prefers-color-scheme: light) {
     :root {
       color: #213547;
-      background-color: var(--clr-light-accent);
+      background-color: var(--clr-light-800);
     }
     a {
       color: #213547;
@@ -178,7 +178,7 @@ td:last-child {
         border: 2px solid rgba(0, 0, 0, 0.5);
     }
     input:focus {
-        background-color: var(--clr-light-accent);
+        background-color: var(--clr-light-800);
     }
     button,
     .button {
@@ -187,12 +187,12 @@ td:last-child {
     }
     button:hover,
     .button:hover {
-        background-color: var(--clr-light-hover);
+        background-color: var(--clr-light-500);
     }
     th {
-        background-color: var(--clr-light-hover);
+        background-color: var(--clr-light-500);
     }
     tbody tr:nth-child(even) {
-        background-color: var(--clr-light-accent);
+        background-color: var(--clr-light-800);
     }
 }

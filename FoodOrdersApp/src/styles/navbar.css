@@ -51,7 +51,7 @@ nav .menu ul li {
     transition: 150ms ease-in-out;
 }
 nav .menu ul li:hover {
-    background-color: var(--clr-dark-hover);
+    background-color: var(--clr-dark-500);
 }
 nav .menu ul li a {
     width: 100%;
@@ -72,7 +72,7 @@ nav .menu ul li.home a {
 
 @media (prefers-color-scheme: light) {
     nav .menu ul li:hover {
-        background-color: var(--clr-light-hover);
+        background-color: var(--clr-light-500);
     }
     nav .logo {
         border-bottom: 2px solid rgba(0, 0, 0, 0.5);
