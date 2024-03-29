@@ -22,23 +22,18 @@ main .box {
 }
 main .login-input {
     display: flex;
-    justify-content: center;
     align-items: center;
 
     width: 100%;
 }
 main .login-input label {
-    flex-basis: 20%;
-    flex-shrink: 1;
-    flex-grow: 1;
+    width: 6vw;
 
     font-weight: 700;
     font-size: 1.25rem;
 }
 main .login-input input {
-    flex-basis: 77%;
-    flex-shrink: 0;
-    flex-grow: 1;
+    width: 70%;
     
     height: 4vh;
 
@@ -53,17 +48,13 @@ main .password-input {
     width: 100%;
 }
 main .password-input label {
-    flex-basis: 20%;
-    flex-shrink: 1;
-    flex-grow: 1;
+    width: 6vw;
 
     font-weight: 700;
     font-size: 1.25rem;
 }
 main .password-input input {
-    flex-basis: 70%;
-    flex-shrink: 0;
-    flex-grow: 1;
+    width: 70%;
 
     height: 4vh;
 
