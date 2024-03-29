@@ -115,7 +115,7 @@ button:hover {
 table {
     width: 100%;
     
-    line-height: 2.2rem;
+    font-size: 1.2rem;
 
     border-collapse: collapse;
 }
@@ -123,6 +123,7 @@ thead {
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
 th {
+    padding: 0.5rem 0;
     background-color: #adb1ff;
 }
 th:last-child {
@@ -131,8 +132,11 @@ th:last-child {
 tbody {
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
-tr:nth-child(even) {
+tbody tr:nth-child(even) {
     background-color: #d1dcea;
+}
+td {
+    padding: 0.25rem 0;
 }
 td:last-child {
     font-size: 1.5rem;
