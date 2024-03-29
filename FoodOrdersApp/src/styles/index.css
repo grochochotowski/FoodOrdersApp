@@ -135,7 +135,7 @@ th {
     background-color: var(--clr-dark-hover);
 }
 th:last-child {
-    width: 10%;
+    width: 7%;
 }
 tbody {
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
@@ -147,7 +147,7 @@ td {
     padding: 0.25rem 0;
 }
 td:last-child {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
