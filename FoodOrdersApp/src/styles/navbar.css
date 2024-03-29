@@ -61,7 +61,10 @@ nav .menu ul li a {
     justify-content: center;
     align-items: center;
 }
-
+nav .menu ul li.home a {
+    display: flex;
+    flex-direction: column;
+}
 
 
 
