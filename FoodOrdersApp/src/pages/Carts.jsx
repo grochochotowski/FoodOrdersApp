@@ -48,10 +48,10 @@ export default function Carts() {
                             <td>14</td>
                             <td>15</td>
                             <td>
-                                <Link to={`details/${1}`}>
+                                <Link to={`details/${1}`} className="details">
                                     <i className="fa-solid fa-info"></i>
                                 </Link>
-                                <Link to={`edit/${1}`}>
+                                <Link to={`edit/${1}`} className="edit">
                                     <i className="fa-regular fa-pen-to-square"></i>
                                 </Link>
                             </td>
@@ -63,10 +63,10 @@ export default function Carts() {
                             <td>24</td>
                             <td>25</td>
                             <td>
-                                <Link to={`details/${2}`}>
+                                <Link to={`details/${2}`} className="details">
                                     <i className="fa-solid fa-info"></i>
                                 </Link>
-                                <Link to={`edit/${2}`}>
+                                <Link to={`edit/${2}`} className="edit">
                                     <i className="fa-regular fa-pen-to-square"></i>
                                 </Link>
                             </td>
@@ -78,10 +78,10 @@ export default function Carts() {
                             <td>34</td>
                             <td>35</td>
                             <td>
-                                <Link to={`details/${3}`}>
+                                <Link to={`details/${3}`} className="details">
                                     <i className="fa-solid fa-info"></i>
                                 </Link>
-                                <Link to={`edit/${3}`}>
+                                <Link to={`edit/${3}`} className="edit">
                                     <i className="fa-regular fa-pen-to-square"></i>
                                 </Link>
                             </td>
@@ -93,10 +93,10 @@ export default function Carts() {
                             <td>44</td>
                             <td>45</td>
                             <td>
-                                <Link to={`details/${4}`}>
+                                <Link to={`details/${4}`} className="details">
                                     <i className="fa-solid fa-info"></i>
                                 </Link>
-                                <Link to={`edit/${4}`}>
+                                <Link to={`edit/${4}`} className="edit">
                                     <i className="fa-regular fa-pen-to-square"></i>
                                 </Link>
                             </td>
@@ -108,10 +108,10 @@ export default function Carts() {
                             <td>54</td>
                             <td>55</td>
                             <td>
-                                <Link to={`details/${5}`}>
+                                <Link to={`details/${5}`} className="details">
                                     <i className="fa-solid fa-info"></i>
                                 </Link>
-                                <Link to={`edit/${5}`}>
+                                <Link to={`edit/${5}`} className="edit">
                                     <i className="fa-regular fa-pen-to-square"></i>
                                 </Link>
                             </td>
@@ -123,10 +123,10 @@ export default function Carts() {
                             <td>64</td>
                             <td>65</td>
                             <td>
-                                <Link to={`details/${6}`}>
+                                <Link to={`details/${6}`} className="details">
                                     <i className="fa-solid fa-info"></i>
                                 </Link>
-                                <Link to={`edit/${6}`}>
+                                <Link to={`edit/${6}`} className="edit">
                                     <i className="fa-regular fa-pen-to-square"></i>
                                 </Link>
                             </td>
@@ -138,10 +138,10 @@ export default function Carts() {
                             <td>74</td>
                             <td>75</td>
                             <td>
-                                <Link to={`details/${7}`}>
+                                <Link to={`details/${7}`} className="details">
                                     <i className="fa-solid fa-info"></i>
                                 </Link>
-                                <Link to={`edit/${7}`}>
+                                <Link to={`edit/${7}`} className="edit">
                                     <i className="fa-regular fa-pen-to-square"></i>
                                 </Link>
                             </td>
@@ -153,10 +153,10 @@ export default function Carts() {
                             <td>84</td>
                             <td>85</td>
                             <td>
-                                <Link to={`details/${8}`}>
+                                <Link to={`details/${8}`} className="details">
                                     <i className="fa-solid fa-info"></i>
                                 </Link>
-                                <Link to={`edit/${8}`}>
+                                <Link to={`edit/${8}`} className="edit">
                                     <i className="fa-regular fa-pen-to-square"></i>
                                 </Link>
                             </td>
@@ -168,10 +168,10 @@ export default function Carts() {
                             <td>94</td>
                             <td>95</td>
                             <td>
-                                <Link to={`details/${9}`}>
+                                <Link to={`details/${9}`} className="details">
                                     <i className="fa-solid fa-info"></i>
                                 </Link>
-                                <Link to={`edit/${9}`}>
+                                <Link to={`edit/${9}`} className="edit">
                                     <i className="fa-regular fa-pen-to-square"></i>
                                 </Link>
                             </td>
@@ -183,10 +183,10 @@ export default function Carts() {
                             <td>104</td>
                             <td>105</td>
                             <td>
-                                <Link to={`details/${10}`}>
+                                <Link to={`details/${10}`} className="details">
                                     <i className="fa-solid fa-info"></i>
                                 </Link>
-                                <Link to={`edit/${10}`}>
+                                <Link to={`edit/${10}`} className="edit">
                                     <i className="fa-regular fa-pen-to-square"></i>
                                 </Link>
                             </td>
