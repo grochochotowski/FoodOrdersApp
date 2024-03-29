@@ -51,7 +51,7 @@ nav .menu ul li {
     transition: 150ms ease-in-out;
 }
 nav .menu ul li:hover {
-    background-color: #191919;
+    background-color: #6269ed;
 }
 nav .menu ul li a {
     width: 100%;
