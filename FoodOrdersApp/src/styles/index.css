@@ -67,15 +67,19 @@ a {
 }
 
 input {
+    padding: 10px;
+
     border-radius: 10px;
     outline: none;
     border: none;
-    padding: 10px;
+
+    background-color: #242424;
     box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.5);
 
     transition: 150ms ease-in-out;
 }
 input:focus {
+    background-color: #19242e;
     box-shadow: inset 0 0 8px 5px rgba(0, 0, 0, 0.2),
                 inset 0 0 5px 2px rgba(98, 105, 237, 0.7);
 
@@ -96,7 +100,11 @@ label {
     a {
       color: #213547;
     }
+    input {
+        background-color: #ffffff;
+    }
     input:focus {
+        background-color: #d1dcea;
         box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.2),
                     inset 0 0 8px 5px rgba(98, 105, 237, 0.7);
     
