@@ -13,6 +13,7 @@ export default function NavBar() {
                     <li>
                         <Link to="login">
                             <h3>Home</h3>
+                            <p>(Log out)</p>
                         </Link>
                     </li>
                     <li>
