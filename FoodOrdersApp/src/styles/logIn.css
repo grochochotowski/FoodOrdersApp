@@ -82,4 +82,9 @@ main .password-input i {
     font-size: 1.75rem;
 
     cursor: pointer;
+
+    transition: 150ms ease-in-out;
+}
+main .password-input i:hover {
+    color: #6269ed;
 }
