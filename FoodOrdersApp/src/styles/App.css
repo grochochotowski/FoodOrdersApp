@@ -64,19 +64,12 @@ section h1 {
 }
 .pagination li {
     height: 3rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.pagination li.clickable {
-    height: 3rem;
     width: 3rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
     border-radius: 10px;
 }
 .pagination li.clickable:hover {
