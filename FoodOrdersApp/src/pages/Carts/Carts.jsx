@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 import "../../styles/carts.css"
@@ -7,13 +7,20 @@ import "../../styles/App.css"
 
 export default function Carts() {
 
-    const [sorting, setSortin] = useState(["col1", 0])
+    const [sorting, setSorting] = useState(["col1", 0])
+
+    function sortTable(column) {
+        setSorting(prev => {
+            if (prev[0] === column && prev[1] === 0) return [column, 1]
+            return [column, 0]
+        })
+    }
 
     function generateTableHeader() {
         return (
             <thead>
                 <tr>
-                    <th>
+                    <th onClick={() => sortTable("col1")}>
                         {
                             sorting[0] == "col1" &&
                             (
@@ -24,7 +31,7 @@ export default function Carts() {
                         }
                         Col1
                     </th>
-                    <th>
+                    <th onClick={() => sortTable("col2")}>
                         {
                             sorting[0] == "col2" &&
                             (
@@ -35,7 +42,7 @@ export default function Carts() {
                         }
                         Col1
                     </th>
-                    <th>
+                    <th onClick={() => sortTable("col3")}>
                         {
                             sorting[0] == "col3" &&
                             (
@@ -46,7 +53,7 @@ export default function Carts() {
                         }
                         Col1
                     </th>
-                    <th>
+                    <th onClick={() => sortTable("col4")}>
                         {
                             sorting[0] == "col4" &&
                             (
@@ -57,7 +64,7 @@ export default function Carts() {
                         }
                         Col1
                     </th>
-                    <th>
+                    <th onClick={() => sortTable("col5")}>
                         {
                             sorting[0] == "col5" &&
                             (
