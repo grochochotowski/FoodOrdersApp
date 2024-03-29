@@ -11,7 +11,10 @@ import NavBar from "./components/NavBar";
 
 // PAGES
 const LogIn = lazy(() => import("./pages/LogIn.jsx"));
-const Carts = lazy(() => import("./pages/Carts.jsx"));
+
+const Carts = lazy(() => import("./pages/Carts/Carts.jsx"));
+const CartsDetails = lazy(() => import("./pages/Carts/CartsDetails.jsx"));
+const CartsEdit = lazy(() => import("./pages/Carts/CartsEdit.jsx"));
 
 export default function App() {
   return (
@@ -29,6 +32,16 @@ export default function App() {
             <Route path="/carts" element={
                 <Suspense fallback={<Fallback />}>
                     <Carts />
+                </Suspense>
+            }/>
+            <Route path="/carts/edit/:id" element={
+                <Suspense fallback={<Fallback />}>
+                    <CartsDetails />
+                </Suspense>
+            }/>
+            <Route path="/carts/edit/:id" element={
+                <Suspense fallback={<Fallback />}>
+                    <CartsEdit />
                 </Suspense>
             }/>
         </Routes>

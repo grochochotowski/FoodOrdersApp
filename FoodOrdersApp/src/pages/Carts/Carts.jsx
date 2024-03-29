@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 
-import "../styles/carts.css"
-import "../styles/index.css"
-import "../styles/App.css"
+import "../../styles/carts.css"
+import "../../styles/index.css"
+import "../../styles/App.css"
 
 export default function Carts() {
   return (
@@ -33,12 +33,14 @@ export default function Carts() {
             <div className="list">
                 <table>
                     <thead>
-                        <th>Col1</th>
-                        <th>Col2</th>
-                        <th>Col3</th>
-                        <th>Col4</th>
-                        <th>Col5</th>
-                        <th></th>
+                        <tr>
+                            <th>Col1</th>
+                            <th>Col2</th>
+                            <th>Col3</th>
+                            <th>Col4</th>
+                            <th>Col5</th>
+                            <th></th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
