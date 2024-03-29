@@ -17,7 +17,7 @@ export default function NavBar() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="test">
+                        <Link to="carts">
                             <h3>Carts</h3>
                         </Link>
                     </li>
