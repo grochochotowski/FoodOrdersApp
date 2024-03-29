@@ -77,5 +77,5 @@ main .password-input i {
     transition: 150ms ease-in-out;
 }
 main .password-input i:hover {
-    color: #6269ed;
+    color: var(--clr-dark-hover);
 }

@@ -194,16 +194,21 @@ export default function Carts() {
                     </tbody>
                 </table>
                 <div className="pagination">
-                    <i className="fa-solid fa-caret-left"></i>
                     <ul>
-                        <li>1</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
+                        <li className="clickable"><i className="fa-solid fa-caret-left"></i></li>
+                        <li className="clickable">1</li>
+                        <li>...</li>
+
+                        <li className="clickable">10</li>
+                        <li className="clickable">11</li>
+                        <li className="clickable">12</li>
+                        <li className="clickable">13</li>
+                        <li className="clickable">14</li>
+
+                        <li>...</li>
+                        <li className="clickable">67</li>
+                        <li className="clickable"><i className="fa-solid fa-caret-right"></i></li>
                     </ul>
-                    <i className="fa-solid fa-caret-right"></i>
                 </div>
             </div>
         </section>

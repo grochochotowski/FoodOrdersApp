@@ -1,5 +1,8 @@
 import { useState } from "react"
+
 import "../styles/logIn.css"
+import "../styles/index.css"
+import "../styles/App.css"
 
 export default function LogIn() {
 

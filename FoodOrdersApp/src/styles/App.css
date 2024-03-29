@@ -44,9 +44,44 @@ section h1 {
     gap: 1vw;
 }
 
-/* ========== LIST ==========*/
-.list {
-    
+/* ========== PAGINATION ==========*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2vh 0;
+
+    font-size: 1.3rem;
+}
+.pagination ul {
+    display: flex;
+    gap: 10px
+}
+.pagination li {
+    height: 3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pagination li.clickable {
+    height: 3rem;
+    width: 3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+}
+.pagination li.clickable:hover {
+    background-color: var(--clr-dark-hover);
+    cursor: pointer;
+}
+.pagination i {
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 
@@ -59,5 +94,8 @@ section h1 {
     }
     section h1 {
         border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    }
+    .pagination li.clickable:hover {
+        background-color: var(--clr-light-hover);
     }
 }

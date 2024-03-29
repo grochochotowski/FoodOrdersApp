@@ -13,11 +13,17 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    transition: all 150ms ease-in-out;
+    --clr-dark-hover: #6269ed;
+    --clr-dark-accent: #253543;
+    --clr-light-hover: #adb1ff;
+    --clr-light-accent: #d1dcea;
 }
 html, body {
     padding: 0;
     margin: 0;
+}
+* {
+    transition: all 150ms ease-in-out;
 }
 
 /* ========== HEADERS & TEXTS ==========*/
@@ -108,7 +114,7 @@ button{
     transition: 150ms ease-in-out;
 }
 button:hover {
-    background-color: #6269ed;
+    background-color: var(--clr-dark-hover);
 }
 
 /* ========== TABLES ==========*/
@@ -124,7 +130,7 @@ thead {
 }
 th {
     padding: 0.5rem 0;
-    background-color: #adb1ff;
+    background-color: var(--clr-dark-hover);
 }
 th:last-child {
     width: 10%;
@@ -133,7 +139,7 @@ tbody {
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
 tbody tr:nth-child(even) {
-    background-color: #d1dcea;
+    background-color: var(--clr-dark-accent);
 }
 td {
     padding: 0.25rem 0;
@@ -150,7 +156,7 @@ td:last-child {
 @media (prefers-color-scheme: light) {
     :root {
       color: #213547;
-      background-color: #d1dcea;
+      background-color: var(--clr-light-accent);
     }
     a {
       color: #213547;
@@ -160,13 +166,19 @@ td:last-child {
         border: 2px solid rgba(0, 0, 0, 0.5);
     }
     input:focus {
-        background-color: #d1dcea;
+        background-color: var(--clr-light-accent);
     }
     button {
         background-color: #ffffff;
         color: #213547;
     }
     button:hover {
-        background-color: #adb1ff;
+        background-color: var(--clr-light-hover);
+    }
+    th {
+        background-color: var(--clr-light-hover);
+    }
+    tbody tr:nth-child(even) {
+        background-color: var(--clr-light-accent);
     }
 }
