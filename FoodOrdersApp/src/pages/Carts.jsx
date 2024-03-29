@@ -1,7 +1,9 @@
+import "../styles/carts.css"
+
 export default function Carts() {
   return (
     <div className="container">
-        <section className="container">
+        <section className="box">
             <h1>Carts</h1>
             <div className="filter">
                 <h3>Filters</h3>
