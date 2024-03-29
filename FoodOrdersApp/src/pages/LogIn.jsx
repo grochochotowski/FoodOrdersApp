@@ -12,7 +12,7 @@ export default function LogIn() {
     return (
         <main className="container">
             <div className="box">
-                <h1>Log in to your account</h1>
+                <h2>Log in to your account</h2>
                 <div className="login-input">
                     <label htmlFor="login">Login:</label>
                     <input type="text" id="login"/>
