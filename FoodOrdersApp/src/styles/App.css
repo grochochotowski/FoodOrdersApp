@@ -1,3 +1,4 @@
+/* ========== MAIN ==========*/
 .main-container {
     display: flex;
     overflow: hidden;
@@ -16,20 +17,17 @@ section.box {
     padding: 0 5vw;
 }
 
+/* ========== FILTERS ==========*/
 section h1 {
     padding: 2vh 0;
     text-align: center;
     border-bottom: 2px solid rgba(255, 255, 255, 0.87);
 }
-
 .filter {
     display: flex;
     flex-direction: column;
 
     padding: 2vh 0;
-}
-.filter .title {
-    
 }
 .filter .inputs {
     height: 5vh;
@@ -45,9 +43,8 @@ section h1 {
     align-items: center;
     gap: 1vw;
 }
-.filter .inputs button {
-    
-}
+
+/* ========== LIST ==========*/
 
 
 

@@ -1,3 +1,4 @@
+/* ========== MAIN STYLES ==========*/
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -14,12 +15,12 @@
 
     transition: all 150ms ease-in-out;
 }
-
 html, body {
     padding: 0;
     margin: 0;
 }
 
+/* ========== HEADERS & TEXTS ==========*/
 h1 {
     margin: 0;
     font-size: 3rem;
@@ -54,6 +55,7 @@ p {
     margin: 0;
 }
 
+/* ========== LISTS ==========*/
 ul {
     margin: 0;
     padding: 0;
@@ -63,11 +65,13 @@ li {
     margin: 0;
 }
 
+/* ========== LINKS ==========*/
 a {
     color: rgba(255, 255, 255, 0.87);
     text-decoration: none;
 }
 
+/* ========== FORMS ==========*/
 input {
     padding: 10px;
 
@@ -107,6 +111,8 @@ button{
 button:hover {
     background-color: #6269ed;
 }
+
+
 
 
 
