@@ -61,3 +61,12 @@ nav .menu ul li a {
     justify-content: center;
     align-items: center;
 }
+
+
+
+
+@media (prefers-color-scheme: light) {
+    nav .menu ul li:hover {
+        background-color: #747bff;
+    }
+}
