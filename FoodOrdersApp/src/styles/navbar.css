@@ -14,10 +14,10 @@ nav .box {
 }
 
 nav .logo {
-    height: 20%;
+    height: 15%;
 
     margin: 0 5%;
-    padding: 5% 0;
+    padding: 0;
 
     display: flex;
     justify-content: center;
@@ -29,7 +29,7 @@ nav .logo {
 }
 
 nav .menu {
-    height: 80%;
+    height: 85%;
 
     margin-top: 5%;
 }
