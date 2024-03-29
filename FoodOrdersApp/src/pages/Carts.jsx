@@ -1,4 +1,6 @@
 import "../styles/carts.css"
+import "../styles/index.css"
+import "../styles/App.css"
 
 export default function Carts() {
   return (
@@ -6,20 +8,24 @@ export default function Carts() {
         <section className="box">
             <h1>Carts</h1>
             <div className="filter">
-                <h3>Filters</h3>
-                <div className="restaurant-filter">
-                    <label htmlFor="restaurant-input">
-                        <h5>Restaurant:</h5>
-                    </label>
-                    <input type="text" id="restaurant-input"/>
+                <div className="title">
+                    <h2>Filters</h2>
                 </div>
-                <div className="organization-filter">
-                    <label htmlFor="organization-input">
-                        <h5>Organization:</h5>
-                    </label>
-                    <input type="text" id="organization-input"/>
+                    <div className="inputs">
+                    <div className="single-filter">
+                        <label htmlFor="restaurant-input">
+                            <h4>Restaurant:</h4>
+                        </label>
+                        <input type="text" id="restaurant-input"/>
+                    </div>
+                    <div className="single-filter">
+                        <label htmlFor="organization-input">
+                            <h4>Organization:</h4>
+                        </label>
+                        <input type="text" id="organization-input"/>
+                    </div>
+                    <button>Filter</button>
                 </div>
-                <button>Filter</button>
             </div>
 
             <div className="list">
