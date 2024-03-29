@@ -49,6 +49,29 @@ section h1 {
     gap: 1vw;
 }
 
+/* ========== LIST ==========*/
+.edit,
+.details {
+    width: 2rem;
+    height: 2rem;
+
+    padding: 0.25rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    
+    cursor: pointer;
+}
+.details:hover {
+    background-color: rgb(43, 123, 43);
+}
+.edit:hover {
+    background-color: rgb(168, 127, 33);
+}
+
 /* ========== PAGINATION ==========*/
 .pagination {
     display: flex;
@@ -94,5 +117,11 @@ section h1 {
     }
     .pagination li.clickable:hover {
         background-color: var(--clr-light-hover);
+    }
+    .details:hover {
+        background-color: rgb(66, 195, 66);
+    }
+    .edit:hover {
+        background-color: rgb(255, 194, 52);
     }
 }
