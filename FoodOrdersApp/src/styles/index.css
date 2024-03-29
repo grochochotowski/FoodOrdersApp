@@ -97,7 +97,8 @@ label {
     display: inline-block;
     user-select: none;
 }
-button{
+button,
+.button{
     padding: 10px 60px; 
 
     border-radius: 7px;
@@ -113,7 +114,8 @@ button{
 
     transition: 150ms ease-in-out;
 }
-button:hover {
+button:hover,
+.button:hover {
     background-color: var(--clr-dark-hover);
 }
 
@@ -168,11 +170,13 @@ td:last-child {
     input:focus {
         background-color: var(--clr-light-accent);
     }
-    button {
+    button,
+    .button {
         background-color: #ffffff;
         color: #213547;
     }
-    button:hover {
+    button:hover,
+    .button:hover {
         background-color: var(--clr-light-hover);
     }
     th {
