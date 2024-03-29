@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 import "../styles/carts.css"
 import "../styles/index.css"
 import "../styles/App.css"
@@ -46,8 +48,12 @@ export default function Carts() {
                             <td>14</td>
                             <td>15</td>
                             <td>
-                                <i className="fa-solid fa-info"></i>
-                                <i className="fa-regular fa-pen-to-square"></i>
+                                <Link to={`details/${1}`}>
+                                    <i className="fa-solid fa-info"></i>
+                                </Link>
+                                <Link to={`edit/${1}`}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                </Link>
                             </td>
                         </tr>
                         <tr>
@@ -57,8 +63,12 @@ export default function Carts() {
                             <td>24</td>
                             <td>25</td>
                             <td>
-                                <i className="fa-solid fa-info"></i>
-                                <i className="fa-regular fa-pen-to-square"></i>
+                                <Link to={`details/${2}`}>
+                                    <i className="fa-solid fa-info"></i>
+                                </Link>
+                                <Link to={`edit/${2}`}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                </Link>
                             </td>
                         </tr>
                         <tr>
@@ -68,8 +78,12 @@ export default function Carts() {
                             <td>34</td>
                             <td>35</td>
                             <td>
-                                <i className="fa-solid fa-info"></i>
-                                <i className="fa-regular fa-pen-to-square"></i>
+                                <Link to={`details/${3}`}>
+                                    <i className="fa-solid fa-info"></i>
+                                </Link>
+                                <Link to={`edit/${3}`}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                </Link>
                             </td>
                         </tr>
                         <tr>
@@ -79,8 +93,12 @@ export default function Carts() {
                             <td>44</td>
                             <td>45</td>
                             <td>
-                                <i className="fa-solid fa-info"></i>
-                                <i className="fa-regular fa-pen-to-square"></i>
+                                <Link to={`details/${4}`}>
+                                    <i className="fa-solid fa-info"></i>
+                                </Link>
+                                <Link to={`edit/${4}`}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                </Link>
                             </td>
                         </tr>
                         <tr>
@@ -90,8 +108,12 @@ export default function Carts() {
                             <td>54</td>
                             <td>55</td>
                             <td>
-                                <i className="fa-solid fa-info"></i>
-                                <i className="fa-regular fa-pen-to-square"></i>
+                                <Link to={`details/${5}`}>
+                                    <i className="fa-solid fa-info"></i>
+                                </Link>
+                                <Link to={`edit/${5}`}>
+                                    <i className="fa-regular fa-pen-to-square"></i>
+                                </Link>
                             </td>
                         </tr>
                     </tbody>
