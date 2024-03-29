@@ -5,4 +5,13 @@
 .box {
     display: flex;
     flex-direction: column;
+    background-color: #242424;
+}
+
+
+
+@media (prefers-color-scheme: light) {
+    .box {
+        background-color: #ffffff;
+    }
 }

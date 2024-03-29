@@ -5,6 +5,7 @@ nav.container {
     box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.5);
 
     user-select: none;
+    z-index: 20;
 }
 
 nav .box {
