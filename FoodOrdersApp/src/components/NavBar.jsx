@@ -11,7 +11,7 @@ export default function NavBar() {
             <div className="menu">
                 <ul>
                     <li>
-                        <Link to="test">
+                        <Link to="login">
                             <h3>Home</h3>
                         </Link>
                     </li>
