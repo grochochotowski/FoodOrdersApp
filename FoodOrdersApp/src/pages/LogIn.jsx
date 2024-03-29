@@ -13,19 +13,17 @@ export default function LogIn() {
         <main className="container">
             <div className="box">
                 <h1>Log in to your account</h1>
-                <div className="form">
-                    <div className="login">
-                        <label htmlFor="login">Login:</label>
-                        <input type="text" id="login"/>
-                    </div>
+                <div className="login-input">
+                    <label htmlFor="login">Login:</label>
+                    <input type="text" id="login"/>
+                </div>
+                <div className="password-input">
                     <label htmlFor="password">Password:</label>
-                    <div className="password-input">
-                        <input type={isPasswordShown ? "text" : "password"} id="password"/>
-                        {isPasswordShown
-                        ? <i className="fa-regular fa-eye" onClick={() => changePasswordVisibility()}></i>
-                        : <i className="fa-regular fa-eye-slash" onClick={() => changePasswordVisibility()}></i>
-                        }
-                    </div>
+                    <input type={isPasswordShown ? "text" : "password"} id="password"/>
+                    {isPasswordShown
+                    ? <i className="fa-regular fa-eye" onClick={() => changePasswordVisibility()}></i>
+                    : <i className="fa-regular fa-eye-slash" onClick={() => changePasswordVisibility()}></i>
+                    }
                 </div>
             </div>
         </main>
