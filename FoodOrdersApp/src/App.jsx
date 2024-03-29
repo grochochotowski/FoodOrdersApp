@@ -10,7 +10,7 @@ import Fallback from "./components/Fallback";
 import NavBar from "./components/NavBar";
 
 // PAGES
-const Login = lazy(() => import("./pages/Login.jsx"));
+const LogIn = lazy(() => import("./pages/LogIn.jsx"));
 
 export default function App() {
   return (
@@ -21,7 +21,7 @@ export default function App() {
         <Routes>
             <Route path="/login" element={
                 <Suspense fallback={<Fallback />}>
-                    <Login />
+                    <LogIn />
                 </Suspense>
             }/>
         </Routes>
