@@ -6,7 +6,7 @@ export default function NavBar() {
     <nav className='container'>
         <div className="box">
             <div className="logo">
-                <h2>FoodOrders App</h2>
+                <h2>FoodOrdersApp</h2>
             </div>
             <div className="menu">
                 <ul>
