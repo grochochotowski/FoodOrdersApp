@@ -1,7 +1,6 @@
 /* ========== MAIN ==========*/
 .main-container {
     display: flex;
-    overflow: hidden;
 }
 .box {
     display: flex;
@@ -15,6 +14,8 @@ section.box {
     display: flex;
 
     padding: 0 5vw;
+
+    overflow: clip;
 }
 
 /* ========== FILTERS ==========*/
