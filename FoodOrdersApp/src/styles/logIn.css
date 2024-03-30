@@ -27,7 +27,7 @@ main .login-input {
     width: 100%;
 }
 main .login-input label {
-    width: 6vw;
+    width: 7vw;
 
     font-weight: 700;
     font-size: 1.25rem;
@@ -48,7 +48,7 @@ main .password-input {
     width: 100%;
 }
 main .password-input label {
-    width: 6vw;
+    width: 7vw;
 
     font-weight: 700;
     font-size: 1.25rem;
