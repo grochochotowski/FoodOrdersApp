@@ -143,60 +143,49 @@ export default function Carts() {
         return (
             <thead>
                 <tr>
-                    <th onClick={() => sortTable("col1")}>
+                    <th onClick={() => sortTable("organization")}>
                         {
-                            sorting[0] == "col1" &&
+                            sorting[0] == "organization" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
                                 : <i className="fa-solid fa-arrow-up-a-z"></i>
                             )
                         }
-                        Col1
+                        Organization
                     </th>
-                    <th onClick={() => sortTable("col2")}>
+                    <th onClick={() => sortTable("restaurant")}>
                         {
-                            sorting[0] == "col2" &&
+                            sorting[0] == "restaurant" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
                                 : <i className="fa-solid fa-arrow-up-a-z"></i>
                             )
                         }
-                        Col1
+                        Restaurant
                     </th>
-                    <th onClick={() => sortTable("col3")}>
+                    <th onClick={() => sortTable("totalMinimumPrice")}>
                         {
-                            sorting[0] == "col3" &&
+                            sorting[0] == "totalMinimumPrice" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
                                 : <i className="fa-solid fa-arrow-up-a-z"></i>
                             )
                         }
-                        Col1
+                        Total / Minimum price
                     </th>
-                    <th onClick={() => sortTable("col4")}>
+                    <th onClick={() => sortTable("delivery")}>
                         {
-                            sorting[0] == "col4" &&
+                            sorting[0] == "delivery" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
                                 : <i className="fa-solid fa-arrow-up-a-z"></i>
                             )
                         }
-                        Col1
-                    </th>
-                    <th onClick={() => sortTable("col5")}>
-                        {
-                            sorting[0] == "col5" &&
-                            (
-                                sorting[1] === 0
-                                ? <i className="fa-solid fa-arrow-down-a-z"></i>
-                                : <i className="fa-solid fa-arrow-up-a-z"></i>
-                            )
-                        }
-                        Col1
+                        Delivery cost
                     </th>
                     <th></th>
                 </tr>
