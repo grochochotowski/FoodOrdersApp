@@ -30,7 +30,7 @@ export default function Carts() {
             "organization" : {
                 "name" : "Organization 2"
             },
-            "restaurantId" : {
+            "restaurant" : {
                 "name" : "McDonald's"
             }
         },
@@ -42,7 +42,7 @@ export default function Carts() {
             "organization" : {
                 "name" : "Organization 3"
             },
-            "restaurantId" : {
+            "restaurant" : {
                 "name" : "McDonald's"
             }
         },
@@ -54,7 +54,7 @@ export default function Carts() {
             "organization" : {
                 "name" : "Organization 4"
             },
-            "restaurantId" : {
+            "restaurant" : {
                 "name" : "McDonald's"
             }
         },
@@ -66,7 +66,7 @@ export default function Carts() {
             "organization" : {
                 "name" : "Organization 5"
             },
-            "restaurantId" : {
+            "restaurant" : {
                 "name" : "McDonald's"
             }
         },
@@ -78,7 +78,7 @@ export default function Carts() {
             "organization" : {
                 "name" : "Organization 6"
             },
-            "restaurantId" : {
+            "restaurant" : {
                 "name" : "McDonald's"
             }
         },
@@ -90,7 +90,7 @@ export default function Carts() {
             "organization" : {
                 "name" : "Organization 7"
             },
-            "restaurantId" : {
+            "restaurant" : {
                 "name" : "McDonald's"
             }
         },
@@ -102,7 +102,7 @@ export default function Carts() {
             "organization" : {
                 "name" : "Organization 8"
             },
-            "restaurantId" : {
+            "restaurant" : {
                 "name" : "McDonald's"
             }
         },
@@ -114,7 +114,7 @@ export default function Carts() {
             "organization" : {
                 "name" : "Organization 9"
             },
-            "restaurantId" : {
+            "restaurant" : {
                 "name" : "McDonald's"
             }
         },
@@ -126,7 +126,7 @@ export default function Carts() {
             "organization" : {
                 "name" : "Organization 10"
             },
-            "restaurantId" : {
+            "restaurant" : {
                 "name" : "McDonald's"
             }
         },
@@ -207,150 +207,22 @@ export default function Carts() {
     function generateTableBody() {
         return (
             <tbody>
-               
-                <tr>
-                    <td>11</td>
-                    <td>12</td>
-                    <td>13</td>
-                    <td>14</td>
-                    <td>15</td>
-                    
-                </tr>
-                <tr>
-                    <td>21</td>
-                    <td>22</td>
-                    <td>23</td>
-                    <td>24</td>
-                    <td>25</td>
-                    <td>
-                        <Link to={`details/${2}`} className="details">
-                            <i className="fa-solid fa-info"></i>
-                        </Link>
-                        <Link to={`edit/${2}`} className="edit">
-                            <i className="fa-regular fa-pen-to-square"></i>
-                        </Link>
-                    </td>
-                </tr>
-                <tr>
-                    <td>31</td>
-                    <td>32</td>
-                    <td>33</td>
-                    <td>34</td>
-                    <td>35</td>
-                    <td>
-                        <Link to={`details/${3}`} className="details">
-                            <i className="fa-solid fa-info"></i>
-                        </Link>
-                        <Link to={`edit/${3}`} className="edit">
-                            <i className="fa-regular fa-pen-to-square"></i>
-                        </Link>
-                    </td>
-                </tr>
-                <tr>
-                    <td>41</td>
-                    <td>42</td>
-                    <td>43</td>
-                    <td>44</td>
-                    <td>45</td>
-                    <td>
-                        <Link to={`details/${4}`} className="details">
-                            <i className="fa-solid fa-info"></i>
-                        </Link>
-                        <Link to={`edit/${4}`} className="edit">
-                            <i className="fa-regular fa-pen-to-square"></i>
-                        </Link>
-                    </td>
-                </tr>
-                <tr>
-                    <td>51</td>
-                    <td>52</td>
-                    <td>53</td>
-                    <td>54</td>
-                    <td>55</td>
-                    <td>
-                        <Link to={`details/${5}`} className="details">
-                            <i className="fa-solid fa-info"></i>
-                        </Link>
-                        <Link to={`edit/${5}`} className="edit">
-                            <i className="fa-regular fa-pen-to-square"></i>
-                        </Link>
-                    </td>
-                </tr>
-                <tr>
-                    <td>61</td>
-                    <td>62</td>
-                    <td>63</td>
-                    <td>64</td>
-                    <td>65</td>
-                    <td>
-                        <Link to={`details/${6}`} className="details">
-                            <i className="fa-solid fa-info"></i>
-                        </Link>
-                        <Link to={`edit/${6}`} className="edit">
-                            <i className="fa-regular fa-pen-to-square"></i>
-                        </Link>
-                    </td>
-                </tr>
-                <tr>
-                    <td>71</td>
-                    <td>72</td>
-                    <td>73</td>
-                    <td>74</td>
-                    <td>75</td>
-                    <td>
-                        <Link to={`details/${7}`} className="details">
-                            <i className="fa-solid fa-info"></i>
-                        </Link>
-                        <Link to={`edit/${7}`} className="edit">
-                            <i className="fa-regular fa-pen-to-square"></i>
-                        </Link>
-                    </td>
-                </tr>
-                <tr>
-                    <td>81</td>
-                    <td>82</td>
-                    <td>83</td>
-                    <td>84</td>
-                    <td>85</td>
-                    <td>
-                        <Link to={`details/${8}`} className="details">
-                            <i className="fa-solid fa-info"></i>
-                        </Link>
-                        <Link to={`edit/${8}`} className="edit">
-                            <i className="fa-regular fa-pen-to-square"></i>
-                        </Link>
-                    </td>
-                </tr>
-                <tr>
-                    <td>91</td>
-                    <td>92</td>
-                    <td>93</td>
-                    <td>94</td>
-                    <td>95</td>
-                    <td>
-                        <Link to={`details/${9}`} className="details">
-                            <i className="fa-solid fa-info"></i>
-                        </Link>
-                        <Link to={`edit/${9}`} className="edit">
-                            <i className="fa-regular fa-pen-to-square"></i>
-                        </Link>
-                    </td>
-                </tr>
-                <tr>
-                    <td>101</td>
-                    <td>102</td>
-                    <td>103</td>
-                    <td>104</td>
-                    <td>105</td>
-                    <td>
-                        <Link to={`details/${10}`} className="details">
-                            <i className="fa-solid fa-info"></i>
-                        </Link>
-                        <Link to={`edit/${10}`} className="edit">
-                            <i className="fa-regular fa-pen-to-square"></i>
-                        </Link>
-                    </td>
-                </tr>
+                {carts.map((cart) => (
+                    <tr key={cart.id}>
+                        <td>{cart.organization.name}</td>
+                        <td>{cart.restaurant.name}</td>
+                        <td>{cart.totalCartPrice} / {cart.minPrice}</td>
+                        <td>{cart.deliveryPrice}</td>
+                        <td>
+                            <Link to={`details/${cart.id}`} className="details">
+                                <i className="fa-solid fa-info"></i>
+                            </Link>
+                            <Link to={`edit/${cart.id}`} className="edit">
+                                <i className="fa-regular fa-pen-to-square"></i>
+                            </Link>
+                        </td>
+                    </tr>
+                ))}
             </tbody>
         )
     }
