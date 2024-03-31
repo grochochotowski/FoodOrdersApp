@@ -9,6 +9,129 @@ export default function Carts() {
 
     const [sorting, setSorting] = useState(["col1", 0])
 
+    const [carts, setCarts] = useState([
+        {
+            "minPrice": 19.99,
+            "totalCartPrice" : 19.99,
+            "deliveryPrice" : 0.00,
+            "freeDeliveryMinPrice" : 19.99,
+            "organization" : {
+                "name" : "Organization 1"
+            },
+            "restaurantId" : {
+                "name" : "McDonald's"
+            }
+        },
+        {
+            "minPrice": 29.99,
+            "totalCartPrice" : 29.99,
+            "deliveryPrice" : 0.00,
+            "freeDeliveryMinPrice" : 29.99,
+            "organization" : {
+                "name" : "Organization 2"
+            },
+            "restaurantId" : {
+                "name" : "McDonald's"
+            }
+        },
+        {
+            "minPrice": 39.99,
+            "totalCartPrice" : 39.99,
+            "deliveryPrice" : 0.00,
+            "freeDeliveryMinPrice" : 39.99,
+            "organization" : {
+                "name" : "Organization 3"
+            },
+            "restaurantId" : {
+                "name" : "McDonald's"
+            }
+        },
+        {
+            "minPrice": 49.99,
+            "totalCartPrice" : 49.99,
+            "deliveryPrice" : 0.00,
+            "freeDeliveryMinPrice" : 49.99,
+            "organization" : {
+                "name" : "Organization 4"
+            },
+            "restaurantId" : {
+                "name" : "McDonald's"
+            }
+        },
+        {
+            "minPrice": 59.99,
+            "totalCartPrice" : 59.99,
+            "deliveryPrice" : 0.00,
+            "freeDeliveryMinPrice" : 59.99,
+            "organization" : {
+                "name" : "Organization 5"
+            },
+            "restaurantId" : {
+                "name" : "McDonald's"
+            }
+        },
+        {
+            "minPrice": 69.99,
+            "totalCartPrice" : 69.99,
+            "deliveryPrice" : 0.00,
+            "freeDeliveryMinPrice" : 69.99,
+            "organization" : {
+                "name" : "Organization 6"
+            },
+            "restaurantId" : {
+                "name" : "McDonald's"
+            }
+        },
+        {
+            "minPrice": 79.99,
+            "totalCartPrice" : 79.99,
+            "deliveryPrice" : 0.00,
+            "freeDeliveryMinPrice" : 79.99,
+            "organization" : {
+                "name" : "Organization 7"
+            },
+            "restaurantId" : {
+                "name" : "McDonald's"
+            }
+        },
+        {
+            "minPrice": 89.99,
+            "totalCartPrice" : 89.99,
+            "deliveryPrice" : 0.00,
+            "freeDeliveryMinPrice" : 89.99,
+            "organization" : {
+                "name" : "Organization 8"
+            },
+            "restaurantId" : {
+                "name" : "McDonald's"
+            }
+        },
+        {
+            "minPrice": 99.99,
+            "totalCartPrice" : 99.99,
+            "deliveryPrice" : 0.00,
+            "freeDeliveryMinPrice" : 99.99,
+            "organization" : {
+                "name" : "Organization 9"
+            },
+            "restaurantId" : {
+                "name" : "McDonald's"
+            }
+        },
+        {
+            "minPrice": 109.99,
+            "totalCartPrice" : 109.99,
+            "deliveryPrice" : 0.00,
+            "freeDeliveryMinPrice" : 109.99,
+            "organization" : {
+                "name" : "Organization 10"
+            },
+            "restaurantId" : {
+                "name" : "McDonald's"
+            }
+        },
+    ])
+
     function sortTable(column) {
         setSorting(prev => {
             if (prev[0] === column && prev[1] === 0) return [column, 1]
