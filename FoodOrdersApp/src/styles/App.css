@@ -82,6 +82,8 @@ section h1 {
     padding: 2vh 0;
 
     font-size: 1.3rem;
+
+    user-select: none;
 }
 .pagination ul {
     display: flex;
