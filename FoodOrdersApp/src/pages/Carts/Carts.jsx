@@ -11,22 +11,22 @@ export default function Carts() {
 
     const [carts, setCarts] = useState([
         {
+            "id" : 1,
             "minPrice": 19.99,
             "totalCartPrice" : 19.99,
             "deliveryPrice" : 0.00,
-            "freeDeliveryMinPrice" : 19.99,
             "organization" : {
                 "name" : "Organization 1"
             },
-            "restaurantId" : {
+            "restaurant" : {
                 "name" : "McDonald's"
             }
         },
         {
+            "id" : 2,
             "minPrice": 29.99,
             "totalCartPrice" : 29.99,
             "deliveryPrice" : 0.00,
-            "freeDeliveryMinPrice" : 29.99,
             "organization" : {
                 "name" : "Organization 2"
             },
@@ -35,10 +35,10 @@ export default function Carts() {
             }
         },
         {
+            "id" : 3,
             "minPrice": 39.99,
             "totalCartPrice" : 39.99,
             "deliveryPrice" : 0.00,
-            "freeDeliveryMinPrice" : 39.99,
             "organization" : {
                 "name" : "Organization 3"
             },
@@ -47,10 +47,10 @@ export default function Carts() {
             }
         },
         {
+            "id" : 4,
             "minPrice": 49.99,
             "totalCartPrice" : 49.99,
             "deliveryPrice" : 0.00,
-            "freeDeliveryMinPrice" : 49.99,
             "organization" : {
                 "name" : "Organization 4"
             },
@@ -59,10 +59,10 @@ export default function Carts() {
             }
         },
         {
+            "id" : 5,
             "minPrice": 59.99,
             "totalCartPrice" : 59.99,
             "deliveryPrice" : 0.00,
-            "freeDeliveryMinPrice" : 59.99,
             "organization" : {
                 "name" : "Organization 5"
             },
@@ -71,10 +71,10 @@ export default function Carts() {
             }
         },
         {
+            "id" : 6,
             "minPrice": 69.99,
             "totalCartPrice" : 69.99,
             "deliveryPrice" : 0.00,
-            "freeDeliveryMinPrice" : 69.99,
             "organization" : {
                 "name" : "Organization 6"
             },
@@ -83,10 +83,10 @@ export default function Carts() {
             }
         },
         {
+            "id" : 7,
             "minPrice": 79.99,
             "totalCartPrice" : 79.99,
             "deliveryPrice" : 0.00,
-            "freeDeliveryMinPrice" : 79.99,
             "organization" : {
                 "name" : "Organization 7"
             },
@@ -95,10 +95,10 @@ export default function Carts() {
             }
         },
         {
+            "id" : 8,
             "minPrice": 89.99,
             "totalCartPrice" : 89.99,
             "deliveryPrice" : 0.00,
-            "freeDeliveryMinPrice" : 89.99,
             "organization" : {
                 "name" : "Organization 8"
             },
@@ -107,10 +107,10 @@ export default function Carts() {
             }
         },
         {
+            "id" : 9,
             "minPrice": 99.99,
             "totalCartPrice" : 99.99,
             "deliveryPrice" : 0.00,
-            "freeDeliveryMinPrice" : 99.99,
             "organization" : {
                 "name" : "Organization 9"
             },
@@ -119,10 +119,10 @@ export default function Carts() {
             }
         },
         {
+            "id" : 10,
             "minPrice": 109.99,
             "totalCartPrice" : 109.99,
             "deliveryPrice" : 0.00,
-            "freeDeliveryMinPrice" : 109.99,
             "organization" : {
                 "name" : "Organization 10"
             },
@@ -207,20 +207,14 @@ export default function Carts() {
     function generateTableBody() {
         return (
             <tbody>
+               
                 <tr>
                     <td>11</td>
                     <td>12</td>
                     <td>13</td>
                     <td>14</td>
                     <td>15</td>
-                    <td>
-                        <Link to={`details/${1}`} className="details">
-                            <i className="fa-solid fa-info"></i>
-                        </Link>
-                        <Link to={`edit/${1}`} className="edit">
-                            <i className="fa-regular fa-pen-to-square"></i>
-                        </Link>
-                    </td>
+                    
                 </tr>
                 <tr>
                     <td>21</td>
