@@ -9,13 +9,13 @@
 }
 section.box {
     width: 70vw;
-    height: 100%;
+    height: 100vh;
 
     display: flex;
 
     padding: 0 5vw;
 
-    overflow: clip;
+    overflow: scroll;
 }
 
 /* ========== FILTERS ==========*/
