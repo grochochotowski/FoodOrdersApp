@@ -20,7 +20,7 @@ export default function CartsNew() {
                 </div>
                 <div className="form">
                     <div className="line">
-                        <div className="layer">
+                        <div className="layer selects">
 
                             <div className="input-container">
                                 <label htmlFor="restaurant">Restaurant:</label>

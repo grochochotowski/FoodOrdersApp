@@ -19,6 +19,12 @@
     justify-content: space-around;
     gap: 1vw;
 }
+.layer.selects {
+    width: 50%;
+}
+.layer.selects * {
+    width: 100%;
+}
 .layer.left {
     flex-basis: 50%;
     flex-direction: column;
