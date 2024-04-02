@@ -102,6 +102,25 @@ input {
 input:focus {
     background-color: var(--clr-dark-200);
 }
+select {
+    width: 15rem;
+
+    padding: 0.4rem;
+
+    border-radius: 7px;
+    outline: none;
+    border: none;
+
+    background-color: var(--clr-dark-100);
+    border: 2px solid rgba(255, 255, 255, 0.87);
+
+    font-size: 1.25rem;
+
+    transition: 150ms ease-in-out;
+}
+select:focus {
+    background-color: var(--clr-dark-200);
+}
 label {
     display: inline-block;
     user-select: none;
@@ -211,6 +230,13 @@ td:last-child {
         border: 2px solid rgba(0, 0, 0, 0.5);
     }
     input:focus {
+        background-color: var(--clr-light-800);
+    }
+    select {
+        background-color: #ffffff;
+        border: 2px solid rgba(0, 0, 0, 0.5);
+    }
+    select:focus {
         background-color: var(--clr-light-800);
     }
     button,
