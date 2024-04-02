@@ -38,4 +38,5 @@
 }
 .input-container textarea {
     width: calc(100% - 0.8rem);
+    height: 100%;
 }
