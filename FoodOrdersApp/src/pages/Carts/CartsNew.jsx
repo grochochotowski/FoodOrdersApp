@@ -67,7 +67,7 @@ export default function CartsNew() {
                         </div>
                     </div>
                     <div className="line left-right">
-                        <div className="left">
+                        <div className="layer left">
 
                             <label htmlFor="min-price">Minimum cart price:</label>
                             <input type="text" />
@@ -79,7 +79,7 @@ export default function CartsNew() {
                             <input type="text" />
 
                         </div>
-                        <div className="right">
+                        <div className="layer right">
 
                             <label htmlFor="notes">Notes:</label>
                             <textarea name="notes" id="notes"></textarea>
