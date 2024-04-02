@@ -12,7 +12,7 @@
     flex-direction: column;
 }
 .line.left-right {
-
+    flex-direction: row;
 }
 .layer {
     display: flex;
