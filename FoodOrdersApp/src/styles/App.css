@@ -148,4 +148,10 @@ section h1 {
     .edit:hover {
         background-color: rgb(255, 194, 52);
     }
+    .path-link {
+        font-weight: 600;
+    }
+    .path-link:hover {
+        color: var(--clr-light-500);
+    }
 }
