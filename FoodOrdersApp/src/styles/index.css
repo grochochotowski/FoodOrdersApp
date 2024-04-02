@@ -103,6 +103,7 @@ input:focus {
     background-color: var(--clr-dark-200);
 }
 select {
+    height: 3rem;
     width: 15rem;
 
     padding: 0.4rem;
