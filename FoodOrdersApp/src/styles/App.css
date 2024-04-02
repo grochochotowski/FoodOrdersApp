@@ -5,7 +5,7 @@
 .box {
     display: flex;
     flex-direction: column;
-    background-color: #242424;
+    background-color: var(--clr-dark-100);
 }
 section.box {
     width: 70vw;
