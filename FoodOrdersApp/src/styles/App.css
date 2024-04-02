@@ -107,8 +107,29 @@ section h1 {
     cursor: pointer;
 }
 
+/* ========== PATH ==========*/
+.path {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
 
+    padding: 1rem 0;
+    line-height: 4rem;
 
+    user-select: none;
+}
+.path-arrows {
+    letter-spacing: -5px;
+    font-size: 2rem;
+}
+.path-link {
+    font-size: 1.5rem;
+
+    cursor: pointer;
+}
+.path-link:hover {
+    color: var(--clr-dark-500);
+}
 
 
 @media (prefers-color-scheme: light) {

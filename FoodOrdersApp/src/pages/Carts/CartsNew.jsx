@@ -10,9 +10,9 @@ export default function CartsNew() {
             <section className="box">
                 <h1>Carts</h1>
                 <div className="path">
-                    <p onClick={() => {navigate("/carts")}}>Carts</p>
-                    <p>&gt;&gt;&gt;</p>
-                    <p onClick={() => {navigate("/carts/new")}}>New cart</p>
+                    <p className="path-link" onClick={() => {navigate("/carts")}}>Carts</p>
+                    <p className="path-arrows">&gt;&gt;&gt;</p>
+                    <p className="path-link" onClick={() => {navigate("/carts/new")}}>New cart</p>
                 </div>
                 <div className="form">
                     <label htmlFor="test1">Test</label>
@@ -24,7 +24,10 @@ export default function CartsNew() {
                     <label htmlFor="test4">Test</label>
                     <input type="text" id="test4" name="test4"/>
                 </div>
-                <button>Create cart</button>
+                <div className="control-buttons">
+                    <button>Go back</button>
+                    <button>Create cart</button>
+                </div>
             </section>
         </div>
   )
