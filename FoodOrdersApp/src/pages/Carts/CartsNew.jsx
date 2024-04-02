@@ -103,8 +103,10 @@ export default function CartsNew() {
                         </div>
                         <div className="layer right">
 
-                            <label htmlFor="notes">Notes:</label>
-                            <textarea name="notes" id="notes"></textarea>
+                            <div className="input-container">
+                                <label htmlFor="notes">Notes:</label>
+                                <textarea name="notes" id="notes"></textarea>                          
+                            </div>
                             
                         </div>
                     </div>
