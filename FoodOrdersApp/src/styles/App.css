@@ -131,6 +131,12 @@ section h1 {
     color: var(--clr-dark-500);
 }
 
+/* ========== CONTRROL BUTTON ==========*/
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media (prefers-color-scheme: light) {
     .box {

@@ -25,7 +25,7 @@ export default function CartsNew() {
                     <input type="text" id="test4" name="test4"/>
                 </div>
                 <div className="control-buttons">
-                    <button>Go back</button>
+                    <button onClick={() => {navigate("/carts")}}>Go back</button>
                     <button>Create cart</button>
                 </div>
             </section>
