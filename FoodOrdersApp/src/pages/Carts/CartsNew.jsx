@@ -25,6 +25,7 @@ export default function CartsNew() {
                             <div className="input-container">
                                 <label htmlFor="restaurant">Restaurant:</label>
                                 <select name="restaurant" id="restaurant">
+                                    <option value="choose">--- Choose restaurant ---</option>
                                     <option value="r1">Restaurant 1</option>
                                     <option value="r2">Restaurant 2</option>
                                     <option value="r3">Restaurant 3</option>
@@ -37,6 +38,7 @@ export default function CartsNew() {
                             <div className="input-container">
                                 <label htmlFor="organization">Organization:</label>
                                 <select name="organization" id="organization">
+                                    <option value="choose">--- Choose organization ---</option>
                                     <option value="o1">Organization 1</option>
                                     <option value="o2">Organization 2</option>
                                     <option value="o3">Organization 3</option>
