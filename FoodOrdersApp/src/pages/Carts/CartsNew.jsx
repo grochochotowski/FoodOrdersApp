@@ -15,7 +15,7 @@ export default function CartsNew() {
                 <h1>Carts</h1>
                 <div className="path">
                     <p className="path-link" onClick={() => {navigate("/carts")}}>Carts</p>
-                    <p className="path-arrows">&gt;&gt;&gt;</p>
+                    <p className="path-arrows">&#47;&#47;&#47;</p>
                     <p className="path-link" onClick={() => {navigate("/carts/new")}}>New cart</p>
                 </div>
                 <div className="form">
