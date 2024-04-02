@@ -1,6 +1,10 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+import "../../styles/carts.css"
+import "../../styles/index.css"
+import "../../styles/App.css"
+
 export default function CartsNew() {
 
     const navigate = useNavigate();
@@ -32,7 +36,7 @@ export default function CartsNew() {
 
                             <div className="input-container">
                                 <label htmlFor="organization">Organization:</label>
-                                <select name="restaurant" id="restaurant">
+                                <select name="organization" id="organization">
                                     <option value="o1">Organization 1</option>
                                     <option value="o2">Organization 2</option>
                                     <option value="o3">Organization 3</option>
@@ -49,12 +53,12 @@ export default function CartsNew() {
 
                             <div className="input-container">
                                 <label htmlFor="bank-account-number">Bank account number:</label>
-                                <input type="text" />
+                                <input type="text" id="bank-account-number"/>
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="phone-number">Phone number:</label>
-                                <input type="text" />
+                                <input type="text" id="phone-number"/>
                             </div>
 
                         </div>
@@ -62,22 +66,22 @@ export default function CartsNew() {
 
                             <div className="input-container">
                                 <label htmlFor="city">City:</label>
-                                <input type="text" />
+                                <input type="text" id="city"/>
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="street">Street:</label>
-                                <input type="text" />
+                                <input type="text" id="street"/>
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="building">Building:</label>
-                                <input type="text" />
+                                <input type="text" id="building"/>
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="premises">Premises:</label>
-                                <input type="text" />
+                                <input type="text" id="premises"/>
                             </div>
 
                         </div>
@@ -87,17 +91,17 @@ export default function CartsNew() {
 
                             <div className="input-container">
                                 <label htmlFor="min-price">Minimum cart price:</label>
-                                <input type="text" />
+                                <input type="text" id="min-price"/>
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="delivery-price">Delivery price:</label>
-                                <input type="text" />
+                                <input type="text" id="delivery-price"/>
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="free-delivery-price">Free delivery price:</label>
-                                <input type="text" />
+                                <input type="text" id="free-delivery-price"/>
                             </div>
 
                         </div>

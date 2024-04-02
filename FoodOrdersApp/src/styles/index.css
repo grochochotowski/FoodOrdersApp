@@ -118,7 +118,7 @@ select {
 
     transition: 150ms ease-in-out;
 }
-select:focus {
+select:hover {
     background-color: var(--clr-dark-200);
 }
 label {
@@ -153,8 +153,8 @@ button:hover,
     background-color: var(--clr-dark-500);
 }
 textarea {
+    box-sizing: border-box; 
     width: 15rem;
-
     padding: 0.4rem;
 
     border-radius: 7px;
