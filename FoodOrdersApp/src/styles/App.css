@@ -133,6 +133,7 @@ section h1 {
 /* ========== CONTRROL BUTTON ==========*/
 .control-buttons {
     display: flex;
+    gap: 2vw;
     justify-content: center;
     align-items: center;
 }
