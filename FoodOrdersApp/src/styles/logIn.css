@@ -30,14 +30,11 @@ main .login-input label {
     width: 7vw;
 
     font-weight: 700;
-    font-size: 1.25rem;
 }
 main .login-input input {
     width: 65%;
     
     height: 4vh;
-
-    font-size: 1.25rem;
 }
 
 main .password-input {

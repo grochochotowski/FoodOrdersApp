@@ -1,8 +1,18 @@
 .form {
-
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
 }
 .line {
     background-color: green;
+    display: flex;
+    padding: 1vh 1vw;
+}
+.line.top-bottom {
+    flex-direction: column;
+}
+.line.left-right {
+    
 }
 .layer {
     background-color: red;
