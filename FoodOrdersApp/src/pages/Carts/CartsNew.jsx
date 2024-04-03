@@ -104,6 +104,7 @@ export default function CartsNew() {
                                 <input
                                     type="text"
                                     id="bankAccountNumber"
+                                    value={newCartInputs["bankAccountNumber"]}
                                     onChange={() => handleInputChange("bankAccountNumber")}
                                 />
                             </div>
@@ -113,6 +114,7 @@ export default function CartsNew() {
                                 <input
                                     type="text"
                                     id="phoneNumber"
+                                    value={newCartInputs["phoneNumber"]}
                                     onChange={() => handleInputChange("phoneNumber")}
                                 />
                             </div>
@@ -125,6 +127,7 @@ export default function CartsNew() {
                                 <input
                                     type="text"
                                     id="city"
+                                    value={newCartInputs["city"]}
                                     onChange={() => handleInputChange("city")}
                                 />
                             </div>
@@ -134,6 +137,7 @@ export default function CartsNew() {
                                 <input
                                     type="text"
                                     id="street"
+                                    value={newCartInputs["street"]}
                                     onChange={() => handleInputChange("street")}
                                 />
                             </div>
@@ -143,6 +147,7 @@ export default function CartsNew() {
                                 <input
                                     type="text"
                                     id="building"
+                                    value={newCartInputs["building"]}
                                     onChange={() => handleInputChange("building")}
                                 />
                             </div>
@@ -152,6 +157,7 @@ export default function CartsNew() {
                                 <input
                                     type="text"
                                     id="premises"
+                                    value={newCartInputs["premises"]}
                                     onChange={() => handleInputChange("premises")}
                                 />
                             </div>
@@ -166,6 +172,7 @@ export default function CartsNew() {
                                 <input
                                     type="text"
                                     id="minimumCartPrice"
+                                    value={newCartInputs["minimumCartPrice"]}
                                     onChange={() => handleInputChange("minimumCartPrice")}    
                                 />
                             </div>
@@ -175,6 +182,7 @@ export default function CartsNew() {
                                 <input
                                     type="text"
                                     id="deliveryPrice"
+                                    value={newCartInputs["deliveryPrice"]}
                                     onChange={() => handleInputChange("deliveryPrice")}    
                                 />
                             </div>
@@ -184,6 +192,7 @@ export default function CartsNew() {
                                 <input
                                     type="text"
                                     id="freeDeliveryPrice"
+                                    value={newCartInputs["freeDeliveryPrice"]}
                                     onChange={() => handleInputChange("freeDeliveryPrice")}    
                                 />
                             </div>
@@ -196,6 +205,7 @@ export default function CartsNew() {
                                 <textarea
                                 name="notes"
                                 id="notes"
+                                value={newCartInputs["notes"]}
                                 onChange={() => handleInputChange("notes")}
                                 ></textarea>                          
                             </div>
