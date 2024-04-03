@@ -129,6 +129,13 @@ export default function CartsNew() {
 
     function sendData() {
         alert("API call happening")
+
+        /*if (newCartInputs.premises == "")
+            setNewCartInputs(prev => ({...prev, "premises": null}))
+        if (newCartInputs.notes == "")
+            setNewCartInputs(prev => ({...prev, "notes": null}))*/
+
+        console.log(newCartInputs)
     }
 
   return (
