@@ -99,14 +99,6 @@ export default function CartsNew() {
             document.getElementById("building").classList.remove("not-valid")
         }
 
-        if (newCartInputs.premises == "") {
-            valid = false
-            document.getElementById("premises").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("premises").classList.remove("not-valid")
-        }
-
         if (newCartInputs.minimumCartPrice == "") {
             valid = false
             document.getElementById("minimumCartPrice").classList.add("not-valid")
@@ -130,15 +122,6 @@ export default function CartsNew() {
         else {
             document.getElementById("freeDeliveryPrice").classList.remove("not-valid")
         }
-
-        if (newCartInputs.notes == "") {
-            valid = false
-            document.getElementById("notes").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("notes").classList.remove("not-valid")
-        }
-
 
         if (valid) sendData()
         else alert("not-valid")
