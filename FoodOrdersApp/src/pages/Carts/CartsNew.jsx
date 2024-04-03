@@ -74,7 +74,7 @@ export default function CartsNew() {
                                     <option value={5}>Restaurant 5</option>
                                     <option value={6}>Restaurant 6</option>
                                 </select>
-                            </div>
+                            </div> {/* restaurant */}
 
                             <div className="input-container">
                                 <label htmlFor="organization">Organization:</label>
@@ -92,7 +92,7 @@ export default function CartsNew() {
                                     <option value={5}>Organization 5</option>
                                     <option value={6}>Organization 6</option>
                                 </select>
-                            </div>
+                            </div> {/* organization */}
 
                         </div>
                     </div>
@@ -107,7 +107,7 @@ export default function CartsNew() {
                                     value={newCartInputs["bankAccountNumber"]}
                                     onChange={() => handleInputChange("bankAccountNumber")}
                                 />
-                            </div>
+                            </div> {/* bankAccountNumber */}
 
                             <div className="input-container">
                                 <label htmlFor="phoneNumber">Phone number:</label>
@@ -117,7 +117,7 @@ export default function CartsNew() {
                                     value={newCartInputs["phoneNumber"]}
                                     onChange={() => handleInputChange("phoneNumber")}
                                 />
-                            </div>
+                            </div> {/* phoneNumber */}
 
                         </div>
                         <div className="layer bottom">
@@ -130,7 +130,7 @@ export default function CartsNew() {
                                     value={newCartInputs["city"]}
                                     onChange={() => handleInputChange("city")}
                                 />
-                            </div>
+                            </div> {/* city */}
 
                             <div className="input-container">
                                 <label htmlFor="street">Street:</label>
@@ -140,7 +140,7 @@ export default function CartsNew() {
                                     value={newCartInputs["street"]}
                                     onChange={() => handleInputChange("street")}
                                 />
-                            </div>
+                            </div> {/* street */}
 
                             <div className="input-container">
                                 <label htmlFor="building">Building:</label>
@@ -150,7 +150,7 @@ export default function CartsNew() {
                                     value={newCartInputs["building"]}
                                     onChange={() => handleInputChange("building")}
                                 />
-                            </div>
+                            </div> {/* building */}
 
                             <div className="input-container">
                                 <label htmlFor="premises">Premises:</label>
@@ -160,7 +160,7 @@ export default function CartsNew() {
                                     value={newCartInputs["premises"]}
                                     onChange={() => handleInputChange("premises")}
                                 />
-                            </div>
+                            </div> {/* premises */}
 
                         </div>
                     </div>
@@ -175,7 +175,7 @@ export default function CartsNew() {
                                     value={newCartInputs["minimumCartPrice"]}
                                     onChange={() => handleInputChange("minimumCartPrice")}    
                                 />
-                            </div>
+                            </div> {/* minimumCartPrice */}
 
                             <div className="input-container">
                                 <label htmlFor="deliveryPrice">Delivery price:</label>
@@ -185,7 +185,7 @@ export default function CartsNew() {
                                     value={newCartInputs["deliveryPrice"]}
                                     onChange={() => handleInputChange("deliveryPrice")}    
                                 />
-                            </div>
+                            </div> {/* deliveryPrice */}
 
                             <div className="input-container">
                                 <label htmlFor="freeDeliveryPrice">Free delivery price:</label>
@@ -195,7 +195,7 @@ export default function CartsNew() {
                                     value={newCartInputs["freeDeliveryPrice"]}
                                     onChange={() => handleInputChange("freeDeliveryPrice")}    
                                 />
-                            </div>
+                            </div> {/* freeDeliveryPrice */}
 
                         </div>
                         <div className="layer right">
@@ -208,7 +208,7 @@ export default function CartsNew() {
                                 value={newCartInputs["notes"]}
                                 onChange={() => handleInputChange("notes")}
                                 ></textarea>                          
-                            </div>
+                            </div> {/* notes */}
                             
                         </div>
                     </div>
