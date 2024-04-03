@@ -9,6 +9,46 @@ export default function CartsNew() {
 
     const navigate = useNavigate();
 
+    const [newCartInputs, setNewCartInputs] = useState({
+        "restaurantId" : 0,
+        "organizationId" : 0,
+        "bankAccountNumber": "",
+        "phoneNumber": "",
+        "city": "",
+        "street": "",
+        "building": "",
+        "premises": "",
+        "minimumCartPrice": "",
+        "deliveryPrice": "",
+        "freeDeliveryPrice": "",
+        "notes": "",
+    })
+
+    function handleInputChange(inputId) {
+        const value = document.getElementById(inputId).value;
+
+        setNewCartInputs(prev => ({
+            ...prev,
+            [inputId]: value
+        }))
+
+        console.log(newCartInputs)
+    }
+    function handleSelectChange(event, selectId) {
+        const value = parseInt(event.target.value)
+
+        setNewCartInputs(prev => ({
+            ...prev,
+            [selectId]: value
+        }))
+
+        console.log(newCartInputs)
+    }
+
+    function validate() {
+        alert("validation")
+    }
+
   return (
     <div className="container">
             <section className="box">
@@ -24,27 +64,37 @@ export default function CartsNew() {
 
                             <div className="input-container">
                                 <label htmlFor="restaurant">Restaurant:</label>
-                                <select name="restaurant" id="restaurant">
-                                    <option value="choose">--- Choose restaurant ---</option>
-                                    <option value="r1">Restaurant 1</option>
-                                    <option value="r2">Restaurant 2</option>
-                                    <option value="r3">Restaurant 3</option>
-                                    <option value="r4">Restaurant 4</option>
-                                    <option value="r5">Restaurant 5</option>
-                                    <option value="r6">Restaurant 6</option>
+                                <select
+                                    name="restaurant"
+                                    id="restaurant"
+                                    value={newCartInputs["restaurantId"]}
+                                    onChange={(event) => handleSelectChange(event, "restaurantId")}
+                                >
+                                    <option value={0}>--- Choose restaurant ---</option>
+                                    <option value={1}>Restaurant 1</option>
+                                    <option value={2}>Restaurant 2</option>
+                                    <option value={3}>Restaurant 3</option>
+                                    <option value={4}>Restaurant 4</option>
+                                    <option value={5}>Restaurant 5</option>
+                                    <option value={6}>Restaurant 6</option>
                                 </select>
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="organization">Organization:</label>
-                                <select name="organization" id="organization">
-                                    <option value="choose">--- Choose organization ---</option>
-                                    <option value="o1">Organization 1</option>
-                                    <option value="o2">Organization 2</option>
-                                    <option value="o3">Organization 3</option>
-                                    <option value="o4">Organization 4</option>
-                                    <option value="o5">Organization 5</option>
-                                    <option value="o6">Organization 6</option>
+                                <select
+                                    name="organization"
+                                    id="organization"
+                                    value={newCartInputs["organizationId"]}
+                                    onChange={(event) => handleSelectChange(event, "organizationId")}
+                                >
+                                    <option value={0}>--- Choose organization ---</option>
+                                    <option value={1}>Organization 1</option>
+                                    <option value={2}>Organization 2</option>
+                                    <option value={3}>Organization 3</option>
+                                    <option value={4}>Organization 4</option>
+                                    <option value={5}>Organization 5</option>
+                                    <option value={6}>Organization 6</option>
                                 </select>
                             </div>
 
@@ -54,13 +104,21 @@ export default function CartsNew() {
                         <div className="layer top">
 
                             <div className="input-container">
-                                <label htmlFor="bank-account-number">Bank account number:</label>
-                                <input type="text" id="bank-account-number"/>
+                                <label htmlFor="bankAccountNumber">Bank account number:</label>
+                                <input
+                                    type="text"
+                                    id="bankAccountNumber"
+                                    onChange={() => handleInputChange("bankAccountNumber")}
+                                />
                             </div>
 
                             <div className="input-container">
-                                <label htmlFor="phone-number">Phone number:</label>
-                                <input type="text" id="phone-number"/>
+                                <label htmlFor="phoneNumber">Phone number:</label>
+                                <input
+                                    type="text"
+                                    id="phoneNumber"
+                                    onChange={() => handleInputChange("phoneNumber")}
+                                />
                             </div>
 
                         </div>
@@ -68,22 +126,38 @@ export default function CartsNew() {
 
                             <div className="input-container">
                                 <label htmlFor="city">City:</label>
-                                <input type="text" id="city"/>
+                                <input
+                                    type="text"
+                                    id="city"
+                                    onChange={() => handleInputChange("city")}
+                                />
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="street">Street:</label>
-                                <input type="text" id="street"/>
+                                <input
+                                    type="text"
+                                    id="street"
+                                    onChange={() => handleInputChange("street")}
+                                />
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="building">Building:</label>
-                                <input type="text" id="building"/>
+                                <input
+                                    type="text"
+                                    id="building"
+                                    onChange={() => handleInputChange("building")}
+                                />
                             </div>
 
                             <div className="input-container">
                                 <label htmlFor="premises">Premises:</label>
-                                <input type="text" id="premises"/>
+                                <input
+                                    type="text"
+                                    id="premises"
+                                    onChange={() => handleInputChange("premises")}
+                                />
                             </div>
 
                         </div>
@@ -92,18 +166,30 @@ export default function CartsNew() {
                         <div className="layer left">
 
                             <div className="input-container">
-                                <label htmlFor="min-price">Minimum cart price:</label>
-                                <input type="text" id="min-price"/>
+                                <label htmlFor="minimumCartPrice">Minimum cart price:</label>
+                                <input
+                                    type="text"
+                                    id="minimumCartPrice"
+                                    onChange={() => handleInputChange("minimumCartPrice")}    
+                                />
                             </div>
 
                             <div className="input-container">
-                                <label htmlFor="delivery-price">Delivery price:</label>
-                                <input type="text" id="delivery-price"/>
+                                <label htmlFor="deliveryPrice">Delivery price:</label>
+                                <input
+                                    type="text"
+                                    id="deliveryPrice"
+                                    onChange={() => handleInputChange("deliveryPrice")}    
+                                />
                             </div>
 
                             <div className="input-container">
-                                <label htmlFor="free-delivery-price">Free delivery price:</label>
-                                <input type="text" id="free-delivery-price"/>
+                                <label htmlFor="freeDeliveryPrice">Free delivery price:</label>
+                                <input
+                                    type="text"
+                                    id="freeDeliveryPrice"
+                                    onChange={() => handleInputChange("freeDeliveryPrice")}    
+                                />
                             </div>
 
                         </div>
@@ -111,7 +197,11 @@ export default function CartsNew() {
 
                             <div className="input-container">
                                 <label htmlFor="notes">Notes:</label>
-                                <textarea name="notes" id="notes"></textarea>                          
+                                <textarea
+                                name="notes"
+                                id="notes"
+                                onChange={() => handleInputChange("notes")}
+                                ></textarea>                          
                             </div>
                             
                         </div>
@@ -119,7 +209,7 @@ export default function CartsNew() {
                 </div>
                 <div className="control-buttons">
                     <button onClick={() => {navigate("/carts")}}>Go back</button>
-                    <button>Create cart</button>
+                    <button onClick={() => validate()}>Create cart</button>
                 </div>
             </section>
         </div>
