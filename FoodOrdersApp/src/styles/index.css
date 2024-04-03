@@ -13,6 +13,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
+    --clr-dark-not-800: #ee5454;
     --clr-dark-600: #585fe9;
     --clr-dark-500: #363ec7;
     --clr-dark-200: #253543;
@@ -21,6 +22,7 @@
     --clr-light-800: #d1dcea;
     --clr-light-500: #adb1ff;
     --clr-light-400: #8b90dd;
+    --clr-light-300: #ff5656;
 }
 html, body {
     padding: 0;

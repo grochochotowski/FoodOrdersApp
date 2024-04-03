@@ -43,26 +43,105 @@ export default function CartsNew() {
 
     function validate() {
         let valid = true;
-        if (newCartInputs.restaurantId == 0) valid = false
-        if (newCartInputs.organizationId == 0) valid = false
-        if (newCartInputs.bankAccountNumber == "") valid = false
-        if (newCartInputs.phoneNumber == "") valid = false
-        if (newCartInputs.city == "") valid = false
-        if (newCartInputs.street == "") valid = false
-        if (newCartInputs.building == "") valid = false
-        if (newCartInputs.premises == "") valid = false
-        if (newCartInputs.minimumCartPrice == "") valid = false
-        if (newCartInputs.deliveryPrice == "") valid = false
-        if (newCartInputs.freeDeliveryPrice == "") valid = false
-        if (newCartInputs.notes == "") valid = false
-
-        if (valid) {
-            sendData()
-            alert("valid")
+        if (newCartInputs.restaurantId == 0) {
+            valid = false
+            document.getElementById("restaurantId").classList.add("not-valid")
         }
         else {
-            alert("not-valid")
+            document.getElementById("restaurantId").classList.remove("not-valid")
         }
+
+        if (newCartInputs.organizationId == 0) {
+            valid = false
+            document.getElementById("organizationId").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("organizationId").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.bankAccountNumber == "") {
+            valid = false
+            document.getElementById("bankAccountNumber").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("bankAccountNumber").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.phoneNumber == "") {
+            valid = false
+            document.getElementById("phoneNumber").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("phoneNumber").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.city == "") {
+            valid = false
+            document.getElementById("city").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("city").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.street == "") {
+            valid = false
+            document.getElementById("street").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("street").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.building == "") {
+            valid = false
+            document.getElementById("building").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("building").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.premises == "") {
+            valid = false
+            document.getElementById("premises").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("premises").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.minimumCartPrice == "") {
+            valid = false
+            document.getElementById("minimumCartPrice").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("minimumCartPrice").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.deliveryPrice == "") {
+            valid = false
+            document.getElementById("deliveryPrice").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("deliveryPrice").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.freeDeliveryPrice == "") {
+            valid = false
+            document.getElementById("freeDeliveryPrice").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("freeDeliveryPrice").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.notes == "") {
+            valid = false
+            document.getElementById("notes").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("notes").classList.remove("not-valid")
+        }
+
+
+        if (valid) sendData()
+        else alert("not-valid")
     }
 
     function sendData() {
@@ -83,10 +162,10 @@ export default function CartsNew() {
                         <div className="layer selects">
 
                             <div className="input-container">
-                                <label htmlFor="restaurant">Restaurant:</label>
+                                <label htmlFor="restaurantId">Restaurant:</label>
                                 <select
-                                    name="restaurant"
-                                    id="restaurant"
+                                    name="restaurantId"
+                                    id="restaurantId"
                                     value={newCartInputs["restaurantId"]}
                                     onChange={(event) => handleSelectChange(event, "restaurantId")}
                                 >
@@ -101,10 +180,10 @@ export default function CartsNew() {
                             </div> {/* restaurant */}
 
                             <div className="input-container">
-                                <label htmlFor="organization">Organization:</label>
+                                <label htmlFor="organizationId">Organization:</label>
                                 <select
-                                    name="organization"
-                                    id="organization"
+                                    name="organizationId"
+                                    id="organizationId"
                                     value={newCartInputs["organizationId"]}
                                     onChange={(event) => handleSelectChange(event, "organizationId")}
                                 >

@@ -50,6 +50,11 @@ section h1 {
     gap: 1vw;
 }
 
+/* ========== FILTERS ========== */
+.not-valid {
+    border-color: #ee5454;
+}
+
 /* ========== LIST ==========*/
 .edit,
 .details {
@@ -162,5 +167,8 @@ section h1 {
     }
     .path-link:hover {
         color: var(--clr-light-500);
+    }
+    .not-valid {
+        border-color: #ff5656;
     }
 }
