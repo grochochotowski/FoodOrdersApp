@@ -23,6 +23,7 @@ export default function CartsNew() {
         "freeDeliveryPrice": "",
         "notes": "",
     })
+    const [dataToSend, setDataToSend] = useState({})
 
     function handleInputChange(inputId) {
         const value = document.getElementById(inputId).value;
@@ -123,6 +124,17 @@ export default function CartsNew() {
             document.getElementById("freeDeliveryPrice").classList.remove("not-valid")
         }
 
+
+        let updatedDataToSend = { ...newCartInputs };
+        if (updatedDataToSend.premises === "") {
+            updatedDataToSend = { ...updatedDataToSend, premises: null };
+        }
+        if (updatedDataToSend.notes === "") {
+            updatedDataToSend = { ...updatedDataToSend, notes: null };
+        }
+        setDataToSend(updatedDataToSend);
+
+
         if (valid) sendData()
         else alert("not-valid")
     }
@@ -130,16 +142,11 @@ export default function CartsNew() {
     function sendData() {
         alert("API call happening")
 
-        /*if (newCartInputs.premises == "")
-            setNewCartInputs(prev => ({...prev, "premises": null}))
-        if (newCartInputs.notes == "")
-            setNewCartInputs(prev => ({...prev, "notes": null}))*/
-
-        console.log(newCartInputs)
+        console.log(dataToSend);
     }
 
-  return (
-    <div className="container">
+    return (
+        <div className="container">
             <section className="box">
                 <h1>Carts</h1>
                 <div className="path">
@@ -152,39 +159,39 @@ export default function CartsNew() {
                         <div className="layer selects">
 
                             <div className="input-container">
-                                <label htmlFor="restaurantId">Restaurant:</label>
-                                <select
-                                    name="restaurantId"
-                                    id="restaurantId"
-                                    value={newCartInputs["restaurantId"]}
-                                    onChange={(event) => handleSelectChange(event, "restaurantId")}
-                                >
-                                    <option value={0}>--- Choose restaurant ---</option>
-                                    <option value={1}>Restaurant 1</option>
-                                    <option value={2}>Restaurant 2</option>
-                                    <option value={3}>Restaurant 3</option>
-                                    <option value={4}>Restaurant 4</option>
-                                    <option value={5}>Restaurant 5</option>
-                                    <option value={6}>Restaurant 6</option>
-                                </select>
+                                    <label htmlFor="restaurantId">Restaurant:</label>
+                                    <select
+                                        name="restaurantId"
+                                        id="restaurantId"
+                                        value={newCartInputs["restaurantId"]}
+                                        onChange={(event) => handleSelectChange(event, "restaurantId")}
+                                    >
+                                        <option value={0}>--- Choose restaurant ---</option>
+                                        <option value={1}>Restaurant 1</option>
+                                        <option value={2}>Restaurant 2</option>
+                                        <option value={3}>Restaurant 3</option>
+                                        <option value={4}>Restaurant 4</option>
+                                        <option value={5}>Restaurant 5</option>
+                                        <option value={6}>Restaurant 6</option>
+                                    </select>
                             </div> {/* restaurant */}
 
                             <div className="input-container">
-                                <label htmlFor="organizationId">Organization:</label>
-                                <select
-                                    name="organizationId"
-                                    id="organizationId"
-                                    value={newCartInputs["organizationId"]}
-                                    onChange={(event) => handleSelectChange(event, "organizationId")}
-                                >
-                                    <option value={0}>--- Choose organization ---</option>
-                                    <option value={1}>Organization 1</option>
-                                    <option value={2}>Organization 2</option>
-                                    <option value={3}>Organization 3</option>
-                                    <option value={4}>Organization 4</option>
-                                    <option value={5}>Organization 5</option>
-                                    <option value={6}>Organization 6</option>
-                                </select>
+                                    <label htmlFor="organizationId">Organization:</label>
+                                    <select
+                                        name="organizationId"
+                                        id="organizationId"
+                                        value={newCartInputs["organizationId"]}
+                                        onChange={(event) => handleSelectChange(event, "organizationId")}
+                                    >
+                                        <option value={0}>--- Choose organization ---</option>
+                                        <option value={1}>Organization 1</option>
+                                        <option value={2}>Organization 2</option>
+                                        <option value={3}>Organization 3</option>
+                                        <option value={4}>Organization 4</option>
+                                        <option value={5}>Organization 5</option>
+                                        <option value={6}>Organization 6</option>
+                                    </select>
                             </div> {/* organization */}
 
                         </div>
@@ -193,66 +200,66 @@ export default function CartsNew() {
                         <div className="layer top">
 
                             <div className="input-container">
-                                <label htmlFor="bankAccountNumber">Bank account number:</label>
-                                <input
-                                    type="text"
-                                    id="bankAccountNumber"
-                                    value={newCartInputs["bankAccountNumber"]}
-                                    onChange={() => handleInputChange("bankAccountNumber")}
-                                />
+                                    <label htmlFor="bankAccountNumber">Bank account number:</label>
+                                    <input
+                                        type="text"
+                                        id="bankAccountNumber"
+                                        value={newCartInputs["bankAccountNumber"]}
+                                        onChange={() => handleInputChange("bankAccountNumber")}
+                                    />
                             </div> {/* bankAccountNumber */}
 
                             <div className="input-container">
-                                <label htmlFor="phoneNumber">Phone number:</label>
-                                <input
-                                    type="text"
-                                    id="phoneNumber"
-                                    value={newCartInputs["phoneNumber"]}
-                                    onChange={() => handleInputChange("phoneNumber")}
-                                />
+                                    <label htmlFor="phoneNumber">Phone number:</label>
+                                    <input
+                                        type="text"
+                                        id="phoneNumber"
+                                        value={newCartInputs["phoneNumber"]}
+                                        onChange={() => handleInputChange("phoneNumber")}
+                                    />
                             </div> {/* phoneNumber */}
 
                         </div>
                         <div className="layer bottom">
 
                             <div className="input-container">
-                                <label htmlFor="city">City:</label>
-                                <input
-                                    type="text"
-                                    id="city"
-                                    value={newCartInputs["city"]}
-                                    onChange={() => handleInputChange("city")}
-                                />
+                                    <label htmlFor="city">City:</label>
+                                    <input
+                                        type="text"
+                                        id="city"
+                                        value={newCartInputs["city"]}
+                                        onChange={() => handleInputChange("city")}
+                                    />
                             </div> {/* city */}
 
                             <div className="input-container">
-                                <label htmlFor="street">Street:</label>
-                                <input
-                                    type="text"
-                                    id="street"
-                                    value={newCartInputs["street"]}
-                                    onChange={() => handleInputChange("street")}
-                                />
+                                    <label htmlFor="street">Street:</label>
+                                    <input
+                                        type="text"
+                                        id="street"
+                                        value={newCartInputs["street"]}
+                                        onChange={() => handleInputChange("street")}
+                                    />
                             </div> {/* street */}
 
                             <div className="input-container">
-                                <label htmlFor="building">Building:</label>
-                                <input
-                                    type="text"
-                                    id="building"
-                                    value={newCartInputs["building"]}
-                                    onChange={() => handleInputChange("building")}
-                                />
+                                    <label htmlFor="building">Building:</label>
+                                    <input
+                                        type="text"
+                                        id="building"
+                                        value={newCartInputs["building"]}
+                                        onChange={() => handleInputChange("building")}
+                                    />
                             </div> {/* building */}
 
                             <div className="input-container">
-                                <label htmlFor="premises">Premises:</label>
-                                <input
-                                    type="text"
-                                    id="premises"
-                                    value={newCartInputs["premises"]}
-                                    onChange={() => handleInputChange("premises")}
-                                />
+                                    <label htmlFor="premises">Premises:</label>
+                                    <input
+                                        type="text"
+                                        id="premises"
+                                        value={newCartInputs["premises"]}
+                                        onChange={() => handleInputChange("premises")}
+                                    />
                             </div> {/* premises */}
 
                         </div>
@@ -261,46 +268,46 @@ export default function CartsNew() {
                         <div className="layer left">
 
                             <div className="input-container">
-                                <label htmlFor="minimumCartPrice">Minimum cart price:</label>
-                                <input
-                                    type="text"
-                                    id="minimumCartPrice"
-                                    value={newCartInputs["minimumCartPrice"]}
-                                    onChange={() => handleInputChange("minimumCartPrice")}    
-                                />
+                                    <label htmlFor="minimumCartPrice">Minimum cart price:</label>
+                                    <input
+                                        type="text"
+                                        id="minimumCartPrice"
+                                        value={newCartInputs["minimumCartPrice"]}
+                                        onChange={() => handleInputChange("minimumCartPrice")}    
+                                    />
                             </div> {/* minimumCartPrice */}
 
                             <div className="input-container">
-                                <label htmlFor="deliveryPrice">Delivery price:</label>
-                                <input
-                                    type="text"
-                                    id="deliveryPrice"
-                                    value={newCartInputs["deliveryPrice"]}
-                                    onChange={() => handleInputChange("deliveryPrice")}    
-                                />
+                                    <label htmlFor="deliveryPrice">Delivery price:</label>
+                                    <input
+                                        type="text"
+                                        id="deliveryPrice"
+                                        value={newCartInputs["deliveryPrice"]}
+                                        onChange={() => handleInputChange("deliveryPrice")}    
+                                    />
                             </div> {/* deliveryPrice */}
 
                             <div className="input-container">
-                                <label htmlFor="freeDeliveryPrice">Free delivery price:</label>
-                                <input
-                                    type="text"
-                                    id="freeDeliveryPrice"
-                                    value={newCartInputs["freeDeliveryPrice"]}
-                                    onChange={() => handleInputChange("freeDeliveryPrice")}    
-                                />
+                                    <label htmlFor="freeDeliveryPrice">Free delivery price:</label>
+                                    <input
+                                        type="text"
+                                        id="freeDeliveryPrice"
+                                        value={newCartInputs["freeDeliveryPrice"]}
+                                        onChange={() => handleInputChange("freeDeliveryPrice")}    
+                                    />
                             </div> {/* freeDeliveryPrice */}
 
                         </div>
                         <div className="layer right">
 
                             <div className="input-container">
-                                <label htmlFor="notes">Notes:</label>
-                                <textarea
-                                name="notes"
-                                id="notes"
-                                value={newCartInputs["notes"]}
-                                onChange={() => handleInputChange("notes")}
-                                ></textarea>                          
+                                    <label htmlFor="notes">Notes:</label>
+                                    <textarea
+                                    name="notes"
+                                    id="notes"
+                                    value={newCartInputs["notes"]}
+                                    onChange={() => handleInputChange("notes")}
+                                    ></textarea>                          
                             </div> {/* notes */}
                             
                         </div>
@@ -312,5 +319,5 @@ export default function CartsNew() {
                 </div>
             </section>
         </div>
-  )
+    )
 }
