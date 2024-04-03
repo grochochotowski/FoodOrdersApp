@@ -42,7 +42,31 @@ export default function CartsNew() {
     }
 
     function validate() {
-        alert("validation")
+        let valid = true;
+        if (newCartInputs.restaurantId == 0) valid = false
+        if (newCartInputs.organizationId == 0) valid = false
+        if (newCartInputs.bankAccountNumber == "") valid = false
+        if (newCartInputs.phoneNumber == "") valid = false
+        if (newCartInputs.city == "") valid = false
+        if (newCartInputs.street == "") valid = false
+        if (newCartInputs.building == "") valid = false
+        if (newCartInputs.premises == "") valid = false
+        if (newCartInputs.minimumCartPrice == "") valid = false
+        if (newCartInputs.deliveryPrice == "") valid = false
+        if (newCartInputs.freeDeliveryPrice == "") valid = false
+        if (newCartInputs.notes == "") valid = false
+
+        if (valid) {
+            sendData()
+            alert("valid")
+        }
+        else {
+            alert("not-valid")
+        }
+    }
+
+    function sendData() {
+        alert("API call happening")
     }
 
   return (
