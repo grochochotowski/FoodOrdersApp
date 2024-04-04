@@ -1,5 +1,15 @@
+import React from "react"
+
 export default function IndividualOrder({order}) {
+    console.log(order)
   return (
-    <div>IndividualOrder: {order.name}</div>
+    <div className="order-box">
+        <img src={order.img} alt="food-img" />
+        <div className="order-info">
+            <h5>{order.name}</h5>
+            <p>Positions: {order.positions}</p>
+            <p>Price: {order.price}zł</p>
+        </div>
+    </div>
   )
 }
