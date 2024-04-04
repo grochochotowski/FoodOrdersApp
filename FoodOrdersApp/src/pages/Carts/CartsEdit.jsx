@@ -22,16 +22,16 @@ export default function CartsEdit() {
     })
 
     const [newCartInputs, setNewCartInputs] = useState({
-        "bankAccountNumber": "",
-        "phoneNumber": "",
-        "city": "",
-        "street": "",
-        "building": "",
-        "premises": "",
-        "minimumCartPrice": "",
-        "deliveryPrice": "",
-        "freeDeliveryPrice": "",
-        "notes": "",
+        "bankAccountNumber": "12 3456 7890 1234 5678 9012 3456",
+        "phoneNumber": "123 456 789",
+        "city": "Bialystok",
+        "street": "Żurawia",
+        "building": "71",
+        "premises": "123",
+        "minimumCartPrice": 19.99,
+        "deliveryPrice": 0.00,
+        "freeDeliveryPrice": 19.99,
+        "notes": "Those are notes for order with id: 1",
     })
     const [dataToSend, setDataToSend] = useState({})
 
