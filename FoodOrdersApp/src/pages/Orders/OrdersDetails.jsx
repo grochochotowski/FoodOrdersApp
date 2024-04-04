@@ -34,56 +34,56 @@ export default function OrdersDetails() {
         {
             "id" : 1,
             "img" : "https://source.unsplash.com/random/200x200?sig=1",
-            "name" : "Name 1",
+            "name" : "Meal 1",
             "price" : 5.99,
             "quantity" : 2
         },
         {
             "id" : 2,
             "img" : "https://source.unsplash.com/random/200x200?sig=2",
-            "name" : "Name 2",
+            "name" : "Meal 2",
             "price" : 4.99,
             "quantity" : 3
         },
         {
             "id" : 3,
             "img" : "https://source.unsplash.com/random/200x200?sig=3",
-            "name" : "Name 3",
+            "name" : "Meal 3",
             "price" : 3.99,
             "quantity" : 2
         },
         {
             "id" : 4,
             "img" : "https://source.unsplash.com/random/200x200?sig=4",
-            "name" : "Name 4",
+            "name" : "Meal 4",
             "price" : 2.99,
             "quantity" : 1
         },
         {
             "id" : 5,
             "img" : "https://source.unsplash.com/random/200x200?sig=5",
-            "name" : "Name 5",
+            "name" : "Meal 5",
             "price" : 5.99,
             "quantity" : 2
         },
         {
             "id" : 6,
             "img" : "https://source.unsplash.com/random/200x200?sig=6",
-            "name" : "Name 6",
+            "name" : "Meal 6",
             "price" : 6.99,
             "quantity" : 2
         },
         {
             "id" : 7,
             "img" : "https://source.unsplash.com/random/200x200?sig=7",
-            "name" : "Name 7",
+            "name" : "Meal 7",
             "price" : 7.99,
             "quantity" : 1
         },
         {
             "id" : 8,
             "img" : "https://source.unsplash.com/random/200x200?sig=8",
-            "name" : "Name 8",
+            "name" : "Meal 8",
             "price" : 8.99,
             "quantity" : 2
         }
