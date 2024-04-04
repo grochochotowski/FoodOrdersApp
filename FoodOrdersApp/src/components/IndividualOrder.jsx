@@ -5,12 +5,12 @@ import "../styles/carts.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
-export default function IndividualOrder({key, order}) {
+export default function IndividualOrder({order}) {
 
     const navigate = useNavigate();
     
     return (
-        <div key={key} className="order-box" onClick={() => { navigate(`/orders/details/${order.id}`) }}>
+        <div className="order-box" onClick={() => { navigate(`/orders/details/${order.id}`) }}>
             <img src={order.img} alt="food-img" />
             <div className="order-info">
                 <h5>{order.name}</h5>
