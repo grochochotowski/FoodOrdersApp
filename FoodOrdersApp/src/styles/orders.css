@@ -1,0 +1,6 @@
+.container.orders th.wide {
+    width: calc((100% - 7% - 15% - 15%) / 3)
+}
+.container.orders th.medium {
+   width: 15%;
+}

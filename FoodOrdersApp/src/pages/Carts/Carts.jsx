@@ -228,7 +228,7 @@ export default function Carts() {
     }
 
     return (
-        <div className="container">
+        <div className="container carts">
             <section className="box">
                 <h1>Carts</h1>
                 <div className="filter">

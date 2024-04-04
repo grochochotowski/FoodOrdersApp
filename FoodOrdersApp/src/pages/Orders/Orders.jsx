@@ -185,7 +185,7 @@ export default function Orders() {
         return (
             <thead>
                 <tr>
-                    <th onClick={() => sortTable("name")}>
+                    <th className="wide" onClick={() => sortTable("name")}>
                         {
                             sorting[0] == "name" &&
                             (
@@ -196,7 +196,7 @@ export default function Orders() {
                         }
                         Name
                     </th>
-                    <th onClick={() => sortTable("organization")}>
+                    <th className="wide" onClick={() => sortTable("organization")}>
                         {
                             sorting[0] == "organization" &&
                             (
@@ -207,7 +207,7 @@ export default function Orders() {
                         }
                         Organization
                     </th>
-                    <th onClick={() => sortTable("restaurant")}>
+                    <th className="wide" onClick={() => sortTable("restaurant")}>
                         {
                             sorting[0] == "restaurant" &&
                             (
@@ -218,7 +218,7 @@ export default function Orders() {
                         }
                         Restaurant
                     </th>
-                    <th onClick={() => sortTable("totalPrice")}>
+                    <th className="medium" onClick={() => sortTable("totalPrice")}>
                         {
                             sorting[0] == "totalPrice" &&
                             (
@@ -229,7 +229,7 @@ export default function Orders() {
                         }
                         Total price
                     </th>
-                    <th onClick={() => sortTable("positions")}>
+                    <th className="medium" onClick={() => sortTable("positions")}>
                         {
                             sorting[0] == "positions" &&
                             (
@@ -270,7 +270,7 @@ export default function Orders() {
     }
 
     return (
-        <div className="container">
+        <div className="container orders">
             <section className="box">
                 <h1>Orders</h1>
                 <div className="filter">

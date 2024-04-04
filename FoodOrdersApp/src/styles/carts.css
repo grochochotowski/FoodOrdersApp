@@ -1,3 +1,7 @@
+.container.carts th{
+    width: calc((100% - 7%) / 4);
+}
+
 .layer.selects {
     width: 50%;
 }
