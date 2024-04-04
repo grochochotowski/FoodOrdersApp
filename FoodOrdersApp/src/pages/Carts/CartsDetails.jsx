@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 import IndividualOrder from "../../components/IndividualOrder";
 
@@ -10,6 +10,7 @@ import "../../styles/App.css"
 export default function CartsDetails() {
 
     const params = useParams();
+    const navigate = useNavigate();
     console.log(params.id)
 
     const [cartDetails, setCartDetails] = useState({
@@ -133,6 +134,11 @@ export default function CartsDetails() {
                         <div className="line top-bottom">
                             <h5>Notes:</h5>
                             <p>{cartDetails.notes}</p>
+                        </div>
+                        
+                        <div className="control-buttons">
+                            <button onClick={() => {navigate("/carts")}}>Go back</button>
+                            <button className="info" onClick={() => {navigate(`/carts/edit/${cartDetails.id}`)}}>Edit</button>
                         </div>
                     </div>
                     <div className="details-right">

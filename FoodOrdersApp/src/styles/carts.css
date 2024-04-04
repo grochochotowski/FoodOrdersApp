@@ -19,8 +19,10 @@
 
 .cart-info-box {
     display: flex;
+    flex-wrap: wrap;
 }
 .cart-info-box .details-left {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 1vh;
@@ -28,6 +30,7 @@
     flex-basis: 60%;
 }
 .cart-info-box .details-right {
+    box-sizing: border-box;
     margin: 1.5vh 0;
     padding: 1.5vh 1vw;
     flex-basis: 40%;
@@ -43,7 +46,6 @@
     max-height: calc(100vh - 4vh - 4.5rem - 2px - 3vh - 3vh);
     overflow-y: scroll;
 }
-
 
 .orders-shortcuts {
     display: flex;
