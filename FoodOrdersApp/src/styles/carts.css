@@ -28,7 +28,8 @@
     flex-basis: 60%;
 }
 .cart-info-box .details-right {
-    padding: 3vh 1vw;
+    margin: 1.5vh 0;
+    padding: 1.5vh 1vw;
     flex-basis: 40%;
     
     /*
@@ -37,8 +38,9 @@
         - header size
         - header border
         - details-right padding
+        - details-right margin
     */
-    max-height: calc(100vh - 4vh - 4.5rem - 2px - 6vh);
+    max-height: calc(100vh - 4vh - 4.5rem - 2px - 3vh - 3vh);
     overflow-y: scroll;
 }
 
