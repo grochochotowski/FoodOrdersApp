@@ -171,6 +171,7 @@ button.warning:hover,
     background-color: var(--clr-dark-800);
 }
 textarea {
+    min-height: 10rem;
     width: 15rem;
     padding: 0.4rem;
 

@@ -200,65 +200,65 @@ export default function OrdersDetails() {
         <div className="container">
             <section className="box">
                 <h1>{orderInputs.firstName} - order &#40;{orderInputs.id}&#41;</h1>
-                <div className="form">
-                    <div className="line top-bottom">
-                        <div className="layer">
+                <div className="edit-meal-container">
+                    <div className="form edit-left">
+                        <div className="line top-bottom">
+                            <div className="layer">
 
-                            <div className="input-container">
-                                <label htmlFor="firstName">First name:</label>
-                                <input
-                                    type="text"
-                                    id="firstName"
-                                    value={orderInputs["firstName"]}
-                                    onChange={() => handleInputChange("firstName")}
-                                />
-                            </div> {/* firstName */}
+                                <div className="input-container">
+                                    <label htmlFor="firstName">First name:</label>
+                                    <input
+                                        type="text"
+                                        id="firstName"
+                                        value={orderInputs["firstName"]}
+                                        onChange={() => handleInputChange("firstName")}
+                                    />
+                                </div> {/* firstName */}
 
-                            <div className="input-container">
-                                <label htmlFor="secondName">Second name:</label>
-                                <input
-                                    type="text"
-                                    id="secondName"
-                                    value={orderInputs["secondName"]}
-                                    onChange={() => handleInputChange("secondName")}
-                                />
-                            </div> {/* secondName */}
+                                <div className="input-container">
+                                    <label htmlFor="secondName">Second name:</label>
+                                    <input
+                                        type="text"
+                                        id="secondName"
+                                        value={orderInputs["secondName"]}
+                                        onChange={() => handleInputChange("secondName")}
+                                    />
+                                </div> {/* secondName */}
 
-                            <div className="input-container">
-                                <label htmlFor="lastName">Last name:</label>
-                                <input
-                                    type="text"
-                                    id="lastName"
-                                    value={orderInputs["lastName"]}
-                                    onChange={() => handleInputChange("lastName")}
-                                />
-                            </div> {/* lastName */}
+                                <div className="input-container">
+                                    <label htmlFor="lastName">Last name:</label>
+                                    <input
+                                        type="text"
+                                        id="lastName"
+                                        value={orderInputs["lastName"]}
+                                        onChange={() => handleInputChange("lastName")}
+                                    />
+                                </div> {/* lastName */}
 
+                            </div>
+                        </div>
+                        <div className="line top-bottom">
+                            <div className="layer">
+
+                                <div className="input-container">
+                                    <label htmlFor="notes">Notes:</label>
+                                    <textarea
+                                    name="notes"
+                                    id="notes"
+                                    value={orderInputs["notes"]}
+                                    onChange={() => handleInputChange("notes")}
+                                    ></textarea>                          
+                                </div> {/* notes */}
+
+                            </div>
+                        </div>
+                        <div className="control-buttons">
+                            <button onClick={() => {navigate("/carts")}}>Go back</button>
+                            <button className="info" onClick={() => validate()}>Apply</button>
+                            <button className="warning" onClick={() => deleteCart()}>Delete</button>
                         </div>
                     </div>
-                    <div className="line top-bottom">
-                        <div className="layer">
-
-                            <div className="input-container">
-                                <label htmlFor="notes">Notes:</label>
-                                <textarea
-                                name="notes"
-                                id="notes"
-                                value={orderInputs["notes"]}
-                                onChange={() => handleInputChange("notes")}
-                                ></textarea>                          
-                            </div> {/* notes */}
-
-                        </div>
-                    </div>
-                    <div className="control-buttons">
-                        <button onClick={() => {navigate("/carts")}}>Go back</button>
-                        <button className="info" onClick={() => validate()}>Apply</button>
-                        <button className="warning" onClick={() => deleteCart()}>Delete</button>
-                    </div>
-                </div>
-                <div className="order-info-box">
-                    <div className="details-right">
+                    <div className="edit-right">
                         <div className="meals-shortcuts">
                             <div className="new-meal" onClick={() => newMeal()}>
                                 <i className="fa-solid fa-plus"></i>
