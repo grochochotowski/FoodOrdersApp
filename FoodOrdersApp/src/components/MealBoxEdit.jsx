@@ -19,7 +19,7 @@ export default function MealBox({meal}) {
                 <p>Price: {meal.price}zł</p>
             </div>
             <button className="side warning" onClick={() => removeMeal()}>
-                <i class="fa-regular fa-trash-can"></i>
+                <i className="fa-regular fa-trash-can"></i>
             </button>
         </div>
     )

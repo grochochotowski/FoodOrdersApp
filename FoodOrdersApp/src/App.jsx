@@ -35,6 +35,8 @@ export default function App() {
                 </Suspense>
             }/>
 
+
+
             <Route path="/carts" element={
                 <Suspense fallback={<Fallback />}>
                     <Carts />
@@ -54,6 +56,8 @@ export default function App() {
                     <CartsEdit />
                 </Suspense>
             }/>
+
+
 
             <Route path="/orders" element={
                 <Suspense fallback={<Fallback />}>
@@ -75,6 +79,8 @@ export default function App() {
                 </Suspense>
             }/>
         </Routes>
+
+
 
 
     </div>
