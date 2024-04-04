@@ -11,12 +11,23 @@ export default function CartsDetails() {
         "minPrice": 19.99,
         "totalCartPrice" : 19.99,
         "deliveryPrice" : 0.00,
+        "freeDeliveryPrice" : 19.99,
+        "phoneNumber": "123 456 789",
+        "bankAccountNumber": "12 3456 7890 1234 5678 9012 3456",
+        "notes": "Those are notes for order with id: 1",
+        "address": {
+            "country": "PL",
+            "city": "Bialystok",
+            "street": "Żurawia",
+            "building": "71",
+            "premises": "123"
+        },
         "organization" : {
             "name" : "Organization 1"
         },
         "restaurant" : {
             "name" : "McDonald's"
-        }
+        },
     })
 
     return (
