@@ -248,18 +248,18 @@ export default function Orders() {
     function generateTableBody() {
         return (
             <tbody>
-                {orders.map((cart) => (
-                    <tr key={cart.id}>
-                        <td>{cart.user.firstName} {cart.user.lastName}</td>
-                        <td>{cart.organization.name}</td>
-                        <td>{cart.restaurant.name}</td>
-                        <td>{cart.totalPrice}</td>
-                        <td>{cart.positions}</td>
+                {orders.map((order) => (
+                    <tr key={order.id}>
+                        <td>{order.user.firstName} {order.user.lastName}</td>
+                        <td>{order.organization.name}</td>
+                        <td>{order.restaurant.name}</td>
+                        <td>{order.totalPrice}</td>
+                        <td>{order.positions}</td>
                         <td>
-                            <Link to={`details/${cart.id}`} className="details">
+                            <Link to={`details/${order.id}`} className="details">
                                 <i className="fa-solid fa-info"></i>
                             </Link>
-                            <Link to={`edit/${cart.id}`} className="edit">
+                            <Link to={`edit/${order.id}`} className="edit">
                                 <i className="fa-regular fa-pen-to-square"></i>
                             </Link>
                         </td>
