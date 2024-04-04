@@ -146,6 +146,43 @@ section h1 {
     margin: 2vh 0 5vh 0;
 }
 
+/* ========== LAYOUT ==========*/
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+.line {
+    display: flex;
+    padding: 2vh 0;
+    gap: 1vw;
+}
+.line.top-bottom {
+    flex-direction: column;
+}
+.line.left-right {
+    flex-direction: row;
+}
+.layer {
+    display: flex;
+    justify-content: space-around;
+    gap: 1vw;
+}
+.layer.left {
+    flex-basis: 50%;
+    flex-direction: column;
+}
+.layer.right {
+    flex-basis: 50%;
+}
+.input-container {
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
 @media (prefers-color-scheme: light) {
     .box {
         background-color: #ffffff;

@@ -1,7 +1,6 @@
 import React from "react"
 
 export default function IndividualOrder({order}) {
-    console.log(order)
   return (
     <div className="order-box">
         <img src={order.img} alt="food-img" />

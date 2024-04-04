@@ -64,11 +64,11 @@ export default function CartsDetails() {
 
     return (
         <div className="container">
-            <section className="box">
+            <section className="box details-page">
                 <h1>Cart &#40;{cartDetails.id}&#41; - {cartDetails.organization.name} - {cartDetails.restaurant.name}</h1>
-                <div className="info">
+                <div className="layer">
                     <div className="left">
-                        <div className="line">
+                        <div className="line top-bottom">
                             <h5>Cost:</h5>
                             <p>{cartDetails.totalCartPrice}/{cartDetails.minPrice} zł</p>
                             <h5>Delivery:</h5>
@@ -82,7 +82,7 @@ export default function CartsDetails() {
                                 </p>
                             }
                         </div>
-                        <div className="line">
+                        <div className="line top-bottom">
                             <h5>Address:</h5>
                             <p>
                                 {cartDetails.address.country}
@@ -92,18 +92,18 @@ export default function CartsDetails() {
                                 {cartDetails.address.premises && <>/{cartDetails.address.premises}</>}
                             </p>
                         </div>
-                        <div className="line">
+                        <div className="line top-bottom">
                             <h5>Phone number:</h5>
                             <p>{cartDetails.phoneNumber}</p>
                             <h5>Bank account number:</h5>
                             <p>{cartDetails.bankAccountNumber}</p>
                         </div>
-                        <div className="line">
+                        <div className="line top-bottom">
                             <h5>Notes:</h5>
                             <p>{cartDetails.notes}</p>
                         </div>
                     </div>
-                    <div className="right">
+                    <div className="layer">
                         <div className="orders">
                             <IndividualOrder order={orders[0]}/>
                             <IndividualOrder order={orders[1]}/>
