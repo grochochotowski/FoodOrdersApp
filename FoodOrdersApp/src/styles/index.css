@@ -13,7 +13,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    --clr-dark-800: #ee5454;
+    --clr-dark-900: #ac7f03;
+    --clr-dark-800: #be3838;
     --clr-dark-600: #585fe9;
     --clr-dark-500: #363ec7;
     --clr-dark-200: #253543;
@@ -24,6 +25,7 @@
     --clr-light-500: #adb1ff;
     --clr-light-400: #8b90dd;
     --clr-light-300: #ff5656;
+    --clr-light-100: #ffe656;
 }
 html, body {
     padding: 0;
@@ -156,6 +158,14 @@ button:hover,
 .button:hover {
     background-color: var(--clr-dark-500);
 }
+button.info:hover,
+.button.info:hover {
+    background-color: var(--clr-dark-900);
+}
+button.warning:hover,
+.button.warning:hover {
+    background-color: var(--clr-dark-800);
+}
 textarea {
     width: 15rem;
     padding: 0.4rem;
@@ -257,6 +267,14 @@ td:last-child {
     button:hover,
     .button:hover {
         background-color: var(--clr-light-500);
+    }
+    button.info:hover,
+    .button.info:hover {
+        background-color: var(--clr-light-100);
+    }
+    button.warning:hover,
+    .button.warning:hover {
+        background-color: var(--clr-light-300);
     }
     th {
         background-color: var(--clr-light-500);
