@@ -1,5 +1,8 @@
 import React from "react"
+
 import "../styles/carts.css"
+import "../styles/index.css"
+import "../styles/App.css"
 
 export default function IndividualOrder({order}) {
   return (

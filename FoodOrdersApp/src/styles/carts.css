@@ -43,8 +43,12 @@
     overflow: hidden; 
 
     box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.5);
-    
+    background-color: var(--clr-dark-100);
+
     cursor: pointer;
+}
+.order-box:hover {
+    background-color: var(--clr-dark-500);
 }
 .order-box img {
     height: 15vh;
