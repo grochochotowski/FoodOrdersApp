@@ -24,6 +24,7 @@ export default function CartsEdit() {
     const [newCartInputs, setNewCartInputs] = useState({
         "bankAccountNumber": "12 3456 7890 1234 5678 9012 3456",
         "phoneNumber": "123 456 789",
+        "country" : "PL",
         "city": "Bialystok",
         "street": "Żurawia",
         "building": "71",
@@ -61,6 +62,14 @@ export default function CartsEdit() {
         }
         else {
             document.getElementById("phoneNumber").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.country == "") {
+            valid = false
+            document.getElementById("country").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("country").classList.remove("not-valid")
         }
 
         if (newCartInputs.city == "") {
@@ -166,6 +175,16 @@ export default function CartsEdit() {
 
                         </div>
                         <div className="layer bottom">
+
+                            <div className="input-container">
+                                    <label htmlFor="country">Country:</label>
+                                    <input
+                                        type="text"
+                                        id="country"
+                                        value={newCartInputs["country"]}
+                                        onChange={() => handleInputChange("country")}
+                                    />
+                            </div> {/* country */}
 
                             <div className="input-container">
                                     <label htmlFor="city">City:</label>
