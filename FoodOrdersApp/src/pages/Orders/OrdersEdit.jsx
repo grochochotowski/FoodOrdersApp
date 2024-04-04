@@ -202,7 +202,7 @@ export default function OrdersDetails() {
                 <h1>{orderInputs.firstName} - order &#40;{orderInputs.id}&#41;</h1>
                 <div className="form">
                     <div className="line top-bottom">
-                        <div className="layer top">
+                        <div className="layer">
 
                             <div className="input-container">
                                 <label htmlFor="firstName">First name:</label>
@@ -235,6 +235,26 @@ export default function OrdersDetails() {
                             </div> {/* lastName */}
 
                         </div>
+                    </div>
+                    <div className="line top-bottom">
+                        <div className="layer">
+
+                            <div className="input-container">
+                                <label htmlFor="notes">Notes:</label>
+                                <textarea
+                                name="notes"
+                                id="notes"
+                                value={orderInputs["notes"]}
+                                onChange={() => handleInputChange("notes")}
+                                ></textarea>                          
+                            </div> {/* notes */}
+
+                        </div>
+                    </div>
+                    <div className="control-buttons">
+                        <button onClick={() => {navigate("/carts")}}>Go back</button>
+                        <button className="info" onClick={() => validate()}>Apply</button>
+                        <button className="warning" onClick={() => deleteCart()}>Delete</button>
                     </div>
                 </div>
                 <div className="order-info-box">
