@@ -15,14 +15,9 @@ export default function OrdersDetails() {
 
     const [orderInputs, setOrderInputs] = useState({
         "id" : 1,
-        "orderPrice": 19.99,
         "notes": "Those are notes for order with id: 1",
         "positions" : 9,
-        "firstName" : "FirstName 1",
-        "secondName" : "SecondName 1",
-        "lastName" : "LastName 1",
-        "organization" : "Organization 1",
-        "restaurant" : "McDonald's"
+        "firstName" : "FirstName 1"
     })
     const [meals, setMeals] = useState([
         {
@@ -90,100 +85,10 @@ export default function OrdersDetails() {
     function handleInputChange(inputId) {
         const value = document.getElementById(inputId).value;
 
-        setNewCartInputs(prev => ({
+        setOrderInputs(prev => ({
             ...prev,
             [inputId]: value
         }))
-    }
-
-    function validate() {
-        let valid = true;
-/*
-        if (newCartInputs.bankAccountNumber === "") {
-            valid = false
-            document.getElementById("bankAccountNumber").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("bankAccountNumber").classList.remove("not-valid")
-        }
-
-        if (newCartInputs.phoneNumber === "") {
-            valid = false
-            document.getElementById("phoneNumber").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("phoneNumber").classList.remove("not-valid")
-        }
-
-        if (newCartInputs.country === "") {
-            valid = false
-            document.getElementById("country").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("country").classList.remove("not-valid")
-        }
-
-        if (newCartInputs.city === "") {
-            valid = false
-            document.getElementById("city").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("city").classList.remove("not-valid")
-        }
-
-        if (newCartInputs.street === "") {
-            valid = false
-            document.getElementById("street").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("street").classList.remove("not-valid")
-        }
-
-        if (newCartInputs.building === "") {
-            valid = false
-            document.getElementById("building").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("building").classList.remove("not-valid")
-        }
-
-        if (newCartInputs.minimumCartPrice === "") {
-            valid = false
-            document.getElementById("minimumCartPrice").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("minimumCartPrice").classList.remove("not-valid")
-        }
-
-        if (newCartInputs.deliveryPrice === "") {
-            valid = false
-            document.getElementById("deliveryPrice").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("deliveryPrice").classList.remove("not-valid")
-        }
-
-        if (newCartInputs.freeDeliveryPrice === "") {
-            valid = false
-            document.getElementById("freeDeliveryPrice").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("freeDeliveryPrice").classList.remove("not-valid")
-        }
-
-
-        let updatedDataToSend = { ...newCartInputs };
-        if (updatedDataToSend.premises === "") {
-            updatedDataToSend = { ...updatedDataToSend, premises: null };
-        }
-        if (updatedDataToSend.notes === "") {
-            updatedDataToSend = { ...updatedDataToSend, notes: null };
-        }
-        setDataToSend(updatedDataToSend);
-
-*/
-        if (valid) sendData()
-        else alert("not-valid")
     }
 
     function sendData() {
@@ -202,41 +107,7 @@ export default function OrdersDetails() {
                 <h1>{orderInputs.firstName} - order &#40;{orderInputs.id}&#41;</h1>
                 <div className="edit-meal-container">
                     <div className="form edit-left">
-                        <div className="line top-bottom">
-                            <div className="layer">
-
-                                <div className="input-container">
-                                    <label htmlFor="firstName">First name:</label>
-                                    <input
-                                        type="text"
-                                        id="firstName"
-                                        value={orderInputs["firstName"]}
-                                        onChange={() => handleInputChange("firstName")}
-                                    />
-                                </div> {/* firstName */}
-
-                                <div className="input-container">
-                                    <label htmlFor="secondName">Second name:</label>
-                                    <input
-                                        type="text"
-                                        id="secondName"
-                                        value={orderInputs["secondName"]}
-                                        onChange={() => handleInputChange("secondName")}
-                                    />
-                                </div> {/* secondName */}
-
-                                <div className="input-container">
-                                    <label htmlFor="lastName">Last name:</label>
-                                    <input
-                                        type="text"
-                                        id="lastName"
-                                        value={orderInputs["lastName"]}
-                                        onChange={() => handleInputChange("lastName")}
-                                    />
-                                </div> {/* lastName */}
-
-                            </div>
-                        </div>
+                        
                         <div className="line top-bottom">
                             <div className="layer">
 
@@ -254,7 +125,7 @@ export default function OrdersDetails() {
                         </div>
                         <div className="control-buttons">
                             <button onClick={() => {navigate("/carts")}}>Go back</button>
-                            <button className="info" onClick={() => validate()}>Apply</button>
+                            <button className="info" onClick={() => sendData()}>Apply</button>
                             <button className="warning" onClick={() => deleteOrder()}>Delete</button>
                         </div>
                     </div>
