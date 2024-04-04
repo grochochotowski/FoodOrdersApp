@@ -31,7 +31,14 @@
     padding: 3vh 1vw;
     flex-basis: 40%;
     
-    max-height: calc(100vh - 4vh - 6vh - 4.5rem - 2px);
+    /*
+        height of screen
+        - header padding
+        - header size
+        - header border
+        - details-right padding
+    */
+    max-height: calc(100vh - 4vh - 4.5rem - 2px - 6vh);
     overflow-y: scroll;
 }
 

@@ -17,6 +17,11 @@ const CartsNew = lazy(() => import("./pages/Carts/CartsNew.jsx"));
 const CartsDetails = lazy(() => import("./pages/Carts/CartsDetails.jsx"));
 const CartsEdit = lazy(() => import("./pages/Carts/CartsEdit.jsx"));
 
+const Orders = lazy(() => import("./pages/Orders/Orders.jsx"));
+const OrdersNew = lazy(() => import("./pages/Orders/OrdersNew.jsx"));
+const OrdersDetails = lazy(() => import("./pages/Orders/OrdersDetails.jsx"));
+const OrdersEdit = lazy(() => import("./pages/Orders/OrdersEdit.jsx"));
+
 export default function App() {
   return (
     <div className="main-container">
@@ -47,6 +52,26 @@ export default function App() {
             <Route path="/carts/edit/:id" element={
                 <Suspense fallback={<Fallback />}>
                     <CartsEdit />
+                </Suspense>
+            }/>
+
+            <Route path="/orders" element={
+                <Suspense fallback={<Fallback />}>
+                    <Orders />
+                </Suspense>
+            }/><Route path="/orders/new" element={
+                <Suspense fallback={<Fallback />}>
+                    <OrdersNew />
+                </Suspense>
+            }/>
+            <Route path="/orders/details/:id" element={
+                <Suspense fallback={<Fallback />}>
+                    <OrdersDetails />
+                </Suspense>
+            }/>
+            <Route path="/orders/edit/:id" element={
+                <Suspense fallback={<Fallback />}>
+                    <OrdersEdit />
                 </Suspense>
             }/>
         </Routes>
