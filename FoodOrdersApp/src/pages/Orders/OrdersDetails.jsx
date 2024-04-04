@@ -17,10 +17,11 @@ export default function OrdersDetails() {
         "id" : 1,
         "orderPrice": 19.99,
         "notes": "Those are notes for order with id: 1",
+        "positions" : 9,
         "user" : {
-            "firstname" : "Firstname 1",
-            "secondname" : "Secondname 1",
-            "lastname" : "Lastname 1",
+            "firstName" : "FirstName 1",
+            "secondName" : "SecondName 1",
+            "lastName" : "LastName 1",
         },
         "organization" : {
             "name" : "Organization 1"
@@ -91,17 +92,29 @@ export default function OrdersDetails() {
     return (
         <div className="container">
             <section className="box details-page">
-                <h1>Order &#40;{orderDetails.id}&#41; - {orderDetails.organization.name} - {orderDetails.restaurant.name}</h1>
+                <h1>Order &#40;{orderDetails.id}&#41; - {orderDetails.user.firstName}</h1>
                 <div className="order-info-box">
                     <div className="details-left">
                         <div className="line top-bottom">
-
+                            <h5>User:</h5>
+                            <p>
+                                {orderDetails.user.firstName}
+                                {orderDetails.user.secondName &&
+                                    <>&nbsp; {orderDetails.user.secondName}</>}
+                                &nbsp;{orderDetails.user.lastName}
+                            </p>
                         </div>
                         <div className="line top-bottom">
-
+                            <h5>Organization:</h5>
+                            <p>{orderDetails.organization.name}</p>
+                            <h5>Restaurant:</h5>
+                            <p>{orderDetails.restaurant.name}</p>
                         </div>
                         <div className="line top-bottom">
-                            
+                            <h5>Number of meal:</h5>
+                            <p>{orderDetails.positions}</p>
+                            <h5>Price:</h5>
+                            <p>{orderDetails.orderPrice}</p>
                         </div>
                         <div className="line top-bottom">
                             <h5>Notes:</h5>

@@ -16,8 +16,8 @@ export default function Orders() {
         {
             "id" : 1,
             "user": {
-                "firstName" : "Firstname 1",
-                "lastName" : "Lastname 1"
+                "firstName" : "FirstName 1",
+                "lastName" : "LastName 1"
             },
             "organization" : {
                 "name" : "Organization 1"
