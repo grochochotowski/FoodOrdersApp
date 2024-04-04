@@ -22,6 +22,8 @@ const OrdersNew = lazy(() => import("./pages/Orders/OrdersNew.jsx"));
 const OrdersDetails = lazy(() => import("./pages/Orders/OrdersDetails.jsx"));
 const OrdersEdit = lazy(() => import("./pages/Orders/OrdersEdit.jsx"));
 
+const More = lazy(() => import("./pages/More.jsx"));
+
 export default function App() {
   return (
     <div className="main-container">
@@ -78,11 +80,18 @@ export default function App() {
                     <OrdersEdit />
                 </Suspense>
             }/>
+
+
+            
+            <Route path="/more" element={
+                <Suspense fallback={<Fallback />}>
+                    <More />
+                </Suspense>
+            }/>
+
+
+
         </Routes>
-
-
-
-
     </div>
   );
 }

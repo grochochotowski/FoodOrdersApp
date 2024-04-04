@@ -31,7 +31,7 @@ export default function NavBar() {
                     </li>
                     <li>
                         <Link to="more">
-                            <h4>Extra</h4>
+                            <h4>More</h4>
                         </Link>
                     </li>
                 </ul>
