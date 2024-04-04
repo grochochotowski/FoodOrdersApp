@@ -14,6 +14,7 @@ export default function CartsNew() {
         "organizationId" : 0,
         "bankAccountNumber": "",
         "phoneNumber": "",
+        "country" : "",
         "city": "",
         "street": "",
         "building": "",
@@ -74,6 +75,14 @@ export default function CartsNew() {
         }
         else {
             document.getElementById("phoneNumber").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.country == "") {
+            valid = false
+            document.getElementById("country").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("country").classList.remove("not-valid")
         }
 
         if (newCartInputs.city == "") {
@@ -216,6 +225,16 @@ export default function CartsNew() {
 
                         </div>
                         <div className="layer bottom">
+
+                            <div className="input-container">
+                                    <label htmlFor="country">Country:</label>
+                                    <input
+                                        type="text"
+                                        id="country"
+                                        value={newCartInputs["country"]}
+                                        onChange={() => handleInputChange("country")}
+                                    />
+                            </div> {/* country */}
 
                             <div className="input-container">
                                     <label htmlFor="city">City:</label>
