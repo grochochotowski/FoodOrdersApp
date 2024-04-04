@@ -104,10 +104,12 @@ export default function CartsDetails() {
                         </div>
                     </div>
                     <div className="details-right">
-                        <IndividualOrder order={orders[0]}/>
-                        <IndividualOrder order={orders[1]}/>
-                        <IndividualOrder order={orders[2]}/>
-                        <IndividualOrder order={orders[3]}/>
+                        <div className="min-orders">
+                            <IndividualOrder order={orders[0]}/>
+                            <IndividualOrder order={orders[1]}/>
+                            <IndividualOrder order={orders[2]}/>
+                            <IndividualOrder order={orders[3]}/>
+                        </div>
                     </div>
                 </div>
             </section>

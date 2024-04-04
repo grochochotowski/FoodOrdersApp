@@ -12,6 +12,7 @@
     height: 100%;
 }
 
+
 .details-page .line {
     gap: 0;
 }
@@ -27,13 +28,17 @@
     flex-basis: 66%;
 }
 .cart-info-box .details-right {
+    padding: 3vh 0;
+    flex-basis: 33%;
+}
+
+
+.min-orders {
     display: flex;
     flex-direction: column;
     gap: 2vh;
     
-    flex-basis: 33%;
 }
-
 .order-box {
     display: flex;
     gap: 1vw;
