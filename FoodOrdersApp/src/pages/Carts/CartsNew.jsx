@@ -45,7 +45,7 @@ export default function CartsNew() {
 
     function validate() {
         let valid = true;
-        if (newCartInputs.restaurantId == 0) {
+        if (newCartInputs.restaurantId === 0) {
             valid = false
             document.getElementById("restaurantId").classList.add("not-valid")
         }
@@ -53,7 +53,7 @@ export default function CartsNew() {
             document.getElementById("restaurantId").classList.remove("not-valid")
         }
 
-        if (newCartInputs.organizationId == 0) {
+        if (newCartInputs.organizationId === 0) {
             valid = false
             document.getElementById("organizationId").classList.add("not-valid")
         }
@@ -61,7 +61,7 @@ export default function CartsNew() {
             document.getElementById("organizationId").classList.remove("not-valid")
         }
 
-        if (newCartInputs.bankAccountNumber == "") {
+        if (newCartInputs.bankAccountNumber === "") {
             valid = false
             document.getElementById("bankAccountNumber").classList.add("not-valid")
         }
@@ -69,7 +69,7 @@ export default function CartsNew() {
             document.getElementById("bankAccountNumber").classList.remove("not-valid")
         }
 
-        if (newCartInputs.phoneNumber == "") {
+        if (newCartInputs.phoneNumber === "") {
             valid = false
             document.getElementById("phoneNumber").classList.add("not-valid")
         }
@@ -77,7 +77,7 @@ export default function CartsNew() {
             document.getElementById("phoneNumber").classList.remove("not-valid")
         }
 
-        if (newCartInputs.country == "") {
+        if (newCartInputs.country === "") {
             valid = false
             document.getElementById("country").classList.add("not-valid")
         }
@@ -85,7 +85,7 @@ export default function CartsNew() {
             document.getElementById("country").classList.remove("not-valid")
         }
 
-        if (newCartInputs.city == "") {
+        if (newCartInputs.city === "") {
             valid = false
             document.getElementById("city").classList.add("not-valid")
         }
@@ -93,7 +93,7 @@ export default function CartsNew() {
             document.getElementById("city").classList.remove("not-valid")
         }
 
-        if (newCartInputs.street == "") {
+        if (newCartInputs.street === "") {
             valid = false
             document.getElementById("street").classList.add("not-valid")
         }
@@ -101,7 +101,7 @@ export default function CartsNew() {
             document.getElementById("street").classList.remove("not-valid")
         }
 
-        if (newCartInputs.building == "") {
+        if (newCartInputs.building === "") {
             valid = false
             document.getElementById("building").classList.add("not-valid")
         }
@@ -109,7 +109,7 @@ export default function CartsNew() {
             document.getElementById("building").classList.remove("not-valid")
         }
 
-        if (newCartInputs.minimumCartPrice == "") {
+        if (newCartInputs.minimumCartPrice === "") {
             valid = false
             document.getElementById("minimumCartPrice").classList.add("not-valid")
         }
@@ -117,7 +117,7 @@ export default function CartsNew() {
             document.getElementById("minimumCartPrice").classList.remove("not-valid")
         }
 
-        if (newCartInputs.deliveryPrice == "") {
+        if (newCartInputs.deliveryPrice === "") {
             valid = false
             document.getElementById("deliveryPrice").classList.add("not-valid")
         }
@@ -125,7 +125,7 @@ export default function CartsNew() {
             document.getElementById("deliveryPrice").classList.remove("not-valid")
         }
 
-        if (newCartInputs.freeDeliveryPrice == "") {
+        if (newCartInputs.freeDeliveryPrice === "") {
             valid = false
             document.getElementById("freeDeliveryPrice").classList.add("not-valid")
         }
