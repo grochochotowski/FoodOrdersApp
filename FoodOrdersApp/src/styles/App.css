@@ -117,29 +117,6 @@ section h1 {
     cursor: pointer;
 }
 
-/* ========== PATH ==========*/
-.path {
-    display: flex;
-    align-items: center;
-
-    gap: 1vw;
-    line-height: 4rem;
-
-    user-select: none;
-}
-.path-arrows {
-    letter-spacing: -5px;
-    font-size: 1.5rem;
-}
-.path-link {
-    font-size: 1.1em;
-
-    cursor: pointer;
-}
-.path-link:hover {
-    color: var(--clr-dark-500);
-}
-
 /* ========== CONTRROL BUTTON ==========*/
 .control-buttons {
     display: flex;
@@ -203,12 +180,6 @@ section h1 {
     }
     .edit:hover {
         background-color: rgb(255, 194, 52);
-    }
-    .path-link {
-        font-weight: 600;
-    }
-    .path-link:hover {
-        color: var(--clr-light-500);
     }
     .not-valid {
         border-color: var(--clr-light-300);
