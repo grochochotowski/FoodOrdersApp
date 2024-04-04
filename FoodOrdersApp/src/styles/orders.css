@@ -1,5 +1,10 @@
-.edit-meal-container {
+.order-container {
     display: flex;
+    width: 100%;
+}
+.order-container .layer,
+.order-container .input-container,
+.order-container select {
     width: 100%;
 }
 
@@ -14,7 +19,7 @@
     display: flex;
     flex-wrap: wrap;
 }
-.edit-meal-container .edit-left {
+.order-container .order-left {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -30,7 +35,7 @@
     
     flex-basis: 60%;
 }
-.edit-meal-container .edit-right {
+.order-container .order-right {
     box-sizing: border-box;
     margin: 1.5vh 0;
     padding: 1.5vh 1vw;

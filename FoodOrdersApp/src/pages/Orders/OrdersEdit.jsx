@@ -105,8 +105,8 @@ export default function OrdersDetails() {
         <div className="container">
             <section className="box">
                 <h1>{orderInputs.firstName} - order &#40;{orderInputs.id}&#41;</h1>
-                <div className="edit-meal-container">
-                    <div className="form edit-left">
+                <div className="order-container">
+                    <div className="form order-left">
                         
                         <div className="line top-bottom">
                             <div className="layer">
@@ -129,7 +129,7 @@ export default function OrdersDetails() {
                             <button className="warning" onClick={() => deleteOrder()}>Delete</button>
                         </div>
                     </div>
-                    <div className="edit-right">
+                    <div className="order-right">
                         <div className="meals-shortcuts">
                             <div className="new-meal" onClick={() => newMeal()}>
                                 <i className="fa-solid fa-plus"></i>
