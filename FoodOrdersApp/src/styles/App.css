@@ -52,7 +52,7 @@ section h1 {
 
 /* ========== FILTERS ========== */
 .not-valid {
-    border-color: #ee5454;
+    border-color: var(--clr-dark-800);
 }
 
 /* ========== LIST ==========*/
@@ -169,6 +169,6 @@ section h1 {
         color: var(--clr-light-500);
     }
     .not-valid {
-        border-color: #ff5656;
+        border-color: var(--clr-light-300);
     }
 }
