@@ -15,7 +15,7 @@ export default function MealBox({meal}) {
             <img src={meal.img} alt="food-img" />
             <div className="meal-info">
                 <h5>{meal.name}</h5>
-                <p>Positions: {meal.positions}</p>
+                <p>Quantity: {meal.quantity}</p>
                 <p>Price: {meal.price}zł</p>
             </div>
             <button className="side warning" onClick={() => removeMeal()}>
