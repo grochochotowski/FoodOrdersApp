@@ -124,7 +124,7 @@ export default function OrdersDetails() {
                             </div>
                         </div>
                         <div className="control-buttons">
-                            <button onClick={() => {navigate("/carts")}}>Go back</button>
+                            <button onClick={() => {navigate("/orders")}}>Go back</button>
                             <button className="info" onClick={() => sendData()}>Apply</button>
                             <button className="warning" onClick={() => deleteOrder()}>Delete</button>
                         </div>
