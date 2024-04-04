@@ -48,10 +48,10 @@ export default function OrderNew() {
 
         if (newOrderInputs.cartId === 0) {
             valid = false
-            document.getElementById("bankAccountNumber").classList.add("not-valid")
+            document.getElementById("cartId").classList.add("not-valid")
         }
         else {
-            document.getElementById("bankAccountNumber").classList.remove("not-valid")
+            document.getElementById("cartId").classList.remove("not-valid")
         }
 
 
