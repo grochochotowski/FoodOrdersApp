@@ -137,13 +137,14 @@ section h1 {
 .line {
     display: flex;
     padding: 2vh 0;
-    gap: 1vw;
 }
 .line.top-bottom {
     flex-direction: column;
+    gap: 1vh;
 }
 .line.left-right {
     flex-direction: row;
+    gap: 1vw;
 }
 .layer {
     display: flex;
