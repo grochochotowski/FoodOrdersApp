@@ -192,7 +192,7 @@ export default function OrdersDetails() {
         console.log(dataToSend);
     }
 
-    function deleteMeal() {
+    function deleteOrder() {
         alert("deleting")
     }
 
@@ -255,7 +255,7 @@ export default function OrdersDetails() {
                         <div className="control-buttons">
                             <button onClick={() => {navigate("/carts")}}>Go back</button>
                             <button className="info" onClick={() => validate()}>Apply</button>
-                            <button className="warning" onClick={() => deleteCart()}>Delete</button>
+                            <button className="warning" onClick={() => deleteOrder()}>Delete</button>
                         </div>
                     </div>
                     <div className="edit-right">
