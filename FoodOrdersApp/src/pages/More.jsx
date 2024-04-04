@@ -15,15 +15,15 @@ export default function More() {
                 <h1>More pages</h1>
                 <div className="pages">
                     <div className="page-container" onClick={navigate("/restaurants")}>
-                        <h2>Restaurants</h2>
+                        <h3>Restaurants</h3>
                     </div>
                     
                     <div className="page-container" onClick={navigate("/users")}>
-                        <h2>Users</h2>
+                        <h3>Users</h3>
                     </div>
                     
                     <div className="page-container" onClick={navigate("/organizations")}>
-                        <h2>Organizations</h2>
+                        <h3>Organizations</h3>
                     </div>
                 </div>
             </section>
