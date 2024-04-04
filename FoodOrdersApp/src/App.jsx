@@ -39,7 +39,7 @@ export default function App() {
                     <CartsNew />
                 </Suspense>
             }/>
-            <Route path="/carts/edit/:id" element={
+            <Route path="/carts/details/:id" element={
                 <Suspense fallback={<Fallback />}>
                     <CartsDetails />
                 </Suspense>
