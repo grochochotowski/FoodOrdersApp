@@ -43,14 +43,6 @@ export default function CartsEdit() {
             [inputId]: value
         }))
     }
-    function handleSelectChange(event, selectId) {
-        const value = parseInt(event.target.value)
-
-        setNewCartInputs(prev => ({
-            ...prev,
-            [selectId]: value
-        }))
-    }
 
     function validate() {
         let valid = true;
@@ -138,6 +130,10 @@ export default function CartsEdit() {
         alert("API call happening")
 
         console.log(dataToSend);
+    }
+
+    function deleteCart() {
+        alert("deleting")
     }
 
     return (
@@ -264,7 +260,8 @@ export default function CartsEdit() {
                 </div>
                 <div className="control-buttons">
                     <button onClick={() => {navigate("/carts")}}>Go back</button>
-                    <button onClick={() => validate()}>Create cart</button>
+                    <button className="info" onClick={() => validate()}>Apply</button>
+                    <button className="warning" onClick={() => deleteCart()}>Delete</button>
                 </div>
             </section>
         </div>
