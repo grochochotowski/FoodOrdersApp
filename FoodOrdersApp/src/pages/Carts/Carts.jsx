@@ -8,8 +8,11 @@ import "../../styles/App.css"
 export default function Carts() {
 
     const [sorting, setSorting] = useState(["col1", 0])
-
-    const [carts, setCarts] = useState([
+    const [filters, setFilters] = useState({
+        "restaurant" : "",
+        "organization" : "",
+    })
+    const [carts, setCarts] = useState([ 
         {
             "id" : 1,
             "minPrice": 19.99,
@@ -138,6 +141,15 @@ export default function Carts() {
             return [column, 0]
         })
     }
+    function updateFilters(filter) {
+        setFilters(prev => ({
+            ...prev,
+            [filter] : document.getElementById(filter).value
+        }))
+    }
+    function filter() {
+        alert(`filtering: ${filters.restaurant}, ${filters.organization}`)
+    }
 
     function generateTableHeader() {
         return (
@@ -226,18 +238,28 @@ export default function Carts() {
                     </div>
                         <div className="inputs">
                         <div className="single-filter">
-                            <label htmlFor="restaurant-input">
+                            <label htmlFor="restaurant">
                                 <h4>Restaurant:</h4>
                             </label>
-                            <input type="text" id="restaurant-input"/>
+                            <input
+                                type="text"
+                                id="restaurant"
+                                onChange={() => updateFilters("restaurant")}
+                                value={filters.restaurant}    
+                            />
                         </div>
                         <div className="single-filter">
-                            <label htmlFor="organization-input">
+                            <label htmlFor="organization">
                                 <h4>Organization:</h4>
                             </label>
-                            <input type="text" id="organization-input"/>
+                            <input
+                                type="text"
+                                id="organization"
+                                onChange={() => updateFilters("organization")}
+                                value={filters.organization}    
+                            />
                         </div>
-                        <button>Filter</button>
+                        <button onClick={() => filter()}>Filter</button>
                     </div>
                 </div>
 
