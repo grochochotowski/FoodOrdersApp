@@ -18,17 +18,11 @@ export default function OrdersDetails() {
         "orderPrice": 19.99,
         "notes": "Those are notes for order with id: 1",
         "positions" : 9,
-        "user" : {
-            "firstName" : "FirstName 1",
-            "secondName" : "SecondName 1",
-            "lastName" : "LastName 1",
-        },
-        "organization" : {
-            "name" : "Organization 1"
-        },
-        "restaurant" : {
-            "name" : "McDonald's"
-        },
+        "firstName" : "FirstName 1",
+        "secondName" : "SecondName 1",
+        "lastName" : "LastName 1",
+        "organization" : "Organization 1",
+        "restaurant" : "McDonald's"
     })
     const [meals, setMeals] = useState([
         {
@@ -88,7 +82,6 @@ export default function OrdersDetails() {
             "quantity" : 2
         }
     ])
-
     function newMeal() {
         alert("new meal")
     }
@@ -205,42 +198,46 @@ export default function OrdersDetails() {
 
     return (
         <div className="container">
-            <section className="box details-page">
-                <h1>{orderInputs.user.firstName} - order &#40;{orderInputs.id}&#41;</h1>
-                <div className="order-info-box">
-                    <div className="details-left">
-                        <div className="line top-bottom">
-                            <h5>User:</h5>
-                            <p>
-                                {orderInputs.user.firstName}
-                                {orderInputs.user.secondName &&
-                                    <>&nbsp; {orderInputs.user.secondName}</>}
-                                &nbsp;{orderInputs.user.lastName}
-                            </p>
-                        </div>
-                        <div className="line top-bottom">
-                            <h5>Organization:</h5>
-                            <p>{orderInputs.organization.name}</p>
-                            <h5>Restaurant:</h5>
-                            <p>{orderInputs.restaurant.name}</p>
-                        </div>
-                        <div className="line top-bottom">
-                            <h5>Number of meal:</h5>
-                            <p>{orderInputs.positions}</p>
-                            <h5>Price:</h5>
-                            <p>{orderInputs.orderPrice}</p>
-                        </div>
-                        <div className="line top-bottom">
-                            <h5>Notes:</h5>
-                            <p>{orderInputs.notes}</p>
-                        </div>
-                        
-                        <div className="control-buttons">
-                            <button onClick={() => {navigate("/orders")}}>Go back</button>
-                            <button className="info" onClick={() => validate()}>Apply</button>
-                            <button className="warning" onClick={() => deleteMeal()}>Delete</button>
+            <section className="box">
+                <h1>{orderInputs.firstName} - order &#40;{orderInputs.id}&#41;</h1>
+                <div className="form">
+                    <div className="line top-bottom">
+                        <div className="layer top">
+
+                            <div className="input-container">
+                                <label htmlFor="firstName">First name:</label>
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    value={orderInputs["firstName"]}
+                                    onChange={() => handleInputChange("firstName")}
+                                />
+                            </div> {/* firstName */}
+
+                            <div className="input-container">
+                                <label htmlFor="secondName">Second name:</label>
+                                <input
+                                    type="text"
+                                    id="secondName"
+                                    value={orderInputs["secondName"]}
+                                    onChange={() => handleInputChange("secondName")}
+                                />
+                            </div> {/* secondName */}
+
+                            <div className="input-container">
+                                <label htmlFor="lastName">Last name:</label>
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    value={orderInputs["lastName"]}
+                                    onChange={() => handleInputChange("lastName")}
+                                />
+                            </div> {/* lastName */}
+
                         </div>
                     </div>
+                </div>
+                <div className="order-info-box">
                     <div className="details-right">
                         <div className="meals-shortcuts">
                             <div className="new-meal" onClick={() => newMeal()}>
