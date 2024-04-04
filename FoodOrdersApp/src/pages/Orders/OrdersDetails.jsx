@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 
-import IndividualOrder from "../../components/IndividualOrder";
+import MealBox from "../../components/MealBox";
 
 import "../../styles/orders.css"
 import "../../styles/index.css"
@@ -29,62 +29,62 @@ export default function OrdersDetails() {
             "name" : "McDonald's"
         },
     })
-    const [orders, setOrders] = useState([
+    const [meals, setMeals] = useState([
         {
             "id" : 1,
             "img" : "https://source.unsplash.com/random/200x200?sig=1",
             "name" : "Name 1",
             "price" : 5.99,
-            "positions" : 2
+            "quantity" : 2
         },
         {
             "id" : 2,
             "img" : "https://source.unsplash.com/random/200x200?sig=2",
             "name" : "Name 2",
             "price" : 4.99,
-            "positions" : 3
+            "quantity" : 3
         },
         {
             "id" : 3,
             "img" : "https://source.unsplash.com/random/200x200?sig=3",
             "name" : "Name 3",
             "price" : 3.99,
-            "positions" : 2
+            "quantity" : 2
         },
         {
             "id" : 4,
             "img" : "https://source.unsplash.com/random/200x200?sig=4",
             "name" : "Name 4",
             "price" : 2.99,
-            "positions" : 5
+            "quantity" : 1
         },
         {
             "id" : 5,
             "img" : "https://source.unsplash.com/random/200x200?sig=5",
             "name" : "Name 5",
             "price" : 5.99,
-            "positions" : 2
+            "quantity" : 2
         },
         {
             "id" : 6,
             "img" : "https://source.unsplash.com/random/200x200?sig=6",
             "name" : "Name 6",
             "price" : 6.99,
-            "positions" : 3
+            "quantity" : 2
         },
         {
             "id" : 7,
             "img" : "https://source.unsplash.com/random/200x200?sig=7",
             "name" : "Name 7",
             "price" : 7.99,
-            "positions" : 2
+            "quantity" : 1
         },
         {
             "id" : 8,
             "img" : "https://source.unsplash.com/random/200x200?sig=8",
             "name" : "Name 8",
             "price" : 8.99,
-            "positions" : 5
+            "quantity" : 2
         }
     ])
 
@@ -95,34 +95,13 @@ export default function OrdersDetails() {
                 <div className="order-info-box">
                     <div className="details-left">
                         <div className="line top-bottom">
-                            <h5>Cost:</h5>
-                            <p>{orderDetails.totalOrderPrice}/{orderDetails.minPrice} zł</p>
-                            <h5>Delivery:</h5>
-                            {
-                                orderDetails.deliveryPrice == 0
-                                ? <p>Free</p>
-                                : <p>
-                                    {orderDetails.deliveryPrice}
-                                    zł - {orderDetails.freeDeliveryPrice - orderDetails.totalOrderPrice}zł
-                                    to free delivery
-                                </p>
-                            }
+
                         </div>
                         <div className="line top-bottom">
-                            <h5>Address:</h5>
-                            <p>
-                                {orderDetails.address.country}
-                                , {orderDetails.address.city}
-                                , {orderDetails.address.street}
-                                &nbsp;{orderDetails.address.building}
-                                {orderDetails.address.premises && <>/{orderDetails.address.premises}</>}
-                            </p>
+
                         </div>
                         <div className="line top-bottom">
-                            <h5>Phone number:</h5>
-                            <p>{orderDetails.phoneNumber}</p>
-                            <h5>Bank account number:</h5>
-                            <p>{orderDetails.bankAccountNumber}</p>
+                            
                         </div>
                         <div className="line top-bottom">
                             <h5>Notes:</h5>
@@ -137,8 +116,8 @@ export default function OrdersDetails() {
                     <div className="details-right">
                         <div className="orders-shortcuts">
                             {
-                                orders.map((order) => (
-                                    <IndividualOrder key={order.id} order={order} />
+                                meals.map((meal) => (
+                                    <MealBox key={meal.id} meal={meal} />
                                 ))
                             }
                         </div>
