@@ -190,7 +190,7 @@ section h1 {
 
 @media (prefers-color-scheme: light) {
     .box {
-        background-color: #ffffff;
+        background-color: var(--clr-light-900);
     }
     section h1 {
         border-bottom: 2px solid rgba(0, 0, 0, 0.5);

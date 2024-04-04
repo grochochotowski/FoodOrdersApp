@@ -19,6 +19,7 @@
     --clr-dark-200: #253543;
     --clr-dark-100: #242424;
 
+    --clr-light-900: #ffffff;
     --clr-light-800: #d1dcea;
     --clr-light-500: #adb1ff;
     --clr-light-400: #8b90dd;
@@ -228,14 +229,14 @@ td:last-child {
       color: #213547;
     }
     input {
-        background-color: #ffffff;
+        background-color: var(--clr-light-900);
         border: 2px solid rgba(0, 0, 0, 0.5);
     }
     input:focus {
         background-color: var(--clr-light-800);
     }
     select {
-        background-color: #ffffff;
+        background-color: var(--clr-light-900);
         border: 2px solid rgba(0, 0, 0, 0.5);
     }
     select:hover {
@@ -243,11 +244,11 @@ td:last-child {
     }
     button,
     .button {
-        background-color: #ffffff;
+        background-color: var(--clr-light-900);
         color: #213547;
     }
     textarea {
-        background-color: #ffffff;
+        background-color: var(--clr-light-900);
         border: 2px solid rgba(0, 0, 0, 0.5);
     }
     textarea:focus {
