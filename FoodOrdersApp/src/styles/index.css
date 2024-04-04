@@ -100,7 +100,7 @@ input {
     background-color: var(--clr-dark-100);
     border: 2px solid rgba(255, 255, 255, 0.87);
 
-    font-size: 1.25rem;
+    font-size: 1.1rem;
 
     transition: 150ms ease-in-out;
 }
@@ -120,7 +120,7 @@ select {
     background-color: var(--clr-dark-100);
     border: 2px solid rgba(255, 255, 255, 0.87);
 
-    font-size: 1.25rem;
+    font-size: 1.1rem;
 
     transition: 150ms ease-in-out;
 }
@@ -177,7 +177,7 @@ textarea {
     background-color: var(--clr-dark-100);
     border: 2px solid rgba(255, 255, 255, 0.87);
     
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 
     resize: none;
 
