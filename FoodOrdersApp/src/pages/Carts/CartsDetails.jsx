@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 import IndividualOrder from "../../components/IndividualOrder";
 
@@ -60,6 +60,30 @@ export default function CartsDetails() {
             "price" : 2.99,
             "positions" : 5
         },
+        {
+            "img" : "https://source.unsplash.com/random/200x200?sig=5",
+            "name" : "Name 5",
+            "price" : 5.99,
+            "positions" : 2
+        },
+        {
+            "img" : "https://source.unsplash.com/random/200x200?sig=6",
+            "name" : "Name 6",
+            "price" : 6.99,
+            "positions" : 3
+        },
+        {
+            "img" : "https://source.unsplash.com/random/200x200?sig=7",
+            "name" : "Name 7",
+            "price" : 7.99,
+            "positions" : 2
+        },
+        {
+            "img" : "https://source.unsplash.com/random/200x200?sig=8",
+            "name" : "Name 8",
+            "price" : 8.99,
+            "positions" : 5
+        }
     ])
 
     return (
@@ -105,10 +129,11 @@ export default function CartsDetails() {
                     </div>
                     <div className="details-right">
                         <div className="min-orders">
-                            <IndividualOrder order={orders[0]}/>
-                            <IndividualOrder order={orders[1]}/>
-                            <IndividualOrder order={orders[2]}/>
-                            <IndividualOrder order={orders[3]}/>
+                            {
+                                orders.map((order) => (
+                                    <IndividualOrder key={order.id} order={order} />
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
