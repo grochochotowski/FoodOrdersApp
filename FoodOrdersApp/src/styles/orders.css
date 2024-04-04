@@ -80,6 +80,7 @@
 
 .meal-box button {
     width: 0;
+    padding: 0;
 }
 .meal-box button i {
     transform: translateX(200%);
