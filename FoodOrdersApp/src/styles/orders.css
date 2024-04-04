@@ -42,6 +42,26 @@
 
     user-select: none;
 }
+.new-meal {
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 15vh;
+    border-radius: 10px;
+
+    background-color: var(--clr-dark-100);
+    border: dashed 2px var(--clr-light-900);
+
+    font-size: 3rem;
+
+    cursor: pointer;
+}
+.new-meal:hover {
+    background-color: var(--clr-dark-500);
+}
 .meal-box {
     display: flex;
 
@@ -77,7 +97,6 @@
     text-align: center;
 }
 
-
 .meal-box button {
     width: 0;
     padding: 0;
@@ -86,7 +105,7 @@
     transform: translateX(200%);
 }
 .meal-box:hover button {
-    width: 10%;
+    width: 15%;
 }
 .meal-box:hover button i{
     transform: translateX(0);
@@ -99,6 +118,13 @@
     }
     .meal-box .meal-info:hover,
     .meal-box img:hover + .meal-info {
+        background-color: var(--clr-light-500);
+    }
+    .new-meal {
+        background-color: var(--clr-light-900);
+        border-color: var(--clr-dark-200);
+    }
+    .new-meal:hover {
         background-color: var(--clr-light-500);
     }
 }

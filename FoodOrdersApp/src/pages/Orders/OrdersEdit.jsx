@@ -89,6 +89,10 @@ export default function OrdersDetails() {
         }
     ])
 
+    function newMeal() {
+        alert("new meal")
+    }
+
     return (
         <div className="container">
             <section className="box details-page">
@@ -128,6 +132,9 @@ export default function OrdersDetails() {
                     </div>
                     <div className="details-right">
                         <div className="meals-shortcuts">
+                            <div className="new-meal" onClick={() => newMeal()}>
+                                <i className="fa-solid fa-plus"></i>
+                            </div>
                             {
                                 meals.map((meal) => (
                                     <MealBoxEdit key={meal.id} meal={meal} />
