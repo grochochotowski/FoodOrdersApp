@@ -11,14 +11,16 @@ export default function MealBox({meal}) {
     }
 
     return (
-        <div className="order-box">
+        <div className="meal-box">
             <img src={meal.img} alt="food-img" />
-            <div className="order-info">
+            <div className="meal-info">
                 <h5>{meal.name}</h5>
                 <p>Positions: {meal.positions}</p>
                 <p>Price: {meal.price}zł</p>
             </div>
-            <button className="warning" onClick={() => removeMeal()}>Remove</button>
+            <button className="side warning" onClick={() => removeMeal()}>
+                <i class="fa-regular fa-trash-can"></i>
+            </button>
         </div>
     )
 }

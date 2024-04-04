@@ -114,7 +114,7 @@ export default function OrdersDetails() {
                         </div>
                     </div>
                     <div className="details-right">
-                        <div className="orders-shortcuts">
+                        <div className="meals-shortcuts">
                             {
                                 meals.map((meal) => (
                                     <MealBox key={meal.id} meal={meal} />
