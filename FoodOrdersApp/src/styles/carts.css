@@ -51,6 +51,8 @@
     display: flex;
     flex-direction: column;
     gap: 2vh;
+
+    user-select: none;
 }
 .order-box {
     display: flex;
