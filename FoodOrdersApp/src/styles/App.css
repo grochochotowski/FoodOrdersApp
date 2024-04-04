@@ -17,6 +17,11 @@ section.box {
 
     overflow: scroll;
 }
+.details-page,
+.details-page h1,
+.details-page h5 {
+    user-select: auto;
+}
 
 /* ========== FILTERS ==========*/
 section h1 {

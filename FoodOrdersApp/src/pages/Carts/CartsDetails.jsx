@@ -66,8 +66,8 @@ export default function CartsDetails() {
         <div className="container">
             <section className="box details-page">
                 <h1>Cart &#40;{cartDetails.id}&#41; - {cartDetails.organization.name} - {cartDetails.restaurant.name}</h1>
-                <div className="layer">
-                    <div className="left">
+                <div className="cart-info-box">
+                    <div className="details-left">
                         <div className="line top-bottom">
                             <h5>Cost:</h5>
                             <p>{cartDetails.totalCartPrice}/{cartDetails.minPrice} zł</p>
@@ -103,13 +103,11 @@ export default function CartsDetails() {
                             <p>{cartDetails.notes}</p>
                         </div>
                     </div>
-                    <div className="layer">
-                        <div className="orders">
-                            <IndividualOrder order={orders[0]}/>
-                            <IndividualOrder order={orders[1]}/>
-                            <IndividualOrder order={orders[2]}/>
-                            <IndividualOrder order={orders[3]}/>
-                        </div>
+                    <div className="details-right">
+                        <IndividualOrder order={orders[0]}/>
+                        <IndividualOrder order={orders[1]}/>
+                        <IndividualOrder order={orders[2]}/>
+                        <IndividualOrder order={orders[3]}/>
                     </div>
                 </div>
             </section>
