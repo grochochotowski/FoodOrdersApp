@@ -17,11 +17,6 @@
 }
 
 
-.details-page .line {
-    gap: 0;
-}
-
-
 .cart-info-box {
     display: flex;
     flex-wrap: wrap;
