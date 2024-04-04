@@ -11,7 +11,7 @@ export default function CartsEdit() {
     const params = useParams();
     console.log(params.id)
 
-    const [cartDetails, seCartDetail] = useState({
+    const [cartDetails, setCartDetail] = useState({
         "id" : params.id,
         "restaurant" : {
             "name" : "McDonald's"
@@ -21,7 +21,7 @@ export default function CartsEdit() {
         }
     })
 
-    const [newCartInputs, setNewCartInputs] = useState({
+    const [cartInputs, setCartInputs] = useState({
         "bankAccountNumber": "12 3456 7890 1234 5678 9012 3456",
         "phoneNumber": "123 456 789",
         "country" : "PL",
@@ -39,7 +39,7 @@ export default function CartsEdit() {
     function handleInputChange(inputId) {
         const value = document.getElementById(inputId).value;
 
-        setNewCartInputs(prev => ({
+        setCartInputs(prev => ({
             ...prev,
             [inputId]: value
         }))
@@ -48,7 +48,7 @@ export default function CartsEdit() {
     function validate() {
         let valid = true;
 
-        if (newCartInputs.bankAccountNumber === "") {
+        if (cartInputs.bankAccountNumber === "") {
             valid = false
             document.getElementById("bankAccountNumber").classList.add("not-valid")
         }
@@ -56,7 +56,7 @@ export default function CartsEdit() {
             document.getElementById("bankAccountNumber").classList.remove("not-valid")
         }
 
-        if (newCartInputs.phoneNumber === "") {
+        if (cartInputs.phoneNumber === "") {
             valid = false
             document.getElementById("phoneNumber").classList.add("not-valid")
         }
@@ -64,7 +64,7 @@ export default function CartsEdit() {
             document.getElementById("phoneNumber").classList.remove("not-valid")
         }
 
-        if (newCartInputs.country === "") {
+        if (cartInputs.country === "") {
             valid = false
             document.getElementById("country").classList.add("not-valid")
         }
@@ -72,7 +72,7 @@ export default function CartsEdit() {
             document.getElementById("country").classList.remove("not-valid")
         }
 
-        if (newCartInputs.city === "") {
+        if (cartInputs.city === "") {
             valid = false
             document.getElementById("city").classList.add("not-valid")
         }
@@ -80,7 +80,7 @@ export default function CartsEdit() {
             document.getElementById("city").classList.remove("not-valid")
         }
 
-        if (newCartInputs.street === "") {
+        if (cartInputs.street === "") {
             valid = false
             document.getElementById("street").classList.add("not-valid")
         }
@@ -88,7 +88,7 @@ export default function CartsEdit() {
             document.getElementById("street").classList.remove("not-valid")
         }
 
-        if (newCartInputs.building === "") {
+        if (cartInputs.building === "") {
             valid = false
             document.getElementById("building").classList.add("not-valid")
         }
@@ -96,7 +96,7 @@ export default function CartsEdit() {
             document.getElementById("building").classList.remove("not-valid")
         }
 
-        if (newCartInputs.minimumCartPrice === "") {
+        if (cartInputs.minimumCartPrice === "") {
             valid = false
             document.getElementById("minimumCartPrice").classList.add("not-valid")
         }
@@ -104,7 +104,7 @@ export default function CartsEdit() {
             document.getElementById("minimumCartPrice").classList.remove("not-valid")
         }
 
-        if (newCartInputs.deliveryPrice === "") {
+        if (cartInputs.deliveryPrice === "") {
             valid = false
             document.getElementById("deliveryPrice").classList.add("not-valid")
         }
@@ -112,7 +112,7 @@ export default function CartsEdit() {
             document.getElementById("deliveryPrice").classList.remove("not-valid")
         }
 
-        if (newCartInputs.freeDeliveryPrice === "") {
+        if (cartInputs.freeDeliveryPrice === "") {
             valid = false
             document.getElementById("freeDeliveryPrice").classList.add("not-valid")
         }
@@ -121,7 +121,7 @@ export default function CartsEdit() {
         }
 
 
-        let updatedDataToSend = { ...newCartInputs };
+        let updatedDataToSend = { ...cartInputs };
         if (updatedDataToSend.premises === "") {
             updatedDataToSend = { ...updatedDataToSend, premises: null };
         }
@@ -158,7 +158,7 @@ export default function CartsEdit() {
                                     <input
                                         type="text"
                                         id="bankAccountNumber"
-                                        value={newCartInputs["bankAccountNumber"]}
+                                        value={cartInputs["bankAccountNumber"]}
                                         onChange={() => handleInputChange("bankAccountNumber")}
                                     />
                             </div> {/* bankAccountNumber */}
@@ -168,7 +168,7 @@ export default function CartsEdit() {
                                     <input
                                         type="text"
                                         id="phoneNumber"
-                                        value={newCartInputs["phoneNumber"]}
+                                        value={cartInputs["phoneNumber"]}
                                         onChange={() => handleInputChange("phoneNumber")}
                                     />
                             </div> {/* phoneNumber */}
@@ -181,7 +181,7 @@ export default function CartsEdit() {
                                     <input
                                         type="text"
                                         id="country"
-                                        value={newCartInputs["country"]}
+                                        value={cartInputs["country"]}
                                         onChange={() => handleInputChange("country")}
                                     />
                             </div> {/* country */}
@@ -191,7 +191,7 @@ export default function CartsEdit() {
                                     <input
                                         type="text"
                                         id="city"
-                                        value={newCartInputs["city"]}
+                                        value={cartInputs["city"]}
                                         onChange={() => handleInputChange("city")}
                                     />
                             </div> {/* city */}
@@ -201,7 +201,7 @@ export default function CartsEdit() {
                                     <input
                                         type="text"
                                         id="street"
-                                        value={newCartInputs["street"]}
+                                        value={cartInputs["street"]}
                                         onChange={() => handleInputChange("street")}
                                     />
                             </div> {/* street */}
@@ -211,7 +211,7 @@ export default function CartsEdit() {
                                     <input
                                         type="text"
                                         id="building"
-                                        value={newCartInputs["building"]}
+                                        value={cartInputs["building"]}
                                         onChange={() => handleInputChange("building")}
                                     />
                             </div> {/* building */}
@@ -221,7 +221,7 @@ export default function CartsEdit() {
                                     <input
                                         type="text"
                                         id="premises"
-                                        value={newCartInputs["premises"]}
+                                        value={cartInputs["premises"]}
                                         onChange={() => handleInputChange("premises")}
                                     />
                             </div> {/* premises */}
@@ -236,7 +236,7 @@ export default function CartsEdit() {
                                     <input
                                         type="text"
                                         id="minimumCartPrice"
-                                        value={newCartInputs["minimumCartPrice"]}
+                                        value={cartInputs["minimumCartPrice"]}
                                         onChange={() => handleInputChange("minimumCartPrice")}    
                                     />
                             </div> {/* minimumCartPrice */}
@@ -246,7 +246,7 @@ export default function CartsEdit() {
                                     <input
                                         type="text"
                                         id="deliveryPrice"
-                                        value={newCartInputs["deliveryPrice"]}
+                                        value={cartInputs["deliveryPrice"]}
                                         onChange={() => handleInputChange("deliveryPrice")}    
                                     />
                             </div> {/* deliveryPrice */}
@@ -256,7 +256,7 @@ export default function CartsEdit() {
                                     <input
                                         type="text"
                                         id="freeDeliveryPrice"
-                                        value={newCartInputs["freeDeliveryPrice"]}
+                                        value={cartInputs["freeDeliveryPrice"]}
                                         onChange={() => handleInputChange("freeDeliveryPrice")}    
                                     />
                             </div> {/* freeDeliveryPrice */}
@@ -269,7 +269,7 @@ export default function CartsEdit() {
                                     <textarea
                                     name="notes"
                                     id="notes"
-                                    value={newCartInputs["notes"]}
+                                    value={cartInputs["notes"]}
                                     onChange={() => handleInputChange("notes")}
                                     ></textarea>                          
                             </div> {/* notes */}

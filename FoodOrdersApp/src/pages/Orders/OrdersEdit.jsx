@@ -13,7 +13,7 @@ export default function OrdersDetails() {
     const navigate = useNavigate();
     console.log(params.id)
 
-    const [orderDetails, setOrderDetails] = useState({
+    const [orderInputs, setOrderInputs] = useState({
         "id" : 1,
         "orderPrice": 19.99,
         "notes": "Those are notes for order with id: 1",
@@ -92,42 +92,153 @@ export default function OrdersDetails() {
     function newMeal() {
         alert("new meal")
     }
+    const [dataToSend, setDataToSend] = useState({})
+
+    function handleInputChange(inputId) {
+        const value = document.getElementById(inputId).value;
+
+        setNewCartInputs(prev => ({
+            ...prev,
+            [inputId]: value
+        }))
+    }
+
+    function validate() {
+        let valid = true;
+/*
+        if (newCartInputs.bankAccountNumber === "") {
+            valid = false
+            document.getElementById("bankAccountNumber").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("bankAccountNumber").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.phoneNumber === "") {
+            valid = false
+            document.getElementById("phoneNumber").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("phoneNumber").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.country === "") {
+            valid = false
+            document.getElementById("country").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("country").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.city === "") {
+            valid = false
+            document.getElementById("city").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("city").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.street === "") {
+            valid = false
+            document.getElementById("street").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("street").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.building === "") {
+            valid = false
+            document.getElementById("building").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("building").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.minimumCartPrice === "") {
+            valid = false
+            document.getElementById("minimumCartPrice").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("minimumCartPrice").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.deliveryPrice === "") {
+            valid = false
+            document.getElementById("deliveryPrice").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("deliveryPrice").classList.remove("not-valid")
+        }
+
+        if (newCartInputs.freeDeliveryPrice === "") {
+            valid = false
+            document.getElementById("freeDeliveryPrice").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("freeDeliveryPrice").classList.remove("not-valid")
+        }
+
+
+        let updatedDataToSend = { ...newCartInputs };
+        if (updatedDataToSend.premises === "") {
+            updatedDataToSend = { ...updatedDataToSend, premises: null };
+        }
+        if (updatedDataToSend.notes === "") {
+            updatedDataToSend = { ...updatedDataToSend, notes: null };
+        }
+        setDataToSend(updatedDataToSend);
+
+*/
+        if (valid) sendData()
+        else alert("not-valid")
+    }
+
+    function sendData() {
+        alert("API call happening")
+
+        console.log(dataToSend);
+    }
+
+    function deleteMeal() {
+        alert("deleting")
+    }
 
     return (
         <div className="container">
             <section className="box details-page">
-                <h1>Order &#40;{orderDetails.id}&#41; - {orderDetails.user.firstName}</h1>
+                <h1>{orderInputs.user.firstName} - order &#40;{orderInputs.id}&#41;</h1>
                 <div className="order-info-box">
                     <div className="details-left">
                         <div className="line top-bottom">
                             <h5>User:</h5>
                             <p>
-                                {orderDetails.user.firstName}
-                                {orderDetails.user.secondName &&
-                                    <>&nbsp; {orderDetails.user.secondName}</>}
-                                &nbsp;{orderDetails.user.lastName}
+                                {orderInputs.user.firstName}
+                                {orderInputs.user.secondName &&
+                                    <>&nbsp; {orderInputs.user.secondName}</>}
+                                &nbsp;{orderInputs.user.lastName}
                             </p>
                         </div>
                         <div className="line top-bottom">
                             <h5>Organization:</h5>
-                            <p>{orderDetails.organization.name}</p>
+                            <p>{orderInputs.organization.name}</p>
                             <h5>Restaurant:</h5>
-                            <p>{orderDetails.restaurant.name}</p>
+                            <p>{orderInputs.restaurant.name}</p>
                         </div>
                         <div className="line top-bottom">
                             <h5>Number of meal:</h5>
-                            <p>{orderDetails.positions}</p>
+                            <p>{orderInputs.positions}</p>
                             <h5>Price:</h5>
-                            <p>{orderDetails.orderPrice}</p>
+                            <p>{orderInputs.orderPrice}</p>
                         </div>
                         <div className="line top-bottom">
                             <h5>Notes:</h5>
-                            <p>{orderDetails.notes}</p>
+                            <p>{orderInputs.notes}</p>
                         </div>
                         
                         <div className="control-buttons">
                             <button onClick={() => {navigate("/orders")}}>Go back</button>
-                            <button className="info" onClick={() => {navigate(`/orders/edit/${orderDetails.id}`)}}>Edit</button>
+                            <button className="info" onClick={() => validate()}>Apply</button>
+                            <button className="warning" onClick={() => deleteMeal()}>Delete</button>
                         </div>
                     </div>
                     <div className="details-right">
