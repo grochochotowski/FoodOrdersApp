@@ -204,7 +204,6 @@ export default function Carts() {
             </thead>
         );
     }
-    
     function generateTableBody() {
         return (
             <tbody>

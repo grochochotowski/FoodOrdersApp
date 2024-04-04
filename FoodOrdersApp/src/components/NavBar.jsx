@@ -25,13 +25,13 @@ export default function NavBar() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="test">
-                            <h4>Manage</h4>
+                        <Link to="orders">
+                            <h4>Orders</h4>
                         </Link>
                     </li>
                     <li>
-                        <Link to="test">
-                            <h4>About</h4>
+                        <Link to="more">
+                            <h4>Extra</h4>
                         </Link>
                     </li>
                 </ul>
