@@ -57,7 +57,8 @@ export default function App() {
                 <Suspense fallback={<Fallback />}>
                     <Carts />
                 </Suspense>
-            }/><Route path="/carts/new" element={
+            }/>
+            <Route path="/carts/new" element={
                 <Suspense fallback={<Fallback />}>
                     <CartsNew />
                 </Suspense>
@@ -79,7 +80,8 @@ export default function App() {
                 <Suspense fallback={<Fallback />}>
                     <Orders />
                 </Suspense>
-            }/><Route path="/orders/new" element={
+            }/>
+            <Route path="/orders/new" element={
                 <Suspense fallback={<Fallback />}>
                     <OrdersNew />
                 </Suspense>
@@ -109,7 +111,8 @@ export default function App() {
                 <Suspense fallback={<Fallback />}>
                     <Restaurants />
                 </Suspense>
-            }/><Route path="/restaurants/new" element={
+            }/>
+            <Route path="/restaurants/new" element={
                 <Suspense fallback={<Fallback />}>
                     <RestaurantsNew />
                 </Suspense>
@@ -131,7 +134,8 @@ export default function App() {
                 <Suspense fallback={<Fallback />}>
                     <Users />
                 </Suspense>
-            }/><Route path="/users/new" element={
+            }/>
+            <Route path="/users/new" element={
                 <Suspense fallback={<Fallback />}>
                     <UsersNew />
                 </Suspense>
@@ -153,7 +157,8 @@ export default function App() {
                 <Suspense fallback={<Fallback />}>
                     <Organizations />
                 </Suspense>
-            }/><Route path="/organizations/new" element={
+            }/>
+            <Route path="/organizations/new" element={
                 <Suspense fallback={<Fallback />}>
                     <OrganizationsNew />
                 </Suspense>
