@@ -9,7 +9,7 @@ namespace FoodCartsApi.Services
     public interface ICartService
     {
         int Create(CreateCartDto dto);
-        IEnumerable<CartDto> GetAll(string searchPhrase);
+        IEnumerable<CartDto> GetAll(string restaurant, string organization);
         CartDto GetByID(int id);
         int Update(int id, UpdateCartDto dto);
         int Delete(int id);
@@ -47,12 +47,13 @@ namespace FoodCartsApi.Services
 
 
         // Get all carts
-        public IEnumerable<CartDto> GetAll(string searchPhrase)
+        public IEnumerable<CartDto> GetAll(string restaurant, string organization)
         {
             var carts = _context.Carts
                 .Include(c => c.Restaurant)
                 .Include(c => c.Organization)
-                .Where(c => c.Restaurant.Name.Contains(searchPhrase))
+                .Where(c => c.Restaurant.Name.ToLower().Contains(restaurant))
+                .Where(c => c.Organization.Name.ToLower().Contains(organization))
                 .ToList();
             var cartDtos = _mapper.Map<List<CartDto>>(carts);
 
