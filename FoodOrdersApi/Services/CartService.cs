@@ -52,8 +52,8 @@ namespace FoodCartsApi.Services
             var carts = _context.Carts
                 .Include(c => c.Restaurant)
                 .Include(c => c.Organization)
-                .Where(c => c.Restaurant.Name.ToLower().Contains(restaurant))
-                .Where(c => c.Organization.Name.ToLower().Contains(organization))
+                .Where(c => restaurant == null || c.Restaurant.Name.ToLower().Contains(restaurant))
+                .Where(c => organization == null || c.Organization.Name.ToLower().Contains(organization))
                 .ToList();
             var cartDtos = _mapper.Map<List<CartDto>>(carts);
 
