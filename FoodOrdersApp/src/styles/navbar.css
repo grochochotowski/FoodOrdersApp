@@ -66,6 +66,27 @@ nav .menu ul li.home a {
     flex-direction: column;
 }
 
+nav .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2vh 0;
+}
+nav .user select {
+    width: 100%;
+    padding: 0 2vw;
+
+    border: none;
+    border-radius: 0;
+
+    text-align: center;
+    appearance: none;
+}
+nav .user select:hover {
+    background-color: var(--clr-dark-500);
+}
+
 
 
 
@@ -76,5 +97,8 @@ nav .menu ul li.home a {
     }
     nav .logo {
         border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    }
+    nav .user select:hover {
+        background-color: var(--clr-light-500);
     }
 }
