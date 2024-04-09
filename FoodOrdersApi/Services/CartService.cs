@@ -3,13 +3,15 @@ using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
 using Microsoft.EntityFrameworkCore;
+using FoodOrdersApi.Entities.Enum;
+using System.Linq.Expressions;
 
 namespace FoodCartsApi.Services
 {
     public interface ICartService
     {
         int Create(CreateCartDto dto);
-        PagedResult<CartDto> GetAll(string restaurant, string organization, int pageNumber);
+        PagedResult<CartDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton);
         CartDto GetByID(int id);
         int Update(int id, UpdateCartDto dto);
         int Delete(int id);
@@ -47,13 +49,30 @@ namespace FoodCartsApi.Services
 
 
         // Get all carts
-        public PagedResult<CartDto> GetAll(string restaurant, string organization, int page)
+        public PagedResult<CartDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton)
         {
             var baseQuery = _context.Carts
                 .Include(c => c.Restaurant)
                 .Include(c => c.Organization)
                 .Where(c => restaurant == null || c.Restaurant.Name.ToLower().Contains(restaurant))
                 .Where(c => organization == null || c.Organization.Name.ToLower().Contains(organization));
+
+            if (!string.IsNullOrEmpty(sortBy))
+            {
+                var columnsSelector = new Dictionary<string, Expression<Func<Cart, object>>>
+                {
+                    { "restaurant", c => c.Restaurant.Name},
+                    { "organization", c => c.Organization.Name},
+                    { "totalPrice", c => c.TotalCartPrice},
+                    { "deliveryCost", c => c.DeliveryPrice}
+                };
+
+                var selectedColumn = columnsSelector[sortBy];
+
+                baseQuery = sortDireciton == SortDirection.ASC
+                    ? baseQuery.OrderBy(selectedColumn)
+                    : baseQuery.OrderByDescending(selectedColumn);
+            }
 
             var carts = baseQuery
                 .Skip(10 * (page - 1))
