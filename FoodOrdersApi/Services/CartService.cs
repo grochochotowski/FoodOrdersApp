@@ -66,8 +66,8 @@ namespace FoodCartsApi.Services
                 {
                     { "restaurant", c => c.Restaurant.Name},
                     { "organization", c => c.Organization.Name},
-                    { "totalPrice", c => c.TotalCartPrice},
-                    { "deliveryCost", c => c.DeliveryPrice}
+                    { "totalCartPrice", c => c.TotalCartPrice},
+                    { "deliveryPrice", c => c.DeliveryPrice}
                 };
 
                 var selectedColumn = columnsSelector[sortBy];

@@ -12,128 +12,7 @@ export default function Carts() {
         "restaurant" : "",
         "organization" : "",
     })
-    const [carts, setCarts] = useState([ 
-        {
-            "id" : 1,
-            "minPrice": 19.99,
-            "totalCartPrice" : 19.99,
-            "deliveryPrice" : 0.00,
-            "organization" : {
-                "name" : "Organization 1"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            }
-        },
-        {
-            "id" : 2,
-            "minPrice": 29.99,
-            "totalCartPrice" : 29.99,
-            "deliveryPrice" : 0.00,
-            "organization" : {
-                "name" : "Organization 2"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            }
-        },
-        {
-            "id" : 3,
-            "minPrice": 39.99,
-            "totalCartPrice" : 39.99,
-            "deliveryPrice" : 0.00,
-            "organization" : {
-                "name" : "Organization 3"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            }
-        },
-        {
-            "id" : 4,
-            "minPrice": 49.99,
-            "totalCartPrice" : 49.99,
-            "deliveryPrice" : 0.00,
-            "organization" : {
-                "name" : "Organization 4"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            }
-        },
-        {
-            "id" : 5,
-            "minPrice": 59.99,
-            "totalCartPrice" : 59.99,
-            "deliveryPrice" : 0.00,
-            "organization" : {
-                "name" : "Organization 5"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            }
-        },
-        {
-            "id" : 6,
-            "minPrice": 69.99,
-            "totalCartPrice" : 69.99,
-            "deliveryPrice" : 0.00,
-            "organization" : {
-                "name" : "Organization 6"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            }
-        },
-        {
-            "id" : 7,
-            "minPrice": 79.99,
-            "totalCartPrice" : 79.99,
-            "deliveryPrice" : 0.00,
-            "organization" : {
-                "name" : "Organization 7"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            }
-        },
-        {
-            "id" : 8,
-            "minPrice": 89.99,
-            "totalCartPrice" : 89.99,
-            "deliveryPrice" : 0.00,
-            "organization" : {
-                "name" : "Organization 8"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            }
-        },
-        {
-            "id" : 9,
-            "minPrice": 99.99,
-            "totalCartPrice" : 99.99,
-            "deliveryPrice" : 0.00,
-            "organization" : {
-                "name" : "Organization 9"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            }
-        },
-        {
-            "id" : 10,
-            "minPrice": 109.99,
-            "totalCartPrice" : 109.99,
-            "deliveryPrice" : 0.00,
-            "organization" : {
-                "name" : "Organization 10"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            }
-        },
-    ])
+    const [result, setResult] = useState([])
     const [page, setPage] = useState(1);
 
     function sortTable(column) {
@@ -165,7 +44,7 @@ export default function Carts() {
             try {
                 const response = await fetch(apiCall);
                 const data = await response.json();
-                setCarts(data);
+                setResult(data);
                 console.log(data)
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -201,9 +80,9 @@ export default function Carts() {
                         }
                         Restaurant
                     </th>
-                    <th onClick={() => sortTable("totalPrice")}>
+                    <th onClick={() => sortTable("totalCartPrice")}>
                         {
-                            sorting[0] == "totalPrice" &&
+                            sorting[0] == "totalCartPrice" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
@@ -212,9 +91,9 @@ export default function Carts() {
                         }
                         Total / Minimum price
                     </th>
-                    <th onClick={() => sortTable("deliveryCost")}>
+                    <th onClick={() => sortTable("deliveryPrice")}>
                         {
-                            sorting[0] == "deliveryCost" &&
+                            sorting[0] == "deliveryPrice" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
@@ -231,10 +110,10 @@ export default function Carts() {
     function generateTableBody() {
         return (
             <tbody>
-                {carts.map((cart) => (
+                {result.items && result.items.map((cart) => (
                     <tr key={cart.id}>
-                        <td>{cart.organization.name}</td>
-                        <td>{cart.restaurant.name}</td>
+                        <td>{cart.organization}</td>
+                        <td>{cart.restaurant}</td>
                         <td>{cart.totalCartPrice} / {cart.minPrice}</td>
                         <td>{cart.deliveryPrice}</td>
                         <td>
@@ -248,8 +127,9 @@ export default function Carts() {
                     </tr>
                 ))}
             </tbody>
-        )
+        );
     }
+    
 
     return (
         <div className="container carts">
