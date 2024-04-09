@@ -1,0 +1,3 @@
+.container.restaurants th {
+    width: calc((100% - 7%) / 3)
+}
