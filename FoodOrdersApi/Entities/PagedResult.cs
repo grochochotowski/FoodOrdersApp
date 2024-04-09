@@ -13,6 +13,7 @@
             Items = items;
             totalItemsCount = totalCount;
             ItemFrom = 10 * (page - 1) + 1;
+            ItemTo = ItemFrom + 9;
             TotalPages = (int)Math.Ceiling( totalCount / (double)10 );
         }
 
