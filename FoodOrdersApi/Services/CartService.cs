@@ -5,13 +5,16 @@ using FoodOrdersApi.Entities;
 using Microsoft.EntityFrameworkCore;
 using FoodOrdersApi.Entities.Enum;
 using System.Linq.Expressions;
+using FoodOrdersApi.Models.Org;
+using FoodOrdersApi.Models.Restaurant;
+using FoodOrdersApi.Migrations;
 
 namespace FoodCartsApi.Services
 {
     public interface ICartService
     {
         int Create(CreateCartDto dto);
-        PagedResult<CartDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton);
+        PagedResult<CartListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton);
         CartDto GetByID(int id);
         int Update(int id, UpdateCartDto dto);
         int Delete(int id);
@@ -49,7 +52,7 @@ namespace FoodCartsApi.Services
 
 
         // Get all carts
-        public PagedResult<CartDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton)
+        public PagedResult<CartListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton)
         {
             var baseQuery = _context.Carts
                 .Include(c => c.Restaurant)
@@ -77,13 +80,20 @@ namespace FoodCartsApi.Services
             var carts = baseQuery
                 .Skip(10 * (page - 1))
                 .Take(10)
+                .Select(c => new CartListDto
+                {
+                    Id = c.Id,
+                    Restaurant = c.Restaurant.Name,
+                    Organization = c.Organization.Name,
+                    TotalCartPrice = c.TotalCartPrice,
+                    MinPrice = c.MinPrice,
+                    DeliveryPrice = c.DeliveryPrice
+                })
                 .ToList();
 
             var totalCount = baseQuery.Count();
 
-            var cartDtos = _mapper.Map<List<CartDto>>(carts);
-
-            var result = new PagedResult<CartDto>(cartDtos, totalCount, page);
+            var result = new PagedResult<CartListDto>(carts, totalCount, page);
 
             return result;
         }

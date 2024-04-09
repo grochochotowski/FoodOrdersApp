@@ -20,6 +20,7 @@ namespace FoodOrdersApi
             CreateMap<UpdateAddressDto, Address>();
 
             CreateMap<Cart, CartDto>();
+            CreateMap<Cart, CartListDto>();
             CreateMap<CreateCartDto, Cart>();
             CreateMap<UpdateCartDto, Cart>();
 
