@@ -9,7 +9,7 @@ namespace FoodCartsApi.Services
     public interface ICartService
     {
         int Create(CreateCartDto dto);
-        IEnumerable<CartDto> GetAll(string restaurant, string organization, int pageNumber);
+        PagedResult<CartDto> GetAll(string restaurant, string organization, int pageNumber);
         CartDto GetByID(int id);
         int Update(int id, UpdateCartDto dto);
         int Delete(int id);
@@ -47,19 +47,26 @@ namespace FoodCartsApi.Services
 
 
         // Get all carts
-        public IEnumerable<CartDto> GetAll(string restaurant, string organization, int page)
+        public PagedResult<CartDto> GetAll(string restaurant, string organization, int page)
         {
-            var carts = _context.Carts
+            var baseQuery = _context.Carts
                 .Include(c => c.Restaurant)
                 .Include(c => c.Organization)
                 .Where(c => restaurant == null || c.Restaurant.Name.ToLower().Contains(restaurant))
-                .Where(c => organization == null || c.Organization.Name.ToLower().Contains(organization))
+                .Where(c => organization == null || c.Organization.Name.ToLower().Contains(organization));
+
+            var carts = baseQuery
                 .Skip(10 * (page - 1))
                 .Take(10)
                 .ToList();
+
+            var totalCount = baseQuery.Count();
+
             var cartDtos = _mapper.Map<List<CartDto>>(carts);
 
-            return cartDtos;
+            var result = new PagedResult<CartDto>(cartDtos, totalCount, page);
+
+            return result;
         }
 
 
