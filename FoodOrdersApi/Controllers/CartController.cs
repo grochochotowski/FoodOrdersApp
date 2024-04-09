@@ -36,7 +36,7 @@ namespace FoodCartsApi.Controllers
             [FromQuery] string? restaurant,
             [FromQuery] string? organization,
             [FromQuery] int page,
-            [FromQuery] string sortBy,
+            [FromQuery] string? sortBy,
             [FromQuery] SortDirection sortDireciton
             )
         {
