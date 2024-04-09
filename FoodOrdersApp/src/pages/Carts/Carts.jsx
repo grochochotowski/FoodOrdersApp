@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 import "../../styles/carts.css"
@@ -7,7 +7,7 @@ import "../../styles/App.css"
 
 export default function Carts() {
 
-    const [sorting, setSorting] = useState(["col1", 0])
+    const [sorting, setSorting] = useState(["organization", 0])
     const [filters, setFilters] = useState({
         "restaurant" : "",
         "organization" : "",
@@ -134,6 +134,7 @@ export default function Carts() {
             }
         },
     ])
+    const [page, setPage] = useState(1);
 
     function sortTable(column) {
         setSorting(prev => {
@@ -148,8 +149,31 @@ export default function Carts() {
         }))
     }
     function filter() {
-        alert(`filtering: ${filters.restaurant}, ${filters.organization}`)
+        fetchData();
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let apiCall = `https://localhost:7157/api/cart/all?` +
+                `${filters.organization && "organization=" + filters.organization + "$"}` +
+                `${filters.restaurant && "restaurant=" + filters.restaurant + "$"}` +
+                `page=${page}` +
+                `&sortBy=${sorting[0]}` +
+                `&sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}`
+                
+                console.log(apiCall)
+            try {
+                const response = await fetch(apiCall);
+                const data = await response.json();
+                setCarts(data);
+                console.log(data)
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, [sorting]);
 
     function generateTableHeader() {
         return (
