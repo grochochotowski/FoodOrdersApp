@@ -31,25 +31,26 @@ export default function Carts() {
         fetchData();
     }
 
+    const fetchData = async () => {
+        let apiCall = `https://localhost:7157/api/cart/all?` +
+            `${filters.organization && "organization=" + filters.organization + "&"}` +
+            `${filters.restaurant && "restaurant=" + filters.restaurant + "&"}` +
+            `sortBy=${sorting[0]}&` +
+            `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
+            `page=${page}`
+            
+            console.log(apiCall)
+        try {
+            const response = await fetch(apiCall);
+            const data = await response.json();
+            setResult(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            let apiCall = `https://localhost:7157/api/cart/all?` +
-                `${filters.organization && "organization=" + filters.organization + "$"}` +
-                `${filters.restaurant && "restaurant=" + filters.restaurant + "$"}` +
-                `page=${page}` +
-                `&sortBy=${sorting[0]}` +
-                `&sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}`
-                
-                console.log(apiCall)
-            try {
-                const response = await fetch(apiCall);
-                const data = await response.json();
-                setResult(data);
-                console.log(data)
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+        
 
         fetchData();
     }, [sorting]);
