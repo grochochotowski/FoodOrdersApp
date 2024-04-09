@@ -135,11 +135,30 @@ export default function Carts() {
         }
         else {
             paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>)
-            paginationItems.push(<li key={"dots1"}>...</li>)
-            for (let i = page-2; i <= page+2; i++) {
-                paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+            
+            if (page-2 < 1) {
+                paginationItems.push(<li key={"dots1"}>...</li>)
+                for (let i = page-2; i <= page+2; i++) {
+                    paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                }
             }
-            paginationItems.push(<li key={"dots2"}>...</li>)
+            else {
+                for (let i = 2; i <= 5; i++) {
+                    if (i < result.totalPages) {
+                        paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                    }
+                }
+            }
+
+            if (page-2 > 1 && page+2 < result.totalPages) {
+                for (let i = page-2; i <= page+2; i++) {
+                    paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                }
+            }
+
+            if (page+2 < result.totalPages) {
+                paginationItems.push(<li key={"dots2"}>...</li>)
+            }
             paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>)
         }
         return paginationItems;
