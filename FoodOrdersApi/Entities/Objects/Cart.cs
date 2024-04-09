@@ -6,36 +6,36 @@ namespace FoodOrdersApi.Entities.Objects
     {
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage = "Mininimum order price is required")]
+        [Required]
         public double MinPrice { get; set; }
         [Required]
         public double TotalCartPrice { get; set; }
-        [Required(ErrorMessage = "Delivery price is required")]
+        [Required]
         public double DeliveryPrice { get; set; }
-        [Required(ErrorMessage = "Free delivery minimum price is required")]
+        [Required]
         public double FreeDeliveryMinPrice { get; set; }
-        [Required(ErrorMessage = "Phone number is required")]
+        [Required]
         public string PhoneNumber { get; set; }
-        [Required(ErrorMessage = "Bank account number is required")]
+        [Required]
         public string BankAccountNumber { get; set; }
 
         public string? Note { get; set; }
 
 
 
-        [Required(ErrorMessage = "User is required")]
+        [Required]
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
 
 
-        [Required(ErrorMessage = "Restaurant is required")]
+        [Required]
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
 
 
 
-        [Required(ErrorMessage = "Address is required")]
+        [Required]
         public int AddressId { get; set; }
         public virtual Address Address { get; set; }
 
