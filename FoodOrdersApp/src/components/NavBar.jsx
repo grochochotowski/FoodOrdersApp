@@ -36,6 +36,15 @@ export default function NavBar() {
                     </li>
                 </ul>
             </div>
+            <div className="user">
+                <select name="user" id="user">
+                    <option value="user-1">User 1</option>
+                    <option value="user-2">User 2</option>
+                    <option value="user-3">User 3</option>
+                    <option value="user-4">User 4</option>
+                    <option value="user-5">User 5</option>
+                </select>
+            </div>
         </div>
     </nav>
   )
