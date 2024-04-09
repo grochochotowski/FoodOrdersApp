@@ -38,8 +38,6 @@ export default function Carts() {
             `sortBy=${sorting[0]}&` +
             `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
             `page=${page}`
-            
-            console.log(apiCall)
         try {
             const response = await fetch(apiCall);
             const data = await response.json();
@@ -50,10 +48,8 @@ export default function Carts() {
     };
 
     useEffect(() => {
-        
-
         fetchData();
-    }, [sorting]);
+    }, [sorting, page]);
 
     function generateTableHeader() {
         return (
@@ -130,6 +126,24 @@ export default function Carts() {
             </tbody>
         );
     }
+    function generatePagination() {
+        const paginationItems = [];
+        if (result.totalPages <= 7) {
+            for (let i = 1; i <= result.totalPages; i++) {
+                paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+            }
+        }
+        else {
+            paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>)
+            paginationItems.push(<li key={"dots1"}>...</li>)
+            for (let i = page-2; i <= page+2; i++) {
+                paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+            }
+            paginationItems.push(<li key={"dots2"}>...</li>)
+            paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>)
+        }
+        return paginationItems;
+    }
     
 
     return (
@@ -175,17 +189,7 @@ export default function Carts() {
                     <div className="pagination">
                         <ul>
                             <li className="clickable"><i className="fa-solid fa-caret-left"></i></li>
-                            <li className="clickable">1</li>
-                            <li>...</li>
-
-                            <li className="clickable">10</li>
-                            <li className="clickable">11</li>
-                            <li className="clickable">12</li>
-                            <li className="clickable">13</li>
-                            <li className="clickable">14</li>
-
-                            <li>...</li>
-                            <li className="clickable">67</li>
+                            { generatePagination() }
                             <li className="clickable"><i className="fa-solid fa-caret-right"></i></li>
                         </ul>
                     </div>
