@@ -31,9 +31,9 @@ namespace FoodCartsApi.Controllers
 
         // GET api/cart/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<CartDto>> GetAll()
+        public ActionResult<IEnumerable<CartDto>> GetAll([FromQuery] string searchPhrase)
         {
-            var cartDtos = _cartService.GetAll();
+            var cartDtos = _cartService.GetAll(searchPhrase);
             return Ok(cartDtos);
         }
 

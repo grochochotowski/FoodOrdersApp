@@ -30,6 +30,12 @@ namespace FoodOrdersApi.Entities.Objects
 
 
         [Required]
+        public int OrganizationId { get; set; }
+        public virtual Organization Organization { get; set; }
+
+
+
+        [Required]
         public int AddressId { get; set; }
         public virtual Address Address { get; set; }
 

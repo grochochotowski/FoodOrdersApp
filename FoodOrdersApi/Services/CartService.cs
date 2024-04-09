@@ -9,7 +9,7 @@ namespace FoodCartsApi.Services
     public interface ICartService
     {
         int Create(CreateCartDto dto);
-        IEnumerable<CartDto> GetAll();
+        IEnumerable<CartDto> GetAll(string searchPhrase);
         CartDto GetByID(int id);
         int Update(int id, UpdateCartDto dto);
         int Delete(int id);
@@ -47,14 +47,12 @@ namespace FoodCartsApi.Services
 
 
         // Get all carts
-        public IEnumerable<CartDto> GetAll()
+        public IEnumerable<CartDto> GetAll(string searchPhrase)
         {
             var carts = _context.Carts
-                .Include(c => c.Restaurant).ThenInclude(r => r.Meals)
-                .Include(c => c.Address)
-                .Include(c => c.User)
-                .Include(c => c.IndividualOrders!).ThenInclude(io => io.MealOrder).ThenInclude(mo => mo.Meal)
-                .Include(c => c.IndividualOrders!).ThenInclude(io => io.User)
+                .Include(c => c.Restaurant)
+                .Include(c => c.Organization)
+                .Where(c => c.Restaurant.Name.Contains(searchPhrase))
                 .ToList();
             var cartDtos = _mapper.Map<List<CartDto>>(carts);
 
@@ -68,7 +66,6 @@ namespace FoodCartsApi.Services
             var cart = _context.Carts
                  .Include(c => c.Restaurant).ThenInclude(r => r.Meals)
                  .Include(c => c.Address)
-                 .Include(c => c.User)
                  .Include(c => c.IndividualOrders!).ThenInclude(io => io.MealOrder)
                  .Include(c => c.IndividualOrders!).ThenInclude(io => io.User)
                  .FirstOrDefault(o => o.Id == id);
