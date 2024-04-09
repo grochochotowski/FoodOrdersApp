@@ -130,7 +130,7 @@ export default function Users() {
                                 : <i className="fa-solid fa-arrow-up-a-z"></i>
                             )
                         }
-                        First nname
+                        First name
                     </th>
                     <th onClick={() => sortTable("lastNname")}>
                         {
@@ -141,7 +141,7 @@ export default function Users() {
                                 : <i className="fa-solid fa-arrow-up-a-z"></i>
                             )
                         }
-                        Last nname
+                        Last name
                     </th>
                     <th onClick={() => sortTable("email")}>
                         {
@@ -154,9 +154,9 @@ export default function Users() {
                         }
                         Email
                     </th>
-                    <th onClick={() => sortTable("Organization")}>
+                    <th onClick={() => sortTable("organization")}>
                         {
-                            sorting[0] == "Organization" &&
+                            sorting[0] == "organization" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
