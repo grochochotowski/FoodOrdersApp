@@ -13,6 +13,7 @@ namespace FoodOrdersApi.Entities.Objects
 
 
 
+        public virtual ICollection<Cart>? Carts { get; set; }
         public virtual ICollection<Meal>? Meals { get; set; }
     }
 }

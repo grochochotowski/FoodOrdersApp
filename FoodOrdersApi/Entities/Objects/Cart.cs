@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FoodOrdersApi.Entities.Objects
 {
@@ -24,18 +25,21 @@ namespace FoodOrdersApi.Entities.Objects
 
 
         [Required]
+        [ForeignKey("RestaurantId")]
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
 
 
 
         [Required]
+        [ForeignKey("OrganizationId")]
         public int OrganizationId { get; set; }
         public virtual Organization Organization { get; set; }
 
 
 
         [Required]
+        [ForeignKey("AddressId")]
         public int AddressId { get; set; }
         public virtual Address Address { get; set; }
 

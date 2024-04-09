@@ -10,5 +10,9 @@ namespace FoodOrdersApi.Entities.Objects
         public string Name { get; set; }
 
         public string? Note { get; set; }
+
+
+
+        public virtual ICollection<Cart>? Carts { get; set; }
     }
 }
