@@ -34,9 +34,9 @@ namespace FoodOrdersApi
             CreateMap<CreateOrderDto, Order>();
             CreateMap<UpdateOrderDto, Order>();
 
-            CreateMap<Org, OrgDto>();
-            CreateMap<CreateOrgDto, Org>();
-            CreateMap<UpdateOrgDto, Org>();
+            CreateMap<Organization, OrganizationDto>();
+            CreateMap<CreateOrganizationDto, Organization>();
+            CreateMap<UpdateOrganizationDto, Organization>();
 
             CreateMap<Restaurant, RestaurantDto>();
             CreateMap<CreateRestaurantDto, Restaurant>();

@@ -7,10 +7,10 @@ namespace FoodOrdersApi.Services
 {
     public interface IOrgService
     {
-        int Create(CreateOrgDto dto);
-        IEnumerable<OrgDto> GetAll();
-        OrgDto GetByID(int id);
-        int Update(int id, UpdateOrgDto dto);
+        int Create(CreateOrganizationDto dto);
+        IEnumerable<OrganizationDto> GetAll();
+        OrganizationDto GetByID(int id);
+        int Update(int id, UpdateOrganizationDto dto);
         int Delete(int id);
     }
 
@@ -28,9 +28,9 @@ namespace FoodOrdersApi.Services
 
 
         // Create new organization
-        public int Create(CreateOrgDto dto)
+        public int Create(CreateOrganizationDto dto)
         {
-            var org = _mapper.Map<Org>(dto);
+            var org = _mapper.Map<Organization>(dto);
 
             _context.Organizations.Add(org);
             _context.SaveChanges();
@@ -39,29 +39,29 @@ namespace FoodOrdersApi.Services
 
 
         // Get all organizations
-        public IEnumerable<OrgDto> GetAll()
+        public IEnumerable<OrganizationDto> GetAll()
         {
             var orgs = _context.Organizations.ToList();
-            var orgDtos = _mapper.Map<List<OrgDto>>(orgs);
+            var orgDtos = _mapper.Map<List<OrganizationDto>>(orgs);
 
             return orgDtos;
         }
 
 
         // Get organization by ID
-        public OrgDto GetByID(int id)
+        public OrganizationDto GetByID(int id)
         {
             var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
             if (org == null) return null;
 
-            var orgDto = _mapper.Map<OrgDto>(org);
+            var orgDto = _mapper.Map<OrganizationDto>(org);
 
             return orgDto;
         }
 
 
         // Update organization with id
-        public int Update(int id, UpdateOrgDto dto)
+        public int Update(int id, UpdateOrganizationDto dto)
         {
             var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
             if (org == null) return -1;

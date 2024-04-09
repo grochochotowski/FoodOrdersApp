@@ -1,11 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FoodOrdersApi.Models.Org
+namespace FoodOrdersApi.Entities.Objects
 {
-    public class OrgDto
+    public class Organization
     {
+        [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
+
         public string? Note { get; set; }
     }
 }

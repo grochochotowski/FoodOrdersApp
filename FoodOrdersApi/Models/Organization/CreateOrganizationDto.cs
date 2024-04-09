@@ -1,6 +1,6 @@
 ﻿namespace FoodOrdersApi.Models.Org
 {
-    public class CreateOrgDto
+    public class CreateOrganizationDto
     {
         public string Name { get; set; }
         public string? Note { get; set; }

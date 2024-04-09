@@ -20,7 +20,7 @@ namespace FoodOrdersApi.Controllers
 
         // POST api/org/create
         [HttpPost("create")]
-        public ActionResult Create([FromBody] CreateOrgDto dto)
+        public ActionResult Create([FromBody] CreateOrganizationDto dto)
         {
             var orgId = _orgService.Create(dto);
 
@@ -29,7 +29,7 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/org/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<OrgDto>> GetAll()
+        public ActionResult<IEnumerable<OrganizationDto>> GetAll()
         {
             var orgDtos = _orgService.GetAll();
             return Ok(orgDtos);
@@ -47,7 +47,7 @@ namespace FoodOrdersApi.Controllers
 
         // PUT api/org/update/5
         [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] UpdateOrgDto dto)
+        public ActionResult Update(int id, [FromBody] UpdateOrganizationDto dto)
         {
             var orgId = _orgService.Update(id, dto);
 

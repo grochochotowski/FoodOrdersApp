@@ -38,12 +38,9 @@ namespace FoodOrdersApi.Services
             if (user == null) return -2;
 
             var cart = _context.Carts
-                .Include(c => c.User)
                 .FirstOrDefault(u => u.Id == dto.CartId);
             if (cart == null) return -3;
 
-            if (user.OrganizationId != cart.User.OrganizationId) return -4; 
-                        // if organizationId of user creating an order is different than organizationId of user that created a cart return BadRequest
 
             _context.Orders.Add(order);
             _context.SaveChanges();
