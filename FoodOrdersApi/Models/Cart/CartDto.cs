@@ -17,7 +17,6 @@ namespace FoodOrdersApi.Models.Cart
         public string? Note { get; set; }
 
 
-        public virtual UserDto User { get; set; }
         public virtual RestaurantDto Restaurant { get; set; }
         public virtual AddressDto Address { get; set; }
         public virtual ICollection<OrderDto>? IndividualOrders { get; set; }

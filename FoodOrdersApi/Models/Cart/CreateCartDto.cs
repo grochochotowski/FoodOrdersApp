@@ -10,7 +10,6 @@
         public string? Note { get; set; }
 
 
-        public int UserId { get; set; }
         public int RestaurantId { get; set; }
         public int AddressId { get; set; }
     }

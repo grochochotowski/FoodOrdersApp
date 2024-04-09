@@ -24,12 +24,6 @@ namespace FoodOrdersApi.Entities.Objects
 
 
         [Required]
-        public int UserId { get; set; }
-        public virtual User User { get; set; }
-
-
-
-        [Required]
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
 
