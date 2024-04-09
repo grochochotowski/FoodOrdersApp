@@ -177,9 +177,9 @@ export default function Carts() {
                         }
                         Restaurant
                     </th>
-                    <th onClick={() => sortTable("totalMinimumPrice")}>
+                    <th onClick={() => sortTable("totalPrice")}>
                         {
-                            sorting[0] == "totalMinimumPrice" &&
+                            sorting[0] == "totalPrice" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
@@ -188,9 +188,9 @@ export default function Carts() {
                         }
                         Total / Minimum price
                     </th>
-                    <th onClick={() => sortTable("delivery")}>
+                    <th onClick={() => sortTable("deliveryCost")}>
                         {
-                            sorting[0] == "delivery" &&
+                            sorting[0] == "deliveryCost" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
