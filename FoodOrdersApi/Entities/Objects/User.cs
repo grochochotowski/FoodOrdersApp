@@ -22,9 +22,5 @@ namespace FoodOrdersApi.Entities.Objects
         [Required(ErrorMessage = "Organization ID is requierd")]
         public int OrganizationId { get; set; }
         public virtual Org Organization { get; set; }
-
-
-
-        public virtual ICollection<Cart>? Carts { get; set; }
     }
 }
