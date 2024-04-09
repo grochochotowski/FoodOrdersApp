@@ -17,6 +17,16 @@ namespace FoodOrdersApi
 
             builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(configuration.GetConnectionString("DataBaseConnection")));
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("FrontEndClient", builder =>
+                {
+                    builder.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithOrigins(configuration["AllowedOrigins"]);
+                });
+            });
+
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -31,6 +41,8 @@ namespace FoodOrdersApi
             builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
+
+            app.UseCors("FrontEndClient");
 
             // Configure the HTTP request pipeline.
             //if (app.Environment.IsDevelopment())
