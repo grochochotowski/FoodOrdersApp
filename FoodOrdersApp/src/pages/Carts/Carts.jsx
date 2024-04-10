@@ -149,7 +149,7 @@ export default function Carts() {
                     }
                 }
 
-                paginationItems.push(<li key={page} className="clickable" onClick={() => setPage(page)}>{page}</li>)
+                paginationItems.push(<li key={page} className="selected" onClick={() => setPage(page)}>{page}</li>)
 
                 for (let i = page+1; i <= page+2; i++) {
                     if (i < result.totalPages) {

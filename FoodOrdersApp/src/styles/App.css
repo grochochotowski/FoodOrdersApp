@@ -112,6 +112,9 @@ section h1 {
     background-color: var(--clr-dark-500);
     cursor: pointer;
 }
+.pagination li.selected {
+    color: var(--clr-dark-600);
+}
 .pagination i {
     font-size: 1.5rem;
     cursor: pointer;
