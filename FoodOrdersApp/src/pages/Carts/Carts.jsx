@@ -133,14 +133,14 @@ export default function Carts() {
             // Generate left arrow
             if (page > 1) {
                 paginationItems.push(
-                    <li className="clickable" onClick={() => setPage(page - 1)}>
+                    <li className="clickable" onClick={() => setPage(page - 1)} key={"arrow-left"}>
                         <i className="fa-solid fa-caret-left"></i>
                     </li>
                 )
             }
             else {
                 paginationItems.push(
-                    <li className="disable">
+                    <li className="disable" key={"arrow-left"}>
                         <i className="fa-solid fa-caret-left"></i>
                     </li>
                 )
@@ -198,14 +198,14 @@ export default function Carts() {
                 // Generate right arrow
                 if (page < result.totalPages) {
                     paginationItems.push(
-                        <li className="clickable" onClick={() => setPage(page + 1)}>
+                        <li className="clickable" onClick={() => setPage(page + 1)} key={"arrow-right"}>
                             <i className="fa-solid fa-caret-right"></i>
                         </li>
                     )
                 }
                 else {
                     paginationItems.push(
-                        <li className="disable">
+                        <li className="disable" key={"arrow-right"}>
                             <i className="fa-solid fa-caret-right"></i>
                         </li>
                     )
