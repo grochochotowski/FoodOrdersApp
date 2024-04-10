@@ -129,6 +129,15 @@ export default function Carts() {
     function generatePagination() {
         const paginationItems = [];
         if (result != null) {
+
+            if (page > 1) {
+                paginationItems.push(
+                    <li className="clickable" onClick={() => setPage(page - 1)}>
+                        <i className="fa-solid fa-caret-left"></i>
+                    </li>
+                )
+            }
+
             if (result.totalPages <= 7) {
                 for (let i = 1; i <= result.totalPages; i++) {
                     paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
@@ -163,6 +172,14 @@ export default function Carts() {
                 
                 if (page != 8) {
                     paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>)
+                }
+
+                if (page < result.totalPages) {
+                    paginationItems.push(
+                        <li className="clickable" onClick={() => setPage(page + 1)}>
+                            <i className="fa-solid fa-caret-right"></i>
+                        </li>
+                    )
                 }
             }
             return paginationItems;
@@ -212,9 +229,7 @@ export default function Carts() {
                     </table>
                     <div className="pagination">
                         <ul>
-                            <li className="clickable"><i className="fa-solid fa-caret-left"></i></li>
                             { generatePagination() }
-                            <li className="clickable"><i className="fa-solid fa-caret-right"></i></li>
                         </ul>
                     </div>
                 </div>
