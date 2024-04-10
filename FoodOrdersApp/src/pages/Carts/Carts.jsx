@@ -154,7 +154,7 @@ export default function Carts() {
             else {
 
                 if (page <= 4) {
-                    for (let i = 1; i <= 5; i++) {
+                    for (let i = 1; i <= 7; i++) {
                         if (i == page) {
                             paginationItems.push(<li key={i} className="selected" onClick={() => setPage(i)}>{i}</li>);
                         }
@@ -168,7 +168,7 @@ export default function Carts() {
                 else if (result.totalPages - page < 5) {
                     paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>);
                     paginationItems.push(<li key={"dots1"}>...</li>)
-                    for (let i = result.totalPages-4; i <= result.totalPages; i++) {
+                    for (let i = result.totalPages-6; i <= result.totalPages; i++) {
                         if (i == page) {
                             paginationItems.push(<li key={i} className="selected" onClick={() => setPage(i)}>{i}</li>);
                         }
