@@ -130,6 +130,7 @@ export default function Carts() {
         const paginationItems = [];
         if (result != null) {
 
+            // Generate left arrow if needed
             if (page > 1) {
                 paginationItems.push(
                     <li className="clickable" onClick={() => setPage(page - 1)}>
@@ -144,36 +145,45 @@ export default function Carts() {
                 }
             }
             else {
+
+                // Generate first page if needed
                 if (page != 1) {
                     paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>)
                 }
 
+                // Generate beginning dots if needed
                 if (page - 2 > 2) {
                     paginationItems.push(<li key={"dots1"}>...</li>)
                 }
                 
+                // Generate -2 pages
                 for (let i = page-2; i < page; i++) {
                     if (i > 1) {
                         paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
                     }
                 }
 
+                // Generate current page
                 paginationItems.push(<li key={page} className="selected" onClick={() => setPage(page)}>{page}</li>)
 
+                // Generate +2 pages
                 for (let i = page+1; i <= page+2; i++) {
                     if (i < result.totalPages) {
                         paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
                     }
                 }
 
+                // Generate beginning dots if needed
                 if (page + 2 < result.totalPages - 1) {
                     paginationItems.push(<li key={"dots2"}>...</li>)
                 }
                 
-                if (page != 8) {
+                // Generate last page if needed
+                if (page != result.totalPages) {
                     paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>)
                 }
 
+                // Generate right arrow if needed
                 if (page < result.totalPages) {
                     paginationItems.push(
                         <li className="clickable" onClick={() => setPage(page + 1)}>
