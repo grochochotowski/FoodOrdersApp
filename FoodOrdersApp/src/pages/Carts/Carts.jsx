@@ -135,7 +135,9 @@ export default function Carts() {
                 }
             }
             else {
-                paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>)
+                if (page != 1) {
+                    paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>)
+                }
                 
                 for (let i = page-2; i < page; i++) {
                     if (i > 1) {
@@ -143,10 +145,16 @@ export default function Carts() {
                     }
                 }
 
-                for (let i = page; i <= page+2; i++) {
+                paginationItems.push(<li key={page} className="clickable" onClick={() => setPage(page)}>{page}</li>)
+
+                for (let i = page+1; i <= page+2; i++) {
                     if (i < result.totalPages) {
                         paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
                     }
+                }
+                
+                if (page != 8) {
+                    paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>)
                 }
                 /*if (page-2 > 2) {
                     paginationItems.push(<li key={"dots1"}>...</li>)
@@ -166,7 +174,6 @@ export default function Carts() {
                     paginationItems.push(<li key={"dots2"}>...</li>)
                 }*/
 
-                paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>)
             }
             return paginationItems;
         }
