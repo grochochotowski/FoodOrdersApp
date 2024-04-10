@@ -184,6 +184,12 @@ section h1 {
     .pagination li.clickable:hover {
         background-color: var(--clr-light-500);
     }
+    .pagination li.disable {
+        color: var(--clr-light-800);
+    }
+    .pagination li.selected {
+        color: var(--clr-light-800);
+    }
     .details:hover {
         background-color: rgb(66, 195, 66);
     }
