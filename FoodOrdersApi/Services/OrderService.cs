@@ -88,6 +88,7 @@ namespace FoodOrdersApi.Services
                 .Where(o => o.CartId == id)
                 .Select(o => new IndividualOrderDto
                 {
+                    Id =  o.Id,
                     Positions =  o.Positions,
                     TotalPrice = o.TotalPrice,
                     User = string.Concat(o.User.FirstName, " ", o.User.LastName)
