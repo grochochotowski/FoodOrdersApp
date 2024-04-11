@@ -12,7 +12,19 @@ export default function CartsEdit() {
 
     const [cartDetails, setCartDetail] = useState({})
 
-    const [cartInputs, setCartInputs] = useState({})
+    const [cartInputs, setCartInputs] = useState({
+        bankAccountNumber: "",
+        phoneNumber: "",
+        country: "",
+        city: "",
+        street: "",
+        building: "",
+        premises: "",
+        minPrice: "",
+        deliveryPrice: "",
+        freeDeliveryMinPrice: "",
+        note: ""
+    })
     const [dataToSend, setDataToSend] = useState({})
 
     function handleInputChange(inputId) {
