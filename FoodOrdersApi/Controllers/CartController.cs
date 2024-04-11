@@ -62,7 +62,6 @@ namespace FoodCartsApi.Controllers
             var cartId = _cartService.Update(id, dto);
 
             if (cartId == -1) return NotFound($"Cart with id {id} does not exist");
-            if (cartId == -3) return NotFound($"Address with id {dto.AddressId} does not exist");
             return Ok($"api/cart/get/{cartId}");
         }
 

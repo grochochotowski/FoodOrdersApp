@@ -146,21 +146,6 @@ namespace FoodCartsApi.Services
             var cart = _context.Carts.FirstOrDefault(o => o.Id == id);
             if (cart == null) return -1;
 
-            if (dto.AddressId != null)
-            {
-                var isAddress = _context.Addresses.FirstOrDefault(u => u.Id == dto.AddressId);
-                if (isAddress == null) return -3;
-            }
-
-
-            cart.MinPrice = dto.MinPrice ?? cart.MinPrice;
-            cart.DeliveryPrice = dto.DeliveryPrice ?? cart.DeliveryPrice;
-            cart.FreeDeliveryMinPrice = dto.FreeDeliveryMinPrice ?? cart.FreeDeliveryMinPrice;
-            cart.PhoneNumber = dto.PhoneNumber ?? cart.PhoneNumber;
-            cart.BankAccountNumber = dto.BankAccountNumber ?? cart.BankAccountNumber;
-            cart.Note = dto.Note ?? cart.Note;
-            cart.AddressId = dto.AddressId ?? cart.AddressId;
-
             _context.SaveChanges();
             return cart.Id;
         }
