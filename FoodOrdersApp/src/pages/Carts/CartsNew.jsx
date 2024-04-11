@@ -175,9 +175,6 @@ export default function CartsNew() {
                 const responseOrganization = await fetch(apiCallOrganization)
                 const dataOrganization = await responseOrganization.json()
                 setOrganizations(dataOrganization)
-
-                console.log(dataRestaurant);
-                console.log(dataOrganization);
             } catch (error) {
                 console.error('Error fetching data:', error)
             }
@@ -185,6 +182,37 @@ export default function CartsNew() {
 
         fetchData();
     }, []);
+
+    function generateRestaurantSelect() {
+        return(
+            <select
+                name="restaurantId"
+                id="restaurantId"
+                value={newCartInputs["restaurantId"]}
+                onChange={(event) => handleSelectChange(event, "restaurantId")}
+            >
+                <option value={0}>--- Choose restaurant ---</option>
+                {restaurants.map(restaurant => (
+                <option key={restaurant.id} value={restaurant.id}>{restaurant.name}</option>
+            ))}
+            </select>
+        )
+    }
+    function generateOrganizationSelect() {
+        return(
+            <select
+            name="organizationId"
+            id="organizationId"
+            value={newCartInputs["organizationId"]}
+            onChange={(event) => handleSelectChange(event, "organizationId")}
+        >
+            <option value={0}>--- Choose organization ---</option>
+            {organizations.map(organization => (
+                <option key={organization.id} value={organization.id}>{organization.name}</option>
+            ))}
+        </select>
+        )
+    }
 
     return (
         <div className="container">
@@ -196,38 +224,12 @@ export default function CartsNew() {
 
                             <div className="input-container">
                                     <label htmlFor="restaurantId">Restaurant:</label>
-                                    <select
-                                        name="restaurantId"
-                                        id="restaurantId"
-                                        value={newCartInputs["restaurantId"]}
-                                        onChange={(event) => handleSelectChange(event, "restaurantId")}
-                                    >
-                                        <option value={0}>--- Choose restaurant ---</option>
-                                        <option value={1}>Restaurant 1</option>
-                                        <option value={2}>Restaurant 2</option>
-                                        <option value={3}>Restaurant 3</option>
-                                        <option value={4}>Restaurant 4</option>
-                                        <option value={5}>Restaurant 5</option>
-                                        <option value={6}>Restaurant 6</option>
-                                    </select>
+                                    {generateRestaurantSelect()}
                             </div> {/* restaurant */}
 
                             <div className="input-container">
                                     <label htmlFor="organizationId">Organization:</label>
-                                    <select
-                                        name="organizationId"
-                                        id="organizationId"
-                                        value={newCartInputs["organizationId"]}
-                                        onChange={(event) => handleSelectChange(event, "organizationId")}
-                                    >
-                                        <option value={0}>--- Choose organization ---</option>
-                                        <option value={1}>Organization 1</option>
-                                        <option value={2}>Organization 2</option>
-                                        <option value={3}>Organization 3</option>
-                                        <option value={4}>Organization 4</option>
-                                        <option value={5}>Organization 5</option>
-                                        <option value={6}>Organization 6</option>
-                                    </select>
+                                    {generateOrganizationSelect()}
                             </div> {/* organization */}
 
                         </div>
