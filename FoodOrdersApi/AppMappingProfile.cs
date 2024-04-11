@@ -13,14 +13,18 @@ namespace FoodOrdersApi
 {
     public class AppMappingProfile : Profile
     {
-        public AppMappingProfile()
+        private readonly IMapper _mapper;
+        public AppMappingProfile(IMapper mapper)
         {
+            _mapper = mapper;
+
             CreateMap<Address, AddressDto>();
             CreateMap<CreateAddressDto, Address>();
             CreateMap<UpdateAddressDto, Address>();
 
             CreateMap<Cart, CartDto>();
             CreateMap<Cart, CartListDto>();
+            CreateMap<Cart, DetailsCartDto>();
             CreateMap<CreateCartDto, Cart>()
                 .ForMember(r => r.Address, c => c.MapFrom(dto => new Address()
                 {
