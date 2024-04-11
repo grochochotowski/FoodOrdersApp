@@ -5,7 +5,7 @@ using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Models.Meal;
 using FoodOrdersApi.Models.MealOrder;
 using FoodOrdersApi.Models.Order;
-using FoodOrdersApi.Models.Org;
+using FoodOrdersApi.Models.Organization;
 using FoodOrdersApi.Models.Restaurant;
 using FoodOrdersApi.Models.User;
 
@@ -44,10 +44,12 @@ namespace FoodOrdersApi
             CreateMap<UpdateOrderDto, Order>();
 
             CreateMap<Organization, OrganizationDto>();
+            CreateMap<Organization, OrganizationListDto>();
             CreateMap<CreateOrganizationDto, Organization>();
             CreateMap<UpdateOrganizationDto, Organization>();
 
             CreateMap<Restaurant, RestaurantDto>();
+            CreateMap<Restaurant, RestaurantListDto>();
             CreateMap<CreateRestaurantDto, Restaurant>();
             CreateMap<UpdateRestaurantDto, Restaurant>();
 
