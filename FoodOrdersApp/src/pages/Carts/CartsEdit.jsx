@@ -123,13 +123,22 @@ export default function CartsEdit() {
 
 
         if (valid) sendData()
-        else alert("not-valid")
     }
 
-    function sendData() {
-        alert("API call happening")
+    async function sendData() {
+        let apiCall = `https://localhost:7157/api/cart/update/${params.id}`
+        let requestOption = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSend)
+        }
+        const response = await fetch(apiCall, requestOption)
 
-        console.log(dataToSend);
+        if (!response.ok) {
+            throw new Error('Error fetching data');
+        }
     }
 
     async function deleteCart() {
