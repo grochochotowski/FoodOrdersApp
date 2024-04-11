@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useNavigate, useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import "../../styles/carts.css"
 import "../../styles/index.css"
@@ -8,7 +8,6 @@ import "../../styles/App.css"
 export default function CartsNew() {
 
     const navigate = useNavigate();
-    const history = useHistory();
 
     const [newCartInputs, setNewCartInputs] = useState({
         "restaurantId" : 0,
@@ -159,12 +158,13 @@ export default function CartsNew() {
             body: JSON.stringify(dataToSend)
         }
         const response = await fetch(apiCall, requestOption)
+        const responseJson = await response.json()
 
         if (!response.ok) {
             throw new Error('Error fetching data');
         }
 
-        history.push(`/details/${newCartId}`)
+        navigate(`/carts/details/${responseJson.newCartId}`)
     }
 
     useEffect(() => {
