@@ -1,4 +1,4 @@
-﻿namespace FoodOrdersApi.Models.Org
+﻿namespace FoodOrdersApi.Models.Organization
 {
     public class CreateOrganizationDto
     {
