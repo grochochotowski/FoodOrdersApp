@@ -49,7 +49,7 @@ namespace FoodOrdersApi.Controllers
         }
 
         // GET api/order/cart/5
-        [HttpGet("get/cart/{id}")]
+        [HttpGet("cart/{id}")]
         public ActionResult GetFromCart(int id)
         {
             var orderDtos = _orderService.GetFromCart(id);
