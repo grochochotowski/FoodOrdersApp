@@ -13,7 +13,7 @@ export default function IndividualOrder({order}) {
         <div className="order-box" onClick={() => { navigate(`/orders/details/${order.id}`) }}>
             <img src={order.img} alt="food-img" />
             <div className="order-info">
-                <h5>{order.name}</h5>
+                <h5>{order.user}</h5>
                 <p>Positions: {order.positions}</p>
                 <p>Price: {order.price}zł</p>
             </div>
