@@ -87,12 +87,12 @@ export default function CartsEdit() {
             document.getElementById("building").classList.remove("not-valid")
         }
 
-        if (cartInputs.minimumCartPrice === "") {
+        if (cartInputs.minPrice === "") {
             valid = false
-            document.getElementById("minimumCartPrice").classList.add("not-valid")
+            document.getElementById("minPrice").classList.add("not-valid")
         }
         else {
-            document.getElementById("minimumCartPrice").classList.remove("not-valid")
+            document.getElementById("minPrice").classList.remove("not-valid")
         }
 
         if (cartInputs.deliveryPrice === "") {
@@ -103,12 +103,12 @@ export default function CartsEdit() {
             document.getElementById("deliveryPrice").classList.remove("not-valid")
         }
 
-        if (cartInputs.freeDeliveryPrice === "") {
+        if (cartInputs.freeDeliveryMinPrice === "") {
             valid = false
-            document.getElementById("freeDeliveryPrice").classList.add("not-valid")
+            document.getElementById("freeDeliveryMinPrice").classList.add("not-valid")
         }
         else {
-            document.getElementById("freeDeliveryPrice").classList.remove("not-valid")
+            document.getElementById("freeDeliveryMinPrice").classList.remove("not-valid")
         }
 
 
