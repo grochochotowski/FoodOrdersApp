@@ -54,7 +54,7 @@ export default function CartsDetails() {
                                 ? <p>Free</p>
                                 : <p>
                                     {cartDetails.deliveryPrice}
-                                    zł - {cartDetails.freeDeliveryPrice - cartDetails.totalCartPrice}zł
+                                    zł - {cartDetails.freeDeliveryMinPrice - cartDetails.totalCartPrice}zł
                                     to free delivery
                                 </p>
                             }
