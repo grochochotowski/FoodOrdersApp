@@ -10,8 +10,14 @@
         public string? Note { get; set; }
 
 
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string Building { get; set; }
+        public string? Premises { get; set; }
+
+
         public int OrganizationId { get; set; }
         public int RestaurantId { get; set; }
-        public int AddressId { get; set; }
     }
 }
