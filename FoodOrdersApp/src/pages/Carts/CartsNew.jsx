@@ -150,7 +150,7 @@ export default function CartsNew() {
     }
     async function sendData() {
 
-        let apiCall = `https://localhost:7157/api/cart/all?`
+        let apiCall = `https://localhost:7157/api/cart/new`
         let requestOption = {
             body: JSON.stringify(setDataToSend)
         }
@@ -160,7 +160,7 @@ export default function CartsNew() {
             alert('Error fetching data:', error)
         }
 
-        window.location.href = `/details/${response.id}`;
+        //window.location.href = `/details/${response.id}`;
     }
 
     useEffect(() => {
@@ -175,6 +175,9 @@ export default function CartsNew() {
                 const responseOrganization = await fetch(apiCallOrganization)
                 const dataOrganization = await responseOrganization.json()
                 setOrganizations(dataOrganization)
+
+                console.log(dataRestaurant);
+                console.log(dataOrganization);
             } catch (error) {
                 console.error('Error fetching data:', error)
             }
