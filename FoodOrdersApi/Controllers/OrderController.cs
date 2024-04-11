@@ -48,6 +48,14 @@ namespace FoodOrdersApi.Controllers
             return Ok(orderDto);
         }
 
+        // GET api/order/cart/5
+        [HttpGet("get/cart/{id}")]
+        public ActionResult GetFromCart(int id)
+        {
+            var orderDtos = _orderService.GetFromCart(id);
+            return Ok(orderDtos);
+        }
+
         // PUT api/order/update/5
         [HttpPut("update/{id}")]
         public ActionResult Update(int id, [FromBody] UpdateOrderDto dto)
