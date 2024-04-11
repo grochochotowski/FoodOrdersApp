@@ -128,8 +128,8 @@ export default function Carts() {
     }
     function generatePagination() {
         const paginationItems = [];
-        if (result != null) {
-
+        if (result.length != 0) {
+            
             // Generate left arrow
             if (page > 1) {
                 paginationItems.push(
