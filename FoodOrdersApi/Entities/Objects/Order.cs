@@ -8,6 +8,8 @@ namespace FoodOrdersApi.Entities.Objects
         public int Id { get; set; }
         [Required(ErrorMessage = "Total price is required")]
         public double TotalPrice { get; set; }
+        [Required(ErrorMessage = "Positions value is required")]
+        public int Positions { get; set; }
 
         public string? Notes { get; set; }
 
