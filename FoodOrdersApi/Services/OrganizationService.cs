@@ -42,15 +42,15 @@ namespace FoodOrdersApi.Services
         // Get all organizations
         public IEnumerable<OrganizationListDto> GetAll()
         {
-            var orgs = _context.Organizations
+            var organizations = _context.Organizations
                 .Select(o => new OrganizationListDto
                 {
                     Id = o.Id,
                     Name = o.Name
                 });
-            var orgDtos = _mapper.Map<List<OrganizationListDto>>(orgs);
+            var organizationsDtos = _mapper.Map<List<OrganizationListDto>>(organizations);
 
-            return orgDtos;
+            return organizationsDtos;
         }
 
 
