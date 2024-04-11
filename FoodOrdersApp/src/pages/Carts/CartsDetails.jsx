@@ -22,9 +22,7 @@ export default function CartsDetails() {
             try {
                 const responseDetails = await fetch(apiCallDetails)
                 const dataDetails = await responseDetails.json()
-                setCartDetails(dataDetails)
-                
-                console.log(dataDetails)
+                setCartDetails(dataDetails) 
 
                 const responseCarts = await fetch(apiCallCarts)
                 const dataCarts = await responseCarts.json()
