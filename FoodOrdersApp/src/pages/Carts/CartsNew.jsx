@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 import "../../styles/carts.css"
@@ -25,6 +25,8 @@ export default function CartsNew() {
         "notes": "",
     })
     const [dataToSend, setDataToSend] = useState({})
+    const [restaurants, setRestaurants] = useState([])
+    const [organizations, setOrganizations] = useState([])
 
     function handleInputChange(inputId) {
         const value = document.getElementById(inputId).value;
@@ -146,7 +148,6 @@ export default function CartsNew() {
 
         if (valid) sendData()
     }
-
     async function sendData() {
 
         let apiCall = `https://localhost:7157/api/cart/all?`
@@ -161,6 +162,26 @@ export default function CartsNew() {
 
         window.location.href = `/details/${response.id}`;
     }
+
+    useEffect(() => {
+        async function fetchData() {
+            let apiCallRestaurant = `https://localhost:7157/api/restaurant/all`
+            let apiCallOrganization = `https://localhost:7157/api/organization/all`
+            try {
+                const responseRestaurant = await fetch(apiCall)
+                const dataRestaurant = await response.json()
+                setRestaurants(dataRestaurant)
+
+                const responseOrganization = await fetch(apiCall)
+                const dataOrganization = await response.json()
+                setOrganizations(dataOrganization)
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
+        }
+
+        fetchData();
+    }, []);
 
     return (
         <div className="container">

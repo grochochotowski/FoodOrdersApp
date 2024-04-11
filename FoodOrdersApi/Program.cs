@@ -36,7 +36,7 @@ namespace FoodOrdersApi
             builder.Services.AddScoped<ICartService, CartService>();
             builder.Services.AddScoped<IMealService, MealService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
-            builder.Services.AddScoped<IOrgService, OrgService>();
+            builder.Services.AddScoped<IOrgService, OrganizationService>();
             builder.Services.AddScoped<IRestaurantService, RestaurantService>();
             builder.Services.AddScoped<IUserService, UserService>();
 

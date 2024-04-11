@@ -3,13 +3,14 @@ using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Models.Restaurant;
 using Microsoft.EntityFrameworkCore;
+using FoodOrdersApi.Models.Cart;
 
 namespace FoodOrdersApi.Services
 {
     public interface IRestaurantService
     {
         int Create(CreateRestaurantDto dto);
-        IEnumerable<RestaurantDto> GetAll();
+        IEnumerable<RestaurantListDto> GetAll();
         RestaurantDto GetByID(int id);
         int Update(int id, UpdateRestaurantDto dto);
         int Delete(int id);
@@ -40,12 +41,16 @@ namespace FoodOrdersApi.Services
 
 
         // Get all restaurants
-        public IEnumerable<RestaurantDto> GetAll()
+        public IEnumerable<RestaurantListDto> GetAll()
         {
             var restaurants = _context.Restaurants
-                .Include(r => r.Meals)
-                .ToList();
-            var restaurantDtos = _mapper.Map<List<RestaurantDto>>(restaurants);
+                .ToList()
+                .Select(r => new RestaurantListDto
+                {
+                    Id = r.Id,
+                    Name = r.Name
+                });
+            var restaurantDtos = _mapper.Map<List<RestaurantListDto>>(restaurants);
 
             return restaurantDtos;
         }

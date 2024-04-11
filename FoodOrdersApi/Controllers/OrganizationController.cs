@@ -29,7 +29,7 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/org/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<OrganizationDto>> GetAll()
+        public ActionResult<IEnumerable<OrganizationListDto>> GetAll()
         {
             var orgDtos = _orgService.GetAll();
             return Ok(orgDtos);

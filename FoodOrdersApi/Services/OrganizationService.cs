@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Entities.Objects;
+using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Models.Organization;
 
 namespace FoodOrdersApi.Services
@@ -8,7 +9,7 @@ namespace FoodOrdersApi.Services
     public interface IOrgService
     {
         int Create(CreateOrganizationDto dto);
-        IEnumerable<OrganizationDto> GetAll();
+        IEnumerable<OrganizationListDto> GetAll();
         OrganizationDto GetByID(int id);
         int Update(int id, UpdateOrganizationDto dto);
         int Delete(int id);
@@ -39,10 +40,15 @@ namespace FoodOrdersApi.Services
 
 
         // Get all organizations
-        public IEnumerable<OrganizationDto> GetAll()
+        public IEnumerable<OrganizationListDto> GetAll()
         {
-            var orgs = _context.Organizations.ToList();
-            var orgDtos = _mapper.Map<List<OrganizationDto>>(orgs);
+            var orgs = _context.Organizations
+                .Select(o => new OrganizationListDto
+                {
+                    Id = o.Id,
+                    Name = o.Name
+                });
+            var orgDtos = _mapper.Map<List<OrganizationListDto>>(orgs);
 
             return orgDtos;
         }

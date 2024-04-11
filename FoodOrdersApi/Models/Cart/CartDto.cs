@@ -1,6 +1,6 @@
 ﻿using FoodOrdersApi.Models.Address;
 using FoodOrdersApi.Models.Order;
-using FoodOrdersApi.Models.Org;
+using FoodOrdersApi.Models.Organization;
 using FoodOrdersApi.Models.Restaurant;
 
 namespace FoodOrdersApi.Models.Cart

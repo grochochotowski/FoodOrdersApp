@@ -5,7 +5,7 @@ using FoodOrdersApi.Entities;
 using Microsoft.EntityFrameworkCore;
 using FoodOrdersApi.Entities.Enum;
 using System.Linq.Expressions;
-using FoodOrdersApi.Models.Org;
+using FoodOrdersApi.Models.Organization;
 using FoodOrdersApi.Models.Restaurant;
 using FoodOrdersApi.Migrations;
 

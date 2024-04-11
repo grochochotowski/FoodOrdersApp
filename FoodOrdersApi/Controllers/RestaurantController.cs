@@ -28,7 +28,7 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/restaurant/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<RestaurantDto>> GetAll()
+        public ActionResult<IEnumerable<RestaurantListDto>> GetAll()
         {
             var restaurantDtos = _restaurantService.GetAll();
             return Ok(restaurantDtos);
