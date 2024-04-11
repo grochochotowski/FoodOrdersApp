@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import "../../styles/carts.css"
@@ -9,31 +9,10 @@ export default function CartsEdit() {
 
     const navigate = useNavigate();
     const params = useParams();
-    console.log(params.id)
 
-    const [cartDetails, setCartDetail] = useState({
-        "id" : params.id,
-        "restaurant" : {
-            "name" : "McDonald's"
-        },
-        "organization" : {
-            "name" : "Organization " + params.id
-        }
-    })
+    const [cartDetails, setCartDetail] = useState({})
 
-    const [cartInputs, setCartInputs] = useState({
-        "bankAccountNumber": "12 3456 7890 1234 5678 9012 3456",
-        "phoneNumber": "123 456 789",
-        "country" : "PL",
-        "city": "Bialystok",
-        "street": "Żurawia",
-        "building": "71",
-        "premises": "123",
-        "minimumCartPrice": 19.99,
-        "deliveryPrice": 0.00,
-        "freeDeliveryPrice": 19.99,
-        "notes": "Those are notes for order with id: 1",
-    })
+    const [cartInputs, setCartInputs] = useState({})
     const [dataToSend, setDataToSend] = useState({})
 
     function handleInputChange(inputId) {
@@ -145,10 +124,46 @@ export default function CartsEdit() {
         alert("deleting")
     }
 
+    useEffect(() => {
+        async function fetchData() {
+            let apiCall = `https://localhost:7157/api/cart/get/${params.id}`
+            try {
+                const response = await fetch(apiCall)
+                const data = await response.json()
+                if (data.address) {
+                    setCartInputs({
+                        "bankAccountNumber": data.bankAccountNumber,
+                        "phoneNumber": data.phoneNumber,
+                        "minPrice": data.minPrice,
+                        "deliveryPrice": data.deliveryPrice,
+                        "freeDeliveryMinPrice": data.freeDeliveryMinPrice,
+                        "note": data.note,
+                        "country" : data.address.country,
+                        "city": data.address.city,
+                        "street": data.address.street,
+                        "building": data.address.building,
+                        "premises": data.address.premises,
+                    })
+                }
+                
+                setCartDetail({
+                    "id" : data.id,
+                    "restaurant" : data.restaurant,
+                    "organization" : data.organization
+                })
+
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
+        }
+
+        fetchData();
+    }, []);
+
     return (
         <div className="container">
             <section className="box">
-            <h1>Cart &#40;{cartDetails.id}&#41; - {cartDetails.organization.name} - {cartDetails.restaurant.name}</h1>
+            <h1>Cart &#40;{cartDetails.id}&#41; - {cartDetails.organization} - {cartDetails.restaurant}</h1>
                 <div className="form">
                     <div className="line top-bottom">
                         <div className="layer top">
@@ -232,14 +247,14 @@ export default function CartsEdit() {
                         <div className="layer left">
 
                             <div className="input-container">
-                                    <label htmlFor="minimumCartPrice">Minimum cart price:</label>
+                                    <label htmlFor="minPrice">Minimum cart price:</label>
                                     <input
                                         type="text"
-                                        id="minimumCartPrice"
-                                        value={cartInputs["minimumCartPrice"]}
-                                        onChange={() => handleInputChange("minimumCartPrice")}    
+                                        id="minPrice"
+                                        value={cartInputs["minPrice"]}
+                                        onChange={() => handleInputChange("minPrice")}    
                                     />
-                            </div> {/* minimumCartPrice */}
+                            </div> {/* minPrice */}
 
                             <div className="input-container">
                                     <label htmlFor="deliveryPrice">Delivery price:</label>
@@ -252,27 +267,27 @@ export default function CartsEdit() {
                             </div> {/* deliveryPrice */}
 
                             <div className="input-container">
-                                    <label htmlFor="freeDeliveryPrice">Free delivery price:</label>
+                                    <label htmlFor="freeDeliveryMinPrice">Free delivery price:</label>
                                     <input
                                         type="text"
-                                        id="freeDeliveryPrice"
-                                        value={cartInputs["freeDeliveryPrice"]}
-                                        onChange={() => handleInputChange("freeDeliveryPrice")}    
+                                        id="freeDeliveryMinPrice"
+                                        value={cartInputs["freeDeliveryMinPrice"]}
+                                        onChange={() => handleInputChange("freeDeliveryMinPrice")}    
                                     />
-                            </div> {/* freeDeliveryPrice */}
+                            </div> {/* freeDeliveryMinPrice */}
 
                         </div>
                         <div className="layer right">
 
                             <div className="input-container">
-                                    <label htmlFor="notes">Notes:</label>
+                                    <label htmlFor="note">Notes:</label>
                                     <textarea
-                                    name="notes"
-                                    id="notes"
-                                    value={cartInputs["notes"]}
-                                    onChange={() => handleInputChange("notes")}
+                                    name="note"
+                                    id="note"
+                                    value={cartInputs["note"] ? cartInputs["note"] : ""}
+                                    onChange={() => handleInputChange("note")}
                                     ></textarea>                          
-                            </div> {/* notes */}
+                            </div> {/* note */}
                             
                         </div>
                     </div>
