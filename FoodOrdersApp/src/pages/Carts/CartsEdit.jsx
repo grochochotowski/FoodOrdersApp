@@ -132,8 +132,11 @@ export default function CartsEdit() {
         console.log(dataToSend);
     }
 
-    function deleteCart() {
-        alert("deleting")
+    async function deleteCart() {
+        let apiCall = `https://localhost:7157/api/cart/delete/${params.id}`
+        let requestOption = { method: 'DELETE' }
+        const response = await fetch(apiCall, requestOption)
+        console.log(response)
     }
 
     useEffect(() => {
@@ -149,12 +152,12 @@ export default function CartsEdit() {
                         "minPrice": data.minPrice,
                         "deliveryPrice": data.deliveryPrice,
                         "freeDeliveryMinPrice": data.freeDeliveryMinPrice,
-                        "note": data.note,
+                        "note": data.note ?? "",
                         "country" : data.address.country,
                         "city": data.address.city,
                         "street": data.address.street,
                         "building": data.address.building,
-                        "premises": data.address.premises,
+                        "premises": data.address.premises ?? "",
                     })
                 }
                 
@@ -296,7 +299,7 @@ export default function CartsEdit() {
                                     <textarea
                                     name="note"
                                     id="note"
-                                    value={cartInputs["note"] ? cartInputs["note"] : ""}
+                                    value={cartInputs["note"]}
                                     onChange={() => handleInputChange("note")}
                                     ></textarea>                          
                             </div> {/* note */}
