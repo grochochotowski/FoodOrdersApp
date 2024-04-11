@@ -8,6 +8,9 @@ using System.Linq.Expressions;
 using FoodOrdersApi.Models.Organization;
 using FoodOrdersApi.Models.Restaurant;
 using FoodOrdersApi.Migrations;
+using System.Linq;
+using FoodOrdersApi.Models.Address;
+using FoodOrdersApi.Models.Order;
 
 namespace FoodCartsApi.Services
 {
@@ -15,7 +18,7 @@ namespace FoodCartsApi.Services
     {
         int Create(CreateCartDto dto);
         PagedResult<CartListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton);
-        CartDto GetById(int id);
+        DetailsCartDto GetById(int id);
         int Update(int id, UpdateCartDto dto);
         int Delete(int id);
     }
@@ -100,17 +103,38 @@ namespace FoodCartsApi.Services
 
 
         // Get cart by ID
-        public CartDto GetById(int id)
+        public DetailsCartDto GetById(int id)
         {
             var cart = _context.Carts
-                 .Include(c => c.Restaurant).ThenInclude(r => r.Meals)
+                 .Include(c => c.Restaurant)
+                 .Include(c => c.Organization)
                  .Include(c => c.Address)
-                 .Include(c => c.IndividualOrders!).ThenInclude(io => io.MealOrder)
-                 .Include(c => c.IndividualOrders!).ThenInclude(io => io.User)
+                 .Select(c => new DetailsCartDto
+                 {
+                     Id = c.Id,
+                     MinPrice = c.MinPrice,
+                     TotalCartPrice = c.TotalCartPrice,
+                     DeliveryPrice = c.DeliveryPrice,
+                     FreeDeliveryMinPrice = c.FreeDeliveryMinPrice,
+                     PhoneNumber = c.PhoneNumber,
+                     BankAccountNumber = c.BankAccountNumber,
+                     Note = c.Note,
+                     Restaurant = c.Restaurant.Name,
+                     Organization = c.Organization.Name,
+                     Address = new AddressDto
+                     {
+                         Id = c.Address.Id,
+                         Country = c.Address.Country,
+                         City = c.Address.City,
+                         Street = c.Address.Street,
+                         Building = c.Address.Building,
+                         Premises = c.Address.Premises
+                     }
+                 })
                  .FirstOrDefault(o => o.Id == id);
             if (cart == null) return null;
 
-            var cartDto = _mapper.Map<CartDto>(cart);
+            var cartDto = _mapper.Map<DetailsCartDto>(cart);
 
             return cartDto;
         }

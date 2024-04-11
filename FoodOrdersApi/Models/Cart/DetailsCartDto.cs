@@ -17,6 +17,6 @@ namespace FoodOrdersApi.Models.Cart
 
         public string Organization { get; set; }
         public string Restaurant { get; set; }
-        public int AddressId { get; set; }
+        public AddressDto Address { get; set; }
     }
 }
