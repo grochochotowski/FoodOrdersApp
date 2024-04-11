@@ -168,12 +168,12 @@ export default function CartsNew() {
             let apiCallRestaurant = `https://localhost:7157/api/restaurant/all`
             let apiCallOrganization = `https://localhost:7157/api/organization/all`
             try {
-                const responseRestaurant = await fetch(apiCall)
-                const dataRestaurant = await response.json()
+                const responseRestaurant = await fetch(apiCallRestaurant)
+                const dataRestaurant = await responseRestaurant.json()
                 setRestaurants(dataRestaurant)
 
-                const responseOrganization = await fetch(apiCall)
-                const dataOrganization = await response.json()
+                const responseOrganization = await fetch(apiCallOrganization)
+                const dataOrganization = await responseOrganization.json()
                 setOrganizations(dataOrganization)
             } catch (error) {
                 console.error('Error fetching data:', error)
