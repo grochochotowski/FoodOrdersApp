@@ -145,13 +145,21 @@ export default function CartsNew() {
 
 
         if (valid) sendData()
-        else alert("not-valid")
     }
 
-    function sendData() {
-        alert("API call happening")
+    async function sendData() {
 
-        console.log(dataToSend);
+        let apiCall = `https://localhost:7157/api/cart/all?`
+        let requestOption = {
+            body: JSON.stringify(setDataToSend)
+        }
+        const response = await fetch(apiCall, requestOption)
+
+        if (response != ok) {
+            alert('Error fetching data:', error)
+        }
+
+        window.location.href = `/details/${response.id}`;
     }
 
     return (

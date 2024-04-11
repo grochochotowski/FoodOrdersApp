@@ -31,7 +31,7 @@ export default function Carts() {
         fetchData();
     }
 
-    const fetchData = async () => {
+    async function fetchData() {
         let apiCall = `https://localhost:7157/api/cart/all?` +
             `${filters.organization && "organization=" + filters.organization + "&"}` +
             `${filters.restaurant && "restaurant=" + filters.restaurant + "&"}` +
@@ -39,13 +39,13 @@ export default function Carts() {
             `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
             `page=${page}`
         try {
-            const response = await fetch(apiCall);
-            const data = await response.json();
-            setResult(data);
+            const response = await fetch(apiCall)
+            const data = await response.json()
+            setResult(data)
         } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching data:', error)
         }
-    };
+    }
 
     useEffect(() => {
         fetchData();
@@ -127,9 +127,11 @@ export default function Carts() {
         );
     }
     function generatePagination() {
+
         const paginationItems = [];
+
         if (result.length != 0) {
-            
+
             // Generate left arrow
             if (page > 1) {
                 paginationItems.push(
