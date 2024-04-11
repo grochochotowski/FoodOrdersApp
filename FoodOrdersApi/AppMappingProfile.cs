@@ -13,11 +13,8 @@ namespace FoodOrdersApi
 {
     public class AppMappingProfile : Profile
     {
-        private readonly IMapper _mapper;
-        public AppMappingProfile(IMapper mapper)
+        public AppMappingProfile()
         {
-            _mapper = mapper;
-
             CreateMap<Address, AddressDto>();
             CreateMap<CreateAddressDto, Address>();
             CreateMap<UpdateAddressDto, Address>();
