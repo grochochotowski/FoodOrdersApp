@@ -22,15 +22,14 @@ export default function CartsDetails() {
             try {
                 const responseDetails = await fetch(apiCallDetails)
                 const dataDetails = await responseDetails.json()
+                setCartDetails(dataDetails)
                 
                 console.log(dataDetails)
-                setCartDetails(dataDetails)
 
                 const responseCarts = await fetch(apiCallCarts)
                 const dataCarts = await responseCarts.json()
-
-                console.log(dataCarts)
                 setOrders(dataCarts)
+
             } catch (error) {
                 console.error('Error fetching data:', error)
             }
@@ -63,11 +62,11 @@ export default function CartsDetails() {
                         <div className="line top-bottom">
                             <h5>Address:</h5>
                             <p>
-                                {/*cartDetails.address.country}
-                                , {cartDetails.address.city}
-                                , {cartDetails.address.street}
-                                &nbsp;{cartDetails.address.building}
-                        {cartDetails.address.premises && <>/{cartDetails.address.premises}</>*/}
+                                {cartDetails.address && cartDetails.address.country}
+                                , {cartDetails.address && cartDetails.address.city}
+                                , {cartDetails.address && cartDetails.address.street}
+                                &nbsp;{cartDetails.address && cartDetails.address.building}
+                                {cartDetails.address && cartDetails.address.premises && <>/{cartDetails.address && cartDetails.address.premises}</>}
                             </p>
                         </div>
                         <div className="line top-bottom">
