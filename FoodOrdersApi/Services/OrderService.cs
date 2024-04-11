@@ -11,7 +11,7 @@ namespace FoodOrdersApi.Services
         int Create(CreateOrderDto dto);
         IEnumerable<OrderDto> GetAll();
         OrderDto GetByID(int id);
-        IEnumerable<OrderDto> GetFromCart(int id);
+        IEnumerable<IndividualOrderDto> GetFromCart(int id);
         int Update(int id, UpdateOrderDto dto);
         int Delete(int id);
         List<string> AddMeal(int id, AddOrderMeal dto);
@@ -78,7 +78,7 @@ namespace FoodOrdersApi.Services
 
 
         // Get all orders from a cart
-        public IEnumerable<OrderDto> GetFromCart(int id)
+        public IEnumerable<IndividualOrderDto> GetFromCart(int id)
         {
             var cart = _context.Carts.
                 FirstOrDefault(c => c.Id == id);
@@ -86,8 +86,14 @@ namespace FoodOrdersApi.Services
             var orders = _context.Orders
                 .Include(o => o.User)
                 .Where(o => o.CartId == id)
+                .Select(o => new IndividualOrderDto
+                {
+                    Positions =  o.Positions,
+                    TotalPrice = o.TotalPrice,
+                    User = string.Concat(o.User.FirstName, " ", o.User.LastName)
+                })
                 .ToList();
-            var orderDtos = _mapper.Map<List<OrderDto>>(orders);
+            var orderDtos = _mapper.Map<List<IndividualOrderDto>>(orders);
 
             return orderDtos;
         }

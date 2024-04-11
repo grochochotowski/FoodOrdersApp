@@ -11,7 +11,6 @@ export default function CartsDetails() {
 
     const params = useParams();
     const navigate = useNavigate();
-    console.log(params.id)
 
     const [cartDetails, setCartDetails] = useState({
         "id" : 1,
