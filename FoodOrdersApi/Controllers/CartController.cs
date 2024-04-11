@@ -27,7 +27,8 @@ namespace FoodCartsApi.Controllers
 
             if (cartId == -2) return NotFound($"Restaurant with id {dto.RestaurantId} does not exist");
             if (cartId == -3) return NotFound($"Address with id {dto.OrganizationId} does not exist");
-            return Created($"api/cart/get/{cartId}", null);
+
+            return Ok(new { newCartId = cartId });
         }
 
         // GET api/cart/all
@@ -48,7 +49,7 @@ namespace FoodCartsApi.Controllers
         [HttpGet("get/{id}")]
         public ActionResult GetByID(int id)
         {
-            var cartDto = _cartService.GetByID(id);
+            var cartDto = _cartService.GetById(id);
 
             if (cartDto == null) return NotFound($"Cart with id {id} does not exist");
             return Ok(cartDto);

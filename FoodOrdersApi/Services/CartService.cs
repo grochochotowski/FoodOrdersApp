@@ -15,7 +15,7 @@ namespace FoodCartsApi.Services
     {
         int Create(CreateCartDto dto);
         PagedResult<CartListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton);
-        CartDto GetByID(int id);
+        CartDto GetById(int id);
         int Update(int id, UpdateCartDto dto);
         int Delete(int id);
     }
@@ -100,7 +100,7 @@ namespace FoodCartsApi.Services
 
 
         // Get cart by ID
-        public CartDto GetByID(int id)
+        public CartDto GetById(int id)
         {
             var cart = _context.Carts
                  .Include(c => c.Restaurant).ThenInclude(r => r.Meals)
