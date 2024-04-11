@@ -15,7 +15,7 @@ export default function IndividualOrder({order}) {
             <div className="order-info">
                 <h5>{order.user}</h5>
                 <p>Positions: {order.positions}</p>
-                <p>Price: {order.price}zł</p>
+                <p>Price: {order.totalPrice}zł</p>
             </div>
         </div>
     )
