@@ -1,4 +1,4 @@
-﻿using FoodOrdersApi.Models.Org;
+﻿using FoodOrdersApi.Models.Organization;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,11 +6,11 @@ namespace FoodOrdersApi.Controllers
 {
     [Route("api/org")]
     [ApiController]
-    public class OrgController : ControllerBase
+    public class OrganizationController : ControllerBase
     {
         private readonly IOrgService _orgService;
 
-        public OrgController(IOrgService orgService)
+        public OrganizationController(IOrgService orgService)
         {
             _orgService = orgService;
         }

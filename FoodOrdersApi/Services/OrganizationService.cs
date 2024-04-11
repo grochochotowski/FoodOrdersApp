@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Entities.Objects;
-using FoodOrdersApi.Models.Org;
+using FoodOrdersApi.Models.Organization;
 
 namespace FoodOrdersApi.Services
 {
@@ -14,12 +14,12 @@ namespace FoodOrdersApi.Services
         int Delete(int id);
     }
 
-    public class OrgService : IOrgService
+    public class OrganizationService : IOrgService
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
 
-        public OrgService(AppDbContext context, IMapper mapper)
+        public OrganizationService(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
