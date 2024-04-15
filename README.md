@@ -1,4 +1,4 @@
-# FoodOrdersApi
+# FoodOrdersApp
 
 An app made on internahip in WorkAI.
 
