@@ -7,3 +7,9 @@ Functionalities:
 - displaying detailed info about a cart
 - editing existing cart
 - adding new cart
+
+Future functionalities:
+- adding carts to orders
+- adding meals to orders
+- changing user
+- authorization
