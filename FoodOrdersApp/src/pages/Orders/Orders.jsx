@@ -42,7 +42,6 @@ export default function Orders() {
             const response = await fetch(apiCall)
             const data = await response.json()
             setResult(data)
-            console.log(data)
         } catch (error) {
             console.error('Error fetching data:', error)
         }
