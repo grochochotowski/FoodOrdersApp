@@ -12,7 +12,7 @@ export default function MealBox({meal}) {
 
     return (
         <div className="meal-box">
-            <img src={meal.img} alt="food-img" />
+            <img src={meal.img ? meal.img : "https://i.pinimg.com/564x/ef/e8/d3/efe8d36db6281666a126189f05bfeff1.jpg"} alt="food-img" />
             <div className="meal-info">
                 <h5>{meal.meal}</h5>
                 <p>Quantity: {meal.quantity}</p>
