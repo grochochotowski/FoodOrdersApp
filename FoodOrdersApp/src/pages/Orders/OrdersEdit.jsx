@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 
 import MealBoxEdit from "../../components/MealBoxEdit";
+import NewMeal from "../../components/NewMeal";
 
 import "../../styles/orders.css"
 import "../../styles/index.css"
@@ -13,8 +14,10 @@ export default function OrdersDetails()
     const navigate = useNavigate();
     
     const [orderEdit, setOrderEdit] = useState({})
-    const [meals, setMealse] = useState([])
+    const [meals, setMeals] = useState([])
     const [orderInputs, setOrderInputs] = useState({})
+
+    const [newMealOpen, setNewMealOpen] = useState(true)
 
 
     useEffect(() => {
@@ -29,7 +32,7 @@ export default function OrdersDetails()
 
                 const responseMeals = await fetch(apiCallMeals)
                 const dataMeals = await responseMeals.json()
-                setMealse(dataMeals)
+                setMeals(dataMeals)
 
             } catch (error) {
                 console.error('Error fetching data:', error)
@@ -76,7 +79,7 @@ export default function OrdersDetails()
     }
 
     function newMeal() {
-        alert("new meal")
+        setNewMealOpen(false)
     }
 
     return (
@@ -122,6 +125,7 @@ export default function OrdersDetails()
                     </div>
                 </div>
             </section>
+            {newMealOpen && <NewMeal restaurant={orderEdit.restaurant}/>}
         </div>
     )
 }
