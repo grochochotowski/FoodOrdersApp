@@ -2,6 +2,9 @@
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Models.Meal;
+using FoodOrdersApi.Models.MealOrder;
+using FoodOrdersApi.Models.Order;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrdersApi.Services
 {
@@ -10,6 +13,7 @@ namespace FoodOrdersApi.Services
         int Create(CreateMealDto dto);
         IEnumerable<MealDto> GetAll();
         MealDto GetByID(int id);
+        IEnumerable<MealsFromOrder> GetFromOrder(int id);
         int Update(int id, UpdateMealDto dto);
         int Delete(int id);
     }
@@ -62,6 +66,25 @@ namespace FoodOrdersApi.Services
             return mealDto;
         }
 
+        // Get all meals from an order
+        public IEnumerable<MealsFromOrder> GetFromOrder(int id)
+        {
+            var meals = _context.MealOrder
+                .Include(mo => mo.Meal)
+                .Where(mo => mo.OrderId == id)
+                .Select(mo => new MealsFromOrder
+                {
+                    Id = mo.MealId.ToString() + "||" + mo.OrderId.ToString(),
+                    Img = "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg",
+                    Meal = mo.Meal.Name,
+                    Price = mo.Quantity * mo.Meal.Price,
+                    Quantity = mo.Quantity
+                })
+                .ToList();
+            var mealOrderDtos = _mapper.Map<List<MealsFromOrder>>(meals);
+
+            return mealOrderDtos;
+        }
 
         // Update meal with id
         public int Update(int id, UpdateMealDto dto)
@@ -77,7 +100,7 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Update meal with id
+        // Delete meal with id
         public int Delete(int id)
         {
             var meal = _context.Meals.FirstOrDefault(o => o.Id == id);
