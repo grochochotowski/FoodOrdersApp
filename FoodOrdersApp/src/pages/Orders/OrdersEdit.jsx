@@ -124,9 +124,10 @@ export default function OrdersDetails() {
                             </div>
                         </div>
                         <div className="control-buttons">
-                            <button onClick={() => {navigate("/orders")}}>Go back</button>
-                            <button className="info" onClick={() => sendData()}>Apply</button>
-                            <button className="warning" onClick={() => deleteOrder()}>Delete</button>
+                            <button onClick={() => {navigate("/orders")}}>List</button>
+                            <button className="details-clr" onClick={() => {navigate(`/orders/details/${params.id}`)}}>Details</button>
+                            <button className="info" onClick={() => validate()}>Apply</button>
+                            <button className="warning" onClick={() => deleteCart()}>Delete</button>
                         </div>
                     </div>
                     <div className="order-right">

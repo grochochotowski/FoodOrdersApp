@@ -122,7 +122,7 @@ export default function OrderNew() {
                             </div>
                         </div>
                         <div className="control-buttons">
-                            <button onClick={() => {navigate("/carts")}}>Go back</button>
+                            <button onClick={() => {navigate("/orders")}}>List</button>
                             <button className="info" onClick={() => validate()}>Create</button>
                         </div>
                     </div>

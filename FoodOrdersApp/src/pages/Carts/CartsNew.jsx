@@ -369,7 +369,7 @@ export default function CartsNew() {
                     </div>
                 </div>
                 <div className="control-buttons">
-                    <button onClick={() => {navigate("/carts")}}>Go back</button>
+                    <button onClick={() => {navigate("/carts")}}>List</button>
                     <button onClick={() => validate()}>Create cart</button>
                 </div>
             </section>
