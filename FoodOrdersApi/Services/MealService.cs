@@ -14,6 +14,7 @@ namespace FoodOrdersApi.Services
         IEnumerable<MealDto> GetAll();
         MealDto GetByID(int id);
         IEnumerable<MealsFromOrder> GetFromOrder(int id);
+        IEnumerable<MealsFromRestaurant> GetFromRestaurant(int id);
         int Update(int id, UpdateMealDto dto);
         int Delete(int id);
     }
@@ -82,6 +83,24 @@ namespace FoodOrdersApi.Services
                 })
                 .ToList();
             var mealOrderDtos = _mapper.Map<List<MealsFromOrder>>(meals);
+
+            return mealOrderDtos;
+        }
+
+        // Get all meals from a restaurant
+        public IEnumerable<MealsFromRestaurant> GetFromRestaurant(int id)
+        {
+            var meals = _context.Meals
+                .Where(m => m.RestaurantId == id)
+                .Select(m => new MealsFromRestaurant
+                {
+                    Id = m.Id,
+                    Img = m.Img,
+                    Name = m.Name,
+                    Price = m.Price
+                })
+                .ToList();
+            var mealOrderDtos = _mapper.Map<List<MealsFromRestaurant>>(meals);
 
             return mealOrderDtos;
         }

@@ -152,7 +152,8 @@ namespace FoodOrdersApi.Services
                 {
                     Id = c.Id,
                     Notes = c.Notes,
-                    Cart = c.CartId
+                    Cart = c.CartId,
+                    Restaurant = c.Cart.RestaurantId
                 })
                 .FirstOrDefault(o => o.Id == id);
             if (order == null) return null;
