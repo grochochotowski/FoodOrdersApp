@@ -5,6 +5,9 @@ using FoodOrdersApi.Models.Order;
 using Microsoft.EntityFrameworkCore;
 using FoodOrdersApi.Entities.Enum;
 using System.Linq.Expressions;
+using FoodOrdersApi.Models.Address;
+using FoodOrdersApi.Models.Cart;
+using static Azure.Core.HttpHeader;
 
 namespace FoodOrdersApi.Services
 {
@@ -12,7 +15,7 @@ namespace FoodOrdersApi.Services
     {
         int Create(CreateOrderDto dto);
         PagedResult<OrderListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton);
-        OrderDto GetByID(int id);
+        DetailsOrderDto GetByID(int id);
         IEnumerable<IndividualOrderDto> GetFromCart(int id);
         int Update(int id, UpdateOrderDto dto);
         int Delete(int id);
@@ -117,15 +120,25 @@ namespace FoodOrdersApi.Services
 
 
         // Get order by ID
-        public OrderDto GetByID(int id)
+        public DetailsOrderDto GetByID(int id)
         {
             var order = _context.Orders
-                .Include(o => o.MealOrder).ThenInclude(mo => mo.Meal)
                 .Include(o => o.User)
+                .Include(o => o.Cart)
+                .Select(c => new DetailsOrderDto
+                {
+                    Id = c.Id,
+                    TotalPrice = c.TotalPrice,
+                    Positions = c.Positions,
+                    Notes = c.Notes,
+                    Restaurant = c.Cart.Restaurant.Name,
+                    Organization = c.Cart.Organization.Name,
+                    User = string.Concat(c.User.FirstName, " ", (c.User.SecondName != null ? c.User.SecondName + " " : ""), c.User.LastName)
+                })
                 .FirstOrDefault(o => o.Id == id);
             if (order == null) return null;
 
-            var orderDto = _mapper.Map<OrderDto>(order);
+            var orderDto = _mapper.Map<DetailsOrderDto>(order);
 
             return orderDto;
         }
