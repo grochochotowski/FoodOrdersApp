@@ -3,13 +3,15 @@ using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Models.Order;
 using Microsoft.EntityFrameworkCore;
+using FoodOrdersApi.Entities.Enum;
+using System.Linq.Expressions;
 
 namespace FoodOrdersApi.Services
 {
     public interface IOrderService
     {
         int Create(CreateOrderDto dto);
-        IEnumerable<OrderDto> GetAll();
+        PagedResult<OrderListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton);
         OrderDto GetByID(int id);
         IEnumerable<IndividualOrderDto> GetFromCart(int id);
         int Update(int id, UpdateOrderDto dto);
@@ -49,16 +51,68 @@ namespace FoodOrdersApi.Services
         }
 
 
-        // Get all orders
-        public IEnumerable<OrderDto> GetAll()
+        // Get all carts
+        public PagedResult<OrderListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton)
         {
-            var orders = _context.Orders
-                .Include(o => o.MealOrder).ThenInclude(mo => mo.Meal)
+            Console.WriteLine(restaurant);
+            Console.WriteLine(organization);
+            Console.WriteLine(page);
+            Console.WriteLine(sortBy);
+            Console.WriteLine(sortDireciton);
+            var baseQuery = _context.Orders
+                .Include(o => o.Cart).ThenInclude(c => c.Restaurant)
+                .Include(o => o.Cart).ThenInclude(c => c.Organization)
                 .Include(o => o.User)
-                .ToList();
-            var orderDtos = _mapper.Map<List<OrderDto>>(orders);
+                .Where(o => restaurant == null || o.Cart.Restaurant.Name.ToLower().Contains(restaurant))
+                .Where(c => organization == null || c.Cart.Organization.Name.ToLower().Contains(organization));
 
-            return orderDtos;
+            if (!string.IsNullOrEmpty(sortBy))
+            {
+                var columnsSelector = new Dictionary<string, Expression<Func<Order, object>>>
+                {
+                    { "name", o => new { o.User.FirstName, o.User.LastName }},
+                    { "organization", o => o.Cart.Organization.Name},
+                    { "restaurant", o => o.Cart.Restaurant.Name},
+                    { "totalPrice", o => o.TotalPrice},
+                    { "positions", o => o.Positions}
+                };
+
+                var selectedColumn = columnsSelector[sortBy];
+
+                if (sortBy != "name")
+                {
+                    baseQuery = sortDireciton == SortDirection.ASC
+                        ? baseQuery.OrderBy(selectedColumn)
+                        : baseQuery.OrderByDescending(selectedColumn);
+                }
+                else
+                {
+                    baseQuery = sortDireciton == SortDirection.ASC
+                        ? baseQuery.OrderBy(o => o.User.FirstName).ThenBy(o => o.User.LastName)
+                        : baseQuery.OrderByDescending(o => o.User.FirstName).ThenByDescending(o => o.User.LastName);
+                }
+            }
+
+            var carts = baseQuery
+                .Skip(10 * (page - 1))
+                .Take(10)
+                .Select(o => new OrderListDto
+                {
+                    Id = o.Id,
+                    Name = string.Concat(o.User.FirstName, " ", o.User.LastName),
+                    Organization = o.Cart.Organization.Name,
+                    Restaurant = o.Cart.Restaurant.Name,
+                    Positions = o.Positions,
+                    TotalPrice = o.TotalPrice,
+
+                })
+                .ToList();
+
+            var totalCount = baseQuery.Count();
+
+            var result = new PagedResult<OrderListDto>(carts, totalCount, page);
+
+            return result;
         }
 
 
