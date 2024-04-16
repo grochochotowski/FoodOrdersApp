@@ -14,7 +14,8 @@ export default function OrdersDetails()
     
     const [orderEdit, setOrderEdit] = useState({})
     const [meals, setMealse] = useState([])
-    const [orderInputs, setOrderInputs] = useState()
+    const [orderInputs, setOrderInputs] = useState({})
+
 
     useEffect(() => {
         async function fetchData() {
@@ -24,7 +25,7 @@ export default function OrdersDetails()
                 const responseEdit = await fetch(apiCallEdit)
                 const dataEdit = await responseEdit.json()
                 setOrderEdit(dataEdit)
-                setOrderInputs(dataEdit.note)
+                setOrderInputs({"notes": dataEdit.notes});
 
                 const responseMeals = await fetch(apiCallMeals)
                 const dataMeals = await responseMeals.json()
@@ -37,26 +38,45 @@ export default function OrdersDetails()
 
         fetchData();
     }, []);
-    
-    function newMeal() {
-        alert("new meal")
-    }
-    const [dataToSend, setDataToSend] = useState({})
 
     function handleInputChange(inputId) {
         const value = document.getElementById(inputId).value;
 
-        setOrderInputs(value)
+        setOrderInputs(prev => ({
+            ...prev,
+            [inputId]: value
+        }))
     }
 
-    function sendData() {
-        alert("API call happening")
+    async function sendData() {
+        let apiCall = `https://localhost:7157/api/order/update/${params.id}`
+        let requestOption = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderInputs)
+        }
+        const response = await fetch(apiCall, requestOption)
 
-        console.log(dataToSend);
+        console.log(response)
+
+        if (!response.ok) {
+            throw new Error('Error fetching data');
+        }
+        window.location.href = `/orders/details/${params.id}`;
     }
 
-    function deleteOrder() {
-        alert("deleting")
+    async function deleteOrder() {
+        let apiCall = `https://localhost:7157/api/order/delete/${params.id}`
+        let requestOption = { method: 'DELETE' }
+        const response = await fetch(apiCall, requestOption)
+        console.log(response)
+        window.location.href = `/orders`;
+    }
+
+    function newMeal() {
+        alert("new meal")
     }
 
     return (
@@ -74,7 +94,7 @@ export default function OrdersDetails()
                                     <textarea
                                     name="notes"
                                     id="notes"
-                                    value={orderInputs}
+                                    value={orderInputs.notes}
                                     onChange={() => handleInputChange("notes")}
                                     ></textarea>                          
                                 </div> {/* notes */}
@@ -84,8 +104,8 @@ export default function OrdersDetails()
                         <div className="control-buttons">
                             <button onClick={() => {navigate("/orders")}}>List</button>
                             <button className="details-clr" onClick={() => {navigate(`/orders/details/${params.id}`)}}>Details</button>
-                            <button className="info" onClick={() => validate()}>Apply</button>
-                            <button className="warning" onClick={() => deleteCart()}>Delete</button>
+                            <button className="info" onClick={() => sendData()}>Apply</button>
+                            <button className="warning" onClick={() => deleteOrder()}>Delete</button>
                         </div>
                     </div>
                     <div className="order-right">
