@@ -143,15 +143,32 @@ namespace FoodCartsApi.Services
         // Update cart with id
         public int Update(int id, UpdateCartDto dto)
         {
-            var cart = _context.Carts.FirstOrDefault(o => o.Id == id);
-            if (cart == null) return -1;
+            var cartToUpdate = _context.Carts.FirstOrDefault(o => o.Id == id);
+            if (cartToUpdate == null) return -1;
+
+            cartToUpdate.MinPrice = dto.MinPrice;
+            cartToUpdate.DeliveryPrice = dto.DeliveryPrice;
+            cartToUpdate.FreeDeliveryMinPrice = dto.FreeDeliveryMinPrice;
+            cartToUpdate.PhoneNumber = dto.PhoneNumber;
+            cartToUpdate.BankAccountNumber = dto.BankAccountNumber;
+            cartToUpdate.Note = dto.Note;
+
+            var addressToUpdate = _context.Addresses.FirstOrDefault(a => a.Id == cartToUpdate.AddressId);
+            if (addressToUpdate != null)
+            {
+                addressToUpdate.Country = dto.Country;
+                addressToUpdate.City = dto.City;
+                addressToUpdate.Street = dto.Street;
+                addressToUpdate.Building = dto.Building;
+                addressToUpdate.Premises = dto.Premises;
+            }
 
             _context.SaveChanges();
-            return cart.Id;
+            return cartToUpdate.Id;
         }
 
 
-        // Update cart with id
+        // Delete cart with id
         public int Delete(int id)
         {
             var cart = _context.Carts.FirstOrDefault(o => o.Id == id);
