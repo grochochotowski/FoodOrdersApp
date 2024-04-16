@@ -41,6 +41,8 @@ namespace FoodOrdersApi
             CreateMap<MealOrder, MealOrderDto>();
 
             CreateMap<Order, OrderDto>();
+            CreateMap<Order, OrderListDto>();
+            CreateMap<Order, DetailsOrderDto>();
             CreateMap<CreateOrderDto, Order>();
             CreateMap<UpdateOrderDto, Order>();
 
