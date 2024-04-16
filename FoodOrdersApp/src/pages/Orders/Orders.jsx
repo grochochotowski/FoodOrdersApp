@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 import "../../styles/orders.css"
@@ -7,163 +7,13 @@ import "../../styles/App.css"
 
 export default function Orders() {
 
-    const [sorting, setSorting] = useState(["col1", 0])
+    const [sorting, setSorting] = useState(["organization", 0])
     const [filters, setFilters] = useState({
         "restaurant" : "",
         "organization" : "",
     })
-    const [orders, setOrders] = useState([
-        {
-            "id" : 1,
-            "user": {
-                "firstName" : "FirstName 1",
-                "lastName" : "LastName 1"
-            },
-            "organization" : {
-                "name" : "Organization 1"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            },
-            "totalPrice" : 1.99,
-            "positions" : 1
-        },
-        {
-            "id" : 2,
-            "user": {
-                "firstName" : "Firstname 2",
-                "lastName" : "Lastname 2"
-            },
-            "organization" : {
-                "name" : "Organization 2"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            },
-            "totalPrice" : 2.99,
-            "positions" : 2
-        },
-        {
-            "id" : 3,
-            "user": {
-                "firstName" : "Firstname 3",
-                "lastName" : "Lastname 3"
-            },
-            "organization" : {
-                "name" : "Organization 3"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            },
-            "totalPrice" : 3.99,
-            "positions" : 3
-        },
-        {
-            "id" : 4,
-            "user": {
-                "firstName" : "Firstname 4",
-                "lastName" : "Lastname 4"
-            },
-            "organization" : {
-                "name" : "Organization 4"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            },
-            "totalPrice" : 4.99,
-            "positions" : 4
-        },
-        {
-            "id" : 5,
-            "user": {
-                "firstName" : "Firstname 5",
-                "lastName" : "Lastname 5"
-            },
-            "organization" : {
-                "name" : "Organization 5"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            },
-            "totalPrice" : 5.99,
-            "positions" : 5
-        },
-        {
-            "id" : 6,
-            "user": {
-                "firstName" : "Firstname 6",
-                "lastName" : "Lastname 6"
-            },
-            "organization" : {
-                "name" : "Organization 6"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            },
-            "totalPrice" : 6.99,
-            "positions" : 6
-        },
-        {
-            "id" : 7,
-            "user": {
-                "firstName" : "Firstname 7",
-                "lastName" : "Lastname 7"
-            },
-            "organization" : {
-                "name" : "Organization 7"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            },
-            "totalPrice" : 7.99,
-            "positions" : 7
-        },
-        {
-            "id" : 8,
-            "user": {
-                "firstName" : "Firstname 8",
-                "lastName" : "Lastname 8"
-            },
-            "organization" : {
-                "name" : "Organization 8"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            },
-            "totalPrice" : 8.99,
-            "positions" : 8
-        },
-        {
-            "id" : 9,
-            "user": {
-                "firstName" : "Firstname 9",
-                "lastName" : "Lastname 9"
-            },
-            "organization" : {
-                "name" : "Organization 9"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            },
-            "totalPrice" : 9.99,
-            "positions" : 9
-        },
-        {
-            "id" : 10,
-            "user": {
-                "firstName" : "Firstname 10",
-                "lastName" : "Lastname 10"
-            },
-            "organization" : {
-                "name" : "Organization 10"
-            },
-            "restaurant" : {
-                "name" : "McDonald's"
-            },
-            "totalPrice" : 10.99,
-            "positions" : 10
-        },
-    ])
+    const [result, setResult] = useState([])
+    const [page, setPage] = useState(1);
 
     function sortTable(column) {
         setSorting(prev => {
@@ -178,8 +28,29 @@ export default function Orders() {
         }))
     }
     function filter() {
-        alert(`filtering: ${filters.restaurant}, ${filters.organization}`)
+        fetchData();
     }
+
+    async function fetchData() {
+        let apiCall = `https://localhost:7157/api/order/all?` +
+            `${filters.organization && "organization=" + filters.organization + "&"}` +
+            `${filters.restaurant && "restaurant=" + filters.restaurant + "&"}` +
+            `sortBy=${sorting[0]}&` +
+            `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
+            `page=${page}`
+        try {
+            const response = await fetch(apiCall)
+            const data = await response.json()
+            setResult(data)
+            console.log(data)
+        } catch (error) {
+            console.error('Error fetching data:', error)
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [sorting, page]);
 
     function generateTableHeader() {
         return (
@@ -248,11 +119,11 @@ export default function Orders() {
     function generateTableBody() {
         return (
             <tbody>
-                {orders.map((order) => (
+                {result.items && result.items.map((order) => (
                     <tr key={order.id}>
-                        <td>{order.user.firstName} {order.user.lastName}</td>
-                        <td>{order.organization.name}</td>
-                        <td>{order.restaurant.name}</td>
+                        <td>{order.name}</td>
+                        <td>{order.organization}</td>
+                        <td>{order.restaurant}</td>
                         <td>{order.totalPrice}</td>
                         <td>{order.positions}</td>
                         <td>
@@ -267,6 +138,96 @@ export default function Orders() {
                 ))}
             </tbody>
         )
+    }
+    function generatePagination() {
+
+        const paginationItems = [];
+
+        if (result.length != 0) {
+
+            // Generate left arrow
+            if (page > 1) {
+                paginationItems.push(
+                    <li className="clickable" onClick={() => setPage(page - 1)} key={"arrow-left"}>
+                        <i className="fa-solid fa-caret-left"></i>
+                    </li>
+                )
+            }
+            else {
+                paginationItems.push(
+                    <li className="disable" key={"arrow-left"}>
+                        <i className="fa-solid fa-caret-left"></i>
+                    </li>
+                )
+            }
+
+            if (result.totalPages <= 7) {
+                for (let i = 1; i <= result.totalPages; i++) {
+                    paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                }
+            }
+            else {
+
+                if (page <= 4) {
+                    for (let i = 1; i <= 7; i++) {
+                        if (i == page) {
+                            paginationItems.push(<li key={i} className="selected" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                        else {
+                            paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                    }
+                    paginationItems.push(<li key={"dots2"}>...</li>)
+                    paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>);
+                }
+                else if (result.totalPages - page < 5) {
+                    paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>);
+                    paginationItems.push(<li key={"dots1"}>...</li>)
+                    for (let i = result.totalPages-6; i <= result.totalPages; i++) {
+                        if (i == page) {
+                            paginationItems.push(<li key={i} className="selected" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                        else {
+                            paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                    }
+                }
+                else {
+                    paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>);
+                    paginationItems.push(<li key={"dots1"}>...</li>)
+
+                    for (let i = page-2; i < page; i++) {
+                        paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                    }
+
+                    paginationItems.push(<li key={page} className="selected" onClick={() => setPage(page)}>{page}</li>)
+
+                    for (let i = page+1; i <= page+2; i++) {
+                        paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                    }
+                
+                    paginationItems.push(<li key={"dots2"}>...</li>)
+                    paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>);
+                }
+                
+                // Generate right arrow
+                if (page < result.totalPages) {
+                    paginationItems.push(
+                        <li className="clickable" onClick={() => setPage(page + 1)} key={"arrow-right"}>
+                            <i className="fa-solid fa-caret-right"></i>
+                        </li>
+                    )
+                }
+                else {
+                    paginationItems.push(
+                        <li className="disable" key={"arrow-right"}>
+                            <i className="fa-solid fa-caret-right"></i>
+                        </li>
+                    )
+                }
+            }
+            return paginationItems;
+        }
     }
 
     return (
@@ -311,19 +272,7 @@ export default function Orders() {
                     </table>
                     <div className="pagination">
                         <ul>
-                            <li className="clickable"><i className="fa-solid fa-caret-left"></i></li>
-                            <li className="clickable">1</li>
-                            <li>...</li>
-
-                            <li className="clickable">10</li>
-                            <li className="clickable">11</li>
-                            <li className="clickable">12</li>
-                            <li className="clickable">13</li>
-                            <li className="clickable">14</li>
-
-                            <li>...</li>
-                            <li className="clickable">67</li>
-                            <li className="clickable"><i className="fa-solid fa-caret-right"></i></li>
+                            { generatePagination() }
                         </ul>
                     </div>
                 </div>
