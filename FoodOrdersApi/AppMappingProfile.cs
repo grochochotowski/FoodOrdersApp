@@ -22,6 +22,7 @@ namespace FoodOrdersApi
             CreateMap<Cart, CartDto>();
             CreateMap<Cart, CartListDto>();
             CreateMap<Cart, DetailsCartDto>();
+            CreateMap<Cart, OrderEditDto>();
             CreateMap<CreateCartDto, Cart>()
                 .ForMember(r => r.Address, c => c.MapFrom(dto => new Address()
                 {
