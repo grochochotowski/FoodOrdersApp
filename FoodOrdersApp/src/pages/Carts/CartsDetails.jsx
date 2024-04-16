@@ -75,7 +75,7 @@ export default function CartsDetails() {
                         </div>
                         <div className="line top-bottom">
                             <h5>Notes:</h5>
-                            <p>{cartDetails.notes}</p>
+                            <p>{cartDetails.note}</p>
                         </div>
                         
                         <div className="control-buttons">
