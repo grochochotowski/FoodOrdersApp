@@ -46,6 +46,15 @@ namespace FoodOrdersApi.Controllers
             return Ok(mealDto);
         }
 
+        // GET api/meal/order/5
+        [HttpGet("order/{id}")]
+        public ActionResult GetFromOrder(int id)
+        {
+            var mealDtos = _mealService.GetFromOrder(id);
+
+            return Ok(mealDtos);
+        }
+
         // PUT api/meal/update/5
         [HttpPut("update/{id}")]
         public ActionResult Update(int id, [FromBody] UpdateMealDto dto)
