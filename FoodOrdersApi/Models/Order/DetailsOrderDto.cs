@@ -8,6 +8,7 @@
         public string? Notes { get; set; }
 
 
+        public int Cart { get; set; }
         public string Restaurant { get; set; }
         public string Organization { get; set; }
 
