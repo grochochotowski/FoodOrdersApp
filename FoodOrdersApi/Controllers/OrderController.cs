@@ -1,4 +1,6 @@
-﻿using FoodOrdersApi.Models.Order;
+﻿using FoodOrdersApi.Entities.Enum;
+using FoodOrdersApi.Models.Cart;
+using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,10 +34,16 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/order/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<OrderDto>> GetAll()
+        public ActionResult<IEnumerable<OrderDto>> GetAll(
+            [FromQuery] string? restaurant,
+            [FromQuery] string? organization,
+            [FromQuery] int page,
+            [FromQuery] string? sortBy,
+            [FromQuery] SortDirection sortDireciton
+            )
         {
-            var orderDtos = _orderService.GetAll();
-            return Ok(orderDtos);
+            var orderDto = _orderService.GetAll(restaurant, organization, page, sortBy, sortDireciton);
+            return Ok(orderDto);
         }
 
         // GET api/order/get/5
