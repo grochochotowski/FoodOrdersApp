@@ -317,7 +317,8 @@ export default function CartsEdit() {
                     </div>
                 </div>
                 <div className="control-buttons">
-                    <button onClick={() => {navigate(`/carts/details/${params.id}`)}}>Details</button>
+                    <button onClick={() => {navigate("/carts")}}>List</button>
+                    <button className="details-clr" onClick={() => {navigate(`/carts/details/${params.id}`)}}>Details</button>
                     <button className="info" onClick={() => validate()}>Apply</button>
                     <button className="warning" onClick={() => deleteCart()}>Delete</button>
                 </div>

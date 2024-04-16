@@ -79,7 +79,7 @@ export default function CartsDetails() {
                         </div>
                         
                         <div className="control-buttons">
-                            <button onClick={() => {navigate("/carts")}}>Go back</button>
+                            <button onClick={() => {navigate("/carts")}}>List</button>
                             <button className="info" onClick={() => {navigate(`/carts/edit/${cartDetails.id}`)}}>Edit</button>
                         </div>
                     </div>

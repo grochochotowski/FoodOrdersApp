@@ -76,7 +76,8 @@ section h1 {
     
     cursor: pointer;
 }
-.details:hover {
+.details:hover,
+.details-clr:hover {
     background-color: rgb(43, 123, 43);
 }
 .edit:hover {
@@ -190,7 +191,8 @@ section h1 {
     .pagination li.selected {
         color: var(--clr-light-800);
     }
-    .details:hover {
+    .details:hover,
+    .details-clr:hover {
         background-color: rgb(66, 195, 66);
     }
     .edit:hover {
