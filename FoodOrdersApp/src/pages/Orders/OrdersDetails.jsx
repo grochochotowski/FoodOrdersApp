@@ -39,7 +39,7 @@ export default function OrdersDetails() {
     return (
         <div className="container">
             <section className="box details-page">
-                <h1>Order &#40;{orderDetails.id}&#41; - {orderDetails.user}</h1>
+                <h1>Order &#40;{orderDetails.id}&#41; - Cart {orderDetails.cart}</h1>
                 <div className="order-info-box">
                     <div className="details-left">
                         <div className="line top-bottom">

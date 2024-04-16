@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 
 import MealBoxEdit from "../../components/MealBoxEdit";
@@ -7,76 +7,37 @@ import "../../styles/orders.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function OrdersDetails() {
-
+export default function OrdersDetails()
+{
     const params = useParams();
     const navigate = useNavigate();
-    console.log(params.id)
+    
+    const [orderEdit, setOrderEdit] = useState({})
+    const [meals, setMealse] = useState([])
+    const [orderInputs, setOrderInputs] = useState()
 
-    const [orderInputs, setOrderInputs] = useState({
-        "id" : 1,
-        "notes": "Those are notes for order with id: 1",
-        "positions" : 9,
-        "firstName" : "FirstName 1"
-    })
-    const [meals, setMeals] = useState([
-        {
-            "id" : 1,
-            "img" : "https://source.unsplash.com/random/200x200?sig=1",
-            "name" : "Meal 1",
-            "price" : 5.99,
-            "quantity" : 2
-        },
-        {
-            "id" : 2,
-            "img" : "https://source.unsplash.com/random/200x200?sig=2",
-            "name" : "Meal 2",
-            "price" : 4.99,
-            "quantity" : 3
-        },
-        {
-            "id" : 3,
-            "img" : "https://source.unsplash.com/random/200x200?sig=3",
-            "name" : "Meal 3",
-            "price" : 3.99,
-            "quantity" : 2
-        },
-        {
-            "id" : 4,
-            "img" : "https://source.unsplash.com/random/200x200?sig=4",
-            "name" : "Meal 4",
-            "price" : 2.99,
-            "quantity" : 1
-        },
-        {
-            "id" : 5,
-            "img" : "https://source.unsplash.com/random/200x200?sig=5",
-            "name" : "Meal 5",
-            "price" : 5.99,
-            "quantity" : 2
-        },
-        {
-            "id" : 6,
-            "img" : "https://source.unsplash.com/random/200x200?sig=6",
-            "name" : "Meal 6",
-            "price" : 6.99,
-            "quantity" : 2
-        },
-        {
-            "id" : 7,
-            "img" : "https://source.unsplash.com/random/200x200?sig=7",
-            "name" : "Meal 7",
-            "price" : 7.99,
-            "quantity" : 1
-        },
-        {
-            "id" : 8,
-            "img" : "https://source.unsplash.com/random/200x200?sig=8",
-            "name" : "Meal 8",
-            "price" : 8.99,
-            "quantity" : 2
+    useEffect(() => {
+        async function fetchData() {
+            let apiCallEdit = `https://localhost:7157/api/order/edit/${params.id}`
+            let apiCallMeals = `https://localhost:7157/api/meal/order/${params.id}`
+            try {
+                const responseEdit = await fetch(apiCallEdit)
+                const dataEdit = await responseEdit.json()
+                setOrderEdit(dataEdit)
+                setOrderInputs(dataEdit.note)
+
+                const responseMeals = await fetch(apiCallMeals)
+                const dataMeals = await responseMeals.json()
+                setMealse(dataMeals)
+
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
         }
-    ])
+
+        fetchData();
+    }, []);
+    
     function newMeal() {
         alert("new meal")
     }
@@ -85,10 +46,7 @@ export default function OrdersDetails() {
     function handleInputChange(inputId) {
         const value = document.getElementById(inputId).value;
 
-        setOrderInputs(prev => ({
-            ...prev,
-            [inputId]: value
-        }))
+        setOrderInputs(value)
     }
 
     function sendData() {
@@ -104,7 +62,7 @@ export default function OrdersDetails() {
     return (
         <div className="container">
             <section className="box">
-                <h1>{orderInputs.firstName} - order &#40;{orderInputs.id}&#41;</h1>
+                <h1>Order &#40;{orderEdit.id}&#41; - Cart {orderEdit.cart}</h1>
                 <div className="order-container">
                     <div className="form order-left">
                         
@@ -116,7 +74,7 @@ export default function OrdersDetails() {
                                     <textarea
                                     name="notes"
                                     id="notes"
-                                    value={orderInputs["notes"]}
+                                    value={orderInputs}
                                     onChange={() => handleInputChange("notes")}
                                     ></textarea>                          
                                 </div> {/* notes */}
