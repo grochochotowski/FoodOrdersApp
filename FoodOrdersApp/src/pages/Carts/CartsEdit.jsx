@@ -25,7 +25,7 @@ export default function CartsEdit() {
         freeDeliveryMinPrice: "",
         note: ""
     })
-    const [dataToSend, setDataToSend] = useState({})
+    const [updatedDataToSend, setUpdatedDataToSend] = useState({})
 
     function handleInputChange(inputId) {
         const value = document.getElementById(inputId).value;
@@ -112,27 +112,28 @@ export default function CartsEdit() {
         }
 
 
-        let updatedDataToSend = { ...cartInputs };
-        if (updatedDataToSend.premises === "") {
-            updatedDataToSend = { ...updatedDataToSend, premises: null };
+        let dataToSend = { ...cartInputs };
+        if (dataToSend.premises === "") {
+            dataToSend = { ...dataToSend, premises: null };
         }
-        if (updatedDataToSend.notes === "") {
-            updatedDataToSend = { ...updatedDataToSend, notes: null };
+        if (dataToSend.note === "") {
+            dataToSend = { ...dataToSend, note: null };
         }
-        setDataToSend(updatedDataToSend);
+        setUpdatedDataToSend(dataToSend);
 
 
         if (valid) sendData()
     }
 
     async function sendData() {
+        console.log(updatedDataToSend)
         let apiCall = `https://localhost:7157/api/cart/update/${params.id}`
         let requestOption = {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(dataToSend)
+            body: JSON.stringify(updatedDataToSend)
         }
         const response = await fetch(apiCall, requestOption)
 
