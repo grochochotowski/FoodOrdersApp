@@ -25,7 +25,6 @@ export default function CartsEdit() {
         freeDeliveryMinPrice: "",
         note: ""
     })
-    const [updatedDataToSend, setUpdatedDataToSend] = useState({})
 
     function handleInputChange(inputId) {
         const value = document.getElementById(inputId).value;
@@ -112,31 +111,29 @@ export default function CartsEdit() {
         }
 
 
-        let dataToSend = { ...cartInputs };
-        if (dataToSend.premises === "") {
-            dataToSend = { ...dataToSend, premises: null };
+        let updatedDataToSend = { ...cartInputs };
+        if (updatedDataToSend.premises === "") {
+            updatedDataToSend = { ...updatedDataToSend, premises: null };
         }
-        if (dataToSend.note === "") {
-            dataToSend = { ...dataToSend, note: null };
+        if (updatedDataToSend.notes === "") {
+            updatedDataToSend = { ...updatedDataToSend, notes: null };
         }
-        dataToSend.minPrice = parseInt(dataToSend.minPrice);
-        dataToSend.freeDeliveryMinPrice = parseInt(dataToSend.freeDeliveryMinPrice);
-        dataToSend.deliveryPrice = parseInt(dataToSend.deliveryPrice);
-        setUpdatedDataToSend(dataToSend);
+        updatedDataToSend.minPrice = parseInt(updatedDataToSend.minPrice);
+        updatedDataToSend.freeDeliveryMinPrice = parseInt(updatedDataToSend.freeDeliveryMinPrice);
+        updatedDataToSend.deliveryPrice = parseInt(updatedDataToSend.deliveryPrice);
 
 
-        if (valid) sendData()
+        if (valid) sendData(updatedDataToSend)
     }
 
-    async function sendData() {
-        console.log(updatedDataToSend)
+    async function sendData(dataToSend) {
         let apiCall = `https://localhost:7157/api/cart/update/${params.id}`
         let requestOption = {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(updatedDataToSend)
+            body: JSON.stringify(dataToSend)
         }
         const response = await fetch(apiCall, requestOption)
 
