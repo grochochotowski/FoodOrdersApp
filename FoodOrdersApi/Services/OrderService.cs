@@ -151,7 +151,7 @@ namespace FoodOrdersApi.Services
                 .Select(c => new OrderEditDto
                 {
                     Id = c.Id,
-                    Note = c.Notes,
+                    Notes = c.Notes,
                     Cart = c.CartId
                 })
                 .FirstOrDefault(o => o.Id == id);
@@ -191,9 +191,8 @@ namespace FoodOrdersApi.Services
         {
             var order = _context.Orders.FirstOrDefault(o => o.Id == id);
             if (order == null) return -1;
-            
 
-            order.Notes = dto.Notes ?? order.Notes;
+            order.Notes = dto.Notes;
 
             _context.SaveChanges();
             return order.Id;
