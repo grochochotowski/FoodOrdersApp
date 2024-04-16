@@ -75,7 +75,7 @@ namespace FoodOrdersApi.Services
                 .Select(mo => new MealsFromOrder
                 {
                     Id = mo.MealId.ToString() + "||" + mo.OrderId.ToString(),
-                    Img = "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg",
+                    Img = mo.Meal.Img,
                     Meal = mo.Meal.Name,
                     Price = mo.Quantity * mo.Meal.Price,
                     Quantity = mo.Quantity

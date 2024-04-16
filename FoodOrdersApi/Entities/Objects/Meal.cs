@@ -13,6 +13,8 @@ namespace FoodOrdersApi.Entities.Objects
         [Required(ErrorMessage = "Price is required")]
         public double Price { get; set; }
 
+        public string Img { get; set; }
+
 
 
         [Required(ErrorMessage = "Meal has to be connected to a restaurant")]
