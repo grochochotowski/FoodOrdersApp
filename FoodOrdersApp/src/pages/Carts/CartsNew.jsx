@@ -143,6 +143,9 @@ export default function CartsNew() {
         if (updatedDataToSend.notes === "") {
             updatedDataToSend = { ...updatedDataToSend, notes: null };
         }
+        updatedDataToSend.minPrice = parseInt(updatedDataToSend.minPrice);
+        updatedDataToSend.freeDeliveryMinPrice = parseInt(updatedDataToSend.freeDeliveryMinPrice);
+        updatedDataToSend.deliveryPrice = parseInt(updatedDataToSend.deliveryPrice);
         setDataToSend(updatedDataToSend);
 
 

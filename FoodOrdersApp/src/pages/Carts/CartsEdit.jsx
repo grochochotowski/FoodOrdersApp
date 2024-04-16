@@ -119,6 +119,9 @@ export default function CartsEdit() {
         if (dataToSend.note === "") {
             dataToSend = { ...dataToSend, note: null };
         }
+        dataToSend.minPrice = parseInt(dataToSend.minPrice);
+        dataToSend.freeDeliveryMinPrice = parseInt(dataToSend.freeDeliveryMinPrice);
+        dataToSend.deliveryPrice = parseInt(dataToSend.deliveryPrice);
         setUpdatedDataToSend(dataToSend);
 
 
