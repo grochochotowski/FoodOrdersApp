@@ -151,7 +151,7 @@ namespace FoodOrdersApi.Services
                 .Select(c => new OrderEditDto
                 {
                     Id = c.Id,
-                    Notes = c.Notes,
+                    Note = c.Notes,
                     Cart = c.CartId
                 })
                 .FirstOrDefault(o => o.Id == id);
