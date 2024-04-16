@@ -115,6 +115,9 @@
 }
 .meal-box img {
     height: 15vh;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
 }
 .meal-box .meal-info {
     display: flex;
