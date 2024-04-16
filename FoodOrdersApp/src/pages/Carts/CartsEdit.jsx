@@ -140,6 +140,7 @@ export default function CartsEdit() {
         if (!response.ok) {
             throw new Error('Error fetching data');
         }
+        window.location.href = `/carts/details/${params.id}`;
     }
 
     async function deleteCart() {
