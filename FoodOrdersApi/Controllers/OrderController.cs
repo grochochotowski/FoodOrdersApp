@@ -56,6 +56,16 @@ namespace FoodOrdersApi.Controllers
             return Ok(orderDto);
         }
 
+        // GET api/order/edit/5
+        [HttpGet("edit/{id}")]
+        public ActionResult GetEdit(int id)
+        {
+            var orderDto = _orderService.GetEdit(id);
+
+            if (orderDto == null) return NotFound($"Order with id {id} does not exist");
+            return Ok(orderDto);
+        }
+
         // GET api/order/cart/5
         [HttpGet("cart/{id}")]
         public ActionResult GetFromCart(int id)
@@ -83,8 +93,6 @@ namespace FoodOrdersApi.Controllers
             if (code == -1) return NotFound($"Order with id {id} does not exist");
             return NoContent();
         }
-
-
 
         // PUT api/order/addMeal/5
         [HttpPut("addMeal/{id}")]
