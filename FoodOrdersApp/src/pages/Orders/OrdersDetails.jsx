@@ -18,16 +18,15 @@ export default function OrdersDetails() {
     useEffect(() => {
         async function fetchData() {
             let apiCallDetails = `https://localhost:7157/api/order/get/${params.id}`
-            /*let apiCallMeals = `https://localhost:7157/api/order/cart/${params.id}`*/
+            let apiCallMeals = `https://localhost:7157/api/meal/order/${params.id}`
             try {
                 const responseDetails = await fetch(apiCallDetails)
                 const dataDetails = await responseDetails.json()
                 setOrderDetails(dataDetails) 
 
-                /*const responseCarts = await fetch(apiCallCarts)
-                const dataCarts = await responseCarts.json()
-                console.log(dataCarts)
-                setOrders(dataCarts)*/
+                const responseMeals = await fetch(apiCallMeals)
+                const dataMeals = await responseMeals.json()
+                setMealse(dataMeals)
 
             } catch (error) {
                 console.error('Error fetching data:', error)
@@ -56,7 +55,7 @@ export default function OrdersDetails() {
                             <p>{orderDetails.restaurant}</p>
                         </div>
                         <div className="line top-bottom">
-                            <h5>Number of meal:</h5>
+                            <h5>Number of meals:</h5>
                             <p>{orderDetails.positions}</p>
                             <h5>Price:</h5>
                             <p>{orderDetails.totalPrice}</p>
