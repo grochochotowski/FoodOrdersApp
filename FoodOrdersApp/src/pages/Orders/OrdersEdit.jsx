@@ -78,9 +78,21 @@ export default function OrdersDetails()
         window.location.href = `/orders`;
     }
 
-    function newMeal() {
+    function newMealToggle() {
         setNewMealOpen(prev => !prev)
     }
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+          if (event.target.closest(".small-container") && !event.target.closest(".box")) newMealToggle();
+        }
+    
+        document.addEventListener("click", handleClickOutside);
+    
+        return () => {
+          document.removeEventListener("click", handleClickOutside);
+        };
+      }, []);
 
     return (
         <div className="container">
@@ -113,7 +125,7 @@ export default function OrdersDetails()
                     </div>
                     <div className="order-right">
                         <div className="meals-shortcuts">
-                            <div className="new-meal" onClick={() => newMeal()}>
+                            <div className="new-meal" onClick={() => newMealToggle()}>
                                 <i className="fa-solid fa-plus"></i>
                             </div>
                             {
