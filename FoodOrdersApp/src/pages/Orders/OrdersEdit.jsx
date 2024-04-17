@@ -121,11 +121,11 @@ export default function OrdersDetails()
                                     <MealBoxEdit key={meal.id} meal={meal} />
                                 ))
                             }
+                            {orderEdit.restaurant != undefined ? <NewMeal restaurant={orderEdit.restaurant}/> : ""}
                         </div>
                     </div>
                 </div>
             </section>
-            {newMealOpen && <NewMeal restaurant={orderEdit.restaurant}/>}
         </div>
     )
 }
