@@ -17,7 +17,7 @@ export default function OrdersDetails()
     const [meals, setMeals] = useState([])
     const [orderInputs, setOrderInputs] = useState({})
 
-    const [newMealOpen, setNewMealOpen] = useState(true)
+    const [newMealOpen, setNewMealOpen] = useState(false)
 
 
     useEffect(() => {
@@ -79,7 +79,7 @@ export default function OrdersDetails()
     }
 
     function newMeal() {
-        setNewMealOpen(false)
+        setNewMealOpen(prev => !prev)
     }
 
     return (
@@ -121,7 +121,7 @@ export default function OrdersDetails()
                                     <MealBoxEdit key={meal.id} meal={meal} />
                                 ))
                             }
-                            {orderEdit.restaurant != undefined ? <NewMeal restaurant={orderEdit.restaurant}/> : ""}
+                            {orderEdit.restaurant != undefined && newMealOpen ? <NewMeal restaurant={orderEdit.restaurant}/> : ""}
                         </div>
                     </div>
                 </div>
