@@ -26,13 +26,13 @@ export default function NewMeal({restaurant}) {
 
     return (
         <div className="small-container">
-            <section className="box">
+            <div className="box">
                 {
                     meals.map((meal) => (
                         <MealBoxRestaurant key={meal.id} meal={meal} />
                     ))
                 }
-            </section>
+            </div>
         </div>
     )
 }

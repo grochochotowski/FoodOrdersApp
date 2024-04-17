@@ -120,15 +120,17 @@
     object-position: center;
 }
 .meal-box .meal-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     width: 100%;
 }
 .meal-box .meal-info h5 {
     flex-basis: 100%;
     text-align: center;
+
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 .meal-box .meal-info p {
     flex-basis: 50%;

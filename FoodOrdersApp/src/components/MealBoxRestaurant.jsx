@@ -16,7 +16,7 @@ export default function MealBoxRestaurant({meal}) {
             <div className="meal-info">
                 <h5>{meal.name}</h5>
                 <p>Price: {meal.price}zł</p>
-                <input type="text" />
+                <input type="number" />
             </div>
         </div>
     )
