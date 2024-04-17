@@ -8,14 +8,14 @@ export default function MealBoxRestaurant({meal}) {
     
     const [quantity, setQuantity] = useState(0);
 
-    function updateQuantity() {
-        let value = document.getElementById(`quantity-${meal.id}`).value
+    function updateQuantity(event) {
+        let value = event.target.value;
         setQuantity(value);
     }
 
     useEffect(() => {
         function handleClickOutside(event) {
-          if (event.target.closest(".meal-box") && !event.target.closest(".quantity-input")) addMeal(clickedmal?)
+          if (event.target.closest(".meal-box") && !event.target.closest(".quantity-input")) addMeal(meal.id)
         }
     
         document.addEventListener("click", handleClickOutside);
@@ -40,7 +40,7 @@ export default function MealBoxRestaurant({meal}) {
                     id={`quantity-${meal.id}`}
                     type="number"
                     value={quantity}
-                    onChange={() => updateQuantity()}
+                    onChange={updateQuantity}
                 />
             </div>
         </div>
