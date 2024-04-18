@@ -100,7 +100,7 @@ namespace FoodOrdersApi.Controllers
         }
 
         // PUT api/meal/removeMeal/5
-        [HttpPatch("removeMeal/{id}")]
+        [HttpDelete("removeMeal/{id}")]
         public ActionResult RremoveMeal(int id, [FromBody] AddRemoveMealOrder addMealDto)
         {
             var results = _mealService.RemoveMeal(id, addMealDto);
