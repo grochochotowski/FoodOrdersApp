@@ -19,28 +19,9 @@ export default function OrdersEdit()
 
     const [newMealOpen, setNewMealOpen] = useState(false)
 
+    
 
-    useEffect(() => {
-        async function fetchData() {
-            let apiCallEdit = `https://localhost:7157/api/order/edit/${params.id}`
-            let apiCallMeals = `https://localhost:7157/api/meal/order/${params.id}`
-            try {
-                const responseEdit = await fetch(apiCallEdit)
-                const dataEdit = await responseEdit.json()
-                setOrderEdit(dataEdit)
-                setOrderInputs({"notes": dataEdit.notes});
-
-                const responseMeals = await fetch(apiCallMeals)
-                const dataMeals = await responseMeals.json()
-                setMeals(dataMeals)
-
-            } catch (error) {
-                console.error('Error fetching data:', error)
-            }
-        }
-
-        fetchData();
-    }, []);
+    
 
     function handleInputChange(inputId) {
         const value = document.getElementById(inputId).value;
@@ -50,6 +31,27 @@ export default function OrdersEdit()
             [inputId]: value
         }))
     }
+
+    async function fetchData() {
+        let apiCallEdit = `https://localhost:7157/api/order/edit/${params.id}`
+        let apiCallMeals = `https://localhost:7157/api/meal/order/${params.id}`
+        try {
+            const responseEdit = await fetch(apiCallEdit)
+            const dataEdit = await responseEdit.json()
+            setOrderEdit(dataEdit)
+            setOrderInputs({"notes": dataEdit.notes});
+
+            const responseMeals = await fetch(apiCallMeals)
+            const dataMeals = await responseMeals.json()
+            setMeals(dataMeals)
+
+        } catch (error) {
+            console.error('Error fetching data:', error)
+        }
+    }
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     async function sendData() {
         let apiCall = `https://localhost:7157/api/order/update/${params.id}`
@@ -138,7 +140,7 @@ export default function OrdersEdit()
                 </div>
             </section>
             {orderEdit.restaurant != undefined && newMealOpen  && (
-                <NewMeal order={orderEdit.id} restaurant={orderEdit.restaurant} toggleNewMeal={() => newMealToggle()}/>
+                <NewMeal order={orderEdit.id} restaurant={orderEdit.restaurant} toggleNewMeal={() => newMealToggle()} updateData={() => fetchData()}/>
             )}
         </div>
     )

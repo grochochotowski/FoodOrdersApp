@@ -4,7 +4,7 @@
     import "../styles/index.css"
     import "../styles/App.css"
 
-    export default function MealBoxRestaurant({order, meal, toggleNewMeal}) {
+    export default function MealBoxRestaurant({order, meal, toggleNewMeal, updateData}) {
         
         const [quantity, setQuantity] = useState(0);
         const mealBoxRef = React.createRef();
@@ -34,7 +34,6 @@
         }, [quantity]);
 
         async function addMeal(mealId, quantity) {
-
             if (quantity) {
                 toggleNewMeal();
 
@@ -57,6 +56,9 @@
         
                 if (!response.ok) {
                     throw new Error('Error fetching data');
+                }
+                else {
+                    updateData()
                 }
             }
             else {

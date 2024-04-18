@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 
 import MealBoxRestaurant from './MealBoxRestaurant';
 
-export default function NewMeal({order, restaurant, toggleNewMeal}) {
+export default function NewMeal({order, restaurant, toggleNewMeal, updateData}) {
 
     
     const [meals, setMeals] = useState([])
@@ -29,7 +29,7 @@ export default function NewMeal({order, restaurant, toggleNewMeal}) {
             <div className="box">
                 {
                     meals.map((meal) => (
-                        <MealBoxRestaurant key={meal.id} order={order} meal={meal} toggleNewMeal={() => toggleNewMeal()}/>
+                        <MealBoxRestaurant key={meal.id} order={order} meal={meal} toggleNewMeal={() => toggleNewMeal()} updateData={() => updateData()}/>
                     ))
                 }
             </div>
