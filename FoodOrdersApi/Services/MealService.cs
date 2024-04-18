@@ -167,8 +167,9 @@ namespace FoodOrdersApi.Services
             {
                 mealOrder = new MealOrder(addMealOrder.MealId, order.Id, addMealOrder.Quantity);
                 order.MealOrder.Add(mealOrder);
+                order.Positions++;
             }
-            newPrice += newMeal.Price;
+            newPrice += newMeal.Price * addMealOrder.Quantity;
 
             order.TotalPrice += newPrice;
             order.Cart.TotalCartPrice += newPrice;
