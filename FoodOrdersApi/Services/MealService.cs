@@ -211,6 +211,7 @@ namespace FoodOrdersApi.Services
             else if (mealOrder.Quantity > addRemoveMealOrder.Quantity)
             {
                 mealOrder.Quantity -= addRemoveMealOrder.Quantity;
+                newPrice -= removeMeal.Price * addRemoveMealOrder.Quantity;
             }
             else if (mealOrder.Quantity < addRemoveMealOrder.Quantity)
             {
@@ -219,9 +220,9 @@ namespace FoodOrdersApi.Services
             else
             {
                 _context.MealOrder.Remove(mealOrder);
+                newPrice -= removeMeal.Price * addRemoveMealOrder.Quantity;
                 order.Positions--;
             }
-            newPrice -= removeMeal.Price * addRemoveMealOrder.Quantity;
 
             order.TotalPrice += newPrice;
             order.Cart.TotalCartPrice += newPrice;
