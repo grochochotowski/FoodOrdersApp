@@ -4,7 +4,7 @@
     import "../styles/index.css"
     import "../styles/App.css"
 
-    export default function MealBoxRestaurant({restaurant, meal, toggleNewMeal}) {
+    export default function MealBoxRestaurant({order, meal, toggleNewMeal}) {
         
         const [quantity, setQuantity] = useState(0);
         const mealBoxRef = React.createRef();
@@ -36,11 +36,14 @@
         async function addMeal(mealId, quantity) {
             toggleNewMeal();
 
-            let meal = {mealId, quantity}
+            let meal = {
+                "mealId": mealId,
+                "quantity" : quantity
+            }
 
-            let apiCall = `https://localhost:7157/api/order/addMeal/${restaurant}`
+            let apiCall = `https://localhost:7157/api/meal/addMeal/${order}`
             let requestOption = {
-                method: 'PUT',
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
                 },

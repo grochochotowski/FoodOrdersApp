@@ -138,7 +138,7 @@ export default function OrdersEdit()
                 </div>
             </section>
             {orderEdit.restaurant != undefined && newMealOpen  && (
-                <NewMeal restaurant={orderEdit.restaurant} toggleNewMeal={() => newMealToggle()}/>
+                <NewMeal order={orderEdit.id} restaurant={orderEdit.restaurant} toggleNewMeal={() => newMealToggle()}/>
             )}
         </div>
     )
