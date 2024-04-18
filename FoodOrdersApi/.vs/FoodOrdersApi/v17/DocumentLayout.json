@@ -47,8 +47,7 @@
               "ViewState": "AQIAABYAAAAAAAAAAAAkwDQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T12:24:54.109Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -61,8 +60,7 @@
               "ViewState": "AQIAACEAAAAAAAAAAAAswDwAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-19T08:18:20.258Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -74,8 +72,7 @@
               "RelativeToolTip": "Services\\OrderService.cs",
               "ViewState": "AQIAACQAAAAAAAAAAAA+wHgAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T11:38:12.046Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-18T11:38:12.046Z"
             },
             {
               "$type": "Document",
@@ -100,8 +97,7 @@
               "RelativeToolTip": "Controllers\\UserController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T11:37:13.814Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-18T11:37:13.814Z"
             },
             {
               "$type": "Document",
@@ -113,8 +109,7 @@
               "RelativeToolTip": "Models\\User\\UserDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T11:36:34.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-18T11:36:34.525Z"
             }
           ]
         }
