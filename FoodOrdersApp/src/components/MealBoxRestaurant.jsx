@@ -18,7 +18,7 @@ export default function MealBoxRestaurant({meal}) {
     useEffect(() => {
         const handleClickOutside = (event) => {
           if (event.target.closest(".meal-box") && !event.target.closest(".quantity-input")) {
-            addMeal(meal.id);
+            addMeal(meal.id, quantity);
           }
         };
       
@@ -32,9 +32,9 @@ export default function MealBoxRestaurant({meal}) {
             mealBox.removeEventListener("click", handleClickOutside);
           }
         };
-      }, []);
+      }, [quantity]);
 
-    function addMeal(mealId) {
+    function addMeal(mealId, quantity) {
         console.log(`adding meal ${mealId}x${quantity}`);
     }
 
