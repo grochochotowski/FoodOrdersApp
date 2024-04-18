@@ -7,7 +7,6 @@ import "../styles/App.css"
 export default function MealBoxEdit({meal, deleteMealToggle, changeDeleteId}) {
 
     function handleClick() {
-        console.log(meal.id)
         deleteMealToggle()
         changeDeleteId(meal.id)
     }

@@ -90,7 +90,6 @@ export default function OrdersEdit()
     }
 
     function changeDeleteId(mealId) {
-        console.log(mealId)
         setDeleteMealId(() => mealId);
     }
 
@@ -165,7 +164,7 @@ export default function OrdersEdit()
             )}
             
             {deleteMealOpen && (
-                <DeleteMeal order={orderEdit.id} meal={deleteMealId} deleteMealToggle={() => deleteMealToggle()} updateData={() => updateData()}/>
+                <DeleteMeal order={orderEdit.id} meal={deleteMealId} deleteMealToggle={() => deleteMealToggle()} updateData={() => fetchData()}/>
             )}
         </div>
     )

@@ -27,7 +27,7 @@ export default function DeleteMeal({order, meal, deleteMealToggle, updateData}) 
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(meal)
+                body: JSON.stringify(removeMealObject)
             }
             const response = await fetch(apiCall, requestOption)
     
