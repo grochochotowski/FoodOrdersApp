@@ -19,12 +19,11 @@ export default function CartsNew({user}) {
         "street": "",
         "building": "",
         "premises": "",
-        "minimumCartPrice": "",
+        "minPrice": "",
         "deliveryPrice": "",
-        "freeDeliveryPrice": "",
+        "freeDeliveryMinPrice": "",
         "notes": "",
     })
-    const [dataToSend, setDataToSend] = useState({})
     const [restaurants, setRestaurants] = useState([])
     const [organizations, setOrganizations] = useState([])
 
@@ -35,6 +34,8 @@ export default function CartsNew({user}) {
             ...prev,
             [inputId]: value
         }))
+
+        console.log(newCartInputs)
     }
     function handleSelectChange(event, selectId) {
         const value = parseInt(event.target.value)
@@ -47,20 +48,13 @@ export default function CartsNew({user}) {
 
     function validate() {
         let valid = true;
+
         if (newCartInputs.restaurantId === 0) {
             valid = false
             document.getElementById("restaurantId").classList.add("not-valid")
         }
         else {
             document.getElementById("restaurantId").classList.remove("not-valid")
-        }
-
-        if (newCartInputs.organizationId === 0) {
-            valid = false
-            document.getElementById("organizationId").classList.add("not-valid")
-        }
-        else {
-            document.getElementById("organizationId").classList.remove("not-valid")
         }
 
         if (newCartInputs.bankAccountNumber === "") {
@@ -111,12 +105,12 @@ export default function CartsNew({user}) {
             document.getElementById("building").classList.remove("not-valid")
         }
 
-        if (newCartInputs.minimumCartPrice === "") {
+        if (newCartInputs.minPrice === "") {
             valid = false
-            document.getElementById("minimumCartPrice").classList.add("not-valid")
+            document.getElementById("minPrice").classList.add("not-valid")
         }
         else {
-            document.getElementById("minimumCartPrice").classList.remove("not-valid")
+            document.getElementById("minPrice").classList.remove("not-valid")
         }
 
         if (newCartInputs.deliveryPrice === "") {
@@ -127,12 +121,12 @@ export default function CartsNew({user}) {
             document.getElementById("deliveryPrice").classList.remove("not-valid")
         }
 
-        if (newCartInputs.freeDeliveryPrice === "") {
+        if (newCartInputs.freeDeliveryMinPrice === "") {
             valid = false
-            document.getElementById("freeDeliveryPrice").classList.add("not-valid")
+            document.getElementById("freeDeliveryMinPrice").classList.add("not-valid")
         }
         else {
-            document.getElementById("freeDeliveryPrice").classList.remove("not-valid")
+            document.getElementById("freeDeliveryMinPrice").classList.remove("not-valid")
         }
 
 
@@ -146,19 +140,21 @@ export default function CartsNew({user}) {
         updatedDataToSend.minPrice = parseInt(updatedDataToSend.minPrice);
         updatedDataToSend.freeDeliveryMinPrice = parseInt(updatedDataToSend.freeDeliveryMinPrice);
         updatedDataToSend.deliveryPrice = parseInt(updatedDataToSend.deliveryPrice);
-        setDataToSend(updatedDataToSend);
+
+        updatedDataToSend.organizationId = user.organizationId
 
 
-        if (valid) sendData()
+        if (valid) sendData(updatedDataToSend)
     }
-    async function sendData() {
+    async function sendData(updatedDataToSend) {
+        console.log(updatedDataToSend)
         let apiCall = `https://localhost:7157/api/cart/create`
         let requestOption = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(dataToSend)
+            body: JSON.stringify(updatedDataToSend)
         }
         const response = await fetch(apiCall, requestOption)
         const responseJson = await response.json()
@@ -324,14 +320,14 @@ export default function CartsNew({user}) {
                         <div className="layer left">
 
                             <div className="input-container">
-                                    <label htmlFor="minimumCartPrice">Minimum cart price:</label>
+                                    <label htmlFor="minPrice">Minimum cart price:</label>
                                     <input
                                         type="text"
-                                        id="minimumCartPrice"
-                                        value={newCartInputs["minimumCartPrice"]}
-                                        onChange={() => handleInputChange("minimumCartPrice")}    
+                                        id="minPrice"
+                                        value={newCartInputs["minPrice"]}
+                                        onChange={() => handleInputChange("minPrice")}    
                                     />
-                            </div> {/* minimumCartPrice */}
+                            </div> {/* minPrice */}
 
                             <div className="input-container">
                                     <label htmlFor="deliveryPrice">Delivery price:</label>
@@ -344,14 +340,14 @@ export default function CartsNew({user}) {
                             </div> {/* deliveryPrice */}
 
                             <div className="input-container">
-                                    <label htmlFor="freeDeliveryPrice">Free delivery price:</label>
+                                    <label htmlFor="freeDeliveryMinPrice">Free delivery price:</label>
                                     <input
                                         type="text"
-                                        id="freeDeliveryPrice"
-                                        value={newCartInputs["freeDeliveryPrice"]}
-                                        onChange={() => handleInputChange("freeDeliveryPrice")}    
+                                        id="freeDeliveryMinPrice"
+                                        value={newCartInputs["freeDeliveryMinPrice"]}
+                                        onChange={() => handleInputChange("freeDeliveryMinPrice")}    
                                     />
-                            </div> {/* freeDeliveryPrice */}
+                            </div> {/* freeDeliveryMinPrice */}
 
                         </div>
                         <div className="layer right">
