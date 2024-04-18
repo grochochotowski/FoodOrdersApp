@@ -56,7 +56,7 @@ export default function OrdersDetails() {
                         </div>
                         <div className="line top-bottom">
                             <h5>Number of meals:</h5>
-                            <p>{orderDetails.positions}</p>
+                            <p>{orderDetails.numberOfMeals}</p>
                             <h5>Price:</h5>
                             <p>{orderDetails.totalPrice}</p>
                         </div>
