@@ -5,7 +5,7 @@ import "../../styles/carts.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function CartsNew() {
+export default function CartsNew({user}) {
 
     const navigate = useNavigate();
 
@@ -210,7 +210,8 @@ export default function CartsNew() {
             <select
             name="organizationId"
             id="organizationId"
-            value={newCartInputs["organizationId"]}
+            value={user.organizationId}
+            disabled
             onChange={(event) => handleSelectChange(event, "organizationId")}
         >
             <option value={0}>--- Choose organization ---</option>

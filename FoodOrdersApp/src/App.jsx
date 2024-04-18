@@ -49,7 +49,7 @@ export default function App() {
   return (
     <div className="main-container">
 
-        <NavBar handleUserChange={() => handleUserChange()} user={user}/>
+        <NavBar handleUserChange={handleUserChange} user={user}/>
 
         <Routes>
             <Route path="/log-in" element={

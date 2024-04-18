@@ -16,6 +16,7 @@ export default function NavBar({handleUserChange, user}) {
                 const response = await fetch(apiCall)
                 const data = await response.json()
                 setUsers(data)
+                handleUserChange(data[0])
             } catch (error) {
                 console.error('Error fetching data:', error)
             }
@@ -26,7 +27,8 @@ export default function NavBar({handleUserChange, user}) {
 
     function changeUser(event) {
         const selectedUserId = event.target.value;
-        handleUserChange(selectedUserId)
+        const user = users.find(u => u.id == selectedUserId)
+        handleUserChange(user)
     }
 
 
@@ -64,9 +66,9 @@ export default function NavBar({handleUserChange, user}) {
                 <div className="user">
                     {
                         users.length && (
-                            <select name="user" id="user" onChange={changeUser} value={user}>
-                                {users.map(user => (
-                                    <option key={user.id} value={user.id}>{user.id} - {user.firstName} {user.lastName} - {user.organization}</option>
+                            <select name="user" id="user" onChange={changeUser} value={user.id}>
+                                {users.map(userSelect => (
+                                    <option key={userSelect.id} value={userSelect.id}>{userSelect.id} - {userSelect.firstName} {userSelect.lastName} - {userSelect.organizationName}</option>
                                 ))}
                             </select>
                         )

@@ -7,11 +7,10 @@ import "../../styles/orders.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function OrderNew() {
+export default function OrderNew({user}) {
 
     const params = useParams();
     const navigate = useNavigate();
-    console.log(params.id)
 
     const [newOrderInputs, setNewOrderInputs] = useState({
         "notes": "",
