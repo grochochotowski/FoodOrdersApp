@@ -85,8 +85,8 @@ namespace FoodOrdersApi.Controllers
             return NoContent();
         }
 
-        // PUT api/order/addMeal/5
-        [HttpPut("addMeal/{id}")]
+        // PUT api/meal/addMeal/5
+        [HttpPatch("addMeal/{id}")]
         public ActionResult AddMeal(int id, [FromBody] AddMealOrder dto)
         {
             var results = _mealService.AddMeal(id, dto);
