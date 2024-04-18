@@ -29,7 +29,7 @@ export default function NewMeal({restaurant, toggleNewMeal}) {
             <div className="box">
                 {
                     meals.map((meal) => (
-                        <MealBoxRestaurant key={meal.id} meal={meal} toggleNewMeal={() => toggleNewMeal()}/>
+                        <MealBoxRestaurant key={meal.id} restaurant={restaurant} meal={meal} toggleNewMeal={() => toggleNewMeal()}/>
                     ))
                 }
             </div>
