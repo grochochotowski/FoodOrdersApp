@@ -23,11 +23,11 @@ namespace FoodOrdersApi.Entities.Objects
 
 
 
-        public MealOrder(int mealId, int orderId)
+        public MealOrder(int mealId, int orderId, int quantity)
         {
             MealId = mealId;
             OrderId = orderId;
-            Quantity = 1;
+            Quantity = quantity;
         }
     }
 }

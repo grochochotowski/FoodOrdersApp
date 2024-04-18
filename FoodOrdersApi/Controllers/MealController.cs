@@ -89,7 +89,7 @@ namespace FoodOrdersApi.Controllers
         [HttpPut("addMeal/{id}")]
         public ActionResult AddMeal(int id, [FromBody] AddMealOrder dto)
         {
-            var results = _orderService.AddMeal(id, dto);
+            var results = _mealService.AddMeal(id, dto);
             var finalMessage = "";
             foreach (var result in results)
             {
