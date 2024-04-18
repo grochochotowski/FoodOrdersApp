@@ -121,18 +121,19 @@ namespace FoodOrdersApi.Services
         public DetailsOrderDto GetByID(int id)
         {
             var order = _context.Orders
+                .Include(o => o.MealOrder)
                 .Include(o => o.User)
                 .Include(o => o.Cart)
-                .Select(c => new DetailsOrderDto
+                .Select(o => new DetailsOrderDto
                 {
-                    Id = c.Id,
-                    TotalPrice = c.TotalPrice,
-                    Positions = c.Positions,
-                    Notes = c.Notes,
-                    Restaurant = c.Cart.Restaurant.Name,
-                    Organization = c.Cart.Organization.Name,
-                    Cart = c.CartId,
-                    User = string.Concat(c.User.FirstName, " ", (c.User.SecondName != null ? c.User.SecondName + " " : ""), c.User.LastName)
+                    Id = o.Id,
+                    TotalPrice = o.TotalPrice,
+                    NumberOfMeals = o.MealOrder.Sum(mo => mo.Quantity),
+                    Notes = o.Notes,
+                    Restaurant = o.Cart.Restaurant.Name,
+                    Organization = o.Cart.Organization.Name,
+                    Cart = o.CartId,
+                    User = string.Concat(o.User.FirstName, " ", (o.User.SecondName != null ? o.User.SecondName + " " : ""), o.User.LastName)
                 })
                 .FirstOrDefault(o => o.Id == id);
             if (order == null) return null;

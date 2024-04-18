@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public double TotalPrice { get; set; }
-        public int Positions { get; set; }
+        public int NumberOfMeals { get; set; }
         public string? Notes { get; set; }
 
 
