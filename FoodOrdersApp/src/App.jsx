@@ -67,7 +67,7 @@ export default function App() {
             }/>
             <Route path="/carts/new" element={
                 <Suspense fallback={<Fallback />}>
-                    <CartsNew />
+                    <CartsNew user={user} />
                 </Suspense>
             }/>
             <Route path="/carts/details/:id" element={
@@ -90,7 +90,7 @@ export default function App() {
             }/>
             <Route path="/orders/new" element={
                 <Suspense fallback={<Fallback />}>
-                    <OrdersNew />
+                    <OrdersNew user={user} />
                 </Suspense>
             }/>
             <Route path="/orders/details/:id" element={
