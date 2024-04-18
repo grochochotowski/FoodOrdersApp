@@ -11,6 +11,7 @@ using FoodOrdersApi.Migrations;
 using System.Linq;
 using FoodOrdersApi.Models.Address;
 using FoodOrdersApi.Models.Order;
+using FoodOrdersApi.Models.User;
 
 namespace FoodCartsApi.Services
 {
@@ -19,6 +20,7 @@ namespace FoodCartsApi.Services
         int Create(CreateCartDto dto);
         PagedResult<CartListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton);
         DetailsCartDto GetById(int id);
+        IEnumerable<CartFromOrganizationDto> GetCartFromOrganization(int id);
         int Update(int id, UpdateCartDto dto);
         int Delete(int id);
     }
@@ -139,6 +141,24 @@ namespace FoodCartsApi.Services
             return cartDto;
         }
 
+        // Get carts from organization with ID
+        public IEnumerable<CartFromOrganizationDto> GetCartFromOrganization(int id)
+        {
+            var carts = _context.Carts
+               .Include(u => u.Organization)
+               .Include(u => u.Restaurant)
+               .Where(u => u.OrganizationId == id)
+               .Select(u => new CartFromOrganizationDto
+               {
+                   Id = u.Id,
+                   Restaurant = u.Restaurant.Name,
+                   Organization = u.Organization.Name
+               })
+               .ToList();
+            var cartDtos = _mapper.Map<List<CartFromOrganizationDto>>(carts);
+
+            return cartDtos;
+        }
 
         // Update cart with id
         public int Update(int id, UpdateCartDto dto)

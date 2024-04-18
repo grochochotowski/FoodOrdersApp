@@ -54,6 +54,15 @@ namespace FoodCartsApi.Controllers
             if (cartDto == null) return NotFound($"Cart with id {id} does not exist");
             return Ok(cartDto);
         }
+        
+        // GET api/cart/organization/5
+        [HttpGet("organization/{id}")]
+        public ActionResult<IEnumerable<CartFromOrganizationDto>> GetCartFromOrganization(int id)
+        {
+            var cartDto = _cartService.GetCartFromOrganization(id);
+
+            return Ok(cartDto);
+        }
 
         // PUT api/cart/update/5
         [HttpPut("update/{id}")]
