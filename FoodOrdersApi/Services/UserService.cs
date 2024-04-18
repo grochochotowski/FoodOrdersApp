@@ -53,7 +53,8 @@ namespace FoodOrdersApi.Services
                     Id = u.Id,
                     FirstName = u.FirstName,
                     LastName = u.LastName,
-                    Organization = u.Organization.Name
+                    OrganizationId = u.OrganizationId,
+                    OrganizationName = u.Organization.Name
                 })
                 .ToList();
             var userDtos = _mapper.Map<List<UserDto>>(users);
