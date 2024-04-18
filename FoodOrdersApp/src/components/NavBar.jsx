@@ -5,7 +5,7 @@ import "../styles/navBar.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
-export default function NavBar() {
+export default function NavBar({handleUserChange, user}) {
 
     const [users, setUsers] = useState([])
 
@@ -23,6 +23,11 @@ export default function NavBar() {
 
         fetchData();
     }, []);
+
+    function changeUser(event) {
+        const selectedUserId = event.target.value;
+        handleUserChange(selectedUserId)
+    }
 
 
     return (
@@ -59,7 +64,7 @@ export default function NavBar() {
                 <div className="user">
                     {
                         users.length && (
-                            <select name="user" id="user">
+                            <select name="user" id="user" onChange={changeUser} value={user}>
                                 {users.map(user => (
                                     <option key={user.id} value={user.id}>{user.id} - {user.firstName} {user.lastName} - {user.organization}</option>
                                 ))}

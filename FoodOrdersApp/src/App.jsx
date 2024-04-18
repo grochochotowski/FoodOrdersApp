@@ -1,5 +1,5 @@
 // MAIN IMPORTS
-import { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // STYLES
@@ -39,10 +39,17 @@ const OrganizationsNew = lazy(() => import("./pages/Organizations/OrganizationsN
 const OrganizationsEdit = lazy(() => import("./pages/Organizations/OrganizationsEdit.jsx"));
 
 export default function App() {
+
+    const [user, setUser] = useState(0);
+
+    function handleUserChange(chosenUser) {
+        setUser(chosenUser)
+    }
+
   return (
     <div className="main-container">
 
-        <NavBar />
+        <NavBar handleUserChange={() => handleUserChange()} user={user}/>
 
         <Routes>
             <Route path="/log-in" element={
