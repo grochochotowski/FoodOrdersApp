@@ -1,5 +1,6 @@
 ﻿using FoodOrdersApi.Entities.Enum;
 using FoodOrdersApi.Models.Cart;
+using FoodOrdersApi.Models.MealOrder;
 using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -92,20 +93,6 @@ namespace FoodOrdersApi.Controllers
 
             if (code == -1) return NotFound($"Order with id {id} does not exist");
             return NoContent();
-        }
-
-        // PUT api/order/addMeal/5
-        [HttpPut("addMeal/{id}")]
-        public ActionResult AddMeal(int id, [FromBody] AddOrderMeal dto)
-        {
-            var results = _orderService.AddMeal(id, dto);
-            var finalMessage = "";
-            foreach (var result in results)
-            {
-                finalMessage += result + "\n";
-            }
-            if (results.Count > 0) return BadRequest(finalMessage);
-            return Ok();
         }
     }
 }

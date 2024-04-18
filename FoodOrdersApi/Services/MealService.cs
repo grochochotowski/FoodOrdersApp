@@ -17,6 +17,7 @@ namespace FoodOrdersApi.Services
         IEnumerable<MealsFromRestaurant> GetFromRestaurant(int id);
         int Update(int id, UpdateMealDto dto);
         int Delete(int id);
+        List<string> AddMeal(int id, AddMealOrder dto);
     }
 
     public class MealService : IMealService
@@ -118,7 +119,6 @@ namespace FoodOrdersApi.Services
             return meal.Id;
         }
 
-
         // Delete meal with id
         public int Delete(int id)
         {
@@ -128,6 +128,57 @@ namespace FoodOrdersApi.Services
             _context.Meals.Remove(meal);
             _context.SaveChanges();
             return 1;
+        }
+
+        // Add meals to order with id
+        public List<string> AddMeal(int id, AddMealOrder dto)
+        {
+            var returns = new List<string>();
+
+            var order = _context.Orders
+                .Include(o => o.Cart).ThenInclude(c => c.Restaurant).ThenInclude(r => r.Meals)
+                .Include(o => o.MealOrder).ThenInclude(mo => mo.Meal)
+                .FirstOrDefault(o => o.Id == id);
+            if (order == null)
+            {
+                returns.Add($"Order with id {id} does not exist");
+                return returns;
+            }
+
+            double newPrice = 0;
+
+            foreach (var mealId in dto.meal)
+            {
+                var newMeal = _context.Meals.FirstOrDefault(m => m.Id == mealId);
+                if (newMeal == null)
+                {
+                    returns.Add($"Meal with id {mealId} does not exist");
+                    continue;
+                }
+                else if (!order.Cart.Restaurant.Meals!.Contains(newMeal))
+                {
+                    returns.Add($"Meal with id {mealId} does not belong to restaurant with id {order.Cart.Restaurant.Id}");
+                    continue;
+                }
+
+                var mealOrder = _context.MealOrder.FirstOrDefault(mo => mo.OrderId == id && mo.MealId == mealId)
+                    ?? order.MealOrder.FirstOrDefault(mo => mo.OrderId == id && mo.MealId == mealId);
+                if (mealOrder != null)
+                {
+                    mealOrder.Quantity++;
+                }
+                else
+                {
+                    mealOrder = new MealOrder(mealId, order.Id);
+                    order.MealOrder.Add(mealOrder);
+                }
+                newPrice += newMeal.Price;
+            }
+
+            order.TotalPrice += newPrice;
+            order.Cart.TotalCartPrice += newPrice;
+            _context.SaveChanges();
+            return returns;
         }
 
     }

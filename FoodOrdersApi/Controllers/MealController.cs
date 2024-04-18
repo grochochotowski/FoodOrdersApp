@@ -1,4 +1,5 @@
 ﻿using FoodOrdersApi.Models.Meal;
+using FoodOrdersApi.Models.MealOrder;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -82,6 +83,20 @@ namespace FoodOrdersApi.Controllers
 
             if (code == -1) return NotFound($"Meal with id {id} does not exist");
             return NoContent();
+        }
+
+        // PUT api/order/addMeal/5
+        [HttpPut("addMeal/{id}")]
+        public ActionResult AddMeal(int id, [FromBody] AddMealOrder dto)
+        {
+            var results = _orderService.AddMeal(id, dto);
+            var finalMessage = "";
+            foreach (var result in results)
+            {
+                finalMessage += result + "\n";
+            }
+            if (results.Count > 0) return BadRequest(finalMessage);
+            return Ok();
         }
     }
 }
