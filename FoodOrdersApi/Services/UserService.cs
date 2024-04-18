@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Entities.Objects;
+using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Models.User;
 
 namespace FoodOrdersApi.Services
@@ -44,7 +45,15 @@ namespace FoodOrdersApi.Services
         // Get all user
         public IEnumerable<UserDto> GetAll()
         {
-            var users = _context.Users.ToList();
+            var users = _context.Users
+                .Select(u => new UserDto
+                {
+                    Id = u.Id,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    OrganizationId = u.OrganizationId
+                })
+                .ToList();
             var userDtos = _mapper.Map<List<UserDto>>(users);
 
             return userDtos;
