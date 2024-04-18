@@ -3,6 +3,7 @@ using FoodOrdersApi.Entities;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Models.User;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrdersApi.Services
 {
@@ -46,12 +47,13 @@ namespace FoodOrdersApi.Services
         public IEnumerable<UserDto> GetAll()
         {
             var users = _context.Users
+                .Include(u => u.Organization)
                 .Select(u => new UserDto
                 {
                     Id = u.Id,
                     FirstName = u.FirstName,
                     LastName = u.LastName,
-                    OrganizationId = u.OrganizationId
+                    Organization = u.Organization.Name
                 })
                 .ToList();
             var userDtos = _mapper.Map<List<UserDto>>(users);

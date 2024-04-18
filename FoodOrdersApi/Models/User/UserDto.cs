@@ -9,6 +9,6 @@ namespace FoodOrdersApi.Models.User
         public string LastName { get; set; }
 
 
-        public int OrganizationId { get; set; }
+        public string Organization { get; set; }
     }
 }
