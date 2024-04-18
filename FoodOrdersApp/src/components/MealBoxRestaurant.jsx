@@ -4,7 +4,7 @@ import "../styles/orders.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
-export default function MealBoxRestaurant({meal}) {
+export default function MealBoxRestaurant({meal, toggleNewMeal}) {
     
     const [quantity, setQuantity] = useState(0);
     const mealBoxRef = React.createRef();
@@ -36,6 +36,7 @@ export default function MealBoxRestaurant({meal}) {
 
     function addMeal(mealId, quantity) {
         console.log(`adding meal ${mealId}x${quantity}`);
+        toggleNewMeal();
     }
 
     return (

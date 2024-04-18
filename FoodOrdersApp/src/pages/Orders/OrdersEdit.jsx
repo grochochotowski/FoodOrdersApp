@@ -8,7 +8,7 @@ import "../../styles/orders.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function OrdersDetails()
+export default function OrdersEdit()
 {
     const params = useParams();
     const navigate = useNavigate();
@@ -137,7 +137,9 @@ export default function OrdersDetails()
                     </div>
                 </div>
             </section>
-            {orderEdit.restaurant != undefined && newMealOpen ? <NewMeal restaurant={orderEdit.restaurant}/> : ""}
+            {orderEdit.restaurant != undefined && newMealOpen  && (
+                <NewMeal restaurant={orderEdit.restaurant} toggleNewMeal={() => newMealToggle()}/>
+            )}
         </div>
     )
 }
