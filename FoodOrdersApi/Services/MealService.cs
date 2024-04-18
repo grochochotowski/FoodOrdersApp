@@ -131,7 +131,7 @@ namespace FoodOrdersApi.Services
         }
 
         // Add meals to order with id
-        public List<string> AddMeal(int id, AddMealOrder newMealOrder)
+        public List<string> AddMeal(int id, AddMealOrder addMealOrder)
         {
             var returns = new List<string>();
 
@@ -147,25 +147,25 @@ namespace FoodOrdersApi.Services
 
             double newPrice = 0;
 
-            var newMeal = _context.Meals.FirstOrDefault(mo => mo.Id == newMealOrder.Meal.Item1);
+            var newMeal = _context.Meals.FirstOrDefault(mo => mo.Id == addMealOrder.MealId);
             if (newMeal == null)
             {
-                returns.Add($"Meal with id {newMealOrder.Meal.Item1} does not exist");
+                returns.Add($"Meal with id {addMealOrder.MealId} does not exist");
             }
             else if (order.Cart.RestaurantId != newMeal.RestaurantId)
             {
-                returns.Add($"Meal with id {newMealOrder.Meal.Item1} does not belong to restaurant with id {order.Cart.RestaurantId}");
+                returns.Add($"Meal with id {addMealOrder.MealId} does not belong to restaurant with id {addMealOrder.MealId}");
             }
 
-            var mealOrder = _context.MealOrder.FirstOrDefault(mo => mo.OrderId == id && mo.MealId == newMealOrder.Meal.Item1)
-                ?? order.MealOrder.FirstOrDefault(mo => mo.OrderId == id && mo.MealId == newMealOrder.Meal.Item1);
+            var mealOrder = _context.MealOrder.FirstOrDefault(mo => mo.OrderId == id && mo.MealId == addMealOrder.MealId)
+                ?? order.MealOrder.FirstOrDefault(mo => mo.OrderId == id && mo.MealId == addMealOrder.MealId);
             if (mealOrder != null)
             {
-                mealOrder.Quantity += newMealOrder.Meal.Item2;
+                mealOrder.Quantity += addMealOrder.Quantity;
             }
             else
             {
-                mealOrder = new MealOrder(newMealOrder.Meal.Item1, order.Id, newMealOrder.Meal.Item2);
+                mealOrder = new MealOrder(addMealOrder.MealId, order.Id, addMealOrder.Quantity);
                 order.MealOrder.Add(mealOrder);
             }
             newPrice += newMeal.Price;

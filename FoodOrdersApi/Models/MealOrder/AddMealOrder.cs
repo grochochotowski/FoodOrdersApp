@@ -1,9 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-
-namespace FoodOrdersApi.Models.MealOrder
+﻿namespace FoodOrdersApi.Models.MealOrder
 {
     public class AddMealOrder
     {
-        public Tuple<int, int> Meal { get; set; }
+        public int MealId { get; set; }
+        public int Quantity { get; set; }
     }
 }

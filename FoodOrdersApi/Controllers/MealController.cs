@@ -87,9 +87,9 @@ namespace FoodOrdersApi.Controllers
 
         // PUT api/meal/addMeal/5
         [HttpPatch("addMeal/{id}")]
-        public ActionResult AddMeal(int id, [FromBody] AddMealOrder dto)
+        public ActionResult AddMeal(int id, [FromBody] AddMealOrder addMealDto)
         {
-            var results = _mealService.AddMeal(id, dto);
+            var results = _mealService.AddMeal(id, addMealDto);
             var finalMessage = "";
             foreach (var result in results)
             {
