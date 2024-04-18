@@ -24,7 +24,8 @@ section.box {
 }
 
 /* ========== NEW MEAL ==========*/
-.small-container {
+.small-container,
+.delete-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -53,6 +54,36 @@ section.box {
 
     overflow: scroll;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+}
+
+.delete-container .box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+
+    width: 20vw;
+    height: fit-content;
+    gap: 2vh;
+
+    padding: 2vh 2vw;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    overflow: scroll;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+}
+.delete-container .box * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 3rem;
 }
 
 /* ========== FILTERS ==========*/

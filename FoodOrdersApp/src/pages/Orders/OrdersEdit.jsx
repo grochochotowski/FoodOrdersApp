@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom"
 
 import MealBoxEdit from "../../components/MealBoxEdit";
 import NewMeal from "../../components/NewMeal";
+import DeleteMeal from "../../components/DeleteMeal";
 
 import "../../styles/orders.css"
 import "../../styles/index.css"
@@ -18,9 +19,10 @@ export default function OrdersEdit()
     const [orderInputs, setOrderInputs] = useState({})
 
     const [newMealOpen, setNewMealOpen] = useState(false)
+    const [deleteMealOpen, setDeleteMealOpen] = useState(false)
 
+    const [deleteMealId, setDeleteMealId] = useState();
     
-
     
 
     function handleInputChange(inputId) {
@@ -83,6 +85,13 @@ export default function OrdersEdit()
     function newMealToggle() {
         setNewMealOpen(prev => !prev)
     }
+    function deleteMealToggle() {
+        setDeleteMealOpen(prev => !prev)
+    }
+
+    function changeDeleteId(mealId) {
+        setDeleteMealId(mealId);
+    }
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -94,7 +103,18 @@ export default function OrdersEdit()
         return () => {
           document.removeEventListener("click", handleClickOutside);
         };
-      }, []);
+    }, []);
+    useEffect(() => {
+        function handleClickOutsideDelete(event) {
+            if (event.target.closest(".delete-container") && !event.target.closest(".box")) deleteMealToggle();
+        }
+    
+        document.addEventListener("click", handleClickOutsideDelete);
+    
+        return () => {
+            document.removeEventListener("click", handleClickOutsideDelete);
+        };
+    }, []);
 
     return (
         <div className="container">
@@ -132,7 +152,7 @@ export default function OrdersEdit()
                             </div>
                             {
                                 meals.map((meal) => (
-                                    <MealBoxEdit key={meal.id} meal={meal} />
+                                    <MealBoxEdit key={meal.key} meal={meal} deleteMealToggle={() => deleteMealToggle()} changeDeleteId={() => changeDeleteId()}/>
                                 ))
                             }
                         </div>
@@ -141,6 +161,11 @@ export default function OrdersEdit()
             </section>
             {orderEdit.restaurant != undefined && newMealOpen  && (
                 <NewMeal order={orderEdit.id} restaurant={orderEdit.restaurant} toggleNewMeal={() => newMealToggle()} updateData={() => fetchData()}/>
+            )}
+            
+            {deleteMealOpen  && console.log("show")}
+            {deleteMealOpen  && (
+                <DeleteMeal order={orderEdit.id} meal={deleteMealId} deleteMealToggle={() => deleteMealToggle()} updateData={() => updateData()}/>
             )}
         </div>
     )

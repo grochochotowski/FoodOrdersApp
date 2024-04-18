@@ -50,7 +50,7 @@ export default function DeleteMeal({order, meal, deleteMealToggle, updateData}) 
                 <h4>How many meals delete?</h4>
                 <input
                     className="quantity-input"
-                    id={`quantity-${meal.id}`}
+                    id={`quantity-${meal}`}
                     type="number"
                     value={quantity}
                     onChange={updateQuantity}
