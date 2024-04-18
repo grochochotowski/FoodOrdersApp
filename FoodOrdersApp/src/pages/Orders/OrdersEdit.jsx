@@ -21,7 +21,7 @@ export default function OrdersEdit()
     const [newMealOpen, setNewMealOpen] = useState(false)
     const [deleteMealOpen, setDeleteMealOpen] = useState(false)
 
-    const [deleteMealId, setDeleteMealId] = useState();
+    const [deleteMealId, setDeleteMealId] = useState(0);
     
     
 
@@ -90,7 +90,8 @@ export default function OrdersEdit()
     }
 
     function changeDeleteId(mealId) {
-        setDeleteMealId(mealId);
+        console.log(mealId)
+        setDeleteMealId(() => mealId);
     }
 
     useEffect(() => {
@@ -152,7 +153,7 @@ export default function OrdersEdit()
                             </div>
                             {
                                 meals.map((meal) => (
-                                    <MealBoxEdit key={meal.key} meal={meal} deleteMealToggle={() => deleteMealToggle()} changeDeleteId={() => changeDeleteId()}/>
+                                    <MealBoxEdit key={meal.key} meal={meal} deleteMealToggle={() => deleteMealToggle()} changeDeleteId={changeDeleteId}/>
                                 ))
                             }
                         </div>
@@ -163,8 +164,7 @@ export default function OrdersEdit()
                 <NewMeal order={orderEdit.id} restaurant={orderEdit.restaurant} toggleNewMeal={() => newMealToggle()} updateData={() => fetchData()}/>
             )}
             
-            {deleteMealOpen  && console.log("show")}
-            {deleteMealOpen  && (
+            {deleteMealOpen && (
                 <DeleteMeal order={orderEdit.id} meal={deleteMealId} deleteMealToggle={() => deleteMealToggle()} updateData={() => updateData()}/>
             )}
         </div>

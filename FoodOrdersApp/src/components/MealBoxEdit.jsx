@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 
 import "../styles/orders.css"
 import "../styles/index.css"
@@ -6,9 +6,10 @@ import "../styles/App.css"
 
 export default function MealBoxEdit({meal, deleteMealToggle, changeDeleteId}) {
 
-    function handleClick(mealId) {
-        changeDeleteId(mealId)
-        deleteMealToggle(mealId)
+    function handleClick() {
+        console.log(meal.id)
+        deleteMealToggle()
+        changeDeleteId(meal.id)
     }
 
     return (
@@ -20,7 +21,7 @@ export default function MealBoxEdit({meal, deleteMealToggle, changeDeleteId}) {
                     <p>Quantity: {meal.quantity}</p>
                     <p>Price: {meal.price}zł</p>
                 </div>
-                <button className="side warning" onClick={() => handleClick(meal.id)}>
+                <button className="side warning" onClick={handleClick}>
                     <i className="fa-regular fa-trash-can"></i>
                 </button>
             </div>

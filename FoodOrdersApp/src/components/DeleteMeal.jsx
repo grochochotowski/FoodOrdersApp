@@ -10,13 +10,15 @@ export default function DeleteMeal({order, meal, deleteMealToggle, updateData}) 
         setQuantity(value);
     }
 
-    async function removeMeal(quantity) {
+    async function removeMeal(mealId, quantity) {
+
+        console.log(quantity)
         if (quantity) {
             deleteMealToggle()
 
-            let meal = {
-                "mealId": meal,
-                "quantity" : quantity
+            let removeMealObject = {
+                "mealId": parseInt(mealId),
+                "quantity" : parseInt(quantity)
             }
 
             let apiCall = `https://localhost:7157/api/meal/removeMeal/${order}`
@@ -41,7 +43,6 @@ export default function DeleteMeal({order, meal, deleteMealToggle, updateData}) 
         else {
             alert("You have to delete atleast 1 meal")
         }
-        
     }
 
     return (
@@ -55,7 +56,7 @@ export default function DeleteMeal({order, meal, deleteMealToggle, updateData}) 
                     value={quantity}
                     onChange={updateQuantity}
                 />
-                <button className="warning delete-input-btn" onClick={removeMeal}>Delete</button>
+                <button className="warning delete-input-btn" onClick={() => removeMeal(meal, quantity)}>Delete</button>
             </div>
         </div>
     )
