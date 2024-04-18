@@ -76,7 +76,8 @@ namespace FoodOrdersApi.Services
                 .Where(mo => mo.OrderId == id)
                 .Select(mo => new MealsFromOrder
                 {
-                    Id = mo.MealId.ToString() + "||" + mo.OrderId.ToString(),
+                    Id = mo.MealId,
+                    Key = mo.MealId.ToString() + "||" + mo.OrderId.ToString(),
                     Img = mo.Meal.Img,
                     Meal = mo.Meal.Name,
                     Price = mo.Quantity * mo.Meal.Price,

@@ -2,7 +2,8 @@
 {
     public class MealsFromOrder
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
+        public string Key { get; set; }
         public string Img { get; set; }
         public string Meal { get; set; }
         public double Price { get; set; }
