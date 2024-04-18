@@ -87,9 +87,23 @@ namespace FoodOrdersApi.Controllers
 
         // PUT api/meal/addMeal/5
         [HttpPatch("addMeal/{id}")]
-        public ActionResult AddMeal(int id, [FromBody] AddMealOrder addMealDto)
+        public ActionResult AddMeal(int id, [FromBody] AddRemoveMealOrder addMealDto)
         {
             var results = _mealService.AddMeal(id, addMealDto);
+            var finalMessage = "";
+            foreach (var result in results)
+            {
+                finalMessage += result + "\n";
+            }
+            if (results.Count > 0) return BadRequest(finalMessage);
+            return Ok();
+        }
+
+        // PUT api/meal/removeMeal/5
+        [HttpPatch("removeMeal/{id}")]
+        public ActionResult RremoveMeal(int id, [FromBody] AddRemoveMealOrder addMealDto)
+        {
+            var results = _mealService.RemoveMeal(id, addMealDto);
             var finalMessage = "";
             foreach (var result in results)
             {
