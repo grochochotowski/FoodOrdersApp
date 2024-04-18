@@ -34,28 +34,35 @@
         }, [quantity]);
 
         async function addMeal(mealId, quantity) {
-            toggleNewMeal();
 
-            let meal = {
-                "mealId": mealId,
-                "quantity" : quantity
-            }
+            if (quantity) {
+                toggleNewMeal();
 
-            let apiCall = `https://localhost:7157/api/meal/addMeal/${order}`
-            let requestOption = {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(meal)
-            }
-            const response = await fetch(apiCall, requestOption)
+                let meal = {
+                    "mealId": mealId,
+                    "quantity" : quantity
+                }
     
-            console.log(response)
-    
-            if (!response.ok) {
-                throw new Error('Error fetching data');
+                let apiCall = `https://localhost:7157/api/meal/addMeal/${order}`
+                let requestOption = {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(meal)
+                }
+                const response = await fetch(apiCall, requestOption)
+        
+                console.log(response)
+        
+                if (!response.ok) {
+                    throw new Error('Error fetching data');
+                }
             }
+            else {
+                alert("There has to by minimum 1 meal")
+            }
+            
         }
 
         return (
