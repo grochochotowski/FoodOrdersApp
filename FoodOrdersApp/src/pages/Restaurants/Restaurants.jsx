@@ -196,7 +196,7 @@ export default function Restaurants() {
                 <h1>Restaurants</h1>
                 <div className="filter">
                     <div className="add-new">
-                        <button className="button">New</button>
+                        <Link to="new" className="button">New</Link>
                     </div>
                 </div>
 

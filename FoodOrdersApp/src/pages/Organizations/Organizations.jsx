@@ -172,7 +172,7 @@ export default function Organizations() {
                 <h1>Organizations</h1>
                 <div className="filter">
                     <div className="add-new">
-                        <button className="button">New</button>
+                        <Link to="new" className="button">New</Link>
                     </div>
                 </div>
 

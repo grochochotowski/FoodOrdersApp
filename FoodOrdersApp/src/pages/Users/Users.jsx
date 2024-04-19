@@ -208,7 +208,7 @@ export default function Users() {
                 <h1>Users</h1>
                 <div className="filter">
                     <div className="add-new">
-                        <button className="button">New</button>
+                        <Link to="new" className="button">New</Link>
                     </div>
                 </div>
 
