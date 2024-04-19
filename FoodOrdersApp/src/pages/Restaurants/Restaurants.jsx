@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 import "../../styles/restaurants.css"
@@ -7,69 +7,9 @@ import "../../styles/App.css"
 
 export default function Restaurants() {
 
-    const [sorting, setSorting] = useState(["col1", 0])
-    const [restaurants, setRestaurants] = useState([
-        {
-            "id" : 1,
-            "name": "McDonald's",
-            "category" : "fast food",
-            "numberOfMeals" : 1
-        },
-        {
-            "id" : 2,
-            "name": "McDonald's",
-            "category" : "fast food",
-            "numberOfMeals" : 2
-        },
-        {
-            "id" : 3,
-            "name": "McDonald's",
-            "category" : "fast food",
-            "numberOfMeals" : 3
-        },
-        {
-            "id" : 4,
-            "name": "McDonald's",
-            "category" : "fast food",
-            "numberOfMeals" : 4
-        },
-        {
-            "id" : 5,
-            "name": "McDonald's",
-            "category" : "fast food",
-            "numberOfMeals" : 5
-        },
-        {
-            "id" : 6,
-            "name": "McDonald's",
-            "category" : "fast food",
-            "numberOfMeals" : 6
-        },
-        {
-            "id" : 7,
-            "name": "McDonald's",
-            "category" : "fast food",
-            "numberOfMeals" : 7
-        },
-        {
-            "id" : 8,
-            "name": "McDonald's",
-            "category" : "fast food",
-            "numberOfMeals" : 8
-        },
-        {
-            "id" : 9,
-            "name": "McDonald's",
-            "category" : "fast food",
-            "numberOfMeals" : 9
-        },
-        {
-            "id" : 10,
-            "name": "McDonald's",
-            "category" : "fast food",
-            "numberOfMeals" : 10
-        }
-    ])
+    const [sorting, setSorting] = useState(["name", 0])
+    const [result, setResult] = useState([])
+    const [page, setPage] = useState(1);
 
     function sortTable(column) {
         setSorting(prev => {
@@ -77,6 +17,23 @@ export default function Restaurants() {
             return [column, 0]
         })
     }
+
+    async function fetchData() {
+        let apiCall = `https://localhost:7157/api/restaurant/all?` +
+            `sortBy=${sorting[0]}&` +
+            `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
+            `page=${page}`
+        try {
+            const response = await fetch(apiCall)
+            const data = await response.json()
+            setResult(data)
+        } catch (error) {
+            console.error('Error fetching data:', error)
+        }
+    }
+    useEffect(() => {
+        fetchData();
+    }, [sorting, page]);
 
     function generateTableHeader() {
         return (
@@ -123,7 +80,7 @@ export default function Restaurants() {
     function generateTableBody() {
         return (
             <tbody>
-                {restaurants.map((restaurant) => (
+                {result.items && result.items.map((restaurant) => 
                     <tr key={restaurant.id}>
                         <td>{restaurant.name}</td>
                         <td>{restaurant.category}</td>
@@ -137,9 +94,99 @@ export default function Restaurants() {
                             </Link>
                         </td>
                     </tr>
-                ))}
+                )}
             </tbody>
         )
+    }
+    function generatePagination() {
+
+        const paginationItems = [];
+
+        if (result.length != 0) {
+
+            // Generate left arrow
+            if (page > 1) {
+                paginationItems.push(
+                    <li className="clickable" onClick={() => setPage(page - 1)} key={"arrow-left"}>
+                        <i className="fa-solid fa-caret-left"></i>
+                    </li>
+                )
+            }
+            else {
+                paginationItems.push(
+                    <li className="disable" key={"arrow-left"}>
+                        <i className="fa-solid fa-caret-left"></i>
+                    </li>
+                )
+            }
+
+            if (result.totalPages <= 7) {
+                for (let i = 1; i <= result.totalPages; i++) {
+                    paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                }
+            }
+            else {
+
+                if (page <= 4) {
+                    for (let i = 1; i <= 7; i++) {
+                        if (i == page) {
+                            paginationItems.push(<li key={i} className="selected" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                        else {
+                            paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                    }
+                    paginationItems.push(<li key={"dots2"}>...</li>)
+                    paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>);
+                }
+                else if (result.totalPages - page < 5) {
+                    paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>);
+                    paginationItems.push(<li key={"dots1"}>...</li>)
+                    for (let i = result.totalPages-6; i <= result.totalPages; i++) {
+                        if (i == page) {
+                            paginationItems.push(<li key={i} className="selected" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                        else {
+                            paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                    }
+                }
+                else {
+                    paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>);
+                    paginationItems.push(<li key={"dots1"}>...</li>)
+
+                    for (let i = page-2; i < page; i++) {
+                        paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                    }
+
+                    paginationItems.push(<li key={page} className="selected" onClick={() => setPage(page)}>{page}</li>)
+
+                    for (let i = page+1; i <= page+2; i++) {
+                        paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                    }
+                
+                    paginationItems.push(<li key={"dots2"}>...</li>)
+                    paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>);
+                }
+                
+                // Generate right arrow
+                if (page < result.totalPages) {
+                    paginationItems.push(
+                        <li className="clickable" onClick={() => setPage(page + 1)} key={"arrow-right"}>
+                            <i className="fa-solid fa-caret-right"></i>
+                        </li>
+                    )
+                }
+                else {
+                    paginationItems.push(
+                        <li className="disable" key={"arrow-right"}>
+                            <i className="fa-solid fa-caret-right"></i>
+                        </li>
+                    )
+                }
+            }
+            return paginationItems;
+        }
     }
 
     return (
@@ -159,19 +206,7 @@ export default function Restaurants() {
                     </table>
                     <div className="pagination">
                         <ul>
-                            <li className="clickable"><i className="fa-solid fa-caret-left"></i></li>
-                            <li className="clickable">1</li>
-                            <li>...</li>
-
-                            <li className="clickable">10</li>
-                            <li className="clickable">11</li>
-                            <li className="clickable">12</li>
-                            <li className="clickable">13</li>
-                            <li className="clickable">14</li>
-
-                            <li>...</li>
-                            <li className="clickable">67</li>
-                            <li className="clickable"><i className="fa-solid fa-caret-right"></i></li>
+                            { generatePagination() }
                         </ul>
                     </div>
                 </div>
