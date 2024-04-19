@@ -26,9 +26,17 @@ namespace FoodOrdersApi.Controllers
             return Created($"api/restaurant/get/{restaurantId}", null);
         }
 
-        // GET api/restaurant/all
+        // POST api/restaurant/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<RestaurantListDto>> GetAll(
+        public ActionResult GetAll()
+        {
+            var users = _restaurantService.GetAll();
+            return Ok(users);
+        }
+
+        // GET api/restaurant/list
+        [HttpGet("list")]
+        public ActionResult<IEnumerable<RestaurantListDto>> GetAllList(
             [FromQuery] int page,
             [FromQuery] string? sortBy,
             [FromQuery] SortDirection sortDireciton

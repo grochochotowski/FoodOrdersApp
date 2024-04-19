@@ -13,7 +13,8 @@ namespace FoodOrdersApi.Services
     public interface IRestaurantService
     {
         int Create(CreateRestaurantDto dto);
-        PagedResult<RestaurantListDto> GetAll(int page, string sortBy, SortDirection sortDireciton);
+        IEnumerable<RestaurantDto> GetAll();
+        PagedResult<RestaurantListDto> GetAllList(int page, string sortBy, SortDirection sortDireciton);
         int Delete(int id);
     }
 
@@ -41,7 +42,23 @@ namespace FoodOrdersApi.Services
         }
 
         // Get all restaurants
-        public PagedResult<RestaurantListDto> GetAll(int page, string sortBy, SortDirection sortDireciton)
+        public IEnumerable<RestaurantDto> GetAll()
+        {
+            var users = _context.Restaurants
+                .Select(r => new RestaurantDto
+                {
+                    Id = r.Id,
+                    Name = r.Name,
+                    Category = r.Category
+                })
+                .ToList();
+            var userDtos = _mapper.Map<List<RestaurantDto>>(users);
+
+            return userDtos;
+        }
+
+        // Get all restaurants
+        public PagedResult<RestaurantListDto> GetAllList(int page, string sortBy, SortDirection sortDireciton)
         {
             var baseQuery = _context.Restaurants
                 .Include(r => r.Meals)

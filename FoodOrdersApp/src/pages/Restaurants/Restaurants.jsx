@@ -19,7 +19,7 @@ export default function Restaurants() {
     }
 
     async function fetchData() {
-        let apiCall = `https://localhost:7157/api/restaurant/all?` +
+        let apiCall = `https://localhost:7157/api/restaurant/list?` +
             `sortBy=${sorting[0]}&` +
             `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
             `page=${page}`
