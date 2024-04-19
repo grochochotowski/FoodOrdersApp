@@ -202,9 +202,12 @@ namespace FoodOrdersApi.Services
         // Delete order with id
         public int Delete(int id)
         {
-            var order = _context.Orders.FirstOrDefault(o => o.Id == id);
+            var order = _context.Orders
+                .Include(o => o.Cart)
+                .FirstOrDefault(o => o.Id == id);
             if (order == null) return -1;
 
+            order.Cart.TotalCartPrice -= order.TotalPrice;
             _context.Orders.Remove(order);
             _context.SaveChanges();
             return 1;
