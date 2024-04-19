@@ -96,7 +96,8 @@ namespace FoodCartsApi.Services
                     Organization = c.Organization.Name,
                     TotalCartPrice = c.TotalCartPrice,
                     MinPrice = c.MinPrice,
-                    DeliveryPrice = c.DeliveryPrice
+                    DeliveryPrice = c.DeliveryPrice,
+                    FreeDeliveryMinPrice = c.FreeDeliveryMinPrice
                 })
                 .ToList();
 
