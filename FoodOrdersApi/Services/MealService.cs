@@ -146,6 +146,11 @@ namespace FoodOrdersApi.Services
                 returns.Add($"Order with id {id} does not exist");
                 return returns;
             }
+            if (addRemoveMealOrder.Quantity < 1)
+            {
+                returns.Add($"Quantity has to be positive");
+                return returns;
+            }
 
             double newPrice = 0;
 
@@ -191,6 +196,11 @@ namespace FoodOrdersApi.Services
             if (order == null)
             {
                 returns.Add($"Order with id {id} does not exist");
+                return returns;
+            }
+            if (addRemoveMealOrder.Quantity < 1)
+            {
+                returns.Add($"Quantity has to be positive");
                 return returns;
             }
 
