@@ -147,7 +147,6 @@ export default function CartsNew({user}) {
         if (valid) sendData(updatedDataToSend)
     }
     async function sendData(updatedDataToSend) {
-        console.log(updatedDataToSend)
         let apiCall = `https://localhost:7157/api/cart/create`
         let requestOption = {
             method: 'POST',

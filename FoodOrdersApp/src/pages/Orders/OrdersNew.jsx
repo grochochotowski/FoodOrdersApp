@@ -71,12 +71,26 @@ export default function OrderNew({user}) {
             updatedDataToSend = { ...updatedDataToSend, notes: null };
         }
         updatedDataToSend.userId = user.id
-        
+
         if (valid) sendData(updatedDataToSend)
     }
-    function sendData(updatedDataToSend) {
+    async function sendData(updatedDataToSend) {
+        let apiCall = `https://localhost:7157/api/order/create`
+        let requestOption = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedDataToSend)
+        }
+        const response = await fetch(apiCall, requestOption)
+        const responseJson = await response.json()
 
-        console.log(updatedDataToSend);
+        if (!response.ok) {
+            throw new Error('Error fetching data');
+        }
+
+        navigate(`/orders/edit/${responseJson.newOrderId}`)
     }
 
     return (
