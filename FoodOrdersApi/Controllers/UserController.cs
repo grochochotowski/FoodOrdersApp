@@ -31,13 +31,13 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/user/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<UserListDto>> GetAll(
+        public ActionResult<IEnumerable<UserListDto>> GetAllList(
             [FromQuery] int page,
             [FromQuery] string? sortBy,
             [FromQuery] SortDirection sortDireciton
             )
         {
-            var userDtos = _userService.GetAll(page, sortBy, sortDireciton);
+            var userDtos = _userService.GetAllList(page, sortBy, sortDireciton);
             return Ok(userDtos);
         }
 

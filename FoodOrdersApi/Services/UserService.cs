@@ -13,7 +13,7 @@ namespace FoodOrdersApi.Services
     public interface IUserService
     {
         int Create(CreateUserDto dto);
-        PagedResult<UserListDto> GetAll(int page, string sortBy, SortDirection sortDireciton);
+        PagedResult<UserListDto> GetAllList(int page, string sortBy, SortDirection sortDireciton);
         int Delete(int id);
     }
 
@@ -44,7 +44,7 @@ namespace FoodOrdersApi.Services
         }
 
         // Get all user
-        public PagedResult<UserListDto> GetAll(int page, string sortBy, SortDirection sortDireciton)
+        public PagedResult<UserListDto> GetAllList(int page, string sortBy, SortDirection sortDireciton)
         {
             var baseQuery = _context.Users
                 .Include(u => u.Organization)
