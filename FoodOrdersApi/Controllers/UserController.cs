@@ -29,7 +29,7 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/user/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<UserDto>> GetAll()
+        public ActionResult<IEnumerable<UserListDto>> GetAll()
         {
             var userDtos = _userService.GetAll();
             return Ok(userDtos);

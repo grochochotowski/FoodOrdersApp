@@ -41,11 +41,14 @@ namespace FoodOrdersApi.Services
         public IEnumerable<RestaurantListDto> GetAll()
         {
             var restaurants = _context.Restaurants
+                .Include(r => r.Meals)
                 .ToList()
                 .Select(r => new RestaurantListDto
                 {
                     Id = r.Id,
-                    Name = r.Name
+                    Name = r.Name,
+                    Description = r.Description,
+                    MealsCount = r.Meals.Count()
                 });
             var restaurantDtos = _mapper.Map<List<RestaurantListDto>>(restaurants);
 

@@ -10,7 +10,7 @@ namespace FoodOrdersApi.Services
     public interface IUserService
     {
         int Create(CreateUserDto dto);
-        IEnumerable<UserDto> GetAll();
+        IEnumerable<UserListDto> GetAll();
         int Delete(int id);
     }
 
@@ -41,11 +41,11 @@ namespace FoodOrdersApi.Services
         }
 
         // Get all user
-        public IEnumerable<UserDto> GetAll()
+        public IEnumerable<UserListDto> GetAll()
         {
             var users = _context.Users
                 .Include(u => u.Organization)
-                .Select(u => new UserDto
+                .Select(u => new UserListDto
                 {
                     Id = u.Id,
                     FirstName = u.FirstName,
@@ -54,7 +54,7 @@ namespace FoodOrdersApi.Services
                     OrganizationName = u.Organization.Name
                 })
                 .ToList();
-            var userDtos = _mapper.Map<List<UserDto>>(users);
+            var userDtos = _mapper.Map<List<UserListDto>>(users);
 
             return userDtos;
         }

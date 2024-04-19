@@ -48,15 +48,15 @@ namespace FoodOrdersApi
             CreateMap<CreateOrderDto, Order>();
             CreateMap<UpdateOrderDto, Order>();
 
-            CreateMap<Organization, OrganizationDto>();
+
+
             CreateMap<Organization, OrganizationListDto>();
             CreateMap<CreateOrganizationDto, Organization>();
 
-            CreateMap<Restaurant, RestaurantDto>();
             CreateMap<Restaurant, RestaurantListDto>();
             CreateMap<CreateRestaurantDto, Restaurant>();
 
-            CreateMap<User, UserDto>();
+            CreateMap<User, UserListDto>();
             CreateMap<CreateUserDto, User>();
         }
     }

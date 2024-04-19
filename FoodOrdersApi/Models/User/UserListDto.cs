@@ -1,8 +1,6 @@
-﻿using FoodOrdersApi.Models.Cart;
-
-namespace FoodOrdersApi.Models.User
+﻿namespace FoodOrdersApi.Models.User
 {
-    public class UserDto
+    public class UserListDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
