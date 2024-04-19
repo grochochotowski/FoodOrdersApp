@@ -39,7 +39,6 @@ namespace FoodOrdersApi.Services
             return restaurant.Id;
         }
 
-
         // Get all restaurants
         public IEnumerable<RestaurantListDto> GetAll()
         {
@@ -55,7 +54,6 @@ namespace FoodOrdersApi.Services
             return restaurantDtos;
         }
 
-
         // Get restaurant by ID
         public RestaurantDto GetByID(int id)
         {
@@ -69,7 +67,6 @@ namespace FoodOrdersApi.Services
             return restaurantDto;
         }
 
-
         // Update restaurant with id
         public int Update(int id, UpdateRestaurantDto dto)
         {
@@ -82,7 +79,6 @@ namespace FoodOrdersApi.Services
             _context.SaveChanges();
             return restaurant.Id;
         }
-
 
         // Update restaurant with id
         public int Delete(int id)

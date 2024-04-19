@@ -26,7 +26,7 @@ namespace FoodOrdersApi.Services
             _mapper = mapper;
         }
 
-
+         
 
         // Create new organization
         public int Create(CreateOrganizationDto dto)
@@ -37,7 +37,6 @@ namespace FoodOrdersApi.Services
             _context.SaveChanges();
             return org.Id;
         }
-
 
         // Get all organizations
         public IEnumerable<OrganizationListDto> GetAll()
@@ -53,7 +52,6 @@ namespace FoodOrdersApi.Services
             return organizationsDtos;
         }
 
-
         // Get organization by ID
         public OrganizationDto GetByID(int id)
         {
@@ -64,7 +62,6 @@ namespace FoodOrdersApi.Services
 
             return orgDto;
         }
-
 
         // Update organization with id
         public int Update(int id, UpdateOrganizationDto dto)
@@ -78,8 +75,6 @@ namespace FoodOrdersApi.Services
             _context.SaveChanges();
             return org.Id;
         }
-
-
 
         // Update organization with id
         public int Delete(int id)

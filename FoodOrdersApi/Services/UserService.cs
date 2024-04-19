@@ -28,7 +28,6 @@ namespace FoodOrdersApi.Services
         }
 
 
-
         // Create new user
         public int Create(CreateUserDto dto)
         {
@@ -41,7 +40,6 @@ namespace FoodOrdersApi.Services
             _context.SaveChanges();
             return user.Id;
         }
-
 
         // Get all user
         public IEnumerable<UserDto> GetAll()
@@ -62,7 +60,6 @@ namespace FoodOrdersApi.Services
             return userDtos;
         }
 
-
         // Get user by ID
         public UserDto GetByID(int id)
         {
@@ -73,7 +70,6 @@ namespace FoodOrdersApi.Services
 
             return userDto;
         }
-
 
         // Update user with id
         public int Update(int id, UpdateUserDto dto)
@@ -94,7 +90,6 @@ namespace FoodOrdersApi.Services
             _context.SaveChanges();
             return user.Id;
         }
-
 
         // Update user with id
         public int Delete(int id)
