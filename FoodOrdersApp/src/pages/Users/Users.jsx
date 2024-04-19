@@ -31,7 +31,6 @@ export default function Users() {
             console.error('Error fetching data:', error)
         }
     }
-
     useEffect(() => {
         fetchData();
     }, [sorting, page]);
