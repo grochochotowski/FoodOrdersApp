@@ -44,14 +44,13 @@ namespace FoodOrdersApi.Controllers
         // GET api/order/all
         [HttpGet("all")]
         public ActionResult<IEnumerable<OrderDto>> GetAll(
-            [FromQuery] string? restaurant,
-            [FromQuery] string? organization,
+            [FromQuery] string? filters,
             [FromQuery] int page,
             [FromQuery] string? sortBy,
             [FromQuery] SortDirection sortDireciton
             )
         {
-            var orderDto = _orderService.GetAll(restaurant, organization, page, sortBy, sortDireciton);
+            var orderDto = _orderService.GetAll(filters, page, sortBy, sortDireciton);
             return Ok(orderDto);
         }
 

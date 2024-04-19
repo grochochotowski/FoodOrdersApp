@@ -12,7 +12,7 @@ namespace FoodOrdersApi.Services
     public interface IOrderService
     {
         int Create(CreateOrderDto dto);
-        PagedResult<OrderListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton);
+        PagedResult<OrderListDto> GetAll(string filters, int page, string sortBy, SortDirection sortDireciton);
         DetailsOrderDto GetByID(int id);
         OrderEditDto GetEdit(int id);
         IEnumerable<IndividualOrderDto> GetFromCart(int id);
@@ -53,19 +53,16 @@ namespace FoodOrdersApi.Services
 
 
         // Get all carts
-        public PagedResult<OrderListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton)
+        public PagedResult<OrderListDto> GetAll(string filters, int page, string sortBy, SortDirection sortDireciton)
         {
-            Console.WriteLine(restaurant);
-            Console.WriteLine(organization);
-            Console.WriteLine(page);
-            Console.WriteLine(sortBy);
-            Console.WriteLine(sortDireciton);
             var baseQuery = _context.Orders
                 .Include(o => o.Cart).ThenInclude(c => c.Restaurant)
                 .Include(o => o.Cart).ThenInclude(c => c.Organization)
                 .Include(o => o.User)
-                .Where(o => restaurant == null || o.Cart.Restaurant.Name.ToLower().Contains(restaurant))
-                .Where(c => organization == null || c.Cart.Organization.Name.ToLower().Contains(organization));
+                .Where(o => filters == null || (
+                    o.Cart.Restaurant.Name.ToLower().Contains(filters) ||
+                    o.Cart.Organization.Name.ToLower().Contains(filters)) ||
+                    o.Id.ToString().Contains(filters));
 
             if (!string.IsNullOrEmpty(sortBy))
             {
