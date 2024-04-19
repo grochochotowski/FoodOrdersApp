@@ -8,8 +8,8 @@ namespace FoodOrdersApi.Entities.Objects
         public int Id { get; set; }
         [Required(ErrorMessage = "Name of the restaurant is required")]
         public string Name { get; set; }
-
-        public string? Description { get; set; }
+        [Required(ErrorMessage = "Category of the restaurant is required")]
+        public string Category { get; set; }
 
 
 
