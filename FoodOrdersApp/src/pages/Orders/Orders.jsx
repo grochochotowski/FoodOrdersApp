@@ -8,10 +8,7 @@ import "../../styles/App.css"
 export default function Orders() {
 
     const [sorting, setSorting] = useState(["organization", 0])
-    const [filters, setFilters] = useState({
-        "restaurant" : "",
-        "organization" : "",
-    })
+    const [filters, setFilters] = useState({ "filters" : "" })
     const [result, setResult] = useState([])
     const [page, setPage] = useState(1);
 
@@ -23,7 +20,6 @@ export default function Orders() {
     }
     function updateFilters(filter) {
         setFilters(prev => ({
-            ...prev,
             [filter] : document.getElementById(filter).value
         }))
     }
@@ -33,8 +29,7 @@ export default function Orders() {
 
     async function fetchData() {
         let apiCall = `https://localhost:7157/api/order/all?` +
-            `${filters.organization && "organization=" + filters.organization + "&"}` +
-            `${filters.restaurant && "restaurant=" + filters.restaurant + "&"}` +
+            `${filters.filters && "filters=" + filters.filters + "&"}` +
             `sortBy=${sorting[0]}&` +
             `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
             `page=${page}`
@@ -251,25 +246,11 @@ export default function Orders() {
                     </div>
                         <div className="inputs">
                         <div className="single-filter">
-                            <label htmlFor="restaurant">
-                                <h4>Restaurant:</h4>
-                            </label>
                             <input
                                 type="text"
-                                id="restaurant"
-                                onChange={() => updateFilters("restaurant")}
-                                value={filters.restaurant}    
-                            />
-                        </div>
-                        <div className="single-filter">
-                            <label htmlFor="organization">
-                                <h4>Organization:</h4>
-                            </label>
-                            <input
-                                type="text"
-                                id="organization"
-                                onChange={() => updateFilters("organization")}
-                                value={filters.organization}    
+                                id="filters"
+                                onChange={() => updateFilters("filters")}
+                                value={filters.filters}    
                             />
                         </div>
                         <button onClick={() => filter()}>Filter</button>
