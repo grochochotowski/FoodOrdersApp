@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 import "../../styles/users.css"
@@ -7,108 +7,9 @@ import "../../styles/App.css"
 
 export default function Users() {
 
-    const [sorting, setSorting] = useState(["col1", 0])
-    const [users, setUsers] = useState([
-        {
-            "id" : 1,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 1",
-            }
-        },
-        {
-            "id" : 2,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 2",
-            }
-        },
-        {
-            "id" : 3,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 3",
-            }
-        },
-        {
-            "id" : 4,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 4",
-            }
-        },
-        {
-            "id" : 4,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 4",
-            }
-        },
-        {
-            "id" : 5,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 5",
-            }
-        },
-        {
-            "id" : 6,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 6",
-            }
-        },
-        {
-            "id" : 7,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 7",
-            }
-        },
-        {
-            "id" : 8,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 8",
-            }
-        },
-        {
-            "id" : 9,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 9",
-            }
-        },
-        {
-            "id" : 10,
-            "firstName": "Name",
-            "lastName" : "Surname",
-            "email" : "email@email",
-            "organization" :  {
-                "name" : "Org 10",
-            }
-        },
-    ])
+    const [sorting, setSorting] = useState(["firstName", 0])
+    const [result, setResult] = useState([])
+    const [page, setPage] = useState(1);
 
     function sortTable(column) {
         setSorting(prev => {
@@ -117,13 +18,31 @@ export default function Users() {
         })
     }
 
+    async function fetchData() {
+        let apiCall = `https://localhost:7157/api/user/list?` +
+            `sortBy=${sorting[0]}&` +
+            `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
+            `page=${page}`
+        try {
+            const response = await fetch(apiCall)
+            const data = await response.json()
+            setResult(data)
+        } catch (error) {
+            console.error('Error fetching data:', error)
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [sorting, page]);
+
     function generateTableHeader() {
         return (
             <thead>
                 <tr>
-                    <th onClick={() => sortTable("firstNname")}>
+                    <th onClick={() => sortTable("firstName")}>
                         {
-                            sorting[0] == "firstNname" &&
+                            sorting[0] == "firstName" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
@@ -132,9 +51,20 @@ export default function Users() {
                         }
                         First name
                     </th>
-                    <th onClick={() => sortTable("lastNname")}>
+                    <th onClick={() => sortTable("secondName")}>
                         {
-                            sorting[0] == "lastNname" &&
+                            sorting[0] == "secondName" &&
+                            (
+                                sorting[1] === 0
+                                ? <i className="fa-solid fa-arrow-down-a-z"></i>
+                                : <i className="fa-solid fa-arrow-up-a-z"></i>
+                            )
+                        }
+                        Second name
+                    </th>
+                    <th onClick={() => sortTable("lastName")}>
+                        {
+                            sorting[0] == "lastName" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
@@ -143,20 +73,9 @@ export default function Users() {
                         }
                         Last name
                     </th>
-                    <th onClick={() => sortTable("email")}>
+                    <th onClick={() => sortTable("organizationName")}>
                         {
-                            sorting[0] == "email" &&
-                            (
-                                sorting[1] === 0
-                                ? <i className="fa-solid fa-arrow-down-a-z"></i>
-                                : <i className="fa-solid fa-arrow-up-a-z"></i>
-                            )
-                        }
-                        Email
-                    </th>
-                    <th onClick={() => sortTable("organization")}>
-                        {
-                            sorting[0] == "organization" &&
+                            sorting[0] == "organizationName" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
@@ -173,12 +92,12 @@ export default function Users() {
     function generateTableBody() {
         return (
             <tbody>
-                {users.map((user) => (
+                {result.items && result.items.map((user) => 
                     <tr key={user.id}>
                         <td>{user.firstName}</td>
+                        <td>{user.secondName}</td>
                         <td>{user.lastName}</td>
-                        <td>{user.email}</td>
-                        <td>{user.organization.name}</td>
+                        <td>{user.organizationName}</td>
                         <td>
                             <Link to={`details/${user.id}`} className="details">
                                 <i className="fa-solid fa-info"></i>
@@ -188,9 +107,99 @@ export default function Users() {
                             </Link>
                         </td>
                     </tr>
-                ))}
+                )}
             </tbody>
         )
+    }
+    function generatePagination() {
+
+        const paginationItems = [];
+
+        if (result.length != 0) {
+
+            // Generate left arrow
+            if (page > 1) {
+                paginationItems.push(
+                    <li className="clickable" onClick={() => setPage(page - 1)} key={"arrow-left"}>
+                        <i className="fa-solid fa-caret-left"></i>
+                    </li>
+                )
+            }
+            else {
+                paginationItems.push(
+                    <li className="disable" key={"arrow-left"}>
+                        <i className="fa-solid fa-caret-left"></i>
+                    </li>
+                )
+            }
+
+            if (result.totalPages <= 7) {
+                for (let i = 1; i <= result.totalPages; i++) {
+                    paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                }
+            }
+            else {
+
+                if (page <= 4) {
+                    for (let i = 1; i <= 7; i++) {
+                        if (i == page) {
+                            paginationItems.push(<li key={i} className="selected" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                        else {
+                            paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                    }
+                    paginationItems.push(<li key={"dots2"}>...</li>)
+                    paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>);
+                }
+                else if (result.totalPages - page < 5) {
+                    paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>);
+                    paginationItems.push(<li key={"dots1"}>...</li>)
+                    for (let i = result.totalPages-6; i <= result.totalPages; i++) {
+                        if (i == page) {
+                            paginationItems.push(<li key={i} className="selected" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                        else {
+                            paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                        }
+                    }
+                }
+                else {
+                    paginationItems.push(<li key={1} className="clickable" onClick={() => setPage(1)}>{1}</li>);
+                    paginationItems.push(<li key={"dots1"}>...</li>)
+
+                    for (let i = page-2; i < page; i++) {
+                        paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                    }
+
+                    paginationItems.push(<li key={page} className="selected" onClick={() => setPage(page)}>{page}</li>)
+
+                    for (let i = page+1; i <= page+2; i++) {
+                        paginationItems.push(<li key={i} className="clickable" onClick={() => setPage(i)}>{i}</li>);
+                    }
+                
+                    paginationItems.push(<li key={"dots2"}>...</li>)
+                    paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>);
+                }
+                
+                // Generate right arrow
+                if (page < result.totalPages) {
+                    paginationItems.push(
+                        <li className="clickable" onClick={() => setPage(page + 1)} key={"arrow-right"}>
+                            <i className="fa-solid fa-caret-right"></i>
+                        </li>
+                    )
+                }
+                else {
+                    paginationItems.push(
+                        <li className="disable" key={"arrow-right"}>
+                            <i className="fa-solid fa-caret-right"></i>
+                        </li>
+                    )
+                }
+            }
+            return paginationItems;
+        }
     }
 
     return (
@@ -210,19 +219,7 @@ export default function Users() {
                     </table>
                     <div className="pagination">
                         <ul>
-                            <li className="clickable"><i className="fa-solid fa-caret-left"></i></li>
-                            <li className="clickable">1</li>
-                            <li>...</li>
-
-                            <li className="clickable">10</li>
-                            <li className="clickable">11</li>
-                            <li className="clickable">12</li>
-                            <li className="clickable">13</li>
-                            <li className="clickable">14</li>
-
-                            <li>...</li>
-                            <li className="clickable">67</li>
-                            <li className="clickable"><i className="fa-solid fa-caret-right"></i></li>
+                            { generatePagination() }
                         </ul>
                     </div>
                 </div>
