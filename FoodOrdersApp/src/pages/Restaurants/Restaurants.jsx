@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import "../../styles/restaurants.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
 export default function Restaurants() {
+    
+    const navigate = useNavigate();
 
     const [sorting, setSorting] = useState(["name", 0])
     const [result, setResult] = useState([])
@@ -61,9 +63,9 @@ export default function Restaurants() {
                         }
                         Category
                     </th>
-                    <th onClick={() => sortTable("numberOfMeals")}>
+                    <th onClick={() => sortTable("mealsCount")}>
                         {
-                            sorting[0] == "numberOfMeals" &&
+                            sorting[0] == "mealsCount" &&
                             (
                                 sorting[1] === 0
                                 ? <i className="fa-solid fa-arrow-down-a-z"></i>
@@ -84,8 +86,11 @@ export default function Restaurants() {
                     <tr key={restaurant.id}>
                         <td>{restaurant.name}</td>
                         <td>{restaurant.category}</td>
-                        <td>{restaurant.numberOfMeals}</td>
+                        <td>{restaurant.mealsCount}</td>
                         <td>
+                            <div onClick={() => {navigate(`/meals/${restaurant.id}`)}} className="details">
+                                <i className="fa-solid fa-burger"></i>
+                            </div>
                             <div onClick={deleteRestaurant} className="deleteListElement">
                                 <i className="fa-regular fa-trash-can"></i>
                             </div>

@@ -27,6 +27,9 @@ const More = lazy(() => import("./pages/More.jsx"));
 const Restaurants = lazy(() => import("./pages/Restaurants/Restaurants.jsx"));
 const RestaurantsNew = lazy(() => import("./pages/Restaurants/RestaurantsNew.jsx"));
 
+
+const Meals = lazy(() => import("./pages/Meals/Meals.jsx"));
+
 const Users = lazy(() => import("./pages/Users/Users.jsx"));
 const UsersNew = lazy(() => import("./pages/Users/UsersNew.jsx"));
 
@@ -117,6 +120,14 @@ export default function App() {
             <Route path="/restaurants/new" element={
                 <Suspense fallback={<Fallback />}>
                     <RestaurantsNew />
+                </Suspense>
+            }/>
+
+
+
+            <Route path="/meals/:id" element={
+                <Suspense fallback={<Fallback />}>
+                    <Meals />
                 </Suspense>
             }/>
 
