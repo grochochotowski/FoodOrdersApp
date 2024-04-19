@@ -74,6 +74,7 @@ namespace FoodOrdersApi.Services
                 {
                     Id = u.Id,
                     FirstName = u.FirstName,
+                    SecondName = u.SecondName,
                     LastName = u.LastName,
                     OrganizationId = u.OrganizationId,
                     OrganizationName = u.Organization.Name

@@ -43,7 +43,7 @@ namespace FoodOrdersApi.Services
         // Get all organizations
         public PagedResult<OrganizationListDto> GetAll(int page)
         {
-            var organizations = _context.Restaurants
+            var organizations = _context.Organizations
                 .Skip(10 * (page - 1))
                 .Take(10)
                 .Select(o => new OrganizationListDto
