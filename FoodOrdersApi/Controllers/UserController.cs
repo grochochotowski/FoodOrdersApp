@@ -1,6 +1,8 @@
-﻿using FoodOrdersApi.Models.User;
+﻿using FoodOrdersApi.Entities.Enum;
+using FoodOrdersApi.Models.User;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace FoodOrdersApi.Controllers
 {
@@ -29,9 +31,13 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/user/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<UserListDto>> GetAll()
+        public ActionResult<IEnumerable<UserListDto>> GetAll(
+            [FromQuery] int page,
+            [FromQuery] string? sortBy,
+            [FromQuery] SortDirection sortDireciton
+            )
         {
-            var userDtos = _userService.GetAll();
+            var userDtos = _userService.GetAll(page, sortBy, sortDireciton);
             return Ok(userDtos);
         }
 

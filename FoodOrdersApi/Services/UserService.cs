@@ -1,16 +1,19 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities;
+using FoodOrdersApi.Entities.Enum;
 using FoodOrdersApi.Entities.Objects;
+using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Models.User;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace FoodOrdersApi.Services
 {
     public interface IUserService
     {
         int Create(CreateUserDto dto);
-        IEnumerable<UserListDto> GetAll();
+        PagedResult<UserListDto> GetAll(int page, string sortBy, SortDirection sortDireciton);
         int Delete(int id);
     }
 
@@ -41,10 +44,31 @@ namespace FoodOrdersApi.Services
         }
 
         // Get all user
-        public IEnumerable<UserListDto> GetAll()
+        public PagedResult<UserListDto> GetAll(int page, string sortBy, SortDirection sortDireciton)
         {
-            var users = _context.Users
-                .Include(u => u.Organization)
+            var baseQuery = _context.Users
+                .Include(u => u.Organization);
+
+            if (!string.IsNullOrEmpty(sortBy))
+            {
+                var columnsSelector = new Dictionary<string, Expression<Func<User, object>>>
+                {
+                    { "firstName", u => u.FirstName},
+                    { "secondName", u => u.SecondName},
+                    { "lastName", u => u.LastName},
+                    { "organizationName", u => u.Organization.Name}
+                };
+
+                var selectedColumn = columnsSelector[sortBy];
+
+                baseQuery = sortDireciton == SortDirection.ASC
+                    ? baseQuery.OrderBy(selectedColumn)
+                    : baseQuery.OrderByDescending(selectedColumn);
+            }
+
+            var users = baseQuery
+                .Skip(10 * (page - 1))
+                .Take(10)
                 .Select(u => new UserListDto
                 {
                     Id = u.Id,
@@ -54,9 +78,12 @@ namespace FoodOrdersApi.Services
                     OrganizationName = u.Organization.Name
                 })
                 .ToList();
-            var userDtos = _mapper.Map<List<UserListDto>>(users);
 
-            return userDtos;
+            var totalCount = baseQuery.Count();
+
+            var result = new PagedResult<UserListDto>(users, totalCount, page);
+
+            return result;
         }
 
         // Update user with id
