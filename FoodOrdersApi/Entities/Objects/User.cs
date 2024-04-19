@@ -12,10 +12,6 @@ namespace FoodOrdersApi.Entities.Objects
         public string? SecondName { get; set; }
         [Required(ErrorMessage = "Last name is requierd")]
         public string LastName { get; set; }
-        [Required(ErrorMessage = "Email is requierd")]
-        public string Email { get; set; }
-
-        public string? Note { get; set; }
 
 
 
