@@ -39,7 +39,7 @@ namespace FoodOrdersApi.Services
         {
             var meal = _mapper.Map<Meal>(dto);
 
-            var isOrg = _context.Organizations.FirstOrDefault(o => o.Id == meal.RestaurantId);
+            var isOrg = _context.Restaurants.FirstOrDefault(o => o.Id == dto.RestaurantId);
             if (isOrg == null) return -1;
 
             _context.Meals.Add(meal);
