@@ -18,7 +18,7 @@ namespace FoodCartsApi.Services
     public interface ICartService
     {
         int Create(CreateCartDto dto);
-        PagedResult<CartListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton);
+        PagedResult<CartListDto> GetAll(string filter, int page, string sortBy, SortDirection sortDireciton);
         DetailsCartDto GetById(int id);
         IEnumerable<CartFromOrganizationDto> GetCartFromOrganization(int id);
         int Update(int id, UpdateCartDto dto);
@@ -57,13 +57,16 @@ namespace FoodCartsApi.Services
 
 
         // Get all carts
-        public PagedResult<CartListDto> GetAll(string restaurant, string organization, int page, string sortBy, SortDirection sortDireciton)
+        public PagedResult<CartListDto> GetAll(string filter, int page, string sortBy, SortDirection sortDireciton)
         {
             var baseQuery = _context.Carts
                 .Include(c => c.Restaurant)
                 .Include(c => c.Organization)
-                .Where(c => restaurant == null || c.Restaurant.Name.ToLower().Contains(restaurant))
-                .Where(c => organization == null || c.Organization.Name.ToLower().Contains(organization));
+                .Where
+                    (c => filter == null ||
+                    (c.Restaurant.Name.ToLower().Contains(filter) ||
+                    c.Organization.Name.ToLower().Contains(filter) ||
+                    c.Id.ToString().Contains(filter)));
 
             if (!string.IsNullOrEmpty(sortBy))
             {

@@ -34,14 +34,13 @@ namespace FoodCartsApi.Controllers
         // GET api/cart/all
         [HttpGet("all")]
         public ActionResult<IEnumerable<CartDto>> GetAll(
-            [FromQuery] string? restaurant,
-            [FromQuery] string? organization,
+            [FromQuery] string? filters,
             [FromQuery] int page,
             [FromQuery] string? sortBy,
             [FromQuery] SortDirection sortDireciton
             )
         {
-            var cartDtos = _cartService.GetAll(restaurant, organization, page, sortBy, sortDireciton);
+            var cartDtos = _cartService.GetAll(filters, page, sortBy, sortDireciton);
             return Ok(cartDtos);
         }
 
