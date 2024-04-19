@@ -30,7 +30,12 @@ export default function OrderNew({user}) {
             }
         }
 
-        fetchData();
+        if(user) {
+            fetchData();
+        }
+        else {
+            navigate(`/orders`)
+        }
     }, []);
 
     const [dataToSend, setDataToSend] = useState({})
