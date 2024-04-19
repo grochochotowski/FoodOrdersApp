@@ -62,7 +62,7 @@ export default function Organizations() {
                     <tr key={organization.id}>
                         <td>{organization.name}</td>
                         <td>
-                            <div onClick={deleteOrganization} className="warning">
+                            <div onClick={deleteOrganization} className="deleteListElement">
                                 <i className="fa-regular fa-trash-can"></i>
                             </div>
                         </td>

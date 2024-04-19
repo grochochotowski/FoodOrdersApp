@@ -86,7 +86,7 @@ export default function Restaurants() {
                         <td>{restaurant.category}</td>
                         <td>{restaurant.numberOfMeals}</td>
                         <td>
-                            <div onClick={deleteRestaurant} className="warning">
+                            <div onClick={deleteRestaurant} className="deleteListElement">
                                 <i className="fa-regular fa-trash-can"></i>
                             </div>
                         </td>

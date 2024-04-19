@@ -125,7 +125,8 @@ section h1 {
 
 /* ========== LIST ==========*/
 .edit,
-.details {
+.details,
+.deleteListElement {
     width: 2rem;
     height: 2rem;
 
@@ -145,6 +146,9 @@ section h1 {
 }
 .edit:hover {
     background-color: rgb(168, 127, 33);
+}
+.deleteListElement:hover {
+    background-color: var(--clr-dark-800);
 }
 
 /* ========== PAGINATION ==========*/
@@ -260,6 +264,9 @@ section h1 {
     }
     .edit:hover {
         background-color: rgb(255, 194, 52);
+    }
+    .deleteListElement:hover {
+        background-color: var(--clr-light-300);
     }
     .not-valid {
         border-color: var(--clr-light-300);

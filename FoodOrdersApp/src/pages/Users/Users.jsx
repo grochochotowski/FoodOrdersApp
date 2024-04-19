@@ -98,7 +98,7 @@ export default function Users() {
                         <td>{user.lastName}</td>
                         <td>{user.organizationName}</td>
                         <td>
-                            <div onClick={deleteUser} className="warning">
+                            <div onClick={deleteUser} className="deleteListElement">
                                 <i className="fa-regular fa-trash-can"></i>
                             </div>
                         </td>
