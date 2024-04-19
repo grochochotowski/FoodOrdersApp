@@ -79,6 +79,7 @@
                         type="number"
                         value={quantity}
                         onChange={updateQuantity}
+                        min={0}
                     />
                 </div>
             </div>

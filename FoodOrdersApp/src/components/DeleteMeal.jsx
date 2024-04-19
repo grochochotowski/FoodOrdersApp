@@ -12,7 +12,6 @@ export default function DeleteMeal({order, meal, deleteMealToggle, updateData}) 
 
     async function removeMeal(mealId, quantity) {
 
-        console.log(quantity)
         if (quantity) {
             deleteMealToggle()
 
@@ -55,6 +54,7 @@ export default function DeleteMeal({order, meal, deleteMealToggle, updateData}) 
                     type="number"
                     value={quantity}
                     onChange={updateQuantity}
+                    min={0}
                 />
                 <button className="warning delete-input-btn" onClick={() => removeMeal(meal, quantity)}>Delete</button>
             </div>
