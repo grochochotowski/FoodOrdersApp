@@ -30,8 +30,8 @@ namespace FoodOrdersApi.Controllers
         [HttpGet("all")]
         public ActionResult GetAll()
         {
-            var users = _restaurantService.GetAll();
-            return Ok(users);
+            var restaurants = _restaurantService.GetAll();
+            return Ok(restaurants);
         }
 
         // GET api/restaurant/list
@@ -42,7 +42,7 @@ namespace FoodOrdersApi.Controllers
             [FromQuery] SortDirection sortDireciton
             )
         {
-            var restaurantDtos = _restaurantService.GetAll(page, sortBy, sortDireciton);
+            var restaurantDtos = _restaurantService.GetAllList(page, sortBy, sortDireciton);
             return Ok(restaurantDtos);
         }
 

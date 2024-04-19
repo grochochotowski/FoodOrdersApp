@@ -28,13 +28,21 @@ namespace FoodOrdersApi.Controllers
             return Created($"api/org/get/{orgId}", null);
         }
 
-        // GET api/org/all
+        // POST api/user/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<OrganizationListDto>> GetAll(
+        public ActionResult GetAll()
+        {
+            var organizations = _orgService.GetAll();
+            return Ok(organizations);
+        }
+
+        // GET api/org/list
+        [HttpGet("list")]
+        public ActionResult<IEnumerable<OrganizationListDto>> GetAllList(
             [FromQuery] int page
             )
         {
-            var orgDtos = _orgService.GetAll(page);
+            var orgDtos = _orgService.GetAllList(page);
             return Ok(orgDtos);
         }
 

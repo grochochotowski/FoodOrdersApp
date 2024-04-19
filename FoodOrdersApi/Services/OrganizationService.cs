@@ -5,6 +5,7 @@ using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Models.Organization;
 using FoodOrdersApi.Models.Restaurant;
+using FoodOrdersApi.Models.User;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -13,7 +14,8 @@ namespace FoodOrdersApi.Services
     public interface IOrgService
     {
         int Create(CreateOrganizationDto dto);
-        PagedResult<OrganizationListDto> GetAll(int page);
+        IEnumerable<OrganizationDto> GetAll();
+        PagedResult<OrganizationListDto> GetAllList(int page);
         int Delete(int id);
     }
 
@@ -40,8 +42,23 @@ namespace FoodOrdersApi.Services
             return org.Id;
         }
 
+        // Get all user
+        public IEnumerable<OrganizationDto> GetAll()
+        {
+            var users = _context.Organizations
+                .Select(o => new OrganizationDto
+                {
+                    Id = o.Id,
+                    Name = o.Name
+                })
+                .ToList();
+            var userDtos = _mapper.Map<List<OrganizationDto>>(users);
+
+            return userDtos;
+        }
+
         // Get all organizations
-        public PagedResult<OrganizationListDto> GetAll(int page)
+        public PagedResult<OrganizationListDto> GetAllList(int page)
         {
             var organizations = _context.Organizations
                 .Skip(10 * (page - 1))
