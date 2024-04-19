@@ -28,9 +28,17 @@ namespace FoodOrdersApi.Controllers
             if (userId == -1) return NotFound($"Organization with id {dto.OrganizationId} does not exist");
             return Created($"api/user/get/{userId}", null);
         }
+        
+        // POST api/user/all
+        [HttpPost("all")]
+        public ActionResult GetAll()
+        {
+            var users = _userService.GetAll();
+            return Ok(users);
+        }
 
-        // GET api/user/all
-        [HttpGet("all")]
+        // GET api/user/lsit
+        [HttpGet("lsit")]
         public ActionResult<IEnumerable<UserListDto>> GetAllList(
             [FromQuery] int page,
             [FromQuery] string? sortBy,

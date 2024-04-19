@@ -57,6 +57,7 @@ namespace FoodOrdersApi
             CreateMap<CreateRestaurantDto, Restaurant>();
 
             CreateMap<User, UserListDto>();
+            CreateMap<User, UserDto>();
             CreateMap<CreateUserDto, User>();
         }
     }

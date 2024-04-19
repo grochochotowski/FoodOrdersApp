@@ -13,6 +13,7 @@ namespace FoodOrdersApi.Services
     public interface IUserService
     {
         int Create(CreateUserDto dto);
+        IEnumerable<UserDto> GetAll();
         PagedResult<UserListDto> GetAllList(int page, string sortBy, SortDirection sortDireciton);
         int Delete(int id);
     }
@@ -41,6 +42,25 @@ namespace FoodOrdersApi.Services
             _context.Users.Add(user);
             _context.SaveChanges();
             return user.Id;
+        }
+
+        // Get all user
+        public IEnumerable<UserDto> GetAll()
+        {
+            var users = _context.Users
+                .Include(u => u.Organization)
+                .Select(u => new UserDto
+                {
+                    Id = u.Id,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    OrganizationId = u.OrganizationId,
+                    OrganizationName = u.Organization.Name
+                })
+                .ToList();
+            var userDtos = _mapper.Map<List<UserDto>>(users);
+
+            return userDtos;
         }
 
         // Get all user
