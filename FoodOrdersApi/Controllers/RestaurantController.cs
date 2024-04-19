@@ -1,4 +1,5 @@
-﻿using FoodOrdersApi.Models.Restaurant;
+﻿using FoodOrdersApi.Entities.Enum;
+using FoodOrdersApi.Models.Restaurant;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,9 +28,13 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/restaurant/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<RestaurantListDto>> GetAll()
+        public ActionResult<IEnumerable<RestaurantListDto>> GetAll(
+            [FromQuery] int page,
+            [FromQuery] string? sortBy,
+            [FromQuery] SortDirection sortDireciton
+            )
         {
-            var restaurantDtos = _restaurantService.GetAll();
+            var restaurantDtos = _restaurantService.GetAll(page, sortBy, sortDireciton);
             return Ok(restaurantDtos);
         }
 
