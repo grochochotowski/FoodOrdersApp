@@ -74,6 +74,9 @@
 }
 .order-box img {
     height: 15vh;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
 }
 .order-box .order-info {
     display: flex;

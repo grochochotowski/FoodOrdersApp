@@ -11,7 +11,7 @@ export default function IndividualOrder({order}) {
     
     return (
         <div className="order-box" onClick={() => { navigate(`/orders/details/${order.id}`) }}>
-            <img src={order.img} alt="food-img" />
+            <img src="https://cdn.shopify.com/s/files/1/0070/7032/files/package_f909e305-d702-4012-977f-9513452ed849.png?v=1708976749" alt="food-img" />
             <div className="order-info">
                 <h5>{order.user}</h5>
                 <p>Positions: {order.positions}</p>
