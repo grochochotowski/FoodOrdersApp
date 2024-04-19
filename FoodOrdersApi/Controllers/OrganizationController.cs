@@ -1,4 +1,5 @@
-﻿using FoodOrdersApi.Models.Organization;
+﻿using FoodOrdersApi.Entities.Enum;
+using FoodOrdersApi.Models.Organization;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,9 +30,11 @@ namespace FoodOrdersApi.Controllers
 
         // GET api/org/all
         [HttpGet("all")]
-        public ActionResult<IEnumerable<OrganizationListDto>> GetAll()
+        public ActionResult<IEnumerable<OrganizationListDto>> GetAll(
+            [FromQuery] int page
+            )
         {
-            var orgDtos = _orgService.GetAll();
+            var orgDtos = _orgService.GetAll(page);
             return Ok(orgDtos);
         }
 

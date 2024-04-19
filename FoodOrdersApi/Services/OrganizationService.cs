@@ -1,15 +1,19 @@
 ﻿using AutoMapper;
 using FoodOrdersApi.Entities;
+using FoodOrdersApi.Entities.Enum;
 using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Models.Organization;
+using FoodOrdersApi.Models.Restaurant;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace FoodOrdersApi.Services
 {
     public interface IOrgService
     {
         int Create(CreateOrganizationDto dto);
-        IEnumerable<OrganizationListDto> GetAll();
+        PagedResult<OrganizationListDto> GetAll(int page);
         int Delete(int id);
     }
 
@@ -37,17 +41,23 @@ namespace FoodOrdersApi.Services
         }
 
         // Get all organizations
-        public IEnumerable<OrganizationListDto> GetAll()
+        public PagedResult<OrganizationListDto> GetAll(int page)
         {
-            var organizations = _context.Organizations
+            var organizations = _context.Restaurants
+                .Skip(10 * (page - 1))
+                .Take(10)
                 .Select(o => new OrganizationListDto
                 {
                     Id = o.Id,
                     Name = o.Name
-                });
-            var organizationsDtos = _mapper.Map<List<OrganizationListDto>>(organizations);
+                })
+                .ToList();
 
-            return organizationsDtos;
+            var totalCount = organizations.Count();
+
+            var result = new PagedResult<OrganizationListDto>(organizations, totalCount, page);
+
+            return result;
         }
 
         // Update organization with id
