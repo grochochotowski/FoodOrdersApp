@@ -11,8 +11,6 @@ namespace FoodOrdersApi.Services
     {
         int Create(CreateUserDto dto);
         IEnumerable<UserDto> GetAll();
-        UserDto GetByID(int id);
-        int Update(int id, UpdateUserDto dto);
         int Delete(int id);
     }
 
@@ -58,37 +56,6 @@ namespace FoodOrdersApi.Services
             var userDtos = _mapper.Map<List<UserDto>>(users);
 
             return userDtos;
-        }
-
-        // Get user by ID
-        public UserDto GetByID(int id)
-        {
-            var user = _context.Users.FirstOrDefault(o => o.Id == id);
-            if (user == null) return null;
-
-            var userDto = _mapper.Map<UserDto>(user);
-
-            return userDto;
-        }
-
-        // Update user with id
-        public int Update(int id, UpdateUserDto dto)
-        {
-            var user = _context.Users.FirstOrDefault(o => o.Id == id);
-            if (user == null) return -1;
-
-            var isOrg = _context.Organizations.FirstOrDefault(o => o.Id == dto.OrganizationId);
-            if (isOrg == null) return -2;
-
-            user.FirstName = dto.FirstName ?? user.FirstName;
-            user.SecondName = dto.SecondName ?? user.SecondName;
-            user.LastName = dto.LastName ?? user.LastName;
-            user.Email = dto.Email ?? user.Email;
-            user.Note = dto.Note ?? user.Note;
-            user.OrganizationId = dto.OrganizationId ?? user.OrganizationId;
-
-            _context.SaveChanges();
-            return user.Id;
         }
 
         // Update user with id

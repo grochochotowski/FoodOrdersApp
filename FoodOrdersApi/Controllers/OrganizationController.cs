@@ -35,26 +35,6 @@ namespace FoodOrdersApi.Controllers
             return Ok(orgDtos);
         }
 
-        // GET api/org/get/5
-        [HttpGet("get/{id}")]
-        public ActionResult GetByID(int id)
-        {
-            var orgDto = _orgService.GetByID(id);
-
-            if (orgDto == null) return NotFound($"Organization with id {id} does not exist");
-            return Ok(orgDto);
-        }
-
-        // PUT api/org/update/5
-        [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] UpdateOrganizationDto dto)
-        {
-            var orgId = _orgService.Update(id, dto);
-
-            if (orgId == -1) return NotFound($"Organization with id {id} does not exist");
-            return Ok($"api/org/get/{orgId}");
-        }
-
         // DELETE api/org/delete/5
         [HttpDelete("delete/{id}")]
         public ActionResult Delete(int id)

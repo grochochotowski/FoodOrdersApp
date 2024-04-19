@@ -10,8 +10,6 @@ namespace FoodOrdersApi.Services
     {
         int Create(CreateOrganizationDto dto);
         IEnumerable<OrganizationListDto> GetAll();
-        OrganizationDto GetByID(int id);
-        int Update(int id, UpdateOrganizationDto dto);
         int Delete(int id);
     }
 
@@ -50,30 +48,6 @@ namespace FoodOrdersApi.Services
             var organizationsDtos = _mapper.Map<List<OrganizationListDto>>(organizations);
 
             return organizationsDtos;
-        }
-
-        // Get organization by ID
-        public OrganizationDto GetByID(int id)
-        {
-            var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
-            if (org == null) return null;
-
-            var orgDto = _mapper.Map<OrganizationDto>(org);
-
-            return orgDto;
-        }
-
-        // Update organization with id
-        public int Update(int id, UpdateOrganizationDto dto)
-        {
-            var org = _context.Organizations.FirstOrDefault(o => o.Id == id);
-            if (org == null) return -1;
-
-            org.Name = dto.Name ?? org.Name;
-            org.Note = dto.Note ?? org.Note;
-
-            _context.SaveChanges();
-            return org.Id;
         }
 
         // Update organization with id

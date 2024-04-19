@@ -36,27 +36,6 @@ namespace FoodOrdersApi.Controllers
             return Ok(userDtos);
         }
 
-        // GET api/user/get/5
-        [HttpGet("get/{id}")]
-        public ActionResult GetByID(int id)
-        {
-            var userDto = _userService.GetByID(id);
-
-            if (userDto == null) return NotFound($"User with id {id} does not exist");
-            return Ok(userDto);
-        }
-
-        // PUT api/user/update/5
-        [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] UpdateUserDto dto)
-        {
-            var userId = _userService.Update(id, dto);
-
-            if (userId == -1) return NotFound($"User with id {id} does not exist");
-            if (userId == -2) return NotFound($"Organization with id {dto.OrganizationId} does not exist");
-            return Ok($"api/user/get/{userId}");
-        }
-
         // DELETE api/user/delete/5
         [HttpDelete("delete/{id}")]
         public ActionResult Delete(int id)

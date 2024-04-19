@@ -34,26 +34,6 @@ namespace FoodOrdersApi.Controllers
             return Ok(restaurantDtos);
         }
 
-        // GET api/restaurant/get/5
-        [HttpGet("get/{id}")]
-        public ActionResult GetByID(int id)
-        {
-            var restaurantDto = _restaurantService.GetByID(id);
-
-            if (restaurantDto == null) return NotFound($"Retaurant with id {id} does not exist");
-            return Ok(restaurantDto);
-        }
-
-        // PUT api/restaurant/update/5
-        [HttpPut("update/{id}")]
-        public ActionResult Update(int id, [FromBody] UpdateRestaurantDto dto)
-        {
-            var restaurantId = _restaurantService.Update(id, dto);
-
-            if (restaurantId == -1) return NotFound($"Retaurant with id {id} does not exist");
-            return Ok($"api/restaurant/get/{restaurantId}");
-        }
-
         // DELETE api/restaurant/delete/5
         [HttpDelete("delete/{id}")]
         public ActionResult Delete(int id)
