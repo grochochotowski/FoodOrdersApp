@@ -71,6 +71,7 @@ namespace FoodOrdersApi.Services
             {
                 var columnsSelector = new Dictionary<string, Expression<Func<Order, object>>>
                 {
+                    { "id", o => o.Id },
                     { "name", o => new { o.User.FirstName, o.User.LastName }},
                     { "organization", o => o.Cart.Organization.Name},
                     { "restaurant", o => o.Cart.Restaurant.Name},

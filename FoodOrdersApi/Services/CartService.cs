@@ -69,6 +69,7 @@ namespace FoodCartsApi.Services
             {
                 var columnsSelector = new Dictionary<string, Expression<Func<Cart, object>>>
                 {
+                    { "id", c => c.Id},
                     { "restaurant", c => c.Restaurant.Name},
                     { "organization", c => c.Organization.Name},
                     { "totalCartPrice", c => c.TotalCartPrice},

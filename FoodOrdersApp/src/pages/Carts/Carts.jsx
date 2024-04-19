@@ -55,6 +55,17 @@ export default function Carts() {
         return (
             <thead>
                 <tr>
+                    <th className="thin" onClick={() => sortTable("id")}>
+                        {
+                            sorting[0] == "id" &&
+                            (
+                                sorting[1] === 0
+                                ? <i className="fa-solid fa-arrow-down-a-z"></i>
+                                : <i className="fa-solid fa-arrow-up-a-z"></i>
+                            )
+                        }
+                        Cart
+                    </th>
                     <th onClick={() => sortTable("organization")}>
                         {
                             sorting[0] == "organization" &&
@@ -109,6 +120,7 @@ export default function Carts() {
             <tbody>
                 {result.items && result.items.map((cart) => (
                     <tr key={cart.id}>
+                        <td>{cart.id}</td>
                         <td>{cart.organization}</td>
                         <td>{cart.restaurant}</td>
                         <td>{cart.totalCartPrice} / {cart.minPrice}</td>
