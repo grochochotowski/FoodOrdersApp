@@ -9,10 +9,11 @@ import "../../styles/App.css"
 
 export default function OrderNew({user}) {
 
-    const params = useParams();
     const navigate = useNavigate();
     const [newOrderInputs, setNewOrderInputs] = useState({
         "notes": "",
+        "cartId": "",
+        "userId": "",
     })
     const [carts, setCarts] = useState([]);
 
@@ -32,9 +33,6 @@ export default function OrderNew({user}) {
         fetchData();
     }, []);
 
-    function newMeal() {
-        alert("new meal")
-    }
     const [dataToSend, setDataToSend] = useState({})
 
     function handleInputChange(inputId) {
@@ -72,16 +70,13 @@ export default function OrderNew({user}) {
         if (updatedDataToSend.notes === "") {
             updatedDataToSend = { ...updatedDataToSend, notes: null };
         }
-        setDataToSend(updatedDataToSend);
-
-
-        if (valid) sendData()
-        else alert("not-valid")
+        updatedDataToSend.userId = user.id
+        
+        if (valid) sendData(updatedDataToSend)
     }
-    function sendData() {
-        alert("API call happening")
+    function sendData(updatedDataToSend) {
 
-        console.log(dataToSend);
+        console.log(updatedDataToSend);
     }
 
     return (
