@@ -17,7 +17,6 @@ namespace FoodOrdersApi.Controllers
 
 
 
-
         // POST api/restaurant/create
         [HttpPost("create")]
         public ActionResult Create([FromBody] CreateRestaurantDto dto)
