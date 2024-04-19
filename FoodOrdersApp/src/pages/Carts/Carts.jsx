@@ -118,8 +118,8 @@ export default function Carts() {
                         <td>{cart.id}</td>
                         <td>{cart.organization}</td>
                         <td>{cart.restaurant}</td>
-                        <td>{cart.totalCartPrice} / {cart.minPrice}</td>
-                        <td>{cart.deliveryPrice}</td>
+                        <td>{cart.totalCartPrice.toFixed(2)} / {cart.minPrice.toFixed(2)}</td>
+                        <td>{cart.deliveryPrice.toFixed(2)}</td>
                         <td>
                             <Link to={`details/${cart.id}`} className="details">
                                 <i className="fa-solid fa-info"></i>

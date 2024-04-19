@@ -45,14 +45,14 @@ export default function CartsDetails() {
                     <div className="details-left">
                         <div className="line top-bottom">
                             <h5>Cost:</h5>
-                            <p>{cartDetails.totalCartPrice}/{cartDetails.minPrice} zł</p>
+                            <p>{parseFloat(cartDetails.totalCartPrice).toFixed(2)}/{cartDetails.minPrice} zł</p>
                             <h5>Delivery:</h5>
                             {
                                 cartDetails.deliveryPrice == 0
                                 ? <p>Free</p>
                                 : <p>
                                     {cartDetails.deliveryPrice}
-                                    zł - {cartDetails.freeDeliveryMinPrice - cartDetails.totalCartPrice}zł
+                                    zł - {(cartDetails.freeDeliveryMinPrice - cartDetails.totalCartPrice).toFixed(2)}zł
                                     to free delivery
                                 </p>
                             }

@@ -34,8 +34,6 @@ export default function CartsNew({user}) {
             ...prev,
             [inputId]: value
         }))
-
-        console.log(newCartInputs)
     }
     function handleSelectChange(event, selectId) {
         const value = parseInt(event.target.value)
