@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 
 import MealBoxEdit from "../../components/MealBoxEdit";
@@ -11,13 +11,26 @@ export default function OrderNew({user}) {
 
     const params = useParams();
     const navigate = useNavigate();
-
     const [newOrderInputs, setNewOrderInputs] = useState({
         "notes": "",
-        "cartId" : 0,
-        "positions" : 0
     })
-    const [meals, setMeals] = useState([])
+    const [carts, setCarts] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            let apiCall = `https://localhost:7157/api/cart/organization/${user.organizationId}`
+            try {
+                const response = await fetch(apiCall)
+                const data = await response.json()
+                setCarts(data)
+
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
+        }
+
+        fetchData();
+    }, []);
 
     function newMeal() {
         alert("new meal")
@@ -39,6 +52,7 @@ export default function OrderNew({user}) {
             ...prev,
             [selectId]: value
         }))
+        console.log(newOrderInputs)
     }
 
 
@@ -70,10 +84,6 @@ export default function OrderNew({user}) {
         console.log(dataToSend);
     }
 
-    function deleteOrder() {
-        alert("deleting")
-    }
-
     return (
         <div className="container">
             <section className="box">
@@ -93,12 +103,10 @@ export default function OrderNew({user}) {
                                         onChange={(event) => handleSelectChange(event, "cartId")}
                                     >
                                         <option value={0}>--- Choose cart ---</option>
-                                        <option value={1}>Cart 1</option>
-                                        <option value={2}>Cart 2</option>
-                                        <option value={3}>Cart 3</option>
-                                        <option value={4}>Cart 4</option>
-                                        <option value={5}>Cart 5</option>
-                                        <option value={6}>Cart 6</option>
+                                        {carts &&
+                                        (carts.map(cart => (
+                                            <option key={cart.id} value={cart.id}>({cart.id}) {cart.organization} - {cart.restaurant}</option>
+                                        )))}
                                     </select>
                             </div> {/* cartId */}
 
@@ -123,18 +131,6 @@ export default function OrderNew({user}) {
                         <div className="control-buttons">
                             <button onClick={() => {navigate("/orders")}}>List</button>
                             <button className="info" onClick={() => validate()}>Create</button>
-                        </div>
-                    </div>
-                    <div className="order-right">
-                        <div className="meals-shortcuts">
-                            <div className="new-meal" onClick={() => newMeal()}>
-                                <i className="fa-solid fa-plus"></i>
-                            </div>
-                            {
-                                meals.map((meal) => (
-                                    <MealBoxEdit key={meal.id} meal={meal} />
-                                ))
-                            }
                         </div>
                     </div>
                 </div>
