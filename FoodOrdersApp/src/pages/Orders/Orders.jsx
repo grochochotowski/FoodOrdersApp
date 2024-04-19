@@ -55,6 +55,17 @@ export default function Orders() {
         return (
             <thead>
                 <tr>
+                    <th className="thin" onClick={() => sortTable("id")}>
+                        {
+                            sorting[0] == "id" &&
+                            (
+                                sorting[1] === 0
+                                ? <i className="fa-solid fa-arrow-down-a-z"></i>
+                                : <i className="fa-solid fa-arrow-up-a-z"></i>
+                            )
+                        }
+                        Order
+                    </th>
                     <th className="wide" onClick={() => sortTable("name")}>
                         {
                             sorting[0] == "name" &&
@@ -120,10 +131,11 @@ export default function Orders() {
             <tbody>
                 {result.items && result.items.map((order) => (
                     <tr key={order.id}>
+                        <td>{order.id}</td>
                         <td>{order.name}</td>
                         <td>{order.organization}</td>
                         <td>{order.restaurant}</td>
-                        <td>{order.totalPrice}</td>
+                        <td>{order.totalPrice.toFixed(2)}</td>
                         <td>{order.positions}</td>
                         <td>
                             <Link to={`details/${order.id}`} className="details">

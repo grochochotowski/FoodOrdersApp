@@ -9,10 +9,13 @@
 }
 
 .container.orders th.wide {
-    width: calc((100% - 7% - 15% - 15%) / 3)
+    width: calc((100% - 7% - 15% - 15% - 10%) / 3);
 }
 .container.orders th.medium {
    width: 15%;
+}
+.container.orders th.thin {
+    width: 10%;
 }
 
 .order-info-box {
