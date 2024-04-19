@@ -38,8 +38,6 @@ export default function OrderNew({user}) {
         }
     }, [user]);
 
-    const [dataToSend, setDataToSend] = useState({})
-
     function handleInputChange(inputId) {
         const value = document.getElementById(inputId).value;
 
@@ -55,14 +53,13 @@ export default function OrderNew({user}) {
             ...prev,
             [selectId]: value
         }))
-        console.log(newOrderInputs)
     }
 
 
     function validate() {
         let valid = true;
 
-        if (newOrderInputs.cartId === 0) {
+        if (newOrderInputs.cartId === 0 || newOrderInputs.cartId === "") {
             valid = false
             document.getElementById("cartId").classList.add("not-valid")
         }
@@ -88,14 +85,16 @@ export default function OrderNew({user}) {
             },
             body: JSON.stringify(updatedDataToSend)
         }
-        const response = await fetch(apiCall, requestOption)
-        const responseJson = await response.json()
+        try {
+            const response = await fetch(apiCall, requestOption);
+            console.log(response);
+            
+            const locationHeader = response.headers.get('Location');
+            navigate(`/orders/edit/${locationHeader}`);
 
-        if (!response.ok) {
-            throw new Error('Error fetching data');
+        } catch (error) {
+            console.error('Error sending data:', error);
         }
-
-        navigate(`/orders/edit/${responseJson.newOrderId}`)
     }
 
     return (
