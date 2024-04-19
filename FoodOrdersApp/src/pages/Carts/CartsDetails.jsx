@@ -48,7 +48,7 @@ export default function CartsDetails() {
                             <p>{parseFloat(cartDetails.totalCartPrice).toFixed(2)}/{cartDetails.minPrice} zł</p>
                             <h5>Delivery:</h5>
                             {
-                                cartDetails.deliveryPrice == 0
+                                cartDetails.totalCartPrice > cartDetails.freeDeliveryMinPrice
                                 ? <p>Free</p>
                                 : <p>
                                     {cartDetails.deliveryPrice}
