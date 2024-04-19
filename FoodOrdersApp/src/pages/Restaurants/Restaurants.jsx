@@ -86,12 +86,9 @@ export default function Restaurants() {
                         <td>{restaurant.category}</td>
                         <td>{restaurant.numberOfMeals}</td>
                         <td>
-                            <Link to={`details/${restaurant.id}`} className="details">
-                                <i className="fa-solid fa-info"></i>
-                            </Link>
-                            <Link to={`edit/${restaurant.id}`} className="edit">
-                                <i className="fa-regular fa-pen-to-square"></i>
-                            </Link>
+                            <div onClick={deleteRestaurant} className="warning">
+                                <i className="fa-regular fa-trash-can"></i>
+                            </div>
                         </td>
                     </tr>
                 )}
@@ -187,6 +184,10 @@ export default function Restaurants() {
             }
             return paginationItems;
         }
+    }
+
+    function deleteRestaurant() {
+        alert("delete");
     }
 
     return (

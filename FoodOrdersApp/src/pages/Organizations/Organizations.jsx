@@ -62,12 +62,9 @@ export default function Organizations() {
                     <tr key={organization.id}>
                         <td>{organization.name}</td>
                         <td>
-                            <Link to={`details/${organization.id}`} className="details">
-                                <i className="fa-solid fa-info"></i>
-                            </Link>
-                            <Link to={`edit/${organization.id}`} className="edit">
-                                <i className="fa-regular fa-pen-to-square"></i>
-                            </Link>
+                            <div onClick={deleteOrganization} className="warning">
+                                <i className="fa-regular fa-trash-can"></i>
+                            </div>
                         </td>
                     </tr>
                 )}
@@ -163,6 +160,10 @@ export default function Organizations() {
             }
             return paginationItems;
         }
+    }
+
+    function deleteOrganization() {
+        alert("delete");
     }
 
     return (

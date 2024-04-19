@@ -98,12 +98,9 @@ export default function Users() {
                         <td>{user.lastName}</td>
                         <td>{user.organizationName}</td>
                         <td>
-                            <Link to={`details/${user.id}`} className="details">
-                                <i className="fa-solid fa-info"></i>
-                            </Link>
-                            <Link to={`edit/${user.id}`} className="edit">
-                                <i className="fa-regular fa-pen-to-square"></i>
-                            </Link>
+                            <div onClick={deleteUser} className="warning">
+                                <i className="fa-regular fa-trash-can"></i>
+                            </div>
                         </td>
                     </tr>
                 )}
@@ -199,6 +196,10 @@ export default function Users() {
             }
             return paginationItems;
         }
+    }
+
+    function deleteUser() {
+        alert("delete");
     }
 
     return (
