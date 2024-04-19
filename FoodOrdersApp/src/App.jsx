@@ -26,17 +26,12 @@ const More = lazy(() => import("./pages/More.jsx"));
 
 const Restaurants = lazy(() => import("./pages/Restaurants/Restaurants.jsx"));
 const RestaurantsNew = lazy(() => import("./pages/Restaurants/RestaurantsNew.jsx"));
-const RestaurantsDetails = lazy(() => import("./pages/Restaurants/RestaurantsDetails.jsx"));
-const RestaurantsEdit = lazy(() => import("./pages/Restaurants/RestaurantsEdit.jsx"));
 
 const Users = lazy(() => import("./pages/Users/Users.jsx"));
 const UsersNew = lazy(() => import("./pages/Users/UsersNew.jsx"));
-const UsersDetails = lazy(() => import("./pages/Users/UsersDetails.jsx"));
-const UsersEdit = lazy(() => import("./pages/Users/UsersEdit.jsx"));
 
 const Organizations = lazy(() => import("./pages/Organizations/Organizations.jsx"));
 const OrganizationsNew = lazy(() => import("./pages/Organizations/OrganizationsNew.jsx"));
-const OrganizationsEdit = lazy(() => import("./pages/Organizations/OrganizationsEdit.jsx"));
 
 export default function App() {
 
@@ -124,16 +119,6 @@ export default function App() {
                     <RestaurantsNew />
                 </Suspense>
             }/>
-            <Route path="/restaurants/details/:id" element={
-                <Suspense fallback={<Fallback />}>
-                    <RestaurantsDetails />
-                </Suspense>
-            }/>
-            <Route path="/restaurants/edit/:id" element={
-                <Suspense fallback={<Fallback />}>
-                    <RestaurantsEdit />
-                </Suspense>
-            }/>
 
 
 
@@ -145,16 +130,6 @@ export default function App() {
             <Route path="/users/new" element={
                 <Suspense fallback={<Fallback />}>
                     <UsersNew />
-                </Suspense>
-            }/>
-            <Route path="/users/details/:id" element={
-                <Suspense fallback={<Fallback />}>
-                    <UsersDetails />
-                </Suspense>
-            }/>
-            <Route path="/users/edit/:id" element={
-                <Suspense fallback={<Fallback />}>
-                    <UsersEdit />
                 </Suspense>
             }/>
 
@@ -170,11 +145,9 @@ export default function App() {
                     <OrganizationsNew />
                 </Suspense>
             }/>
-            <Route path="/organizations/edit/:id" element={
-                <Suspense fallback={<Fallback />}>
-                    <OrganizationsEdit />
-                </Suspense>
-            }/>
+
+
+
         </Routes>
     </div>
   );
