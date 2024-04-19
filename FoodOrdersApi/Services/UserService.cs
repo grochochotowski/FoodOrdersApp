@@ -47,7 +47,8 @@ namespace FoodOrdersApi.Services
         public PagedResult<UserListDto> GetAll(int page, string sortBy, SortDirection sortDireciton)
         {
             var baseQuery = _context.Users
-                .Include(u => u.Organization);
+                .Include(u => u.Organization)
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(sortBy))
             {
