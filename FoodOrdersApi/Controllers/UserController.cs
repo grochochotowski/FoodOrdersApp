@@ -30,7 +30,7 @@ namespace FoodOrdersApi.Controllers
         }
         
         // POST api/user/all
-        [HttpPost("all")]
+        [HttpGet("all")]
         public ActionResult GetAll()
         {
             var users = _userService.GetAll();
