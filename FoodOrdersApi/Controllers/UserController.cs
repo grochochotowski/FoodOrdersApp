@@ -37,8 +37,8 @@ namespace FoodOrdersApi.Controllers
             return Ok(users);
         }
 
-        // GET api/user/lsit
-        [HttpGet("lsit")]
+        // GET api/user/list
+        [HttpGet("list")]
         public ActionResult<IEnumerable<UserListDto>> GetAllList(
             [FromQuery] int page,
             [FromQuery] string? sortBy,
