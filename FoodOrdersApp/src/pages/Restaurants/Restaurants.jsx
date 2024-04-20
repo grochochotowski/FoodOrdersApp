@@ -91,7 +91,7 @@ export default function Restaurants() {
                             <div onClick={() => {navigate(`/meals/${restaurant.id}`)}} className="details">
                                 <i className="fa-solid fa-burger"></i>
                             </div>
-                            <div onClick={deleteRestaurant} className="deleteListElement">
+                            <div onClick={() => deleteRestaurant(restaurant.id)} className="deleteListElement">
                                 <i className="fa-regular fa-trash-can"></i>
                             </div>
                         </td>
@@ -191,8 +191,12 @@ export default function Restaurants() {
         }
     }
 
-    function deleteRestaurant() {
-        alert("delete");
+    async function deleteRestaurant(restaurantId) {
+        var apiCall = `https://localhost:7157/api/restaurant/delete/${restaurantId}`
+        let requestOption = { method: 'DELETE' }
+        const response = await fetch(apiCall, requestOption)
+        console.log(response)
+        fetchData()
     }
 
     return (
