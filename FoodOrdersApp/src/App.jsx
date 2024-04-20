@@ -50,6 +50,14 @@ export default function App() {
         <NavBar handleUserChange={handleUserChange} user={user}/>
 
         <Routes>
+            <Route path="/fallback" element={
+                <Suspense fallback={<Fallback />}>
+                    <Fallback />
+                </Suspense>
+            }/>
+
+
+
             <Route path="/log-in" element={
                 <Suspense fallback={<Fallback />}>
                     <LogIn />
