@@ -6,12 +6,14 @@
 
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #19242e;
+    background-color: var(--clr-dark-bg);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    --clr-dark-bg: #19242e;
 
     --clr-dark-900: #ac7f03;
     --clr-dark-800: #be3838;

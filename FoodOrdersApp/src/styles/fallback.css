@@ -1,0 +1,44 @@
+.fallback {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+.fallback .bg {
+    position: absolute;
+    width: 25vw;
+    aspect-ratio: 1;
+
+    border-radius: 10px;
+    border: 5px solid rgba(255, 255, 255, 0.87);
+
+    z-index: 10;
+
+    animation: rotate 2.5s infinite ease-in-out;
+}
+
+.fallback .text {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    width: 50vw;
+    padding: 2vh 0;
+
+    background-color: var(--clr-dark-bg);
+
+    z-index: 12;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
