@@ -98,7 +98,7 @@ export default function Users() {
                         <td>{user.lastName}</td>
                         <td>{user.organizationName}</td>
                         <td>
-                            <div onClick={deleteUser} className="deleteListElement">
+                            <div onClick={() => deleteUser(user.id)} className="deleteListElement">
                                 <i className="fa-regular fa-trash-can"></i>
                             </div>
                         </td>
@@ -198,8 +198,12 @@ export default function Users() {
         }
     }
 
-    function deleteUser() {
-        alert("delete");
+    async function deleteUser(userId) {
+        var apiCall = `https://localhost:7157/api/user/delete/${userId}`
+        let requestOption = { method: 'DELETE' }
+        const response = await fetch(apiCall, requestOption)
+        console.log(response)
+        fetchData()
     }
 
     return (
