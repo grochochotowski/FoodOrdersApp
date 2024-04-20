@@ -1,7 +1,10 @@
 import React from 'react'
 
 export default function Fallback() {
-  return (
-    <div>Fallback</div>
-  )
+    return (
+        <div className='fallback'>
+            <div className="bg"></div>
+            <h1>Loading page...</h1>
+        </div>
+    )
 }
