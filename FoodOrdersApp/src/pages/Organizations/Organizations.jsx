@@ -62,7 +62,7 @@ export default function Organizations() {
                     <tr key={organization.id}>
                         <td>{organization.name}</td>
                         <td>
-                            <div onClick={deleteOrganization} className="deleteListElement">
+                            <div onClick={() => deleteOrganization(organization.id)} className="deleteListElement">
                                 <i className="fa-regular fa-trash-can"></i>
                             </div>
                         </td>
@@ -162,8 +162,12 @@ export default function Organizations() {
         }
     }
 
-    function deleteOrganization() {
-        alert("delete");
+    async function deleteOrganization(organizationId) {
+        var apiCall = `https://localhost:7157/api/organization/delete/${organizationId}`
+        let requestOption = { method: 'DELETE' }
+        const response = await fetch(apiCall, requestOption)
+        console.log(response)
+        fetchData()
     }
 
     return (
