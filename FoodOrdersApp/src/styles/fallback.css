@@ -33,6 +33,21 @@
     z-index: 12;
 }
 
+.loader {
+    text-align: center;
+}
+
+.loader::after {
+    content: "Loading page";
+    animation: loading 2.5s infinite linear;
+}
+
+@keyframes loading {
+    25% { content: "Loading page."; }
+    50% { content: "Loading page.."; }
+    75% { content: "Loading page..."; }
+}
+
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
@@ -42,3 +57,12 @@
     }
 }
 
+
+@media (prefers-color-scheme: light) {
+    .fallback .text {
+      background-color: var(--clr-light-800);
+    }
+    .fallback .bg {
+        border: 5px solid rgba(0, 0, 0, 0.5);
+    }
+}
