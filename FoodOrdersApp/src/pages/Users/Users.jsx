@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+
+import UsersNew from "./UsersNew.jsx"
 
 import "../../styles/users.css"
 import "../../styles/index.css"
@@ -10,6 +11,7 @@ export default function Users() {
     const [sorting, setSorting] = useState(["firstName", 0])
     const [result, setResult] = useState([])
     const [page, setPage] = useState(1);
+    const [openNew, setOpenNew] = useState(false);
 
     function sortTable(column) {
         setSorting(prev => {
@@ -205,6 +207,18 @@ export default function Users() {
         console.log(response)
         fetchData()
     }
+    
+    useEffect(() => {
+        function handleClickOutside(event) {
+          if (event.target.closest(".small-container") && !event.target.closest(".box")) setOpenNew(false);
+        }
+    
+        document.addEventListener("click", handleClickOutside);
+    
+        return () => {
+          document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
 
     return (
         <div className="container users">
@@ -212,7 +226,7 @@ export default function Users() {
                 <h1>Users</h1>
                 <div className="filter">
                     <div className="add-new">
-                        <Link to="new" className="button">New</Link>
+                        <button onClick={() => setOpenNew(true)}>New</button>
                     </div>
                 </div>
 
@@ -228,6 +242,9 @@ export default function Users() {
                     </div>
                 </div>
             </section>
+            {
+                openNew && <UsersNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()}/>
+            }
         </div>
     )
 }

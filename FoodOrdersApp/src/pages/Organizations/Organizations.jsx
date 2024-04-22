@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 
 import OrganizationsNew from "./OrganizationsNew.jsx"
 
@@ -172,7 +171,6 @@ export default function Organizations() {
         console.log(response)
         fetchData()
     }
-
     
     useEffect(() => {
         function handleClickOutside(event) {
