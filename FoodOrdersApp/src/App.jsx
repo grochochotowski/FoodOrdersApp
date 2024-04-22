@@ -123,38 +123,14 @@ export default function App() {
                     <Restaurants />
                 </Suspense>
             }/>
-
-
-
-            <Route path="/meals/:id" element={
-                <Suspense fallback={<Fallback />}>
-                    <Meals />
-                </Suspense>
-            }/>
-
-
-
             <Route path="/users" element={
                 <Suspense fallback={<Fallback />}>
                     <Users />
                 </Suspense>
             }/>
-            <Route path="/users/new" element={
-                <Suspense fallback={<Fallback />}>
-                    <UsersNew />
-                </Suspense>
-            }/>
-
-
-
             <Route path="/organizations" element={
                 <Suspense fallback={<Fallback />}>
                     <Organizations />
-                </Suspense>
-            }/>
-            <Route path="/organizations/new" element={
-                <Suspense fallback={<Fallback />}>
-                    <OrganizationsNew />
                 </Suspense>
             }/>
 
