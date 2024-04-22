@@ -1,5 +1,5 @@
 // MAIN IMPORTS
-import React, { Suspense, lazy, useState } from "react";
+import React, { Suspense, lazy, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // STYLES
@@ -31,6 +31,23 @@ const Organizations = lazy(() => import("./pages/Organizations/Organizations.jsx
 export default function App() {
 
     const [user, setUser] = useState(0);
+    const [users, setUsers] = useState([])
+
+    async function fetchData() {
+        let apiCall = `https://localhost:7157/api/user/all`
+        try {
+            const response = await fetch(apiCall)
+            const data = await response.json()
+            setUsers(data)
+            handleUserChange(data[0])
+        } catch (error) {
+            console.error('Error fetching data:', error)
+        }
+    }
+    useEffect(() => {
+
+        fetchData();
+    }, []);
 
     function handleUserChange(chosenUser) {
         setUser(chosenUser)
@@ -39,7 +56,7 @@ export default function App() {
     return (
         <div className="main-container">
 
-            <NavBar handleUserChange={handleUserChange} user={user}/>
+            <NavBar handleUserChange={handleUserChange} user={user} users={users}/>
 
             <Routes>
                 <Route path="/fallback" element={
@@ -119,7 +136,7 @@ export default function App() {
                 }/>
                 <Route path="/users" element={
                     <Suspense fallback={<Fallback />}>
-                        <Users />
+                        <Users updateUsers={() => fetchData()}/>
                     </Suspense>
                 }/>
                 <Route path="/organizations" element={

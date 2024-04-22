@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-export default function UsersNew({hideNew, updateData}) {
+export default function UsersNew({hideNew, updateData, updateUsers}) {
 
     const [inputs, setInputs] = useState({
         "firstName" : "",
@@ -88,6 +88,7 @@ export default function UsersNew({hideNew, updateData}) {
         }
         hideNew()
         updateData()
+        updateUsers()
     }
 
     function generateOrganizationSelect() {

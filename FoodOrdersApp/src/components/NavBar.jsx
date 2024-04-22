@@ -5,25 +5,7 @@ import "../styles/navBar.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
-export default function NavBar({handleUserChange, user}) {
-
-    const [users, setUsers] = useState([])
-
-    useEffect(() => {
-        async function fetchData() {
-            let apiCall = `https://localhost:7157/api/user/all`
-            try {
-                const response = await fetch(apiCall)
-                const data = await response.json()
-                setUsers(data)
-                handleUserChange(data[0])
-            } catch (error) {
-                console.error('Error fetching data:', error)
-            }
-        }
-
-        fetchData();
-    }, []);
+export default function NavBar({handleUserChange, user, users}) {
 
     function changeUser(event) {
         const selectedUserId = event.target.value;

@@ -6,7 +6,7 @@ import "../../styles/users.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function Users() {
+export default function Users({updateUsers}) {
 
     const [sorting, setSorting] = useState(["firstName", 0])
     const [result, setResult] = useState([])
@@ -206,6 +206,7 @@ export default function Users() {
         const response = await fetch(apiCall, requestOption)
         console.log(response)
         fetchData()
+        updateUsers()
     }
     
     useEffect(() => {
@@ -243,7 +244,7 @@ export default function Users() {
                 </div>
             </section>
             {
-                openNew && <UsersNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()}/>
+                openNew && <UsersNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()} updateUsers={() => updateUsers()}/>
             }
         </div>
     )
