@@ -26,13 +26,9 @@ const More = lazy(() => import("./pages/More.jsx"));
 
 const Restaurants = lazy(() => import("./pages/Restaurants/Restaurants.jsx"));
 
-const Meals = lazy(() => import("./pages/Meals/Meals.jsx"));
-
 const Users = lazy(() => import("./pages/Users/Users.jsx"));
-const UsersNew = lazy(() => import("./pages/Users/UsersNew.jsx"));
 
 const Organizations = lazy(() => import("./pages/Organizations/Organizations.jsx"));
-const OrganizationsNew = lazy(() => import("./pages/Organizations/OrganizationsNew.jsx"));
 
 export default function App() {
 
