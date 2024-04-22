@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
+import OrganizationsNew from "./OrganizationsNew.jsx"
+
 import "../../styles/organizations.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
@@ -10,6 +12,7 @@ export default function Organizations() {
     const [sorting, setSorting] = useState(["name", 0])
     const [result, setResult] = useState([])
     const [page, setPage] = useState(1);
+    const [openNew, setOpenNew] = useState(false);
 
     function sortTable(column) {
         setSorting(prev => {
@@ -170,13 +173,26 @@ export default function Organizations() {
         fetchData()
     }
 
+    
+    useEffect(() => {
+        function handleClickOutside(event) {
+          if (event.target.closest(".small-container") && !event.target.closest(".box")) setOpenNew(false);
+        }
+    
+        document.addEventListener("click", handleClickOutside);
+    
+        return () => {
+          document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
     return (
         <div className="container organizations">
             <section className="box">
                 <h1>Organizations</h1>
                 <div className="filter">
                     <div className="add-new">
-                        <Link to="new" className="button">New</Link>
+                        <button onClick={() => setOpenNew(true)}>New</button>
                     </div>
                 </div>
 
@@ -192,6 +208,9 @@ export default function Organizations() {
                     </div>
                 </div>
             </section>
+            {
+                openNew && <OrganizationsNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()}/>
+            }
         </div>
     )
 }

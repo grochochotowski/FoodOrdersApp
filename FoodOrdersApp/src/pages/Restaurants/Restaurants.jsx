@@ -220,7 +220,7 @@ export default function Restaurants() {
                 <h1>Restaurants</h1>
                 <div className="filter">
                     <div className="add-new">
-                        <div className="button" onClick={() => setOpenNew(true)}>New</div>
+                        <button onClick={() => setOpenNew(true)}>New</button>
                     </div>
                 </div>
 
