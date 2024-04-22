@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+
+import RestaurantsNew from "./RestaurantsNew.jsx"
 
 import "../../styles/restaurants.css"
 import "../../styles/index.css"
@@ -12,6 +14,7 @@ export default function Restaurants() {
     const [sorting, setSorting] = useState(["name", 0])
     const [result, setResult] = useState([])
     const [page, setPage] = useState(1);
+    const [openNew, setOpenNew] = useState(false);
 
     function sortTable(column) {
         setSorting(prev => {
@@ -199,13 +202,25 @@ export default function Restaurants() {
         fetchData()
     }
 
+    useEffect(() => {
+        function handleClickOutside(event) {
+          if (event.target.closest(".small-container") && !event.target.closest(".box")) setOpenNew(false);
+        }
+    
+        document.addEventListener("click", handleClickOutside);
+    
+        return () => {
+          document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
     return (
         <div className="container restaurants">
             <section className="box">
                 <h1>Restaurants</h1>
                 <div className="filter">
                     <div className="add-new">
-                        <Link to="new" className="button">New</Link>
+                        <div className="button" onClick={() => setOpenNew(true)}>New</div>
                     </div>
                 </div>
 
@@ -221,6 +236,9 @@ export default function Restaurants() {
                     </div>
                 </div>
             </section>
+            {
+                openNew && <RestaurantsNew />
+            }
         </div>
     )
 }

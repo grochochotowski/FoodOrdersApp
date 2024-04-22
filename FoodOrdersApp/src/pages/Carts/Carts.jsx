@@ -231,7 +231,7 @@ export default function Carts() {
                 <h1>Carts</h1>
                 <div className="filter">
                     <div className="add-new">
-                        <Link to="new"className="button">New cart</Link>
+                        <Link to="new" className="button">New cart</Link>
                     </div>
                     <div className="inputs">
                         <div className="single-filter">

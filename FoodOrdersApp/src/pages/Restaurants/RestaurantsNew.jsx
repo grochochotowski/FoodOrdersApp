@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function RestaurantsNew() {
     return (
-        <div>RestaurantsNew</div>
+        <div className="small-container">
+            <div className="box">
+                
+            </div>
+        </div>
     )
 }
