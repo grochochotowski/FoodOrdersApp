@@ -237,7 +237,7 @@ export default function Restaurants() {
                 </div>
             </section>
             {
-                openNew && <RestaurantsNew />
+                openNew && <RestaurantsNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()}/>
             }
         </div>
     )

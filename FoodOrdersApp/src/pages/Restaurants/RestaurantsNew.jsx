@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-export default function RestaurantsNew() {
+export default function RestaurantsNew({hideNew, updateData}) {
 
     const [inputs, setInputs] = useState({
         "name" : "",
@@ -16,7 +16,45 @@ export default function RestaurantsNew() {
     }
 
     function validate() {
-        
+        let valid = true;
+
+        if (inputs.name === "") {
+            valid = false
+            document.getElementById("name").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("name").classList.remove("not-valid")
+        }
+
+        if (inputs.category === "") {
+            valid = false
+            document.getElementById("category").classList.add("not-valid")
+        }
+        else {
+            document.getElementById("category").classList.remove("not-valid")
+        }
+
+        let dataToSend = { ...inputs };
+
+        if(valid) createRestaurant(dataToSend)
+    }
+
+    async function createRestaurant(dataToSend) {
+        let apiCall = `https://localhost:7157/api/restaurant/create`
+        let requestOption = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSend)
+        }
+        const response = await fetch(apiCall, requestOption)
+
+        if (!response.ok) {
+            throw new Error('Error fetching data');
+        }
+        hideNew()
+        updateData()
     }
 
     return (
