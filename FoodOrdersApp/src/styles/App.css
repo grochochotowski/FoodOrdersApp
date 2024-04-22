@@ -57,6 +57,7 @@ section.box {
 }
 .small-container.auto .box{
     height: fit-content;
+    width: fit-content;
 }
 
 .delete-container .box {
