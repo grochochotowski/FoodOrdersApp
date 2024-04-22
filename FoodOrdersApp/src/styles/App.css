@@ -55,6 +55,9 @@ section.box {
     overflow: scroll;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
 }
+.small-container.auto .box{
+    height: fit-content;
+}
 
 .delete-container .box {
     position: absolute;
