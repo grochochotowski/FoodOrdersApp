@@ -38,101 +38,101 @@ export default function App() {
         setUser(chosenUser)
     }
 
-  return (
-    <div className="main-container">
+    return (
+        <div className="main-container">
 
-        <NavBar handleUserChange={handleUserChange} user={user}/>
+            <NavBar handleUserChange={handleUserChange} user={user}/>
 
-        <Routes>
-            <Route path="/fallback" element={
-                <Suspense fallback={<Fallback />}>
-                    <Fallback />
-                </Suspense>
-            }/>
-
-
-
-            <Route path="/log-in" element={
-                <Suspense fallback={<Fallback />}>
-                    <LogIn />
-                </Suspense>
-            }/>
+            <Routes>
+                <Route path="/fallback" element={
+                    <Suspense fallback={<Fallback />}>
+                        <Fallback />
+                    </Suspense>
+                }/>
 
 
 
-            <Route path="/carts" element={
-                <Suspense fallback={<Fallback />}>
-                    <Carts />
-                </Suspense>
-            }/>
-            <Route path="/carts/new" element={
-                <Suspense fallback={<Fallback />}>
-                    <CartsNew user={user} />
-                </Suspense>
-            }/>
-            <Route path="/carts/details/:id" element={
-                <Suspense fallback={<Fallback />}>
-                    <CartsDetails />
-                </Suspense>
-            }/>
-            <Route path="/carts/edit/:id" element={
-                <Suspense fallback={<Fallback />}>
-                    <CartsEdit />
-                </Suspense>
-            }/>
+                <Route path="/log-in" element={
+                    <Suspense fallback={<Fallback />}>
+                        <LogIn />
+                    </Suspense>
+                }/>
 
 
 
-            <Route path="/orders" element={
-                <Suspense fallback={<Fallback />}>
-                    <Orders />
-                </Suspense>
-            }/>
-            <Route path="/orders/new" element={
-                <Suspense fallback={<Fallback />}>
-                    <OrdersNew user={user} />
-                </Suspense>
-            }/>
-            <Route path="/orders/details/:id" element={
-                <Suspense fallback={<Fallback />}>
-                    <OrdersDetails />
-                </Suspense>
-            }/>
-            <Route path="/orders/edit/:id" element={
-                <Suspense fallback={<Fallback />}>
-                    <OrdersEdit />
-                </Suspense>
-            }/>
-
-
-            
-            <Route path="/more" element={
-                <Suspense fallback={<Fallback />}>
-                    <More />
-                </Suspense>
-            }/>
+                <Route path="/carts" element={
+                    <Suspense fallback={<Fallback />}>
+                        <Carts />
+                    </Suspense>
+                }/>
+                <Route path="/carts/new" element={
+                    <Suspense fallback={<Fallback />}>
+                        <CartsNew user={user} />
+                    </Suspense>
+                }/>
+                <Route path="/carts/details/:id" element={
+                    <Suspense fallback={<Fallback />}>
+                        <CartsDetails />
+                    </Suspense>
+                }/>
+                <Route path="/carts/edit/:id" element={
+                    <Suspense fallback={<Fallback />}>
+                        <CartsEdit />
+                    </Suspense>
+                }/>
 
 
 
-            <Route path="/restaurants" element={
-                <Suspense fallback={<Fallback />}>
-                    <Restaurants />
-                </Suspense>
-            }/>
-            <Route path="/users" element={
-                <Suspense fallback={<Fallback />}>
-                    <Users />
-                </Suspense>
-            }/>
-            <Route path="/organizations" element={
-                <Suspense fallback={<Fallback />}>
-                    <Organizations />
-                </Suspense>
-            }/>
+                <Route path="/orders" element={
+                    <Suspense fallback={<Fallback />}>
+                        <Orders />
+                    </Suspense>
+                }/>
+                <Route path="/orders/new" element={
+                    <Suspense fallback={<Fallback />}>
+                        <OrdersNew user={user} />
+                    </Suspense>
+                }/>
+                <Route path="/orders/details/:id" element={
+                    <Suspense fallback={<Fallback />}>
+                        <OrdersDetails />
+                    </Suspense>
+                }/>
+                <Route path="/orders/edit/:id" element={
+                    <Suspense fallback={<Fallback />}>
+                        <OrdersEdit />
+                    </Suspense>
+                }/>
+
+
+                
+                <Route path="/more" element={
+                    <Suspense fallback={<Fallback />}>
+                        <More />
+                    </Suspense>
+                }/>
 
 
 
-        </Routes>
-    </div>
-  );
+                <Route path="/restaurants" element={
+                    <Suspense fallback={<Fallback />}>
+                        <Restaurants />
+                    </Suspense>
+                }/>
+                <Route path="/users" element={
+                    <Suspense fallback={<Fallback />}>
+                        <Users />
+                    </Suspense>
+                }/>
+                <Route path="/organizations" element={
+                    <Suspense fallback={<Fallback />}>
+                        <Organizations />
+                    </Suspense>
+                }/>
+
+
+
+            </Routes>
+        </div>
+    );
 }
