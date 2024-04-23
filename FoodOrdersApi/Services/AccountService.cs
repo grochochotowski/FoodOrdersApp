@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Xml;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using FoodOrdersApi.Exceptions;
 
 namespace FoodOrdersApi.Services
 {
@@ -41,7 +42,7 @@ namespace FoodOrdersApi.Services
 
             if (dto.Password == dto.ConfirmPassword)
             {
-                throw new Exception("Passwords do not match");
+                throw new BadRequestException("Passwords do not match");
             }
 
             var hashedPassword = _passwordHasher.HashPassword(newAccount, dto.Password);
@@ -58,13 +59,13 @@ namespace FoodOrdersApi.Services
 
             if (account is null)
             {
-                return "Login or password is incorrect";
+                throw new BadRequestException("Login or password is incorrect");
             }
 
             var hashedPassword = _passwordHasher.VerifyHashedPassword(account, account.HashedPassword, dto.Password);
             if(hashedPassword == PasswordVerificationResult.Failed)
             {
-                return "Login or password is incorrect";
+                throw new BadRequestException("Login or password is incorrect");
             }
 
             var claims = new List<Claim>()
