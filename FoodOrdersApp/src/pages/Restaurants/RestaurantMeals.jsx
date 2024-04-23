@@ -100,7 +100,7 @@ export default function RestaurantMeals({restaurant}) {
                     {
                         !toggleNew
                         ?   meals.map((meal) => (
-                                <MealBoxList key={meal.key} meal={meal}/>
+                                <MealBoxList key={meal.id} meal={meal} updateData={() => fetchData()}/>
                             ))
                         :   <div>
                                 <div className="form">

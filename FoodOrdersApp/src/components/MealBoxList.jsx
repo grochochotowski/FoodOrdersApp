@@ -4,10 +4,14 @@ import "../styles/orders.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
-export default function MealBoxList({meal}) {
+export default function MealBoxList({meal, updateData}) {
 
-    function deleteMeal() {
-        alert("delete meal")
+    async function deleteMeal() {
+        let apiCall = `https://localhost:7157/api/meal/delete/${meal.id}`
+        let requestOption = { method: 'DELETE' }
+        const response = await fetch(apiCall, requestOption)
+        console.log(response)
+        updateData();
     }
 
     return (
