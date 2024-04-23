@@ -14,7 +14,6 @@ export default function RestaurantMeals({restaurant}) {
     async function fetchData() {
         let apiCallMeals = `https://localhost:7157/api/meal/restaurant/${restaurant}/all`
         try {
-
             const responseMeals = await fetch(apiCallMeals)
             const dataMeals = await responseMeals.json()
             setMeals(dataMeals)

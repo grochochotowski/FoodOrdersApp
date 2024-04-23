@@ -11,6 +11,7 @@ export default function LogIn() {
         "login" : "",
         "password" : ""
     });
+    const [token, setToken] = useState({token: ""})
 
     function changePasswordVisibility() {
         setIsPasswordShown(prev => !prev)
@@ -26,7 +27,17 @@ export default function LogIn() {
     }
 
     async function login() {
-        console.log(inputs.login, " + ",  inputs.password)
+        let apiCall = "https://localhost:7157/api/account/login"
+        let requestOption = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(inputs)
+        }
+        const response = await fetch(apiCall, requestOption);
+        const data = await response.json();
+        setToken(data)
     }
 
     return (
