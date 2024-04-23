@@ -7,6 +7,7 @@ namespace FoodOrdersApi.Entities
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Meal> Meals { get; set; }
         public DbSet<MealOrder> MealOrder { get; set; }
