@@ -10,8 +10,5 @@ namespace FoodOrdersApi.Models.Account
         [Required]
         [MinLength(6)]
         public string Password { get; set; }
-        [Required]
-        [MinLength(6)]
-        public string ConfirmPassword { get; set; }
     }
 }

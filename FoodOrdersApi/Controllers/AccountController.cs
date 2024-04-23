@@ -22,13 +22,7 @@ namespace FoodOrdersApi.Controllers
         [Authorize]
         public ActionResult Register([FromBody] RegisterDto dto)
         {
-            if (dto.Password != dto.ConfirmPassword)
-            {
-                return BadRequest("Passwords do not match");
-            }
-
             _accountService.Register(dto);
-
             return Ok();
         }
 

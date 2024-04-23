@@ -40,11 +40,6 @@ namespace FoodOrdersApi.Services
                 Login = dto.Login
             };
 
-            if (dto.Password == dto.ConfirmPassword)
-            {
-                throw new BadRequestException("Passwords do not match");
-            }
-
             var hashedPassword = _passwordHasher.HashPassword(newAccount, dto.Password);
 
             newAccount.HashedPassword = hashedPassword;
