@@ -31,7 +31,7 @@ namespace FoodOrdersApi.Controllers
         {
             string token = _accountService.GenerateToken(dto);
 
-            return Ok(token);
+            return Ok(new { token = token });
         }
 
     }
