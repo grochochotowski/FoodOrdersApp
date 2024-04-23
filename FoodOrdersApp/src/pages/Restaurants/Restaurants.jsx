@@ -1,20 +1,19 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 
 import RestaurantsNew from "./RestaurantsNew.jsx"
+import RestaurantsMeals from "./RestaurantMeals.jsx"
 
 import "../../styles/restaurants.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
 export default function Restaurants() {
-    
-    const navigate = useNavigate();
 
     const [sorting, setSorting] = useState(["name", 0])
     const [result, setResult] = useState([])
     const [page, setPage] = useState(1);
     const [openNew, setOpenNew] = useState(false);
+    const [openMeals, setOpenMeals] = useState([false, 0]);
 
     function sortTable(column) {
         setSorting(prev => {
@@ -91,7 +90,7 @@ export default function Restaurants() {
                         <td>{restaurant.category}</td>
                         <td>{restaurant.mealsCount}</td>
                         <td>
-                            <div onClick={() => {navigate(`/meals/${restaurant.id}`)}} className="details">
+                            <div onClick={() => openMealsBox(restaurant.id)} className="details">
                                 <i className="fa-solid fa-burger"></i>
                             </div>
                             <div onClick={() => deleteRestaurant(restaurant.id)} className="deleteListElement">
@@ -214,6 +213,22 @@ export default function Restaurants() {
         };
     }, []);
 
+    useEffect(() => {
+        function handleClickOutside(event) {
+          if (event.target.closest(".small-container") && !event.target.closest(".box")) setOpenMeals(false);
+        }
+    
+        document.addEventListener("click", handleClickOutside);
+    
+        return () => {
+          document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
+    function openMealsBox(restaurantId) {
+        setOpenMeals([true, restaurantId])
+    }
+
     return (
         <div className="container restaurants">
             <section className="box">
@@ -238,6 +253,9 @@ export default function Restaurants() {
             </section>
             {
                 openNew && <RestaurantsNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()}/>
+            }
+            {
+                openMeals[0] && <RestaurantsMeals restaurant={openMeals[1]}/>
             }
         </div>
     )
