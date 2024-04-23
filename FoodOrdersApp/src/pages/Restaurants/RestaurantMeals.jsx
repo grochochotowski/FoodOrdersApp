@@ -58,7 +58,7 @@ export default function RestaurantMeals({restaurant}) {
             document.getElementById("name").classList.remove("not-valid")
         }
 
-        if (inputs.price === 0) {
+        if (inputs.price <= 0) {
             valid = false
             document.getElementById("price").classList.add("not-valid")
         }
@@ -121,6 +121,7 @@ export default function RestaurantMeals({restaurant}) {
                                                 id="price"
                                                 onChange={() => updateInputs("price")}
                                                 value={inputs.price}
+                                                min={0}
                                             />
                                         </div>
                                     </div>
