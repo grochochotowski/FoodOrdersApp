@@ -1,7 +1,8 @@
 .container.restaurants th {
     width: calc((100% - 7%) / 3)
 }
-.meal-box.list {
+.meal-box.list,
+.small-container .new-meal {
     width: 30vw;
 }
 .meal-box.list .meal-info {
