@@ -1,6 +1,7 @@
 using FoodCartsApi.Services;
 using FoodOrdersApi.Entities;
 using FoodOrdersApi.Entities.Objects;
+using FoodOrdersApi.Middleware;
 using FoodOrdersApi.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -59,7 +60,7 @@ namespace FoodOrdersApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
+            builder.Services.AddScoped<ErrorHandlingMiddleware>();
             builder.Services.AddScoped<IPasswordHasher<Account>, PasswordHasher<Account>>();
 
             builder.Services.AddScoped<IAccountService, AccountService>();
@@ -80,6 +81,8 @@ namespace FoodOrdersApi
             app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API"));
             //}
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseAuthentication();
 
