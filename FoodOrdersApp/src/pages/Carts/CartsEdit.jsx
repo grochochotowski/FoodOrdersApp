@@ -148,6 +148,8 @@ export default function CartsEdit() {
         let requestOption = { method: 'DELETE' }
         const response = await fetch(apiCall, requestOption)
         console.log(response)
+        
+        window.location.href = `/carts`;
     }
 
     useEffect(() => {
