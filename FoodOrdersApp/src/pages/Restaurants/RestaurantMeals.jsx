@@ -80,7 +80,9 @@ export default function RestaurantMeals({restaurant}) {
         <div className="small-container auto">
                 <div className="box">
                     <div className="new-meal" onClick={() => newMeal()}>
-                        <i className="fa-solid fa-plus"></i>
+                        {
+                            !toggleNew ? <i className="fa-solid fa-plus"></i> : <i className="fa-solid fa-list-ul"></i>
+                        }
                     </div>
                     {
                         !toggleNew
