@@ -32,7 +32,6 @@ namespace FoodOrdersApi
             builder.Services.AddSwaggerGen();
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            builder.Services.AddScoped<IAddressService, AddressService>();
             builder.Services.AddScoped<ICartService, CartService>();
             builder.Services.AddScoped<IMealService, MealService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
