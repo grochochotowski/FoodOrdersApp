@@ -32,6 +32,7 @@ export default function App() {
 
     const [user, setUser] = useState(0);
     const [users, setUsers] = useState([])
+    const [token, setToken] = useState({token: ""})
 
     async function fetchData() {
         let apiCall = `https://localhost:7157/api/user/all`
@@ -45,7 +46,6 @@ export default function App() {
         }
     }
     useEffect(() => {
-
         fetchData();
     }, []);
 
@@ -69,7 +69,7 @@ export default function App() {
 
                 <Route path="/log-in" element={
                     <Suspense fallback={<Fallback />}>
-                        <LogIn />
+                        <LogIn setToken={() => setToken()}/>
                     </Suspense>
                 }/>
 
