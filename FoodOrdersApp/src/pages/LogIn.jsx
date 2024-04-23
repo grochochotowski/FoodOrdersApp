@@ -1,16 +1,17 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import "../styles/logIn.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
-export default function LogIn({setToken}) {
+export default function LogIn() {
 
     const [isPasswordShown, setIsPasswordShown] = useState(false)
     const [inputs, setInputs] = useState({
         "login" : "",
         "password" : ""
     });
+    const [token, setToken] = useState({token: ""})
 
     function changePasswordVisibility() {
         setIsPasswordShown(prev => !prev)
