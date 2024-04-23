@@ -132,12 +132,20 @@
     flex-basis: 100%;
     text-align: center;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     grid-column-start: 1;
     grid-column-end: 3;
 }
 .meal-box .meal-info p {
     flex-basis: 50%;
     text-align: center;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .meal-box button {

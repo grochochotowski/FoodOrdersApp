@@ -1,3 +1,9 @@
 .container.restaurants th {
     width: calc((100% - 7%) / 3)
 }
+.meal-box.list {
+    width: 30vw;
+}
+.meal-box.list .meal-info {
+    grid-template-columns: 1fr;
+}
