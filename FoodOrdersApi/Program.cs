@@ -52,6 +52,8 @@ namespace FoodOrdersApi
                 };
             });
 
+            builder.Services.AddSingleton(authenticationSettings);
+
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

@@ -16,6 +16,7 @@ namespace FoodOrdersApi.Controllers
             _accountService = accountService;
         }
 
+
         [HttpPost("register")]
         public ActionResult Register([FromBody] RegisterDto dto)
         {
@@ -28,5 +29,14 @@ namespace FoodOrdersApi.Controllers
 
             return Ok();
         }
+
+        [HttpPost("login")]
+        public ActionResult Login([FromBody] LoginDto dto)
+        {
+            string token = _accountService.GenerateToken(dto);
+
+            return Ok(token);
+        }
+
     }
 }
