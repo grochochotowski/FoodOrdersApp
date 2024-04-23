@@ -16,8 +16,6 @@ namespace FoodOrdersApi
         public AppMappingProfile()
         {
             CreateMap<Address, AddressDto>();
-            CreateMap<CreateAddressDto, Address>();
-            CreateMap<UpdateAddressDto, Address>();
 
             CreateMap<Cart, CartDto>();
             CreateMap<Cart, CartListDto>();
