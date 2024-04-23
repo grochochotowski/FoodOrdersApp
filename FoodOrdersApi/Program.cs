@@ -1,6 +1,8 @@
 using FoodCartsApi.Services;
 using FoodOrdersApi.Entities;
+using FoodOrdersApi.Entities.Objects;
 using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
@@ -56,6 +58,9 @@ namespace FoodOrdersApi
             builder.Services.AddSwaggerGen();
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+            builder.Services.AddScoped<IPasswordHasher<Account>, PasswordHasher<Account>>();
+
+            builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<ICartService, CartService>();
             builder.Services.AddScoped<IMealService, MealService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
