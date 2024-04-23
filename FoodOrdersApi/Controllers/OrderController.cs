@@ -4,12 +4,14 @@ using FoodOrdersApi.Models.Cart;
 using FoodOrdersApi.Models.MealOrder;
 using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
     [Route("api/order")]
     [ApiController]
+    [Authorize]
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;

@@ -1,12 +1,14 @@
 ﻿using FoodOrdersApi.Models.Meal;
 using FoodOrdersApi.Models.MealOrder;
 using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
     [Route("api/meal")]
     [ApiController]
+    [Authorize]
     public class MealController : ControllerBase
     {
         private readonly IMealService _mealService;

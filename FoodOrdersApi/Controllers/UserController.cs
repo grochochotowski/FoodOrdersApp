@@ -1,6 +1,7 @@
 ﻿using FoodOrdersApi.Entities.Enum;
 using FoodOrdersApi.Models.User;
 using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
@@ -8,6 +9,7 @@ namespace FoodOrdersApi.Controllers
 {
     [Route("api/user")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;

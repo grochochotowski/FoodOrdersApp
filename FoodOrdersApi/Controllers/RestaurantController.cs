@@ -1,12 +1,14 @@
 ﻿using FoodOrdersApi.Entities.Enum;
 using FoodOrdersApi.Models.Restaurant;
 using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
     [Route("api/restaurant")]
     [ApiController]
+    [Authorize]
     public class RestaurantController : ControllerBase
     {
         private readonly IRestaurantService _restaurantService;

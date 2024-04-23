@@ -1,12 +1,14 @@
 ﻿using FoodOrdersApi.Entities.Enum;
 using FoodOrdersApi.Models.Organization;
 using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrdersApi.Controllers
 {
     [Route("api/organization")]
     [ApiController]
+    [Authorize]
     public class OrganizationController : ControllerBase
     {
         private readonly IOrgService _orgService;

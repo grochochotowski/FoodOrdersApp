@@ -1,12 +1,14 @@
 ﻿using FoodCartsApi.Services;
 using FoodOrdersApi.Entities.Enum;
 using FoodOrdersApi.Models.Cart;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodCartsApi.Controllers
 {
     [Route("api/cart")]
     [ApiController]
+    [Authorize]
     public class CartController : ControllerBase
     {
         private readonly ICartService _cartService;
