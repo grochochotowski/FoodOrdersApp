@@ -11,20 +11,19 @@ export default function RestaurantMeals({restaurant}) {
     const [toggleNew, setToggleNew] = useState(false)
     const [meals, setMeals] = useState([])
 
-    useEffect(() => {
-        async function fetchData() {
-            let apiCallMeals = `https://localhost:7157/api/meal/restaurant/${restaurant}`
-            try {
+    async function fetchData() {
+        let apiCallMeals = `https://localhost:7157/api/meal/restaurant/${restaurant}`
+        try {
 
-                const responseMeals = await fetch(apiCallMeals)
-                const dataMeals = await responseMeals.json()
-                setMeals(dataMeals)
+            const responseMeals = await fetch(apiCallMeals)
+            const dataMeals = await responseMeals.json()
+            setMeals(dataMeals)
 
-            } catch (error) {
-                console.error('Error fetching data:', error)
-            }
+        } catch (error) {
+            console.error('Error fetching data:', error)
         }
-
+    }
+    useEffect(() => {
         fetchData();
     }, []);
 
@@ -72,8 +71,22 @@ export default function RestaurantMeals({restaurant}) {
         if(valid) createMeal(dataToSend)
     }
 
-    function createMeal(dataToSend) {
-        alert(dataToSend)
+    async function createMeal(dataToSend) {
+        let apiCall = `https://localhost:7157/api/meal/create`
+        let requestOption = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSend)
+        }
+        const response = await fetch(apiCall, requestOption)
+
+        if (!response.ok) {
+            throw new Error('Error fetching data');
+        }
+        fetchData()
+        setToggleNew(false)
     }
 
     return (
