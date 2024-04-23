@@ -1,5 +1,6 @@
 ﻿using FoodOrdersApi.Models.Account;
 using FoodOrdersApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 
@@ -18,6 +19,7 @@ namespace FoodOrdersApi.Controllers
 
 
         [HttpPost("register")]
+        [Authorize]
         public ActionResult Register([FromBody] RegisterDto dto)
         {
             if (dto.Password != dto.ConfirmPassword)
