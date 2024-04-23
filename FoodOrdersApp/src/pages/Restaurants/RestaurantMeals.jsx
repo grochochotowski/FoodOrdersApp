@@ -12,7 +12,7 @@ export default function RestaurantMeals({restaurant}) {
     const [meals, setMeals] = useState([])
 
     async function fetchData() {
-        let apiCallMeals = `https://localhost:7157/api/meal/restaurant/${restaurant}`
+        let apiCallMeals = `https://localhost:7157/api/meal/restaurant/${restaurant}/all`
         try {
 
             const responseMeals = await fetch(apiCallMeals)

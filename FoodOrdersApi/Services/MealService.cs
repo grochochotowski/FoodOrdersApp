@@ -14,7 +14,8 @@ namespace FoodOrdersApi.Services
         IEnumerable<MealDto> GetAll();
         MealDto GetByID(int id);
         IEnumerable<MealsFromOrder> GetFromOrder(int id);
-        IEnumerable<MealsFromRestaurant> GetFromRestaurant(int id);
+        IEnumerable<MealsFromRestaurantDto> GetFromRestaurant(int id);
+        IEnumerable<MealsFromRestaurantAllDto> GetFromRestaurantAll(int id);
         int Update(int id, UpdateMealDto dto);
         int Delete(int id);
         List<string> AddMeal(int id, AddRemoveMealOrder dto);
@@ -47,7 +48,6 @@ namespace FoodOrdersApi.Services
             return meal.Id;
         }
 
-
         // Get all meal
         public IEnumerable<MealDto> GetAll()
         {
@@ -56,7 +56,6 @@ namespace FoodOrdersApi.Services
 
             return mealDtos;
         }
-
 
         // Get meal by ID
         public MealDto GetByID(int id)
@@ -91,11 +90,11 @@ namespace FoodOrdersApi.Services
         }
 
         // Get all meals from a restaurant
-        public IEnumerable<MealsFromRestaurant> GetFromRestaurant(int id)
+        public IEnumerable<MealsFromRestaurantDto> GetFromRestaurant(int id)
         {
             var meals = _context.Meals
                 .Where(m => m.RestaurantId == id)
-                .Select(m => new MealsFromRestaurant
+                .Select(m => new MealsFromRestaurantDto
                 {
                     Id = m.Id,
                     Img = m.Img,
@@ -103,9 +102,27 @@ namespace FoodOrdersApi.Services
                     Price = m.Price
                 })
                 .ToList();
-            var mealOrderDtos = _mapper.Map<List<MealsFromRestaurant>>(meals);
+            var mealOrderDtos = _mapper.Map<List<MealsFromRestaurantDto>>(meals);
 
             return mealOrderDtos;
+        }
+
+        // Get all info about meals in a restaurant
+        public IEnumerable<MealsFromRestaurantAllDto> GetFromRestaurantAll(int id)
+        {
+            var meals = _context.Meals
+                .Where(m => m.RestaurantId == id)
+                .Select(m => new MealsFromRestaurantAllDto
+                {
+                    Id = m.Id,
+                    Img = m.Img,
+                    Name = m.Name,
+                    Price = m.Price,
+                    Description = m.Description
+                })
+                .ToList();
+
+            return meals;
         }
 
         // Update meal with id

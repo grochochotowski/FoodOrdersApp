@@ -18,8 +18,8 @@ export default function MealBoxList({meal, updateData}) {
         <div className="meal-box list">
             <img src={meal.img ? meal.img : "https://i.pinimg.com/564x/ef/e8/d3/efe8d36db6281666a126189f05bfeff1.jpg"} alt="food-img" />
             <div className="meal-info">
-                <h5>{meal.name}</h5>
-                <p>Price: {meal.price}zł</p>
+                <h5>{meal.name} - {meal.price}zł</h5>
+                <p>{meal.description}</p>
             </div>
             <button className="side warning" onClick={deleteMeal}>
                 <i className="fa-regular fa-trash-can"></i>
