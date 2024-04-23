@@ -147,3 +147,4 @@ C:\nonSystem\IT\Code\FoodOrdersApi\FoodOrdersApi\bin\Debug\net8.0\Microsoft.Azur
 C:\nonSystem\IT\Code\FoodOrdersApi\FoodOrdersApi\bin\Debug\net8.0\Microsoft.Azure.WebJobs.Extensions.Http.dll
 C:\nonSystem\IT\Code\FoodOrdersApi\FoodOrdersApi\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\nonSystem\IT\Code\FoodOrdersApi\FoodOrdersApi\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\nonSystem\IT\Code\FoodOrdersApi\FoodOrdersApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
