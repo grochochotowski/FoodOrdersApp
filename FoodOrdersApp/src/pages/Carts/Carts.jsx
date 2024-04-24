@@ -46,7 +46,9 @@ export default function Carts({instance, token}) {
     }
 
     useEffect(() => {
-        fetchData();
+        if (token.token) {
+            fetchData();
+        }
     }, [sorting, page]);
 
     function generateTableHeader() {
