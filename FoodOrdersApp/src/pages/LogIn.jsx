@@ -4,14 +4,13 @@ import "../styles/logIn.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
-export default function LogIn() {
+export default function LogIn({instance, setToken}) {
 
     const [isPasswordShown, setIsPasswordShown] = useState(false)
     const [inputs, setInputs] = useState({
         "login" : "",
         "password" : ""
     });
-    const [token, setToken] = useState({token: ""})
 
     function changePasswordVisibility() {
         setIsPasswordShown(prev => !prev)
@@ -27,17 +26,12 @@ export default function LogIn() {
     }
 
     async function login() {
-        let apiCall = "https://localhost:7157/api/account/login"
-        let requestOption = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(inputs)
+        try {
+          const response = await instance.post('/account/login', inputs);
+          setToken(response.data);
+        } catch (error) {
+          console.error(error);
         }
-        const response = await fetch(apiCall, requestOption);
-        const data = await response.json();
-        setToken(data)
     }
 
     return (
