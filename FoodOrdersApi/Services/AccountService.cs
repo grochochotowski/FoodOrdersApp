@@ -9,13 +9,15 @@ using System.Xml;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using FoodOrdersApi.Exceptions;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
 
 namespace FoodOrdersApi.Services
 {
     public interface IAccountService
     {
         void Register(RegisterDto dto);
-        string GenerateToken(LoginDto dto);
+        string GenerateToken(LoginDto dto, HttpContext httpContext);
     }
 
     public class AccountService : IAccountService
@@ -48,7 +50,7 @@ namespace FoodOrdersApi.Services
             _context.SaveChanges();
         }
 
-        public string GenerateToken(LoginDto dto)
+        public string GenerateToken(LoginDto dto, HttpContext httpContext)
         {
             var account = _context.Accounts.FirstOrDefault(a => a.Login == dto.Login);
 
@@ -78,11 +80,20 @@ namespace FoodOrdersApi.Services
                 _authenticationSettings.JwtIssuer,
                 claims,
                 expires: expires,
-                signingCredentials: cred );
+                signingCredentials: cred);
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
-            return tokenHandler.WriteToken(token);
+            var tokenString = tokenHandler.WriteToken(token);
+
+            httpContext.Response.Cookies.Append("jwtToken", tokenString, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict
+            });
+
+            return tokenString;
         }
     }
 }

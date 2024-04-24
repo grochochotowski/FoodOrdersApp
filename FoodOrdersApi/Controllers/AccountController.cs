@@ -29,7 +29,7 @@ namespace FoodOrdersApi.Controllers
         [HttpPost("login")]
         public ActionResult Login([FromBody] LoginDto dto)
         {
-            string token = _accountService.GenerateToken(dto);
+            string token = _accountService.GenerateToken(dto, HttpContext);
 
             return Ok(new { token = token });
         }
