@@ -7,7 +7,7 @@ import "../../styles/carts.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function CartsDetails() {
+export default function CartsDetails({instance, token}) {
 
     const params = useParams();
     const navigate = useNavigate();
@@ -17,23 +17,29 @@ export default function CartsDetails() {
 
     useEffect(() => {
         async function fetchData() {
-            let apiCallDetails = `https://localhost:7157/api/cart/get/${params.id}`
-            let apiCallCarts = `https://localhost:7157/api/order/cart/${params.id}`
+            let apiCallDetails = `/cart/get/${params.id}`
+            let apiCallCarts = `/order/cart/${params.id}`
             try {
-                const responseDetails = await fetch(apiCallDetails)
-                const dataDetails = await responseDetails.json()
-                setCartDetails(dataDetails) 
-
-                const responseCarts = await fetch(apiCallCarts)
-                const dataCarts = await responseCarts.json()
-                setOrders(dataCarts)
-
+                const responseDetails = await instance.get(apiCallDetails, {
+                    headers: {
+                        Authorization: `Bearer ${token.token}`
+                    }
+                });
+                const responseCarts = await instance.get(apiCallCarts, {
+                    headers: {
+                        Authorization: `Bearer ${token.token}`
+                    }
+                });
+                setCartDetails(responseDetails.data) 
+                setOrders(responseCarts.data)
             } catch (error) {
-                console.error('Error fetching data:', error)
+                console.error('Error fetching data:', error);
             }
         }
 
-        fetchData();
+        if (token.token) {
+            fetchData();
+        }
     }, []);
 
 
