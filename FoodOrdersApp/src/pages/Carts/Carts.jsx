@@ -5,7 +5,7 @@ import "../../styles/carts.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function Carts() {
+export default function Carts({instance, token}) {
 
     const [sorting, setSorting] = useState(["organization", 0])
     const [filters, setFilters] = useState({ "filters" : "" })
@@ -28,17 +28,20 @@ export default function Carts() {
     }
 
     async function fetchData() {
-        let apiCall = `https://localhost:7157/api/cart/all?` +
+        let apiCall = `/cart/all?` +
             `${filters.filters && "filters=" + filters.filters + "&"}` +
             `sortBy=${sorting[0]}&` +
             `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
             `page=${page}`
         try {
-            const response = await fetch(apiCall)
-            const data = await response.json()
-            setResult(data)
+            const response = await instance.get(apiCall, {
+                headers: {
+                    Authorization: `Bearer ${token.token}`
+                }
+            });
+            setResult(response.data);
         } catch (error) {
-            console.error('Error fetching data:', error)
+            console.error('Error fetching data:', error);
         }
     }
 

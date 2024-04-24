@@ -94,7 +94,7 @@ export default function App() {
 
                 <Route path="/carts" element={
                     <Suspense fallback={<Fallback />}>
-                        <Carts />
+                        <Carts instance={instance} token={token}/>
                     </Suspense>
                 }/>
                 <Route path="/carts/new" element={
