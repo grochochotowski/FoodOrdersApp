@@ -1,6 +1,7 @@
 // MAIN IMPORTS
 import React, { Suspense, lazy, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import axiosInstance from "./api/axios.jsx"
 
 // STYLES
 import "./styles/App.css";
@@ -28,26 +29,42 @@ const Restaurants = lazy(() => import("./pages/Restaurants/Restaurants.jsx"));
 const Users = lazy(() => import("./pages/Users/Users.jsx"));
 const Organizations = lazy(() => import("./pages/Organizations/Organizations.jsx"));
 
+
 export default function App() {
 
     const [user, setUser] = useState(0);
     const [users, setUsers] = useState([])
+    const [token, setToken] = useState({token: ""})
 
-    async function fetchData() {
-        let apiCall = `https://localhost:7157/api/user/all`
-        try {
-            const response = await fetch(apiCall)
-            const data = await response.json()
-            setUsers(data)
-            handleUserChange(data[0])
-        } catch (error) {
-            console.error('Error fetching data:', error)
-        }
-    }
+    const instance = axiosInstance();
+
     useEffect(() => {
-
-        fetchData();
-    }, []);
+        let isMounted = true;
+        const controller = new AbortController();
+      
+        async function fetchData() {
+          try {
+            const response = await instance.get('user/all', {
+              signal: controller.signal,
+              headers: {
+                Authorization: `Bearer ${token.token}`,
+              },
+            });
+            isMounted && setUsers(response.data);
+          } catch (err) {
+            console.error(err);
+          }
+        }
+      
+        if (token.token) {
+          fetchData();
+        }
+      
+        return () => {
+          isMounted = false;
+          controller.abort();
+        };
+      }, [token]);
 
     function handleUserChange(chosenUser) {
         setUser(chosenUser)
@@ -69,7 +86,7 @@ export default function App() {
 
                 <Route path="/log-in" element={
                     <Suspense fallback={<Fallback />}>
-                        <LogIn />
+                        <LogIn instance={instance} setToken={setToken}/>
                     </Suspense>
                 }/>
 
