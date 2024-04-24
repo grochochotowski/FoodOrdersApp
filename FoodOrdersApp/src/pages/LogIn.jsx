@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import AuthContext from "../context/AuthProvider"
+import axios from "axios"
 
 import "../styles/logIn.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
 export default function LogIn({instance, setToken}) {
+
+    const { setAuth } = useContext(AuthContext)
 
     const [isPasswordShown, setIsPasswordShown] = useState(false)
     const [inputs, setInputs] = useState({
@@ -27,10 +31,16 @@ export default function LogIn({instance, setToken}) {
 
     async function login() {
         try {
-          const response = await instance.post('/account/login', inputs);
-          setToken(response.data);
+            const response = await instance.post('/account/login', inputs, {
+                headers: {'Content-Type': 'application/json'},
+                withCredentials: true
+            });
+            //setToken(response.data);
+            console.log(response.data)
+            const token = response?.data?.token
+            setAuth({inputs, token})
         } catch (error) {
-          console.error(error);
+            console.error(error);
         }
     }
 
