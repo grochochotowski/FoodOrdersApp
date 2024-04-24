@@ -37,10 +37,6 @@
           "SelectedChildIndex": 6,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Program.cs",
@@ -51,8 +47,7 @@
               "ViewState": "AQIAAC0AAAAAAAAAAAAmwFwAAABcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-23T12:31:36.456Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -65,8 +60,7 @@
               "ViewState": "AQIAAAkAAAAAAAAAAAAmwCIAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-19T08:18:20.258Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -79,8 +73,11 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-04-23T11:17:07.149Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -92,8 +89,7 @@
               "RelativeToolTip": "Services\\AccountService.cs",
               "ViewState": "AQIAADUAAAAAAAAAAAAwwFEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T11:27:15.315Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T11:27:15.315Z"
             },
             {
               "$type": "Document",
@@ -105,8 +101,7 @@
               "RelativeToolTip": "Models\\Account\\RegisterDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T12:56:51.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T12:56:51.512Z"
             },
             {
               "$type": "Document",
@@ -116,7 +111,7 @@
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
               "ToolTip": "C:\\nonSystem\\IT\\Code\\FoodOrdersApi\\FoodOrdersApi\\Controllers\\AccountController.cs",
               "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAAACEAAAAoAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAqwCEAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-23T11:27:06.594Z",
               "EditorCaption": ""
