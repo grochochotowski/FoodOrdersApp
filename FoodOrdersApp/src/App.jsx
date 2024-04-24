@@ -43,26 +43,26 @@ export default function App() {
         const controller = new AbortController();
       
         async function fetchData() {
-          try {
-            const response = await instance.get('user/all', {
-              signal: controller.signal,
-              headers: {
-                Authorization: `Bearer ${token.token}`,
-              },
-            });
-            isMounted && setUsers(response.data);
-          } catch (err) {
-            console.error(err);
-          }
+            try {
+                const response = await instance.get('user/all', {
+                signal: controller.signal,
+                headers: {
+                    Authorization: `Bearer ${token.token}`,
+                },
+                });
+                isMounted && setUsers(response.data);
+            } catch (err) {
+                console.error(err);
+            }
         }
       
         if (token.token) {
-          fetchData();
+            fetchData();
         }
       
         return () => {
-          isMounted = false;
-          controller.abort();
+            isMounted = false;
+            controller.abort();
         };
       }, [token]);
 
