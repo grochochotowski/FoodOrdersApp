@@ -24,8 +24,7 @@ export default function NavBar({handleUserChange, user, users}) {
                     <ul>
                         <li className="home">
                             <Link to="log-in">
-                                <h4>Home</h4>
-                                <p>(Log out)</p>
+                                <h4>Log In</h4>
                             </Link>
                         </li>
                         <li>
