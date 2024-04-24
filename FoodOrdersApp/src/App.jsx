@@ -99,17 +99,17 @@ export default function App() {
                 }/>
                 <Route path="/carts/new" element={
                     <Suspense fallback={<Fallback />}>
-                        <CartsNew user={user} />
+                        <CartsNew user={user} instance={instance} token={token} />
                     </Suspense>
                 }/>
                 <Route path="/carts/details/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <CartsDetails />
+                        <CartsDetails instance={instance} token={token} />
                     </Suspense>
                 }/>
                 <Route path="/carts/edit/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <CartsEdit />
+                        <CartsEdit instance={instance} token={token} />
                     </Suspense>
                 }/>
 
@@ -117,22 +117,22 @@ export default function App() {
 
                 <Route path="/orders" element={
                     <Suspense fallback={<Fallback />}>
-                        <Orders />
+                        <Orders instance={instance} token={token} />
                     </Suspense>
                 }/>
                 <Route path="/orders/new" element={
                     <Suspense fallback={<Fallback />}>
-                        <OrdersNew user={user} />
+                        <OrdersNew user={user} instance={instance} token={token} />
                     </Suspense>
                 }/>
                 <Route path="/orders/details/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <OrdersDetails />
+                        <OrdersDetails instance={instance} token={token} />
                     </Suspense>
                 }/>
                 <Route path="/orders/edit/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <OrdersEdit />
+                        <OrdersEdit instance={instance} token={token} />
                     </Suspense>
                 }/>
 
@@ -148,17 +148,17 @@ export default function App() {
 
                 <Route path="/restaurants" element={
                     <Suspense fallback={<Fallback />}>
-                        <Restaurants />
+                        <Restaurants instance={instance} token={token} />
                     </Suspense>
                 }/>
                 <Route path="/users" element={
                     <Suspense fallback={<Fallback />}>
-                        <Users updateUsers={() => fetchData()}/>
+                        <Users updateUsers={() => fetchData()} instance={instance} token={token} />
                     </Suspense>
                 }/>
                 <Route path="/organizations" element={
                     <Suspense fallback={<Fallback />}>
-                        <Organizations />
+                        <Organizations instance={instance} token={token} />
                     </Suspense>
                 }/>
 
