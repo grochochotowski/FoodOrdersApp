@@ -1,6 +1,5 @@
-import { useState, useEffect, useContext } from "react"
-import AuthContext from "../context/AuthProvider"
-import axios from "axios"
+import { useState } from "react"
+import useAuth from '../hooks/useAuth'
 
 import "../styles/logIn.css"
 import "../styles/index.css"
@@ -8,7 +7,7 @@ import "../styles/App.css"
 
 export default function LogIn({instance, setToken}) {
 
-    const { setAuth } = useContext(AuthContext)
+    const { setAuth } = useAuth();
 
     const [isPasswordShown, setIsPasswordShown] = useState(false)
     const [inputs, setInputs] = useState({
