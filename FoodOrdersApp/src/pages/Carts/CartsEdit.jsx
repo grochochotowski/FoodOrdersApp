@@ -5,7 +5,7 @@ import "../../styles/carts.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function CartsEdit() {
+export default function CartsEdit({instance, token}) {
 
     const navigate = useNavigate();
     const params = useParams();
@@ -127,57 +127,71 @@ export default function CartsEdit() {
     }
 
     async function sendData(dataToSend) {
-        let apiCall = `https://localhost:7157/api/cart/update/${params.id}`
-        let requestOption = {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataToSend)
+        let apiCall = `/cart/update/${params.id}`
+        try {
+            if(token.token) {
+                const response = await instance.put(apiCall, JSON.stringify(dataToSend), {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token.token}`
+                    },
+                });
+                console.log(response)
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-        const response = await fetch(apiCall, requestOption)
 
-        if (!response.ok) {
-            throw new Error('Error fetching data');
-        }
         window.location.href = `/carts/details/${params.id}`;
     }
 
     async function deleteCart() {
-        let apiCall = `https://localhost:7157/api/cart/delete/${params.id}`
-        let requestOption = { method: 'DELETE' }
-        const response = await fetch(apiCall, requestOption)
-        console.log(response)
-        
+        let apiCall = `/cart/delete/${params.id}`
+        try {
+            if(token.token) {
+                const response = await instance.delete(apiCall, {
+                    headers: {
+                        Authorization: `Bearer ${token.token}`
+                    },
+                });
+                console.log(response)
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+
         window.location.href = `/carts`;
     }
 
     useEffect(() => {
         async function fetchData() {
-            let apiCall = `https://localhost:7157/api/cart/get/${params.id}`
+            let apiCall = `/cart/get/${params.id}`
             try {
-                const response = await fetch(apiCall)
-                const data = await response.json()
-                if (data.address) {
+                const response = await instance.get(apiCall, {
+                    headers: {
+                        Authorization: `Bearer ${token.token}`
+                    },
+                })
+                if (response.data.address) {
                     setCartInputs({
-                        "bankAccountNumber": data.bankAccountNumber,
-                        "phoneNumber": data.phoneNumber,
-                        "minPrice": data.minPrice,
-                        "deliveryPrice": data.deliveryPrice,
-                        "freeDeliveryMinPrice": data.freeDeliveryMinPrice,
-                        "note": data.note ?? "",
-                        "country" : data.address.country,
-                        "city": data.address.city,
-                        "street": data.address.street,
-                        "building": data.address.building,
-                        "premises": data.address.premises ?? "",
+                        "bankAccountNumber": response.data.bankAccountNumber,
+                        "phoneNumber": response.data.phoneNumber,
+                        "minPrice": response.data.minPrice,
+                        "deliveryPrice": response.data.deliveryPrice,
+                        "freeDeliveryMinPrice": response.data.freeDeliveryMinPrice,
+                        "note": response.data.note ?? "",
+                        "country" : response.data.address.country,
+                        "city": response.data.address.city,
+                        "street": response.data.address.street,
+                        "building": response.data.address.building,
+                        "premises": response.data.address.premises ?? "",
                     })
                 }
                 
                 setCartDetail({
-                    "id" : data.id,
-                    "restaurant" : data.restaurant,
-                    "organization" : data.organization
+                    "id" : response.data.id,
+                    "restaurant" : response.data.restaurant,
+                    "organization" : response.data.organization
                 })
 
             } catch (error) {
@@ -185,7 +199,9 @@ export default function CartsEdit() {
             }
         }
 
-        fetchData();
+        if (token.token) {
+            fetchData();
+        }
     }, []);
 
     return (
