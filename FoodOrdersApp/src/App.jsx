@@ -33,12 +33,15 @@ export default function App() {
 
     const [user, setUser] = useState(0);
     const [users, setUsers] = useState([])
-    const [token, setToken] = useState("");
 
     const fetchData = async () => {
-        console.log("Token sent with API request:", token);
+        const token = localStorage.getItem('token');
         try {
-            const response = await instance().get('user/all');
+            const response = await instance().get('user/all', { 
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             setUsers(response.data);
         } catch (err) {
             console.error(err);
@@ -69,7 +72,7 @@ export default function App() {
 
                 <Route path="/log-in" element={
                     <Suspense fallback={<Fallback />}>
-                        <LogIn updateUsers={() => fetchData()} />
+                        <LogIn updateUsers={() => fetchData()}/>
                     </Suspense>
                 }/>
 

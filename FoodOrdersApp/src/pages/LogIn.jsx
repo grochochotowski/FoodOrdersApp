@@ -6,7 +6,7 @@ import "../styles/logIn.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
-export default function LogIn({updateUsers}) {
+export default function LogIn({updateUsers, setToken}) {
 
     const { setAuth } = useAuth();
 
@@ -36,6 +36,7 @@ export default function LogIn({updateUsers}) {
                 withCredentials: true
             });
             const token = response?.data?.token
+            localStorage.setItem('token', token);
             setAuth({inputs, token})
             await updateUsers()
         } catch (error) {
