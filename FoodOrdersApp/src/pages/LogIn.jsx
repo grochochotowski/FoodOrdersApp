@@ -1,11 +1,12 @@
 import { useState } from "react"
 import useAuth from '../hooks/useAuth'
+import instance from "../api/axios"
 
 import "../styles/logIn.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
-export default function LogIn({instance, setToken}) {
+export default function LogIn({updateUsers}) {
 
     const { setAuth } = useAuth();
 
@@ -30,14 +31,13 @@ export default function LogIn({instance, setToken}) {
 
     async function login() {
         try {
-            const response = await instance.post('/account/login', inputs, {
+            const response = await instance().post('/account/login', JSON.stringify(inputs), {
                 headers: {'Content-Type': 'application/json'},
                 withCredentials: true
             });
-            //setToken(response.data);
-            console.log(response.data)
             const token = response?.data?.token
             setAuth({inputs, token})
+            await updateUsers()
         } catch (error) {
             console.error(error);
         }

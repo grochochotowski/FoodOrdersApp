@@ -1,7 +1,7 @@
 // MAIN IMPORTS
 import React, { Suspense, lazy, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import axiosInstance from "./api/axios.jsx"
+import instance from "./api/axios.jsx"
 
 // STYLES
 import "./styles/App.css";
@@ -29,42 +29,25 @@ const Restaurants = lazy(() => import("./pages/Restaurants/Restaurants.jsx"));
 const Users = lazy(() => import("./pages/Users/Users.jsx"));
 const Organizations = lazy(() => import("./pages/Organizations/Organizations.jsx"));
 
-
 export default function App() {
 
     const [user, setUser] = useState(0);
     const [users, setUsers] = useState([])
-    const [token, setToken] = useState({token: ""})
+    const [token, setToken] = useState("");
 
-    const instance = axiosInstance();
+    const fetchData = async () => {
+        console.log("Token sent with API request:", token);
+        try {
+            const response = await instance().get('user/all');
+            setUsers(response.data);
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     useEffect(() => {
-        let isMounted = true;
-        const controller = new AbortController();
-      
-        async function fetchData() {
-            try {
-                const response = await instance.get('user/all', {
-                signal: controller.signal,
-                headers: {
-                    Authorization: `Bearer ${token.token}`,
-                },
-                });
-                isMounted && setUsers(response.data);
-            } catch (err) {
-                console.error(err);
-            }
-        }
-      
-        if (token.token) {
-            fetchData();
-        }
-      
-        return () => {
-            isMounted = false;
-            controller.abort();
-        };
-      }, [token]);
+        fetchData();
+    }, []);
 
     function handleUserChange(chosenUser) {
         setUser(chosenUser)
@@ -86,7 +69,7 @@ export default function App() {
 
                 <Route path="/log-in" element={
                     <Suspense fallback={<Fallback />}>
-                        <LogIn instance={instance} setToken={setToken}/>
+                        <LogIn updateUsers={() => fetchData()} />
                     </Suspense>
                 }/>
 
@@ -94,22 +77,22 @@ export default function App() {
 
                 <Route path="/carts" element={
                     <Suspense fallback={<Fallback />}>
-                        <Carts instance={instance} token={token}/>
+                        <Carts />
                     </Suspense>
                 }/>
                 <Route path="/carts/new" element={
                     <Suspense fallback={<Fallback />}>
-                        <CartsNew user={user} instance={instance} token={token} />
+                        <CartsNew user={user}  />
                     </Suspense>
                 }/>
                 <Route path="/carts/details/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <CartsDetails instance={instance} token={token} />
+                        <CartsDetails  />
                     </Suspense>
                 }/>
                 <Route path="/carts/edit/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <CartsEdit instance={instance} token={token} />
+                        <CartsEdit  />
                     </Suspense>
                 }/>
 
@@ -117,22 +100,22 @@ export default function App() {
 
                 <Route path="/orders" element={
                     <Suspense fallback={<Fallback />}>
-                        <Orders instance={instance} token={token} />
+                        <Orders  />
                     </Suspense>
                 }/>
                 <Route path="/orders/new" element={
                     <Suspense fallback={<Fallback />}>
-                        <OrdersNew user={user} instance={instance} token={token} />
+                        <OrdersNew user={user}  />
                     </Suspense>
                 }/>
                 <Route path="/orders/details/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <OrdersDetails instance={instance} token={token} />
+                        <OrdersDetails  />
                     </Suspense>
                 }/>
                 <Route path="/orders/edit/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <OrdersEdit instance={instance} token={token} />
+                        <OrdersEdit  />
                     </Suspense>
                 }/>
 
@@ -148,17 +131,17 @@ export default function App() {
 
                 <Route path="/restaurants" element={
                     <Suspense fallback={<Fallback />}>
-                        <Restaurants instance={instance} token={token} />
+                        <Restaurants  />
                     </Suspense>
                 }/>
                 <Route path="/users" element={
                     <Suspense fallback={<Fallback />}>
-                        <Users updateUsers={() => fetchData()} instance={instance} token={token} />
+                        <Users updateUsers={() => fetchData()}  />
                     </Suspense>
                 }/>
                 <Route path="/organizations" element={
                     <Suspense fallback={<Fallback />}>
-                        <Organizations instance={instance} token={token} />
+                        <Organizations  />
                     </Suspense>
                 }/>
 
