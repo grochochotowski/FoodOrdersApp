@@ -34,7 +34,8 @@ namespace FoodOrdersApi
                 {
                     builder.AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowAnyOrigin();
+                    .AllowCredentials()
+                    .WithOrigins(configuration["AllowedOrigins"]);
                 });
             });
 
