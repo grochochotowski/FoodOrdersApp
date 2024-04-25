@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
+import instance from "../../api/axios.jsx"
 
-export default function UsersNew({hideNew, updateData, updateUsers}) {
+export default function UsersNew({hideNew, updateData, updateUsers, token}) {
 
     const [inputs, setInputs] = useState({
         "firstName" : "",
@@ -59,11 +60,14 @@ export default function UsersNew({hideNew, updateData, updateUsers}) {
 
     useEffect(() => {
         async function fetchData() {
-            let apiCall = `https://localhost:7157/api/organization/all`
+            let apiCall = `/organization/all`
             try {
-                const response = await fetch(apiCall)
-                const data = await response.json()
-                setOrganizations(data)
+                const response = await instance().get(apiCall, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                })
+                setOrganizations(response.data)
             } catch (error) {
                 console.error('Error fetching data:', error)
             }
@@ -73,22 +77,20 @@ export default function UsersNew({hideNew, updateData, updateUsers}) {
     }, []);
 
     async function createUser(dataToSend) {
-        let apiCall = `https://localhost:7157/api/user/create`
-        let requestOption = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataToSend)
+        let apiCall = `/user/create`
+        try {
+            const response = await instance().post(apiCall, JSON.stringify(dataToSend), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            hideNew()
+            updateData()
+            updateUsers()
+        } catch (error) {
+            console.error('Error fetching data:', error)
         }
-        const response = await fetch(apiCall, requestOption)
-
-        if (!response.ok) {
-            throw new Error('Error fetching data');
-        }
-        hideNew()
-        updateData()
-        updateUsers()
     }
 
     function generateOrganizationSelect() {

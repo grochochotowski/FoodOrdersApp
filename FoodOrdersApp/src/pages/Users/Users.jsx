@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import instance from "../../api/axios.jsx"
 
 import UsersNew from "./UsersNew.jsx"
 
@@ -6,7 +7,7 @@ import "../../styles/users.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function Users({updateUsers}) {
+export default function Users({updateUsers, token}) {
 
     const [sorting, setSorting] = useState(["firstName", 0])
     const [result, setResult] = useState([])
@@ -21,20 +22,25 @@ export default function Users({updateUsers}) {
     }
 
     async function fetchData() {
-        let apiCall = `https://localhost:7157/api/user/list?` +
+        let apiCall = `/user/list?` +
             `sortBy=${sorting[0]}&` +
             `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
             `page=${page}`
         try {
-            const response = await fetch(apiCall)
-            const data = await response.json()
-            setResult(data)
+            const response = await instance().get(apiCall, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            setResult(response.data)
         } catch (error) {
             console.error('Error fetching data:', error)
         }
     }
     useEffect(() => {
-        fetchData();
+        if(token){
+            fetchData();
+        }
     }, [sorting, page]);
 
     function generateTableHeader() {
@@ -201,12 +207,17 @@ export default function Users({updateUsers}) {
     }
 
     async function deleteUser(userId) {
-        var apiCall = `https://localhost:7157/api/user/delete/${userId}`
-        let requestOption = { method: 'DELETE' }
-        const response = await fetch(apiCall, requestOption)
-        console.log(response)
-        fetchData()
-        updateUsers()
+        var apiCall = `user/delete/${userId}`
+        try {
+            const response = await instance().delete(apiCall, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            fetchData()
+        } catch (error) {
+            console.error('Error fetching data:', error)
+        }
     }
     
     useEffect(() => {
@@ -244,7 +255,7 @@ export default function Users({updateUsers}) {
                 </div>
             </section>
             {
-                openNew && <UsersNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()} updateUsers={() => updateUsers()}/>
+                openNew && <UsersNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()} updateUsers={() => updateUsers()} token={token}/>
             }
         </div>
     )
