@@ -33,9 +33,9 @@ export default function App() {
 
     const [user, setUser] = useState(0);
     const [users, setUsers] = useState([])
+    const [token, setToken] = useState(localStorage.getItem('token') || "")
 
     const fetchData = async () => {
-        const token = localStorage.getItem('token');
         try {
             if(token) {
             const response = await instance().get('user/all', { 
@@ -44,6 +44,7 @@ export default function App() {
                 }
             });
             setUsers(response.data);
+            setToken(localStorage.getItem('token'))
             }
         } catch (err) {
             console.error(err);
@@ -82,22 +83,22 @@ export default function App() {
 
                 <Route path="/carts" element={
                     <Suspense fallback={<Fallback />}>
-                        <Carts />
+                        <Carts token={token}/>
                     </Suspense>
                 }/>
                 <Route path="/carts/new" element={
                     <Suspense fallback={<Fallback />}>
-                        <CartsNew user={user}  />
+                        <CartsNew user={user} token={token} />
                     </Suspense>
                 }/>
                 <Route path="/carts/details/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <CartsDetails  />
+                        <CartsDetails token={token} />
                     </Suspense>
                 }/>
                 <Route path="/carts/edit/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <CartsEdit  />
+                        <CartsEdit token={token} />
                     </Suspense>
                 }/>
 
@@ -105,22 +106,22 @@ export default function App() {
 
                 <Route path="/orders" element={
                     <Suspense fallback={<Fallback />}>
-                        <Orders  />
+                        <Orders token={token} />
                     </Suspense>
                 }/>
                 <Route path="/orders/new" element={
                     <Suspense fallback={<Fallback />}>
-                        <OrdersNew user={user}  />
+                        <OrdersNew user={user} token={token} />
                     </Suspense>
                 }/>
                 <Route path="/orders/details/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <OrdersDetails  />
+                        <OrdersDetails token={token} />
                     </Suspense>
                 }/>
                 <Route path="/orders/edit/:id" element={
                     <Suspense fallback={<Fallback />}>
-                        <OrdersEdit  />
+                        <OrdersEdit token={token} />
                     </Suspense>
                 }/>
 
@@ -136,17 +137,17 @@ export default function App() {
 
                 <Route path="/restaurants" element={
                     <Suspense fallback={<Fallback />}>
-                        <Restaurants  />
+                        <Restaurants token={token} />
                     </Suspense>
                 }/>
                 <Route path="/users" element={
                     <Suspense fallback={<Fallback />}>
-                        <Users updateUsers={() => fetchData()}  />
+                        <Users updateUsers={() => fetchData()} token={token} />
                     </Suspense>
                 }/>
                 <Route path="/organizations" element={
                     <Suspense fallback={<Fallback />}>
-                        <Organizations  />
+                        <Organizations token={token} />
                     </Suspense>
                 }/>
 
