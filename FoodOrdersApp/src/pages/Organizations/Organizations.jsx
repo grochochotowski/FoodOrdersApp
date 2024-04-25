@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import instance from "../../api/axios.jsx"
 
 import OrganizationsNew from "./OrganizationsNew.jsx"
 
@@ -6,7 +7,7 @@ import "../../styles/organizations.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function Organizations() {
+export default function Organizations({token}) {
 
     const [sorting, setSorting] = useState(["name", 0])
     const [result, setResult] = useState([])
@@ -21,20 +22,25 @@ export default function Organizations() {
     }
 
     async function fetchData() {
-        let apiCall = `https://localhost:7157/api/organization/list?` +
+        let apiCall = `/organization/list?` +
             `sortBy=${sorting[0]}&` +
             `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
             `page=${page}`
         try {
-            const response = await fetch(apiCall)
-            const data = await response.json()
-            setResult(data)
+            const response = await instance().get(apiCall, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            setResult(response.data)
         } catch (error) {
             console.error('Error fetching data:', error)
         }
     }
     useEffect(() => {
-        fetchData();
+        if(token){
+            fetchData();
+        }
     }, [sorting, page]);
 
     function generateTableHeader() {
@@ -165,11 +171,17 @@ export default function Organizations() {
     }
 
     async function deleteOrganization(organizationId) {
-        var apiCall = `https://localhost:7157/api/organization/delete/${organizationId}`
-        let requestOption = { method: 'DELETE' }
-        const response = await fetch(apiCall, requestOption)
-        console.log(response)
-        fetchData()
+        var apiCall = `organization/delete/${organizationId}`
+        try {
+            const response = await instance().delete(apiCall, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            fetchData()
+        } catch (error) {
+            console.error('Error fetching data:', error)
+        }
     }
     
     useEffect(() => {
@@ -207,7 +219,7 @@ export default function Organizations() {
                 </div>
             </section>
             {
-                openNew && <OrganizationsNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()}/>
+                openNew && <OrganizationsNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()} token={token}/>
             }
         </div>
     )
