@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom"
+import instance from "../../api/axios"
 
 import MealBoxEdit from "../../components/MealBoxEdit";
 import NewMeal from "../../components/NewMeal";
@@ -9,7 +10,7 @@ import "../../styles/orders.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function OrdersEdit()
+export default function OrdersEdit({token})
 {
     const params = useParams();
     const navigate = useNavigate();
@@ -35,51 +36,66 @@ export default function OrdersEdit()
     }
 
     async function fetchData() {
-        let apiCallEdit = `https://localhost:7157/api/order/edit/${params.id}`
-        let apiCallMeals = `https://localhost:7157/api/meal/order/${params.id}`
+        let apiCallEdit = `/order/edit/${params.id}`
+        let apiCallMeals = `/meal/order/${params.id}`
         try {
-            const responseEdit = await fetch(apiCallEdit)
-            const dataEdit = await responseEdit.json()
-            setOrderEdit(dataEdit)
-            setOrderInputs({"notes": dataEdit.notes});
-
-            const responseMeals = await fetch(apiCallMeals)
-            const dataMeals = await responseMeals.json()
-            setMeals(dataMeals)
+            const responseEdit = await instance().get(apiCallEdit, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            const responseMeals = await instance().get(apiCallMeals, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            setOrderEdit(responseEdit.data)
+            setOrderInputs({"notes": responseEdit.data.notes});
+            setMeals(responseMeals.data)
 
         } catch (error) {
             console.error('Error fetching data:', error)
         }
     }
     useEffect(() => {
-        fetchData();
+        if(token) {
+            fetchData();
+        }
     }, []);
 
-    async function sendData() {
-        let apiCall = `https://localhost:7157/api/order/update/${params.id}`
-        let requestOption = {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(orderInputs)
+    async function sendData(dataToSend) {
+        let apiCall = `/order/update/${params.id}`
+        try {
+            if(token) {
+                const response = await instance().put(apiCall, JSON.stringify(dataToSend), {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    },
+                });
+                console.log(response)
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-        const response = await fetch(apiCall, requestOption)
 
-        console.log(response)
-
-        if (!response.ok) {
-            throw new Error('Error fetching data');
-        }
         window.location.href = `/orders/details/${params.id}`;
     }
 
     async function deleteOrder() {
-        let apiCall = `https://localhost:7157/api/order/delete/${params.id}`
-        let requestOption = { method: 'DELETE' }
-        const response = await fetch(apiCall, requestOption)
-        console.log(response)
-        window.location.href = `/orders`;
+        let apiCall = `/order/delete/${params.id}`
+        try {
+            const response = await instance().delete(apiCall, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            console.log(response)
+            window.location.href = `/orders`;
+
+        } catch (error) {
+            console.error('Error fetching data:', error)
+        }
     }
 
     function newMealToggle() {
@@ -152,7 +168,7 @@ export default function OrdersEdit()
                             </div>
                             {
                                 meals.map((meal) => (
-                                    <MealBoxEdit key={meal.key} meal={meal} deleteMealToggle={() => deleteMealToggle()} changeDeleteId={changeDeleteId}/>
+                                    <MealBoxEdit key={meal.key} meal={meal} deleteMealToggle={() => deleteMealToggle()} changeDeleteId={changeDeleteId} token={token}/>
                                 ))
                             }
                         </div>
@@ -160,11 +176,11 @@ export default function OrdersEdit()
                 </div>
             </section>
             {orderEdit.restaurant != undefined && newMealOpen  && (
-                <NewMeal order={orderEdit.id} restaurant={orderEdit.restaurant} toggleNewMeal={() => newMealToggle()} updateData={() => fetchData()}/>
+                <NewMeal order={orderEdit.id} restaurant={orderEdit.restaurant} toggleNewMeal={() => newMealToggle()} updateData={() => fetchData()} token={token}/>
             )}
             
             {deleteMealOpen && (
-                <DeleteMeal order={orderEdit.id} meal={deleteMealId} deleteMealToggle={() => deleteMealToggle()} updateData={() => fetchData()}/>
+                <DeleteMeal order={orderEdit.id} meal={deleteMealId} deleteMealToggle={() => deleteMealToggle()} updateData={() => fetchData()} token={token}/>
             )}
         </div>
     )

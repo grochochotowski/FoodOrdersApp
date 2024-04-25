@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"
+import instance from "../../api/axios"
 
 import MealBoxEdit from "../../components/MealBoxEdit";
 
@@ -7,7 +8,7 @@ import "../../styles/orders.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function OrderNew({user}) {
+export default function OrderNew({user, token}) {
 
     const navigate = useNavigate();
     const [newOrderInputs, setNewOrderInputs] = useState({
@@ -19,18 +20,20 @@ export default function OrderNew({user}) {
 
     useEffect(() => {
         async function fetchData() {
-            let apiCall = `https://localhost:7157/api/cart/organization/${user.organizationId}`
+            let apiCall = `/cart/organization/${user.organizationId}`
             try {
-                const response = await fetch(apiCall)
-                const data = await response.json()
-                setCarts(data)
-
+                const response = await instance().get(apiCall, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                setCarts(response.data) 
             } catch (error) {
-                console.error('Error fetching data:', error)
+                console.error('Error fetching data:', error);
             }
         }
 
-        if(user) {
+        if (token && user) {
             fetchData();
         }
         else {
@@ -77,23 +80,21 @@ export default function OrderNew({user}) {
         if (valid) sendData(updatedDataToSend)
     }
     async function sendData(updatedDataToSend) {
-        let apiCall = `https://localhost:7157/api/order/create`
-        let requestOption = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(updatedDataToSend)
-        }
+        let apiCall = `/order/create`
         try {
-            const response = await fetch(apiCall, requestOption);
-            console.log(response);
-            
-            const locationHeader = response.headers.get('Location');
-            navigate(`/orders/edit/${locationHeader}`);
-
+            if(token) {
+                const response = await instance().post(apiCall, JSON.stringify(updatedDataToSend), {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    },
+                });
+                console.log(response)
+                const locationHeader = response.headers.get('Location');
+                navigate(`/orders/edit/${locationHeader}`);
+            }
         } catch (error) {
-            console.error('Error sending data:', error);
+            console.error('Error fetching data:', error);
         }
     }
 

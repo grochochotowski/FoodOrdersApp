@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom"
+import instance from "../../api/axios"
 
 import MealBox from "../../components/MealBox";
 
@@ -7,29 +8,33 @@ import "../../styles/orders.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function OrdersDetails() {
+export default function OrdersDetails({token}) {
 
     const params = useParams();
     const navigate = useNavigate();
 
     const [orderDetails, setOrderDetails] = useState({})
-    const [meals, setMealse] = useState([])
+    const [meals, setMeals] = useState([])
 
     useEffect(() => {
         async function fetchData() {
-            let apiCallDetails = `https://localhost:7157/api/order/get/${params.id}`
-            let apiCallMeals = `https://localhost:7157/api/meal/order/${params.id}`
+            let apiCallDetails = `/order/get/${params.id}`
+            let apiCallMeals = `/meal/order/${params.id}`
             try {
-                const responseDetails = await fetch(apiCallDetails)
-                const dataDetails = await responseDetails.json()
-                setOrderDetails(dataDetails) 
-
-                const responseMeals = await fetch(apiCallMeals)
-                const dataMeals = await responseMeals.json()
-                setMealse(dataMeals)
-
+                const responseDetails = await instance().get(apiCallDetails, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                const responseMeals = await instance().get(apiCallMeals, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                setOrderDetails(responseDetails.data) 
+                setMeals(responseMeals.data)
             } catch (error) {
-                console.error('Error fetching data:', error)
+                console.error('Error fetching data:', error);
             }
         }
 

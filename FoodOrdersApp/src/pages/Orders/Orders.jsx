@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import instance from "../../api/axios"
 
 import "../../styles/orders.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function Orders() {
+export default function Orders({token}) {
 
     const [sorting, setSorting] = useState(["organization", 0])
     const [filters, setFilters] = useState({ "filters" : "" })
@@ -24,26 +25,34 @@ export default function Orders() {
         }))
     }
     function filter() {
-        fetchData();
+        if(token) {
+            fetchData();
+        }
     }
 
     async function fetchData() {
-        let apiCall = `https://localhost:7157/api/order/all?` +
+        let apiCall = `/order/all?` +
             `${filters.filters && "filters=" + filters.filters + "&"}` +
             `sortBy=${sorting[0]}&` +
             `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
             `page=${page}`
         try {
-            const response = await fetch(apiCall)
-            const data = await response.json()
-            setResult(data)
+            const response = await instance().get(apiCall, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        
+            setResult(response.data)
         } catch (error) {
             console.error('Error fetching data:', error)
         }
     }
 
     useEffect(() => {
-        fetchData();
+        if(token) {
+            fetchData();
+        }
     }, [sorting, page]);
 
     function generateTableHeader() {
