@@ -12,6 +12,7 @@ using System.Linq;
 using FoodOrdersApi.Models.Address;
 using FoodOrdersApi.Models.Order;
 using FoodOrdersApi.Models.User;
+using FoodOrdersApi.Exceptions;
 
 namespace FoodCartsApi.Services
 {
@@ -43,15 +44,27 @@ namespace FoodCartsApi.Services
         {
             var cart = _mapper.Map<Cart>(dto);
 
-            //var isRestaurant = _context.Restaurants.FirstOrDefault(u => u.Id == dto.RestaurantId);
-            //if (isRestaurant == null) return -2;
+            //if (!_context.Restaurants.FirstOrDefault(u => u.Id == dto.RestaurantId))
+            //{
+            //    throw new NotFoundException("Restaurant not found");
+            //}
 
-            //var isOrganization = _context.Organizations.FirstOrDefault(u => u.Id == dto.OrganizationId);
-            //if (isOrganization == null) return -3;
+            //if (!_context.Organizations.FirstOrDefault(u => u.Id == dto.RestaurantId))
+            //{
+            //    throw new NotFoundException("Organization not found");
+            //}
 
             cart.TotalCartPrice = 0;
-            _context.Carts.Add(cart);
-            _context.SaveChanges();
+
+            try
+            {
+                _context.Carts.Add(cart);
+                _context.SaveChanges();
+            } catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
             return cart.Id;
         }
 
