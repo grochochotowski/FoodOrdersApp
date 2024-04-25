@@ -1,17 +1,26 @@
 import React, {useState, useEffect} from "react"
+import instance from "../api/axios.jsx"
 
 import "../styles/orders.css"
 import "../styles/index.css"
 import "../styles/App.css"
 
-export default function MealBoxList({meal, updateData}) {
+export default function MealBoxList({meal, updateData, token}) {
 
     async function deleteMeal() {
-        let apiCall = `https://localhost:7157/api/meal/delete/${meal.id}`
-        let requestOption = { method: 'DELETE' }
-        const response = await fetch(apiCall, requestOption)
-        console.log(response)
-        updateData();
+        let apiCall = `meal/delete/${meal.id}`
+            try {
+                const response = await instance().delete(apiCall, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    },
+                })
+                console.log(response)
+                updateData()
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
     }
 
     return (

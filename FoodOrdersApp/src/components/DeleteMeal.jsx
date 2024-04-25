@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-export default function DeleteMeal({order, meal, deleteMealToggle, updateData}) {
+export default function DeleteMeal({order, meal, deleteMealToggle, updateData, token}) {
 
     
     const [quantity, setQuantity] = useState(0)
@@ -24,20 +24,15 @@ export default function DeleteMeal({order, meal, deleteMealToggle, updateData}) 
             let requestOption = {
                 method: 'DELETE',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify(removeMealObject)
             }
             const response = await fetch(apiCall, requestOption)
     
             console.log(response)
-    
-            if (!response.ok) {
-                throw new Error('Error fetching data');
-            }
-            else {
-                updateData()
-            }
+            updateData()
         }
         else {
             alert("You have to delete atleast 1 meal")

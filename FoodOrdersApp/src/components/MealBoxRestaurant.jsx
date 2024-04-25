@@ -1,10 +1,11 @@
     import React, {useState, useEffect} from "react"
+    import instance from "../api/axios.jsx"
 
     import "../styles/orders.css"
     import "../styles/index.css"
     import "../styles/App.css"
 
-    export default function MealBoxRestaurant({order, meal, toggleNewMeal, updateData}) {
+    export default function MealBoxRestaurant({order, meal, toggleNewMeal, updateData, token}) {
         
         const [quantity, setQuantity] = useState(0);
         const mealBoxRef = React.createRef();
@@ -42,23 +43,19 @@
                     "quantity" : quantity
                 }
     
-                let apiCall = `https://localhost:7157/api/meal/addMeal/${order}`
-                let requestOption = {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(meal)
-                }
-                const response = await fetch(apiCall, requestOption)
-        
-                console.log(response)
-        
-                if (!response.ok) {
-                    throw new Error('Error fetching data');
-                }
-                else {
+                let apiCall = `/meal/addMeal/${order}`
+
+                try {
+                    const response = await instance().patch(apiCall, JSON.stringify(meal), {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`
+                        },
+                    })
+                    console.log(response)
                     updateData()
+                } catch (error) {
+                    console.error('Error fetching data:', error)
                 }
             }
             else {
