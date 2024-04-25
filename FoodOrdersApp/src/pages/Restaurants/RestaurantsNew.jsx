@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import instance from "../../api/axios.jsx"
 
-export default function RestaurantsNew({hideNew, updateData}) {
+export default function RestaurantsNew({hideNew, updateData, token}) {
 
     const [inputs, setInputs] = useState({
         "name" : "",
@@ -40,21 +41,19 @@ export default function RestaurantsNew({hideNew, updateData}) {
     }
 
     async function createRestaurant(dataToSend) {
-        let apiCall = `https://localhost:7157/api/restaurant/create`
-        let requestOption = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataToSend)
+        let apiCall = `/restaurant/create`
+        try {
+            const response = await instance().post(apiCall, JSON.stringify(dataToSend), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            hideNew()
+            updateData()
+        } catch (error) {
+            console.error('Error fetching data:', error)
         }
-        const response = await fetch(apiCall, requestOption)
-
-        if (!response.ok) {
-            throw new Error('Error fetching data');
-        }
-        hideNew()
-        updateData()
     }
 
     return (
