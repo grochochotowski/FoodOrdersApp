@@ -266,7 +266,7 @@ export default function Restaurants({token}) {
                 openNew && <RestaurantsNew hideNew={() => setOpenNew(false)} updateData={() => fetchData()} token={token}/>
             }
             {
-                openMeals[0] && <RestaurantsMeals restaurant={openMeals[1]}/>
+                openMeals[0] && <RestaurantsMeals restaurant={openMeals[1]} token={token}/>
             }
         </div>
     )

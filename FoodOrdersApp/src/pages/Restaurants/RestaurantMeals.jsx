@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import instance from "../../api/axios.jsx"
 
 import MealBoxList from '../../components/MealBoxList';
 
@@ -6,24 +7,28 @@ import "../../styles/restaurants.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function RestaurantMeals({restaurant}) {
+export default function RestaurantMeals({restaurant, token}) {
 
     const [toggleNew, setToggleNew] = useState(false)
     const [meals, setMeals] = useState([])
 
     async function fetchData() {
-        let apiCallMeals = `https://localhost:7157/api/meal/restaurant/${restaurant}/all`
+        var apiCall = `meal/restaurant/${restaurant}/all`
         try {
-            const responseMeals = await fetch(apiCallMeals)
-            const dataMeals = await responseMeals.json()
-            setMeals(dataMeals)
-
+            const response = await instance().get(apiCall, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            setMeals(response.data)
         } catch (error) {
             console.error('Error fetching data:', error)
         }
     }
     useEffect(() => {
-        fetchData();
+        if (token) {
+            fetchData();
+        }
     }, []);
 
     function newMeal() {
@@ -69,23 +74,22 @@ export default function RestaurantMeals({restaurant}) {
 
         if(valid) createMeal(dataToSend)
     }
-
     async function createMeal(dataToSend) {
-        let apiCall = `https://localhost:7157/api/meal/create`
-        let requestOption = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataToSend)
+        if (token) {
+            var apiCall = `meal/create`
+            try {
+                const response = await instance().post(apiCall, JSON.stringify(dataToSend), {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    },
+                })
+                fetchData()
+                setToggleNew(false)
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
         }
-        const response = await fetch(apiCall, requestOption)
-
-        if (!response.ok) {
-            throw new Error('Error fetching data');
-        }
-        fetchData()
-        setToggleNew(false)
     }
 
     return (
@@ -99,7 +103,7 @@ export default function RestaurantMeals({restaurant}) {
                     {
                         !toggleNew
                         ?   meals.map((meal) => (
-                                <MealBoxList key={meal.id} meal={meal} updateData={() => fetchData()}/>
+                                <MealBoxList key={meal.id} meal={meal} updateData={() => fetchData()} token={token}/>
                             ))
                         :   <div>
                                 <div className="form">
