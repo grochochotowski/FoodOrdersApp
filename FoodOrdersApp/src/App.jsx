@@ -37,12 +37,14 @@ export default function App() {
     const fetchData = async () => {
         const token = localStorage.getItem('token');
         try {
+            if(token) {
             const response = await instance().get('user/all', { 
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
             setUsers(response.data);
+            }
         } catch (err) {
             console.error(err);
         }
