@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import instance from "../../api/axios"
 
 import "../../styles/carts.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function Carts({instance, token}) {
+export default function Carts({token}) {
 
     const [sorting, setSorting] = useState(["organization", 0])
     const [filters, setFilters] = useState({ "filters" : "" })
@@ -28,15 +29,16 @@ export default function Carts({instance, token}) {
     }
 
     async function fetchData() {
+        const token = localStorage.getItem('token');
         let apiCall = `/cart/all?` +
             `${filters.filters && "filters=" + filters.filters + "&"}` +
             `sortBy=${sorting[0]}&` +
             `sortDireciton=${sorting[1] == 0 ? "ASC" : "DESC"}&` +
             `page=${page}`
         try {
-            const response = await instance.get(apiCall, {
+            const response = await instance().get(apiCall, {
                 headers: {
-                    Authorization: `Bearer ${token.token}`
+                    Authorization: `Bearer ${token}`
                 }
             });
             setResult(response.data);
@@ -46,7 +48,7 @@ export default function Carts({instance, token}) {
     }
 
     useEffect(() => {
-        if (token.token) {
+        if (token) {
             fetchData();
         }
     }, [sorting, page]);

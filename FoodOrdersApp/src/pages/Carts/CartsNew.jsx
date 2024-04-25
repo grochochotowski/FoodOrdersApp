@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import instance from "../../api/axios"
 
 import "../../styles/carts.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function CartsNew({user}) {
+export default function CartsNew({user, token}) {
 
     const navigate = useNavigate();
 
@@ -145,42 +146,48 @@ export default function CartsNew({user}) {
         if (valid) sendData(updatedDataToSend)
     }
     async function sendData(updatedDataToSend) {
-        let apiCall = `https://localhost:7157/api/cart/create`
-        let requestOption = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(updatedDataToSend)
+        let apiCall = `/cart/create`
+        try {
+            if(token) {
+                const response = await instance().post(apiCall, JSON.stringify(updatedDataToSend), {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    },
+                });
+                console.log(response)
+                navigate(`/carts/details/${response.data.newCartId}`)
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-        const response = await fetch(apiCall, requestOption)
-        const responseJson = await response.json()
-
-        if (!response.ok) {
-            throw new Error('Error fetching data');
-        }
-
-        navigate(`/carts/details/${responseJson.newCartId}`)
     }
 
     useEffect(() => {
         async function fetchData() {
-            let apiCallRestaurant = `https://localhost:7157/api/restaurant/all`
-            let apiCallOrganization = `https://localhost:7157/api/organization/all`
+            let apiCallRestaurant = `/restaurant/all`
+            let apiCallOrganization = `/organization/all`
             try {
-                const responseRestaurant = await fetch(apiCallRestaurant)
-                const dataRestaurant = await responseRestaurant.json()
-                setRestaurants(dataRestaurant)
-
-                const responseOrganization = await fetch(apiCallOrganization)
-                const dataOrganization = await responseOrganization.json()
-                setOrganizations(dataOrganization)
+                const responseRestaurant = await instance().get(apiCallRestaurant, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                const responseOrganization = await instance().get(apiCallOrganization, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                setRestaurants(responseRestaurant.data) 
+                setOrganizations(responseOrganization.data)
             } catch (error) {
-                console.error('Error fetching data:', error)
+                console.error('Error fetching data:', error);
             }
         }
 
-        fetchData();
+        if (token) {
+            fetchData();
+        }
     }, []);
 
     function generateRestaurantSelect() {

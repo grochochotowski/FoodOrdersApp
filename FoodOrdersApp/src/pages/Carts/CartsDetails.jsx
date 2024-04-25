@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom"
+import instance from "../../api/axios"
 
 import IndividualOrder from "../../components/IndividualOrder";
 
@@ -7,7 +8,7 @@ import "../../styles/carts.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function CartsDetails({instance, token}) {
+export default function CartsDetails({token}) {
 
     const params = useParams();
     const navigate = useNavigate();
@@ -20,14 +21,14 @@ export default function CartsDetails({instance, token}) {
             let apiCallDetails = `/cart/get/${params.id}`
             let apiCallCarts = `/order/cart/${params.id}`
             try {
-                const responseDetails = await instance.get(apiCallDetails, {
+                const responseDetails = await instance().get(apiCallDetails, {
                     headers: {
-                        Authorization: `Bearer ${token.token}`
+                        Authorization: `Bearer ${token}`
                     }
                 });
-                const responseCarts = await instance.get(apiCallCarts, {
+                const responseCarts = await instance().get(apiCallCarts, {
                     headers: {
-                        Authorization: `Bearer ${token.token}`
+                        Authorization: `Bearer ${token}`
                     }
                 });
                 setCartDetails(responseDetails.data) 
@@ -37,7 +38,7 @@ export default function CartsDetails({instance, token}) {
             }
         }
 
-        if (token.token) {
+        if (token) {
             fetchData();
         }
     }, []);

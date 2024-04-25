@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import instance from "../../api/axios"
 
 import "../../styles/carts.css"
 import "../../styles/index.css"
 import "../../styles/App.css"
 
-export default function CartsEdit({instance, token}) {
+export default function CartsEdit({token}) {
 
     const navigate = useNavigate();
     const params = useParams();
@@ -129,11 +130,11 @@ export default function CartsEdit({instance, token}) {
     async function sendData(dataToSend) {
         let apiCall = `/cart/update/${params.id}`
         try {
-            if(token.token) {
-                const response = await instance.put(apiCall, JSON.stringify(dataToSend), {
+            if(token) {
+                const response = await instance().put(apiCall, JSON.stringify(dataToSend), {
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token.token}`
+                        Authorization: `Bearer ${token}`
                     },
                 });
                 console.log(response)
@@ -148,10 +149,10 @@ export default function CartsEdit({instance, token}) {
     async function deleteCart() {
         let apiCall = `/cart/delete/${params.id}`
         try {
-            if(token.token) {
-                const response = await instance.delete(apiCall, {
+            if(token) {
+                const response = await instance().delete(apiCall, {
                     headers: {
-                        Authorization: `Bearer ${token.token}`
+                        Authorization: `Bearer ${token}`
                     },
                 });
                 console.log(response)
@@ -167,9 +168,9 @@ export default function CartsEdit({instance, token}) {
         async function fetchData() {
             let apiCall = `/cart/get/${params.id}`
             try {
-                const response = await instance.get(apiCall, {
+                const response = await instance().get(apiCall, {
                     headers: {
-                        Authorization: `Bearer ${token.token}`
+                        Authorization: `Bearer ${token}`
                     },
                 })
                 if (response.data.address) {
@@ -199,7 +200,7 @@ export default function CartsEdit({instance, token}) {
             }
         }
 
-        if (token.token) {
+        if (token) {
             fetchData();
         }
     }, []);
