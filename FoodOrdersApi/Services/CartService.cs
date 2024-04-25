@@ -43,11 +43,11 @@ namespace FoodCartsApi.Services
         {
             var cart = _mapper.Map<Cart>(dto);
 
-            var isRestaurant = _context.Restaurants.FirstOrDefault(u => u.Id == dto.RestaurantId);
-            if (isRestaurant == null) return -2;
+            //var isRestaurant = _context.Restaurants.FirstOrDefault(u => u.Id == dto.RestaurantId);
+            //if (isRestaurant == null) return -2;
 
-            var isOrganization = _context.Organizations.FirstOrDefault(u => u.Id == dto.OrganizationId);
-            if (isOrganization == null) return -3;
+            //var isOrganization = _context.Organizations.FirstOrDefault(u => u.Id == dto.OrganizationId);
+            //if (isOrganization == null) return -3;
 
             cart.TotalCartPrice = 0;
             _context.Carts.Add(cart);

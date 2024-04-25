@@ -28,7 +28,7 @@ namespace FoodCartsApi.Controllers
             var cartId = _cartService.Create(dto);
 
             if (cartId == -2) return NotFound($"Restaurant with id {dto.RestaurantId} does not exist");
-            if (cartId == -3) return NotFound($"Address with id {dto.OrganizationId} does not exist");
+            if (cartId == -3) return NotFound($"Organization with id {dto.OrganizationId} does not exist");
 
             return Ok(new { newCartId = cartId });
         }
