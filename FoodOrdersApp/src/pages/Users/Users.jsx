@@ -185,22 +185,21 @@ export default function Users({updateUsers, token}) {
                     paginationItems.push(<li key={"dots2"}>...</li>)
                     paginationItems.push(<li key={result.totalPages} className="clickable" onClick={() => setPage(result.totalPages)}>{result.totalPages}</li>);
                 }
-                
-                // Generate right arrow
-                if (page < result.totalPages) {
-                    paginationItems.push(
-                        <li className="clickable" onClick={() => setPage(page + 1)} key={"arrow-right"}>
-                            <i className="fa-solid fa-caret-right"></i>
-                        </li>
-                    )
-                }
-                else {
-                    paginationItems.push(
-                        <li className="disable" key={"arrow-right"}>
-                            <i className="fa-solid fa-caret-right"></i>
-                        </li>
-                    )
-                }
+            }
+             // Generate right arrow
+             if (page < result.totalPages) {
+                paginationItems.push(
+                    <li className="clickable" onClick={() => setPage(page + 1)} key={"arrow-right"}>
+                        <i className="fa-solid fa-caret-right"></i>
+                    </li>
+                )
+            }
+            else {
+                paginationItems.push(
+                    <li className="disable" key={"arrow-right"}>
+                        <i className="fa-solid fa-caret-right"></i>
+                    </li>
+                )
             }
             return paginationItems;
         }
