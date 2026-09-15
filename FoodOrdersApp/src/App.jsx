@@ -75,7 +75,7 @@ export default function App() {
 
                 <Route path="/log-in" element={
                     <Suspense fallback={<Fallback />}>
-                        <LogIn updateUsers={() => fetchData()}/>
+                        <LogIn updateUsers={() => fetchData()} setToken={setToken}/>
                     </Suspense>
                 }/>
 

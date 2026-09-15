@@ -37,6 +37,7 @@ export default function LogIn({updateUsers, setToken}) {
             });
             const token = response?.data?.token
             localStorage.setItem('token', token);
+            setToken(token)
             setAuth({inputs, token})
             await updateUsers()
         } catch (error) {

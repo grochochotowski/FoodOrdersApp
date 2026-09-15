@@ -79,7 +79,7 @@ export default function UsersNew({hideNew, updateData, updateUsers, token}) {
     async function createUser(dataToSend) {
         let apiCall = `/user/create`
         try {
-            const response = await instance().post(apiCall, JSON.stringify(dataToSend), {
+            await instance().post(apiCall, JSON.stringify(dataToSend), {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`
@@ -98,7 +98,7 @@ export default function UsersNew({hideNew, updateData, updateUsers, token}) {
             <select
             name="organizationId"
             id="organizationId"
-            value={user.organizationId}
+            value={inputs.organizationId}
             onChange={(event) => handleSelectChange(event, "organizationId")}
         >
             <option value={0}>--- Choose organization ---</option>
@@ -121,7 +121,7 @@ export default function UsersNew({hideNew, updateData, updateUsers, token}) {
                                 type="text"
                                 id="firstName"
                                 onChange={() => updateInputs("firstName")}
-                                value={inputs.name}
+                                value={inputs.firstName}
                             />
                         </div>
                         
@@ -131,7 +131,7 @@ export default function UsersNew({hideNew, updateData, updateUsers, token}) {
                                 type="text"
                                 id="secondName"
                                 onChange={() => updateInputs("secondName")}
-                                value={inputs.name}
+                                value={inputs.secondName}
                             />
                         </div>
                         
@@ -141,7 +141,7 @@ export default function UsersNew({hideNew, updateData, updateUsers, token}) {
                                 type="text"
                                 id="lastName"
                                 onChange={() => updateInputs("lastName")}
-                                value={inputs.name}
+                                value={inputs.lastName}
                             />
                         </div>
                                           
