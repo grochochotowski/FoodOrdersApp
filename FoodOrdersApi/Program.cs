@@ -19,10 +19,18 @@ namespace FoodOrdersApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var configuration = builder.Configuration;
             var authenticationSettings = new AuthenticationSettings();
 
             configuration.GetSection("Authentication").Bind(authenticationSettings);
+
+            if (string.IsNullOrWhiteSpace(authenticationSettings.JwtKey) || authenticationSettings.JwtKey.Length < 32)
+            {
+                throw new InvalidOperationException(
+                    "Authentication:JwtKey must be configured with at least 32 characters. " +
+                    "Use appsettings.Development.json for local development or the Authentication__JwtKey environment variable."
+                );
+            }
 
             // Add services to the container.
 
